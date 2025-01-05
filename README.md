@@ -1,2 +1,0 @@
-# freedom
-Self-developed projects
