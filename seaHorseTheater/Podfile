@@ -12,5 +12,6 @@ target 'seaHorseTheater' do
     pod 'Ads-CN', '6.4.1.7' #为保证兼容性 建议使用广告SDK版本
     pod 'TTSDKFramework', '1.42.3.4-premium', :subspecs => [ 'Player' ]
     pod 'PangrowthX', '2.6.0.0', :subspecs => [ 'shortplay' ]
+    pod 'SDWebImage', '5.9.5'
 
 end

@@ -53,6 +53,9 @@ PODS:
     - RangersAppLog/Core
   - RangersAppLog/Log (6.16.9):
     - RangersAppLog/Core
+  - SDWebImage (5.9.5):
+    - SDWebImage/Core (= 5.9.5)
+  - SDWebImage/Core (5.9.5)
   - TTSDKFramework/Core (1.42.3.4-premium):
     - RangersAppLog/Core (~> 6.16.2)
     - RangersAppLog/Host/CN (~> 6.16.2)
@@ -85,11 +88,13 @@ PODS:
 DEPENDENCIES:
   - Ads-CN (= 6.4.1.7)
   - PangrowthX/shortplay (= 2.6.0.0)
+  - SDWebImage (= 5.9.5)
   - TTSDKFramework/Player (= 1.42.3.4-premium)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Ads-CN
+    - SDWebImage
   https://github.com/volcengine/volcengine-specs.git:
     - PangrowthDJX
     - PangrowthX
@@ -105,8 +110,9 @@ SPEC CHECKSUMS:
   PGXToolbox: 3b775b34f87eb5817554f41cf96ba5b117ca4fa2
   RangersAPM: 99d0ff9dd5f33d3ffbeb5a2f00298236abc79cc9
   RangersAppLog: d4fa640a806e5fef583b07bea2f610684e81161e
+  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   TTSDKFramework: 3cba00b346c4a9adaa014e26fd081bb8ad9c5314
 
-PODFILE CHECKSUM: a782073da77fd62ea8e208724c4080c4db71da23
+PODFILE CHECKSUM: 410a43c2511598884359eab6eeee366cd5da61ab
 
 COCOAPODS: 1.12.1
