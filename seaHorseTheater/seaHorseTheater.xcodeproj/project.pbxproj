@@ -1,0 +1,461 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C2D2D2A260B003E6189 /* AppDelegate.m */; };
+		72443C312D2A260B003E6189 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C302D2A260B003E6189 /* SceneDelegate.m */; };
+		72443C342D2A260B003E6189 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C332D2A260B003E6189 /* ViewController.m */; };
+		72443C372D2A260B003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C362D2A260B003E6189 /* Base */; };
+		72443C392D2A260D003E6189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72443C382D2A260D003E6189 /* Assets.xcassets */; };
+		72443C3C2D2A260D003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C3B2D2A260D003E6189 /* Base */; };
+		72443C3F2D2A260D003E6189 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C3E2D2A260D003E6189 /* main.m */; };
+		FF4F5F36BB0BF703BFE1592F /* libPods-seaHorseTheater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.debug.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.debug.xcconfig"; sourceTree = "<group>"; };
+		31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-seaHorseTheater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72443C292D2A260B003E6189 /* seaHorseTheater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seaHorseTheater.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72443C2C2D2A260B003E6189 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		72443C2D2D2A260B003E6189 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		72443C2F2D2A260B003E6189 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		72443C302D2A260B003E6189 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		72443C322D2A260B003E6189 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		72443C332D2A260B003E6189 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		72443C362D2A260B003E6189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		72443C382D2A260D003E6189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72443C3B2D2A260D003E6189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		72443C3D2D2A260D003E6189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72443C3E2D2A260D003E6189 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CCD3A7814895ECFE78979364 /* Pods-seaHorseTheater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.release.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		72443C262D2A260B003E6189 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF4F5F36BB0BF703BFE1592F /* libPods-seaHorseTheater.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5659F838BE15B9A534274E6C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72443C202D2A260B003E6189 = {
+			isa = PBXGroup;
+			children = (
+				72443C2B2D2A260B003E6189 /* seaHorseTheater */,
+				72443C2A2D2A260B003E6189 /* Products */,
+				8213ADE5FA97E88633DD75BB /* Pods */,
+				5659F838BE15B9A534274E6C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		72443C2A2D2A260B003E6189 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72443C292D2A260B003E6189 /* seaHorseTheater.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		72443C2B2D2A260B003E6189 /* seaHorseTheater */ = {
+			isa = PBXGroup;
+			children = (
+				72443C2C2D2A260B003E6189 /* AppDelegate.h */,
+				72443C2D2D2A260B003E6189 /* AppDelegate.m */,
+				72443C2F2D2A260B003E6189 /* SceneDelegate.h */,
+				72443C302D2A260B003E6189 /* SceneDelegate.m */,
+				72443C322D2A260B003E6189 /* ViewController.h */,
+				72443C332D2A260B003E6189 /* ViewController.m */,
+				72443C352D2A260B003E6189 /* Main.storyboard */,
+				72443C382D2A260D003E6189 /* Assets.xcassets */,
+				72443C3A2D2A260D003E6189 /* LaunchScreen.storyboard */,
+				72443C3D2D2A260D003E6189 /* Info.plist */,
+				72443C3E2D2A260D003E6189 /* main.m */,
+			);
+			path = seaHorseTheater;
+			sourceTree = "<group>";
+		};
+		8213ADE5FA97E88633DD75BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */,
+				CCD3A7814895ECFE78979364 /* Pods-seaHorseTheater.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		72443C282D2A260B003E6189 /* seaHorseTheater */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72443C422D2A260D003E6189 /* Build configuration list for PBXNativeTarget "seaHorseTheater" */;
+			buildPhases = (
+				36BB6BE444F6E2522794D55F /* [CP] Check Pods Manifest.lock */,
+				72443C252D2A260B003E6189 /* Sources */,
+				72443C262D2A260B003E6189 /* Frameworks */,
+				72443C272D2A260B003E6189 /* Resources */,
+				6CE4D6D5DDD4D12FFE69D679 /* [CP] Embed Pods Frameworks */,
+				6735604BDB4C117965BAB559 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = seaHorseTheater;
+			productName = seaHorseTheater;
+			productReference = 72443C292D2A260B003E6189 /* seaHorseTheater.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		72443C212D2A260B003E6189 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					72443C282D2A260B003E6189 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 72443C242D2A260B003E6189 /* Build configuration list for PBXProject "seaHorseTheater" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 72443C202D2A260B003E6189;
+			productRefGroup = 72443C2A2D2A260B003E6189 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				72443C282D2A260B003E6189 /* seaHorseTheater */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		72443C272D2A260B003E6189 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72443C392D2A260D003E6189 /* Assets.xcassets in Resources */,
+				72443C3C2D2A260D003E6189 /* Base in Resources */,
+				72443C372D2A260B003E6189 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		36BB6BE444F6E2522794D55F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-seaHorseTheater-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6735604BDB4C117965BAB559 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CE4D6D5DDD4D12FFE69D679 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		72443C252D2A260B003E6189 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72443C342D2A260B003E6189 /* ViewController.m in Sources */,
+				72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */,
+				72443C3F2D2A260D003E6189 /* main.m in Sources */,
+				72443C312D2A260B003E6189 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		72443C352D2A260B003E6189 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72443C362D2A260B003E6189 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		72443C3A2D2A260D003E6189 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72443C3B2D2A260D003E6189 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		72443C402D2A260D003E6189 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		72443C412D2A260D003E6189 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		72443C432D2A260D003E6189 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 396F66BN9F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = seaHorseTheater/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hujiaofen.seaHorseTheater;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72443C442D2A260D003E6189 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCD3A7814895ECFE78979364 /* Pods-seaHorseTheater.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 396F66BN9F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = seaHorseTheater/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hujiaofen.seaHorseTheater;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		72443C242D2A260B003E6189 /* Build configuration list for PBXProject "seaHorseTheater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72443C402D2A260D003E6189 /* Debug */,
+				72443C412D2A260D003E6189 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72443C422D2A260D003E6189 /* Build configuration list for PBXNativeTarget "seaHorseTheater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72443C432D2A260D003E6189 /* Debug */,
+				72443C442D2A260D003E6189 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 72443C212D2A260B003E6189 /* Project object */;
+}

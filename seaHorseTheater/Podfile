@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '12.0'
+inhibit_all_warnings!
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/volcengine/volcengine-specs.git'
+
+target 'seaHorseTheater' do
+  # Comment the next line if you don't want to use dynamic frameworks
+    # use_frameworks!
+  # Pods for seaHorseTheater
+  
+    pod 'Ads-CN', '6.4.1.7' #为保证兼容性 建议使用广告SDK版本
+    pod 'TTSDKFramework', '1.42.3.4-premium', :subspecs => [ 'Player' ]
+    pod 'PangrowthX', '2.6.0.0', :subspecs => [ 'shortplay' ]
+
+end
