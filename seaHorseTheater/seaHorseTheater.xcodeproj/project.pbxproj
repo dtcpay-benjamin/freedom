@@ -14,6 +14,7 @@
 		72443C392D2A260D003E6189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72443C382D2A260D003E6189 /* Assets.xcassets */; };
 		72443C3C2D2A260D003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C3B2D2A260D003E6189 /* Base */; };
 		72443C3F2D2A260D003E6189 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C3E2D2A260D003E6189 /* main.m */; };
+		727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */ = {isa = PBXBuildFile; fileRef = 727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */; };
 		FF4F5F36BB0BF703BFE1592F /* libPods-seaHorseTheater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		72443C3B2D2A260D003E6189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72443C3D2D2A260D003E6189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72443C3E2D2A260D003E6189 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SDK_Setting_5603361.json; sourceTree = "<group>"; };
 		CCD3A7814895ECFE78979364 /* Pods-seaHorseTheater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.release.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 				72443C352D2A260B003E6189 /* Main.storyboard */,
 				72443C382D2A260D003E6189 /* Assets.xcassets */,
 				72443C3A2D2A260D003E6189 /* LaunchScreen.storyboard */,
+				727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */,
 				72443C3D2D2A260D003E6189 /* Info.plist */,
 				72443C3E2D2A260D003E6189 /* main.m */,
 			);
@@ -97,7 +100,6 @@
 				0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */,
 				CCD3A7814895ECFE78979364 /* Pods-seaHorseTheater.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -163,6 +165,7 @@
 			files = (
 				72443C392D2A260D003E6189 /* Assets.xcassets in Resources */,
 				72443C3C2D2A260D003E6189 /* Base in Resources */,
+				727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */,
 				72443C372D2A260B003E6189 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
