@@ -1,22 +1,27 @@
-# Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
 inhibit_all_warnings!
+
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/volcengine/volcengine-specs.git'
 
-target 'seaHorseTheater' do
-  # Comment the next line if you don't want to use dynamic frameworks
-    # use_frameworks!
-  # Pods for seaHorseTheater
-  
-    pod 'Ads-CN', '6.4.1.7' #为保证兼容性 建议使用广告SDK版本
-    pod 'TTSDKFramework', '1.42.3.4-premium', :subspecs => [ 'Player' ]
-    pod 'PangrowthX', '2.6.0.0', :subspecs => [ 'shortplay' ]
-    
-    pod 'Reachability', '3.2'
-    pod 'SDWebImage', '5.9.5'
-    pod 'MJRefresh', '3.6.1'
-    pod 'MBProgressHUD'
+use_frameworks! :linkage => :static # Swift 工程配置
+
+target 'EmpowerDemo' do
+  pod 'Pangrowth', '5.3.0.0', :subspecs => [ 'media' ]
+  pod 'PangrowthX', '2.6.0.0', :subspecs => [ 'shortplay', 'ministory' ]
+  # 正式版穿山甲依赖
+  pod 'Ads-CN', '6.5.0.9'
+  # 测试版穿山甲依赖
+  # pod 'PangrowthX', '2.6.0.0', :subspecs => [ 'shortplay-beta', 'ministory-beta' ]
+  # pod 'Ads-CN-Beta', '6.5.0.6' :subspecs => ['BUAdSDK', 'CSJMediation']
+  pod 'TTSDKFramework', '1.42.3.4-premium', :subspecs => [ 'Player' ]
+  pod 'RangersAPM', '5.1.2', :subspecs => [ 'Crash', 'EventMonitor', 'CN' ]
+  pod 'RangersAppLog', '6.16.9', :subspecs => [ 'Log', 'Host/CN' ]
+
+  pod 'Reachability', '3.2'
+  pod 'SDWebImage', '5.9.5'
+  pod 'MJRefresh', '3.6.1'
+  pod 'MBProgressHUD'
 end
 
 post_install do |installer|

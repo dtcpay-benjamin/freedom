@@ -1,0 +1,1019 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		047E3353EAECAB81D7914313 /* EmpowerDemo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B78CFC19168157FD591A634A /* EmpowerDemo-Info.plist */; };
+		09623EE0D41972FF88631268 /* LCSPlayletInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDDA6A118CA5308F34FAD67 /* LCSPlayletInterfaceViewController.m */; };
+		1BEEA607ABEBE9909A1C6E15 /* Pods_EmpowerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA543E2B969347C55F78767 /* Pods_EmpowerDemo.framework */; };
+		1C9D4278816452D6907C908A /* LCSCustomDrawAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA23FCB16CB4F817468E285 /* LCSCustomDrawAdViewController.m */; };
+		1CD4510BE5A787B7539DFCB0 /* LCSBaseSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CB861B64B9F07E8ADAFA0 /* LCSBaseSettingCell.m */; };
+		1FCCA4BA73D6FEE1271DF85E /* UIView+LCS.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC619CBB2005ED5A9467D5A /* UIView+LCS.m */; };
+		2049D25D39DFEC73D00E2716 /* LCSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 895B97C8B0A30BB88B806EA2 /* LCSLoginViewController.m */; };
+		227F0E813847E8B2A2350AF9 /* UIView+LCSAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D34D0B21F54A4094B35220 /* UIView+LCSAddition.m */; };
+		2956651093299BDCA8814E0C /* LCSSmallVideoMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6FF02D6BC3D905B6CA8F95 /* LCSSmallVideoMainViewController.m */; };
+		2BDD1C3CEE76D53E26E9C82F /* LCSVideoSingleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF65A4BBCCD7318BD48C2AE /* LCSVideoSingleCardViewController.m */; };
+		2E717410AC907676129C509C /* LCSMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A3F67C3FF6A3661E9C3290 /* LCSMacros.m */; };
+		3581770E094DA55FA15356FA /* UIView+LCSLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDEA950F18272D6C97B8B27 /* UIView+LCSLayout.m */; };
+		39438EE971ECDA8D5C309E24 /* MNStoryMiddleAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA40DE2F5389F10415BCBB9 /* MNStoryMiddleAdViewController.m */; };
+		44C214E7E5E6AF51F53DEC3E /* LCSChooseAdIndexCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F050EAAF71B569FDCBE919AD /* LCSChooseAdIndexCollectionViewCell.m */; };
+		46C0B0D9CD7046C805209FA1 /* LCSDrawCustomTopTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2101ADA23969ABE5D6C4573D /* LCSDrawCustomTopTabViewController.m */; };
+		4E8597151E777AF26204D814 /* LCSPlayletCardDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DC2171157C524D22969DD1 /* LCSPlayletCardDemoViewController.m */; };
+		5292571E62EF5D54489C8A51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE64B57E48C428715E804553 /* Images.xcassets */; };
+		54C0F9DF87FB8C52387FD77C /* AppDelegate+DJXDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC608366244EDE09E4B803 /* AppDelegate+DJXDelegate.m */; };
+		55A8FA256EADA96CF0FF987C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA976DC9821D70561A69DBCF /* main.m */; };
+		59B9DA6A95FAE2BAD3B01686 /* LCSPlayletCardSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D1838523EA145938A434D2 /* LCSPlayletCardSettingsViewController.m */; };
+		5A6235F7D41FA4645E535D9E /* LCSAPIDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED4F41EDA3FD4E3B8063DFB /* LCSAPIDemoViewController.m */; };
+		67DC6A82A20410DC00F860D9 /* LCSStoryMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 375C50032A71EFAB60EE96C0 /* LCSStoryMainViewController.m */; };
+		67E53881CB5BBD2FB3D5DD16 /* LCSMiniStoryDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3DA000B25B6E5CEF12378F /* LCSMiniStoryDemoViewController.m */; };
+		6843E81A4A05C46CC99AE594 /* LCSSmallVideoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F8F95E6F130A6ECE5C38A5 /* LCSSmallVideoSettingViewController.m */; };
+		693F33E54AC01A5B4A4CB6A5 /* LCSVideoCardDislikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E74514DEAA104893C7FBCDF4 /* LCSVideoCardDislikeView.m */; };
+		6F34628E94EC1FCC32120F99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EFD971FBA3A014EE4EAED1BB /* InfoPlist.strings */; };
+		7318ADF9F21535FA86A2AA19 /* LCSPlayletDetailConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA76FADAA2864A0EB7D66A3 /* LCSPlayletDetailConfigViewController.m */; };
+		73D1C1FECA5EABE6F21C03B7 /* EmpowerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E85C4412D0275777786BD3B6 /* EmpowerDemoUITests.m */; };
+		777B4469D7556EEA6B7E212D /* AppDelegate+ADSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 547BBBDB67657CD54B276F2D /* AppDelegate+ADSDK.m */; };
+		7E75DF012D29EB7576F289CF /* LCSCustomSizeVideoCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2340CA9B591067EB54067830 /* LCSCustomSizeVideoCardViewController.m */; };
+		7FF525422189A8539E602103 /* LCSSamllVideoWatchVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2FF3CE327B94AC4C4D6ACC /* LCSSamllVideoWatchVideoVC.m */; };
+		869810212886C7B3FDC88CEF /* MNStoryReaderAdUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCC757509BF5B89AAF87822 /* MNStoryReaderAdUtil.m */; };
+		88278B06C2CB311F433C2CCA /* SDK_Setting_5434885.json in Resources */ = {isa = PBXBuildFile; fileRef = 6382CF0F11EC2A1918A77A1A /* SDK_Setting_5434885.json */; };
+		882F9E9E6B78135DB73BD8A6 /* LCSSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A261725B7BFC0192B0517F1F /* LCSSettingViewController.m */; };
+		95846AD149F6E7C3013F1A01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A865AB1C21AEFD2BAB4A7E /* LaunchScreen.storyboard */; };
+		996510E9A16C973E8507D184 /* LCSNewsVideoSingleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FCFC40A42FC35F9BE9BBB2 /* LCSNewsVideoSingleCardViewController.m */; };
+		9A0BA678C8AB3077D7E8FFD2 /* MBProgressHUD+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B3E28546A21EF65D52198E /* MBProgressHUD+Toast.m */; };
+		A4F589CBBD347089FE965422 /* LCSMeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DB75BDEC63B00BF4516A8E /* LCSMeInfoViewController.m */; };
+		A56A0201D7B1EBEB607DEDB2 /* LCSPlayletMixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDD608C79C646C2922B9560 /* LCSPlayletMixViewController.m */; };
+		A87EBDF2F25628BE37C3A22D /* LCSBaseActionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED0AB57E8DBC2DBF815E6C5 /* LCSBaseActionTableViewController.m */; };
+		A9220D2E3AA99046C180CAAC /* LCSHotNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFA049796A5732BFA61994DB /* LCSHotNewsViewController.m */; };
+		AB9FD44CA03C0373189F6753 /* SDK_Setting_5434886.json in Resources */ = {isa = PBXBuildFile; fileRef = 7786DEBFC0E2A45723032A41 /* SDK_Setting_5434886.json */; };
+		AE055AE0289A949164AF7228 /* LCSDrawMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A605CBA8BA284C6A2890B0C /* LCSDrawMainViewController.m */; };
+		AFCBE436E1D027AAFBF15B03 /* MNStoryBottomAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2BAFBF8185C3DB766DE52B /* MNStoryBottomAdView.m */; };
+		B01B23ABBED739E3D0457CFF /* LCSVideoCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F7F2F2EA7815CAFCCAB05A /* LCSVideoCardViewController.m */; };
+		B357AC7C5FDF74CEFB1C18ED /* LCSWaterfallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9EA04C3E5EF91CD1D69D98 /* LCSWaterfallViewController.m */; };
+		BE759C26E79AC9C354CE50F8 /* LCSMineMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B0D93F01846A37461720BC /* LCSMineMainViewController.m */; };
+		C0D11669D1292ED20556EE86 /* LCSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC040852C6DE6EACCB3E42A5 /* LCSMainViewController.m */; };
+		C2F4C970433EF76CD222CE4C /* LCSStoryInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4656B2D95EDA19062CA5BF3 /* LCSStoryInterfaceViewController.m */; };
+		C30DCAE2CA054F726BC1DE48 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B59327506209FB0FCD38F4 /* IntroViewController.m */; };
+		C6DDFDB35E2CA2C3486A6590 /* LCSSwitchSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8FD72D64DC4D333FB9D7 /* LCSSwitchSettingCell.m */; };
+		CDD60D08E1945534B6F04802 /* LCSDrawMoreAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38491B8B36E13374ED5D224E /* LCSDrawMoreAlertViewController.m */; };
+		CF7C4682230DCEB5F273CA33 /* LCSGridMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8DF59D22CF63C202877BC8 /* LCSGridMainViewController.m */; };
+		D5DAE41FD544681B49FFB59F /* UIStatusBarManager+TapAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2869C00A6FA7221EB87A8087 /* UIStatusBarManager+TapAction.m */; };
+		D740D03302C390B9B312ECA1 /* LCSPlayletMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0905E1BC1388C36F863DF3 /* LCSPlayletMainViewController.m */; };
+		DB8090D1CE5B756A19F4568D /* LCSTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4DDC56931A73ED444577EF /* LCSTabViewController.m */; };
+		DEA516631EEC4D46604467F4 /* LCSActionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1056619E405F7AB4B08CCD8F /* LCSActionCellView.m */; };
+		ECE04E0B46C5B8D29C2946AC /* LCSDrawSimulateShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D21A096B046E7FEBFDFE0F /* LCSDrawSimulateShareViewController.m */; };
+		EE7719D2AA0063A3BB64E163 /* LCSChooseAdIndexCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951967B9966523ACA85F139B /* LCSChooseAdIndexCollectionViewController.m */; };
+		EF76C1DD1902E3BA83BA1D16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B1B06F08F242EB40288927 /* AppDelegate.m */; };
+		FAE76850B76E124F6E8005D7 /* LCSChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6E14376086155C1BCE6439F /* LCSChannelViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5F6134BEC8C1F03A2DC69612 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 095DA58030EC2B32702FA562 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A4A850CAAFF97853079CACF;
+			remoteInfo = EmpowerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04B3E28546A21EF65D52198E /* MBProgressHUD+Toast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Toast.m"; sourceTree = "<group>"; };
+		05DC2171157C524D22969DD1 /* LCSPlayletCardDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSPlayletCardDemoViewController.m; sourceTree = "<group>"; };
+		05FCFC40A42FC35F9BE9BBB2 /* LCSNewsVideoSingleCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSNewsVideoSingleCardViewController.m; sourceTree = "<group>"; };
+		0B1CB861B64B9F07E8ADAFA0 /* LCSBaseSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSBaseSettingCell.m; sourceTree = "<group>"; };
+		0CDEA950F18272D6C97B8B27 /* UIView+LCSLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCSLayout.m"; sourceTree = "<group>"; };
+		0D2D81D2CB70F74420E5628E /* LCSPlayletMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSPlayletMainViewController.h; sourceTree = "<group>"; };
+		0EB2C0DD1748971D40CFC19B /* LCSDrawMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSDrawMainViewController.h; sourceTree = "<group>"; };
+		1056619E405F7AB4B08CCD8F /* LCSActionCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSActionCellView.m; sourceTree = "<group>"; };
+		1091ECE8386AA8BAAB157202 /* LCSLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSLoginViewController.h; sourceTree = "<group>"; };
+		10B7A449D015B7C2151FAC1D /* AppDelegate+ADSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ADSDK.h"; sourceTree = "<group>"; };
+		12CBD77AC094B4C0EFAF9DE7 /* UIView+LCS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LCS.h"; sourceTree = "<group>"; };
+		12D1838523EA145938A434D2 /* LCSPlayletCardSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSPlayletCardSettingsViewController.m; sourceTree = "<group>"; };
+		139B7793BA0F1032BDC54817 /* LCSMiniStoryDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSMiniStoryDemoViewController.h; sourceTree = "<group>"; };
+		14B59327506209FB0FCD38F4 /* IntroViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		1CEACD153B5660FF81374DC2 /* LCSSmallVideoMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSSmallVideoMainViewController.h; sourceTree = "<group>"; };
+		1FDDA6A118CA5308F34FAD67 /* LCSPlayletInterfaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSPlayletInterfaceViewController.m; sourceTree = "<group>"; };
+		2101ADA23969ABE5D6C4573D /* LCSDrawCustomTopTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSDrawCustomTopTabViewController.m; sourceTree = "<group>"; };
+		2340CA9B591067EB54067830 /* LCSCustomSizeVideoCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSCustomSizeVideoCardViewController.m; sourceTree = "<group>"; };
+		24A3F67C3FF6A3661E9C3290 /* LCSMacros.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSMacros.m; sourceTree = "<group>"; };
+		2737DF998BC447FFCDEF67E8 /* LCSConfigID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSConfigID.h; sourceTree = "<group>"; };
+		2869C00A6FA7221EB87A8087 /* UIStatusBarManager+TapAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIStatusBarManager+TapAction.m"; sourceTree = "<group>"; };
+		2AFCD1E63F6B8805B5F81423 /* LCSMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSMacros.h; sourceTree = "<group>"; };
+		2DB9E71BF3D5912085DFC520 /* LCSActionCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSActionCellView.h; sourceTree = "<group>"; };
+		30B57C88FF7A1180280E3A83 /* LCSPlayletMixViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSPlayletMixViewController.h; sourceTree = "<group>"; };
+		31D6147971A72A230EEE0689 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		35BA153D705A57C404A6E928 /* MNStoryBottomAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MNStoryBottomAdView.h; sourceTree = "<group>"; };
+		375C50032A71EFAB60EE96C0 /* LCSStoryMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSStoryMainViewController.m; sourceTree = "<group>"; };
+		38491B8B36E13374ED5D224E /* LCSDrawMoreAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSDrawMoreAlertViewController.m; sourceTree = "<group>"; };
+		3CCC757509BF5B89AAF87822 /* MNStoryReaderAdUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MNStoryReaderAdUtil.m; sourceTree = "<group>"; };
+		3D654EE0A1FFBB34AC8B52BF /* UIView+LCSLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LCSLayout.h"; sourceTree = "<group>"; };
+		43B0D93F01846A37461720BC /* LCSMineMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSMineMainViewController.m; sourceTree = "<group>"; };
+		45791C608C5F3A29BC495B56 /* LCSNewsVideoSingleCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSNewsVideoSingleCardViewController.h; sourceTree = "<group>"; };
+		45DB75BDEC63B00BF4516A8E /* LCSMeInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSMeInfoViewController.m; sourceTree = "<group>"; };
+		47231D25ADD65170B43F9F09 /* UIView+LCSAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LCSAddition.h"; sourceTree = "<group>"; };
+		48DAB3E62350E0435739583D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4D3DA000B25B6E5CEF12378F /* LCSMiniStoryDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSMiniStoryDemoViewController.m; sourceTree = "<group>"; };
+		4DCC608366244EDE09E4B803 /* AppDelegate+DJXDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DJXDelegate.m"; sourceTree = "<group>"; };
+		547BBBDB67657CD54B276F2D /* AppDelegate+ADSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ADSDK.m"; sourceTree = "<group>"; };
+		59170B9AA8623D9FB0D3B3D0 /* LCSGridMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSGridMainViewController.h; sourceTree = "<group>"; };
+		59F8070216D6373767B28177 /* LCSSamllVideoWatchVideoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSSamllVideoWatchVideoVC.h; sourceTree = "<group>"; };
+		5A04891C66914C7E22C15D0B /* LCSStoryMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSStoryMainViewController.h; sourceTree = "<group>"; };
+		5D4FFC1C6C3E9CDA1573225B /* AppDelegate+DJXDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DJXDelegate.h"; sourceTree = "<group>"; };
+		5FC619CBB2005ED5A9467D5A /* UIView+LCS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCS.m"; sourceTree = "<group>"; };
+		60936654581E7183E75EAFB6 /* UIStatusBarManager+TapAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStatusBarManager+TapAction.h"; sourceTree = "<group>"; };
+		624608D710D89D20A1526D3E /* IntroViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		625F02A593553884CAB77C72 /* LCSPlayletCardSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSPlayletCardSettingsViewController.h; sourceTree = "<group>"; };
+		6382CF0F11EC2A1918A77A1A /* SDK_Setting_5434885.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SDK_Setting_5434885.json; sourceTree = "<group>"; };
+		6B9EA04C3E5EF91CD1D69D98 /* LCSWaterfallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSWaterfallViewController.m; sourceTree = "<group>"; };
+		6E1966E76D007D1E0AE832D2 /* Pods-EmpowerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmpowerDemo.debug.xcconfig"; path = "Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		6F9B0DB6860F6786C2156B1C /* LCSDrawMoreAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSDrawMoreAlertViewController.h; sourceTree = "<group>"; };
+		705EA2708568CD44995E27B9 /* LCSChooseAdIndexCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSChooseAdIndexCollectionViewCell.h; sourceTree = "<group>"; };
+		75B1B06F08F242EB40288927 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		76A4D9D3CF5A15E79DC01F82 /* LCSCustomDrawAdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSCustomDrawAdViewController.h; sourceTree = "<group>"; };
+		770396F8BBD6FC8C4902D698 /* LCSPlayletCardDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSPlayletCardDemoViewController.h; sourceTree = "<group>"; };
+		7786DEBFC0E2A45723032A41 /* SDK_Setting_5434886.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SDK_Setting_5434886.json; sourceTree = "<group>"; };
+		7A605CBA8BA284C6A2890B0C /* LCSDrawMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSDrawMainViewController.m; sourceTree = "<group>"; };
+		7B1EE7A063EF4CF10580E032 /* LCSVideoCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSVideoCardViewController.h; sourceTree = "<group>"; };
+		7B2FF3CE327B94AC4C4D6ACC /* LCSSamllVideoWatchVideoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSSamllVideoWatchVideoVC.m; sourceTree = "<group>"; };
+		7F4DDC56931A73ED444577EF /* LCSTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSTabViewController.m; sourceTree = "<group>"; };
+		83785423FBC661E81DC16452 /* LCSCustomSizeVideoCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSCustomSizeVideoCardViewController.h; sourceTree = "<group>"; };
+		895B97C8B0A30BB88B806EA2 /* LCSLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSLoginViewController.m; sourceTree = "<group>"; };
+		8DA543E2B969347C55F78767 /* Pods_EmpowerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EmpowerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DDD608C79C646C2922B9560 /* LCSPlayletMixViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSPlayletMixViewController.m; sourceTree = "<group>"; };
+		93094201A452E07455EBBADD /* LCSChannelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSChannelViewController.h; sourceTree = "<group>"; };
+		93F8F95E6F130A6ECE5C38A5 /* LCSSmallVideoSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSSmallVideoSettingViewController.m; sourceTree = "<group>"; };
+		951967B9966523ACA85F139B /* LCSChooseAdIndexCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSChooseAdIndexCollectionViewController.m; sourceTree = "<group>"; };
+		96AAC6EAC73402F8DC020545 /* LCSDrawCustomTopTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSDrawCustomTopTabViewController.h; sourceTree = "<group>"; };
+		9935CDED18C800F6140B307B /* LCSVideoSingleCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSVideoSingleCardViewController.h; sourceTree = "<group>"; };
+		998B22E90BB13D003C4649B4 /* LCSTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSTabViewController.h; sourceTree = "<group>"; };
+		9F938B1E482EF68493377B11 /* Pods-EmpowerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmpowerDemo.release.xcconfig"; path = "Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		A261725B7BFC0192B0517F1F /* LCSSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSSettingViewController.m; sourceTree = "<group>"; };
+		A472C8CAAF48E0E0C42641EF /* LCSChooseAdIndexCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSChooseAdIndexCollectionViewController.h; sourceTree = "<group>"; };
+		AA976DC9821D70561A69DBCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC0905E1BC1388C36F863DF3 /* LCSPlayletMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSPlayletMainViewController.m; sourceTree = "<group>"; };
+		AED0AB57E8DBC2DBF815E6C5 /* LCSBaseActionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSBaseActionTableViewController.m; sourceTree = "<group>"; };
+		B4DE2ABA3D120217F61DCF8D /* EmpowerDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EmpowerDemo-Prefix.pch"; sourceTree = "<group>"; };
+		B6F7F2F2EA7815CAFCCAB05A /* LCSVideoCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSVideoCardViewController.m; sourceTree = "<group>"; };
+		B78CFC19168157FD591A634A /* EmpowerDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "EmpowerDemo-Info.plist"; sourceTree = "<group>"; };
+		B7B752F4B94ADA7BC28DC83F /* MNStoryReaderAdUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MNStoryReaderAdUtil.h; sourceTree = "<group>"; };
+		BB1623EC5049788BC99829CE /* LCSPlayletDetailConfigViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSPlayletDetailConfigViewController.h; sourceTree = "<group>"; };
+		BB2EAF44B97BA013D652C9BF /* LCSVideoCardDislikeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSVideoCardDislikeView.h; sourceTree = "<group>"; };
+		BD4B8FD72D64DC4D333FB9D7 /* LCSSwitchSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSSwitchSettingCell.m; sourceTree = "<group>"; };
+		BECB723A25E81306AA9708B6 /* LCSAPIDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSAPIDemoViewController.h; sourceTree = "<group>"; };
+		BFF65A4BBCCD7318BD48C2AE /* LCSVideoSingleCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSVideoSingleCardViewController.m; sourceTree = "<group>"; };
+		C07F3934328E423206DC57B2 /* LCSPlayletInterfaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSPlayletInterfaceViewController.h; sourceTree = "<group>"; };
+		C0F02838FE51C8362991CC22 /* LCSBaseSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSBaseSettingCell.h; sourceTree = "<group>"; };
+		C1E5246A08FC217B0211BA3A /* EmpowerDemo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = EmpowerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C355AA2655397C37352314F9 /* LCSSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSSettingViewController.h; sourceTree = "<group>"; };
+		C6E14376086155C1BCE6439F /* LCSChannelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSChannelViewController.m; sourceTree = "<group>"; };
+		C8FE8FD67C09C948E00246F3 /* LCSMineMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSMineMainViewController.h; sourceTree = "<group>"; };
+		CB336109730921FDFD247F51 /* EmpowerDemoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = EmpowerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD23ED058CE40FE28C5735A2 /* LCSDrawSimulateShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSDrawSimulateShareViewController.h; sourceTree = "<group>"; };
+		CF2BAFBF8185C3DB766DE52B /* MNStoryBottomAdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MNStoryBottomAdView.m; sourceTree = "<group>"; };
+		D4656B2D95EDA19062CA5BF3 /* LCSStoryInterfaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSStoryInterfaceViewController.m; sourceTree = "<group>"; };
+		DA8DF59D22CF63C202877BC8 /* LCSGridMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSGridMainViewController.m; sourceTree = "<group>"; };
+		DBD4DDE664949A95D9D03F80 /* LCSMeInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSMeInfoViewController.h; sourceTree = "<group>"; };
+		DC0C2AE3632BE71F71029EAE /* LCSBaseActionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSBaseActionTableViewController.h; sourceTree = "<group>"; };
+		DEA40DE2F5389F10415BCBB9 /* MNStoryMiddleAdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MNStoryMiddleAdViewController.m; sourceTree = "<group>"; };
+		DEA48BDA61AE081B6839A4D7 /* LCSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSMainViewController.h; sourceTree = "<group>"; };
+		DED4F41EDA3FD4E3B8063DFB /* LCSAPIDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSAPIDemoViewController.m; sourceTree = "<group>"; };
+		E1D21A096B046E7FEBFDFE0F /* LCSDrawSimulateShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSDrawSimulateShareViewController.m; sourceTree = "<group>"; };
+		E74514DEAA104893C7FBCDF4 /* LCSVideoCardDislikeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSVideoCardDislikeView.m; sourceTree = "<group>"; };
+		E85C4412D0275777786BD3B6 /* EmpowerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmpowerDemoUITests.m; sourceTree = "<group>"; };
+		EAA76FADAA2864A0EB7D66A3 /* LCSPlayletDetailConfigViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSPlayletDetailConfigViewController.m; sourceTree = "<group>"; };
+		EC040852C6DE6EACCB3E42A5 /* LCSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSMainViewController.m; sourceTree = "<group>"; };
+		ECA23FCB16CB4F817468E285 /* LCSCustomDrawAdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSCustomDrawAdViewController.m; sourceTree = "<group>"; };
+		EEECADA7505708AA21F22760 /* MBProgressHUD+Toast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Toast.h"; sourceTree = "<group>"; };
+		EF393ECA60BA13C4ECF92787 /* LCSStoryInterfaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSStoryInterfaceViewController.h; sourceTree = "<group>"; };
+		EFA049796A5732BFA61994DB /* LCSHotNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSHotNewsViewController.m; sourceTree = "<group>"; };
+		EFD971FBA3A014EE4EAED1BB /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F050EAAF71B569FDCBE919AD /* LCSChooseAdIndexCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSChooseAdIndexCollectionViewCell.m; sourceTree = "<group>"; };
+		F1E0DE369DC2542AA3BEA3E9 /* LCSSmallVideoSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSSmallVideoSettingViewController.h; sourceTree = "<group>"; };
+		F25660AD0DCB30A92F89C105 /* MNStoryMiddleAdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MNStoryMiddleAdViewController.h; sourceTree = "<group>"; };
+		F2A634FE8D495480A6E299CA /* LCSSwitchSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSSwitchSettingCell.h; sourceTree = "<group>"; };
+		F2D34D0B21F54A4094B35220 /* UIView+LCSAddition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LCSAddition.m"; sourceTree = "<group>"; };
+		F53E45E9C54F8E9750CDB693 /* LCSHotNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSHotNewsViewController.h; sourceTree = "<group>"; };
+		FA6FF02D6BC3D905B6CA8F95 /* LCSSmallVideoMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSSmallVideoMainViewController.m; sourceTree = "<group>"; };
+		FE64B57E48C428715E804553 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FF3D0E6CA622B95E69551FA9 /* LCSWaterfallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSWaterfallViewController.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9EF05D3630568DC05B5273E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BEEA607ABEBE9909A1C6E15 /* Pods_EmpowerDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03232593969CA5324B4667C5 /* VideoCard */ = {
+			isa = PBXGroup;
+			children = (
+				83785423FBC661E81DC16452 /* LCSCustomSizeVideoCardViewController.h */,
+				2340CA9B591067EB54067830 /* LCSCustomSizeVideoCardViewController.m */,
+				45791C608C5F3A29BC495B56 /* LCSNewsVideoSingleCardViewController.h */,
+				05FCFC40A42FC35F9BE9BBB2 /* LCSNewsVideoSingleCardViewController.m */,
+				BB2EAF44B97BA013D652C9BF /* LCSVideoCardDislikeView.h */,
+				E74514DEAA104893C7FBCDF4 /* LCSVideoCardDislikeView.m */,
+				7B1EE7A063EF4CF10580E032 /* LCSVideoCardViewController.h */,
+				B6F7F2F2EA7815CAFCCAB05A /* LCSVideoCardViewController.m */,
+				9935CDED18C800F6140B307B /* LCSVideoSingleCardViewController.h */,
+				BFF65A4BBCCD7318BD48C2AE /* LCSVideoSingleCardViewController.m */,
+			);
+			path = VideoCard;
+			sourceTree = "<group>";
+		};
+		11B9C6CE7F85456314D6B282 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				DBD4DDE664949A95D9D03F80 /* LCSMeInfoViewController.h */,
+				45DB75BDEC63B00BF4516A8E /* LCSMeInfoViewController.m */,
+				C8FE8FD67C09C948E00246F3 /* LCSMineMainViewController.h */,
+				43B0D93F01846A37461720BC /* LCSMineMainViewController.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		170DFC3ECB923E05B65CEC7B /* EmpowerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E96E6B7B5D1976BD2AACC0EB /* App */,
+				BED5802AA8E7710A62D090F1 /* Modules */,
+				8F7A07DA89A518943FEC6D4F /* Resources */,
+			);
+			path = EmpowerDemo;
+			sourceTree = "<group>";
+		};
+		2DBDDEEC548146DA6347F707 /* SmallVideo */ = {
+			isa = PBXGroup;
+			children = (
+				59F8070216D6373767B28177 /* LCSSamllVideoWatchVideoVC.h */,
+				7B2FF3CE327B94AC4C4D6ACC /* LCSSamllVideoWatchVideoVC.m */,
+				1CEACD153B5660FF81374DC2 /* LCSSmallVideoMainViewController.h */,
+				FA6FF02D6BC3D905B6CA8F95 /* LCSSmallVideoMainViewController.m */,
+				F1E0DE369DC2542AA3BEA3E9 /* LCSSmallVideoSettingViewController.h */,
+				93F8F95E6F130A6ECE5C38A5 /* LCSSmallVideoSettingViewController.m */,
+				73244940CF6BF7ACBB382CBE /* DrawVideo */,
+				AD28A5421F8B18D15F3C991A /* Grid */,
+				A90FEE60861342243FEAD9AE /* HotNews */,
+				11B9C6CE7F85456314D6B282 /* Mine */,
+				03232593969CA5324B4667C5 /* VideoCard */,
+			);
+			path = SmallVideo;
+			sourceTree = "<group>";
+		};
+		38FBAE9EC6DDB15B2C158791 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1E5246A08FC217B0211BA3A /* EmpowerDemo.app */,
+				CB336109730921FDFD247F51 /* EmpowerDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4BE30479B5D99B184FF224E3 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				5D4FFC1C6C3E9CDA1573225B /* AppDelegate+DJXDelegate.h */,
+				4DCC608366244EDE09E4B803 /* AppDelegate+DJXDelegate.m */,
+				CBFC7207B8C31639C456A1FD /* config */,
+				B7714A256A1EA47BA24874C2 /* mainViewcontroller */,
+				56C492B47A3ED25B8B0CCB21 /* Utils */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		56C492B47A3ED25B8B0CCB21 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2AFCD1E63F6B8805B5F81423 /* LCSMacros.h */,
+				24A3F67C3FF6A3661E9C3290 /* LCSMacros.m */,
+				EEECADA7505708AA21F22760 /* MBProgressHUD+Toast.h */,
+				04B3E28546A21EF65D52198E /* MBProgressHUD+Toast.m */,
+				60936654581E7183E75EAFB6 /* UIStatusBarManager+TapAction.h */,
+				2869C00A6FA7221EB87A8087 /* UIStatusBarManager+TapAction.m */,
+				12CBD77AC094B4C0EFAF9DE7 /* UIView+LCS.h */,
+				5FC619CBB2005ED5A9467D5A /* UIView+LCS.m */,
+				47231D25ADD65170B43F9F09 /* UIView+LCSAddition.h */,
+				F2D34D0B21F54A4094B35220 /* UIView+LCSAddition.m */,
+				3D654EE0A1FFBB34AC8B52BF /* UIView+LCSLayout.h */,
+				0CDEA950F18272D6C97B8B27 /* UIView+LCSLayout.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7073247A067CAF426F53B3D3 /* Playlet */ = {
+			isa = PBXGroup;
+			children = (
+				BB1623EC5049788BC99829CE /* LCSPlayletDetailConfigViewController.h */,
+				EAA76FADAA2864A0EB7D66A3 /* LCSPlayletDetailConfigViewController.m */,
+				0D2D81D2CB70F74420E5628E /* LCSPlayletMainViewController.h */,
+				AC0905E1BC1388C36F863DF3 /* LCSPlayletMainViewController.m */,
+				D5316BF70797F25399198805 /* Playlet */,
+			);
+			path = Playlet;
+			sourceTree = "<group>";
+		};
+		73244940CF6BF7ACBB382CBE /* DrawVideo */ = {
+			isa = PBXGroup;
+			children = (
+				96AAC6EAC73402F8DC020545 /* LCSDrawCustomTopTabViewController.h */,
+				2101ADA23969ABE5D6C4573D /* LCSDrawCustomTopTabViewController.m */,
+				0EB2C0DD1748971D40CFC19B /* LCSDrawMainViewController.h */,
+				7A605CBA8BA284C6A2890B0C /* LCSDrawMainViewController.m */,
+				6F9B0DB6860F6786C2156B1C /* LCSDrawMoreAlertViewController.h */,
+				38491B8B36E13374ED5D224E /* LCSDrawMoreAlertViewController.m */,
+				CD23ED058CE40FE28C5735A2 /* LCSDrawSimulateShareViewController.h */,
+				E1D21A096B046E7FEBFDFE0F /* LCSDrawSimulateShareViewController.m */,
+			);
+			path = DrawVideo;
+			sourceTree = "<group>";
+		};
+		8A36771EE84E88B7AB5060F3 /* EmpowerDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E85C4412D0275777786BD3B6 /* EmpowerDemoUITests.m */,
+			);
+			path = EmpowerDemoUITests;
+			sourceTree = "<group>";
+		};
+		8F7A07DA89A518943FEC6D4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B78CFC19168157FD591A634A /* EmpowerDemo-Info.plist */,
+				FE64B57E48C428715E804553 /* Images.xcassets */,
+				EFD971FBA3A014EE4EAED1BB /* InfoPlist.strings */,
+				77A865AB1C21AEFD2BAB4A7E /* LaunchScreen.storyboard */,
+				6382CF0F11EC2A1918A77A1A /* SDK_Setting_5434885.json */,
+				7786DEBFC0E2A45723032A41 /* SDK_Setting_5434886.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		97015FA13175A48E6C189A76 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C0F02838FE51C8362991CC22 /* LCSBaseSettingCell.h */,
+				0B1CB861B64B9F07E8ADAFA0 /* LCSBaseSettingCell.m */,
+				C355AA2655397C37352314F9 /* LCSSettingViewController.h */,
+				A261725B7BFC0192B0517F1F /* LCSSettingViewController.m */,
+				F2A634FE8D495480A6E299CA /* LCSSwitchSettingCell.h */,
+				BD4B8FD72D64DC4D333FB9D7 /* LCSSwitchSettingCell.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		A90FEE60861342243FEAD9AE /* HotNews */ = {
+			isa = PBXGroup;
+			children = (
+				F53E45E9C54F8E9750CDB693 /* LCSHotNewsViewController.h */,
+				EFA049796A5732BFA61994DB /* LCSHotNewsViewController.m */,
+			);
+			path = HotNews;
+			sourceTree = "<group>";
+		};
+		AD28A5421F8B18D15F3C991A /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				59170B9AA8623D9FB0D3B3D0 /* LCSGridMainViewController.h */,
+				DA8DF59D22CF63C202877BC8 /* LCSGridMainViewController.m */,
+				FF3D0E6CA622B95E69551FA9 /* LCSWaterfallViewController.h */,
+				6B9EA04C3E5EF91CD1D69D98 /* LCSWaterfallViewController.m */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		B22E0ECDEEBF0CDE25C9A78C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2DB9E71BF3D5912085DFC520 /* LCSActionCellView.h */,
+				1056619E405F7AB4B08CCD8F /* LCSActionCellView.m */,
+				DC0C2AE3632BE71F71029EAE /* LCSBaseActionTableViewController.h */,
+				AED0AB57E8DBC2DBF815E6C5 /* LCSBaseActionTableViewController.m */,
+				93094201A452E07455EBBADD /* LCSChannelViewController.h */,
+				C6E14376086155C1BCE6439F /* LCSChannelViewController.m */,
+				998B22E90BB13D003C4649B4 /* LCSTabViewController.h */,
+				7F4DDC56931A73ED444577EF /* LCSTabViewController.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B7714A256A1EA47BA24874C2 /* mainViewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				1091ECE8386AA8BAAB157202 /* LCSLoginViewController.h */,
+				895B97C8B0A30BB88B806EA2 /* LCSLoginViewController.m */,
+				DEA48BDA61AE081B6839A4D7 /* LCSMainViewController.h */,
+				EC040852C6DE6EACCB3E42A5 /* LCSMainViewController.m */,
+				7073247A067CAF426F53B3D3 /* Playlet */,
+				97015FA13175A48E6C189A76 /* Setting */,
+				2DBDDEEC548146DA6347F707 /* SmallVideo */,
+				DC994332583D65768AA8A84A /* Story */,
+				B22E0ECDEEBF0CDE25C9A78C /* Utils */,
+			);
+			path = mainViewcontroller;
+			sourceTree = "<group>";
+		};
+		BED5802AA8E7710A62D090F1 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				F8469EE1A6B4F67E264CAB2F /* Ad */,
+				4BE30479B5D99B184FF224E3 /* Media */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CBFC7207B8C31639C456A1FD /* config */ = {
+			isa = PBXGroup;
+			children = (
+				2737DF998BC447FFCDEF67E8 /* LCSConfigID.h */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		D5316BF70797F25399198805 /* Playlet */ = {
+			isa = PBXGroup;
+			children = (
+				BECB723A25E81306AA9708B6 /* LCSAPIDemoViewController.h */,
+				DED4F41EDA3FD4E3B8063DFB /* LCSAPIDemoViewController.m */,
+				705EA2708568CD44995E27B9 /* LCSChooseAdIndexCollectionViewCell.h */,
+				F050EAAF71B569FDCBE919AD /* LCSChooseAdIndexCollectionViewCell.m */,
+				A472C8CAAF48E0E0C42641EF /* LCSChooseAdIndexCollectionViewController.h */,
+				951967B9966523ACA85F139B /* LCSChooseAdIndexCollectionViewController.m */,
+				76A4D9D3CF5A15E79DC01F82 /* LCSCustomDrawAdViewController.h */,
+				ECA23FCB16CB4F817468E285 /* LCSCustomDrawAdViewController.m */,
+				770396F8BBD6FC8C4902D698 /* LCSPlayletCardDemoViewController.h */,
+				05DC2171157C524D22969DD1 /* LCSPlayletCardDemoViewController.m */,
+				625F02A593553884CAB77C72 /* LCSPlayletCardSettingsViewController.h */,
+				12D1838523EA145938A434D2 /* LCSPlayletCardSettingsViewController.m */,
+				C07F3934328E423206DC57B2 /* LCSPlayletInterfaceViewController.h */,
+				1FDDA6A118CA5308F34FAD67 /* LCSPlayletInterfaceViewController.m */,
+				30B57C88FF7A1180280E3A83 /* LCSPlayletMixViewController.h */,
+				8DDD608C79C646C2922B9560 /* LCSPlayletMixViewController.m */,
+			);
+			path = Playlet;
+			sourceTree = "<group>";
+		};
+		DC994332583D65768AA8A84A /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				139B7793BA0F1032BDC54817 /* LCSMiniStoryDemoViewController.h */,
+				4D3DA000B25B6E5CEF12378F /* LCSMiniStoryDemoViewController.m */,
+				EF393ECA60BA13C4ECF92787 /* LCSStoryInterfaceViewController.h */,
+				D4656B2D95EDA19062CA5BF3 /* LCSStoryInterfaceViewController.m */,
+				5A04891C66914C7E22C15D0B /* LCSStoryMainViewController.h */,
+				375C50032A71EFAB60EE96C0 /* LCSStoryMainViewController.m */,
+				35BA153D705A57C404A6E928 /* MNStoryBottomAdView.h */,
+				CF2BAFBF8185C3DB766DE52B /* MNStoryBottomAdView.m */,
+				F25660AD0DCB30A92F89C105 /* MNStoryMiddleAdViewController.h */,
+				DEA40DE2F5389F10415BCBB9 /* MNStoryMiddleAdViewController.m */,
+				B7B752F4B94ADA7BC28DC83F /* MNStoryReaderAdUtil.h */,
+				3CCC757509BF5B89AAF87822 /* MNStoryReaderAdUtil.m */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		E96E6B7B5D1976BD2AACC0EB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				31D6147971A72A230EEE0689 /* AppDelegate.h */,
+				75B1B06F08F242EB40288927 /* AppDelegate.m */,
+				B4DE2ABA3D120217F61DCF8D /* EmpowerDemo-Prefix.pch */,
+				624608D710D89D20A1526D3E /* IntroViewController.h */,
+				14B59327506209FB0FCD38F4 /* IntroViewController.m */,
+				AA976DC9821D70561A69DBCF /* main.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		ECB40FE762D92A35558BCCAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8DA543E2B969347C55F78767 /* Pods_EmpowerDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F030CE535A7A11EB175C84F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E1966E76D007D1E0AE832D2 /* Pods-EmpowerDemo.debug.xcconfig */,
+				9F938B1E482EF68493377B11 /* Pods-EmpowerDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F7D6CFFB62229014DAEA2510 = {
+			isa = PBXGroup;
+			children = (
+				170DFC3ECB923E05B65CEC7B /* EmpowerDemo */,
+				8A36771EE84E88B7AB5060F3 /* EmpowerDemoUITests */,
+				38FBAE9EC6DDB15B2C158791 /* Products */,
+				F030CE535A7A11EB175C84F5 /* Pods */,
+				ECB40FE762D92A35558BCCAA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F8469EE1A6B4F67E264CAB2F /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				10B7A449D015B7C2151FAC1D /* AppDelegate+ADSDK.h */,
+				547BBBDB67657CD54B276F2D /* AppDelegate+ADSDK.m */,
+			);
+			path = Ad;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A4A850CAAFF97853079CACF /* EmpowerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FD128FF4980041CB870A12D /* Build configuration list for PBXNativeTarget "EmpowerDemo" */;
+			buildPhases = (
+				57EBE39003A03542545EBC00 /* [CP] Check Pods Manifest.lock */,
+				A9049FB621C30857D6B6806D /* Sources */,
+				7EF58AF9E5F2FC00278CD46C /* Resources */,
+				9EF05D3630568DC05B5273E1 /* Frameworks */,
+				C367F7C551101139C9FA0960 /* [CP] Embed Pods Frameworks */,
+				0FFFB0AA103D60696A4BDC32 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmpowerDemo;
+			productName = EmpowerDemo;
+			productReference = C1E5246A08FC217B0211BA3A /* EmpowerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		33B1B75A315CF93F0AC6AC53 /* EmpowerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF58216221390E7E11E31080 /* Build configuration list for PBXNativeTarget "EmpowerDemoUITests" */;
+			buildPhases = (
+				5859187119AAEA320CF396B9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2AFABDB1A6338DDD23675E7 /* PBXTargetDependency */,
+			);
+			name = EmpowerDemoUITests;
+			productName = EmpowerDemoUITests;
+			productReference = CB336109730921FDFD247F51 /* EmpowerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		095DA58030EC2B32702FA562 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1200;
+				ORGANIZATIONNAME = bytedance;
+				TargetAttributes = {
+					1A4A850CAAFF97853079CACF = {
+						DevelopmentTeam = X46375UBYG;
+						ProvisioningStyle = Manual;
+					};
+					33B1B75A315CF93F0AC6AC53 = {
+						TestTargetID = 1A4A850CAAFF97853079CACF;
+					};
+				};
+			};
+			buildConfigurationList = 50F87CF6D8EF525DB04CFCDA /* Build configuration list for PBXProject "EmpowerDemo" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F7D6CFFB62229014DAEA2510;
+			productRefGroup = 38FBAE9EC6DDB15B2C158791 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A4A850CAAFF97853079CACF /* EmpowerDemo */,
+				33B1B75A315CF93F0AC6AC53 /* EmpowerDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7EF58AF9E5F2FC00278CD46C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				047E3353EAECAB81D7914313 /* EmpowerDemo-Info.plist in Resources */,
+				5292571E62EF5D54489C8A51 /* Images.xcassets in Resources */,
+				6F34628E94EC1FCC32120F99 /* InfoPlist.strings in Resources */,
+				95846AD149F6E7C3013F1A01 /* LaunchScreen.storyboard in Resources */,
+				88278B06C2CB311F433C2CCA /* SDK_Setting_5434885.json in Resources */,
+				AB9FD44CA03C0373189F6753 /* SDK_Setting_5434886.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0FFFB0AA103D60696A4BDC32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57EBE39003A03542545EBC00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EmpowerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C367F7C551101139C9FA0960 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EmpowerDemo/Pods-EmpowerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5859187119AAEA320CF396B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73D1C1FECA5EABE6F21C03B7 /* EmpowerDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9049FB621C30857D6B6806D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				777B4469D7556EEA6B7E212D /* AppDelegate+ADSDK.m in Sources */,
+				54C0F9DF87FB8C52387FD77C /* AppDelegate+DJXDelegate.m in Sources */,
+				EF76C1DD1902E3BA83BA1D16 /* AppDelegate.m in Sources */,
+				C30DCAE2CA054F726BC1DE48 /* IntroViewController.m in Sources */,
+				5A6235F7D41FA4645E535D9E /* LCSAPIDemoViewController.m in Sources */,
+				DEA516631EEC4D46604467F4 /* LCSActionCellView.m in Sources */,
+				A87EBDF2F25628BE37C3A22D /* LCSBaseActionTableViewController.m in Sources */,
+				1CD4510BE5A787B7539DFCB0 /* LCSBaseSettingCell.m in Sources */,
+				FAE76850B76E124F6E8005D7 /* LCSChannelViewController.m in Sources */,
+				44C214E7E5E6AF51F53DEC3E /* LCSChooseAdIndexCollectionViewCell.m in Sources */,
+				EE7719D2AA0063A3BB64E163 /* LCSChooseAdIndexCollectionViewController.m in Sources */,
+				1C9D4278816452D6907C908A /* LCSCustomDrawAdViewController.m in Sources */,
+				7E75DF012D29EB7576F289CF /* LCSCustomSizeVideoCardViewController.m in Sources */,
+				46C0B0D9CD7046C805209FA1 /* LCSDrawCustomTopTabViewController.m in Sources */,
+				AE055AE0289A949164AF7228 /* LCSDrawMainViewController.m in Sources */,
+				CDD60D08E1945534B6F04802 /* LCSDrawMoreAlertViewController.m in Sources */,
+				ECE04E0B46C5B8D29C2946AC /* LCSDrawSimulateShareViewController.m in Sources */,
+				CF7C4682230DCEB5F273CA33 /* LCSGridMainViewController.m in Sources */,
+				A9220D2E3AA99046C180CAAC /* LCSHotNewsViewController.m in Sources */,
+				2049D25D39DFEC73D00E2716 /* LCSLoginViewController.m in Sources */,
+				2E717410AC907676129C509C /* LCSMacros.m in Sources */,
+				C0D11669D1292ED20556EE86 /* LCSMainViewController.m in Sources */,
+				A4F589CBBD347089FE965422 /* LCSMeInfoViewController.m in Sources */,
+				BE759C26E79AC9C354CE50F8 /* LCSMineMainViewController.m in Sources */,
+				67E53881CB5BBD2FB3D5DD16 /* LCSMiniStoryDemoViewController.m in Sources */,
+				996510E9A16C973E8507D184 /* LCSNewsVideoSingleCardViewController.m in Sources */,
+				4E8597151E777AF26204D814 /* LCSPlayletCardDemoViewController.m in Sources */,
+				59B9DA6A95FAE2BAD3B01686 /* LCSPlayletCardSettingsViewController.m in Sources */,
+				7318ADF9F21535FA86A2AA19 /* LCSPlayletDetailConfigViewController.m in Sources */,
+				09623EE0D41972FF88631268 /* LCSPlayletInterfaceViewController.m in Sources */,
+				D740D03302C390B9B312ECA1 /* LCSPlayletMainViewController.m in Sources */,
+				A56A0201D7B1EBEB607DEDB2 /* LCSPlayletMixViewController.m in Sources */,
+				7FF525422189A8539E602103 /* LCSSamllVideoWatchVideoVC.m in Sources */,
+				882F9E9E6B78135DB73BD8A6 /* LCSSettingViewController.m in Sources */,
+				2956651093299BDCA8814E0C /* LCSSmallVideoMainViewController.m in Sources */,
+				6843E81A4A05C46CC99AE594 /* LCSSmallVideoSettingViewController.m in Sources */,
+				C2F4C970433EF76CD222CE4C /* LCSStoryInterfaceViewController.m in Sources */,
+				67DC6A82A20410DC00F860D9 /* LCSStoryMainViewController.m in Sources */,
+				C6DDFDB35E2CA2C3486A6590 /* LCSSwitchSettingCell.m in Sources */,
+				DB8090D1CE5B756A19F4568D /* LCSTabViewController.m in Sources */,
+				693F33E54AC01A5B4A4CB6A5 /* LCSVideoCardDislikeView.m in Sources */,
+				B01B23ABBED739E3D0457CFF /* LCSVideoCardViewController.m in Sources */,
+				2BDD1C3CEE76D53E26E9C82F /* LCSVideoSingleCardViewController.m in Sources */,
+				B357AC7C5FDF74CEFB1C18ED /* LCSWaterfallViewController.m in Sources */,
+				9A0BA678C8AB3077D7E8FFD2 /* MBProgressHUD+Toast.m in Sources */,
+				AFCBE436E1D027AAFBF15B03 /* MNStoryBottomAdView.m in Sources */,
+				39438EE971ECDA8D5C309E24 /* MNStoryMiddleAdViewController.m in Sources */,
+				869810212886C7B3FDC88CEF /* MNStoryReaderAdUtil.m in Sources */,
+				D5DAE41FD544681B49FFB59F /* UIStatusBarManager+TapAction.m in Sources */,
+				1FCCA4BA73D6FEE1271DF85E /* UIView+LCS.m in Sources */,
+				227F0E813847E8B2A2350AF9 /* UIView+LCSAddition.m in Sources */,
+				3581770E094DA55FA15356FA /* UIView+LCSLayout.m in Sources */,
+				55A8FA256EADA96CF0FF987C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2AFABDB1A6338DDD23675E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A4A850CAAFF97853079CACF /* EmpowerDemo */;
+			targetProxy = 5F6134BEC8C1F03A2DC69612 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		77A865AB1C21AEFD2BAB4A7E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48DAB3E62350E0435739583D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2991F3BCEEACD12F534D4061 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EmpowerDemo;
+			};
+			name = Release;
+		};
+		666B74263EEBE421847491CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A9B62B2C93FA0F384B81F7CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F938B1E482EF68493377B11 /* Pods-EmpowerDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = X46375UBYG;
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "EmpowerDemo/App/EmpowerDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				INFOPLIST_FILE = "EmpowerDemo/Resources/EmpowerDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.pangrowth;
+				PROVISIONING_PROFILE_SPECIFIER = PanGrowthDist;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B40B1F9A356B357EFDCC0D37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E1966E76D007D1E0AE832D2 /* Pods-EmpowerDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = X46375UBYG;
+				ENABLE_BITCODE = NO;
+				GCC_PREFIX_HEADER = "EmpowerDemo/App/EmpowerDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				INFOPLIST_FILE = "EmpowerDemo/Resources/EmpowerDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.pangrowth;
+				PROVISIONING_PROFILE_SPECIFIER = PanGrowthDist;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA5AAC7D0D0C0BDC4169C6E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E2CB0E3A15D9106F82A69669 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EmpowerDemo;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FD128FF4980041CB870A12D /* Build configuration list for PBXNativeTarget "EmpowerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B40B1F9A356B357EFDCC0D37 /* Debug */,
+				A9B62B2C93FA0F384B81F7CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		50F87CF6D8EF525DB04CFCDA /* Build configuration list for PBXProject "EmpowerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5AAC7D0D0C0BDC4169C6E9 /* Debug */,
+				666B74263EEBE421847491CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DF58216221390E7E11E31080 /* Build configuration list for PBXNativeTarget "EmpowerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2CB0E3A15D9106F82A69669 /* Debug */,
+				2991F3BCEEACD12F534D4061 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 095DA58030EC2B32702FA562 /* Project object */;
+}
