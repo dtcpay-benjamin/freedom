@@ -23,7 +23,7 @@
 
 #pragma mark - UISceneSession lifecycle
 
-- (void)_initDJ{
+- (void)_initDJ {
     
 }
 

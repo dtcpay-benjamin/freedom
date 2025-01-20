@@ -68,6 +68,18 @@
 			"MainURL": "https://vod-license-m.volccdn.com/vod-license/l-986390786-ch-ad_csj-a-645560.lic?lk3s=0d9f7a7d\u0026x-expires=4879121248\u0026x-signature=A7%2BPoXCTrpJWbWRoejJFEpTyc28%3D",
 			"BackupURL": "https://vod-license-b.volccdn.com/vod-license/l-986390786-ch-ad_csj-a-645560.lic?lk3s=0d9f7a7d\u0026x-expires=4879121248\u0026x-signature=tykG2Q%2FHACr8paS2nnrD0L%2BJKCY%3D",
 			"Id": "986390786"
-		}
+		},
+        {
+            "PackageName": "com.hujiaofen.seaHorseTheater",
+            "BundleId": "com.hujiaofen.seaHorseTheater",
+            "StartTime": "20250119T050020Z",
+            "ExpireTime": "20270119T050020Z",
+            "CreatedTime": "20250119T050020Z",
+            "Signature": "AJ0dWtFG7wmUV2W2n/64EamFLhLvMjoHXSl1F/b4nXUMHCkhCXycmU2UzuQZDcZ5fYkXepvnCvYHJoRuUN0Xhyud0Nl5uWLpLlITZWeKIT4JhC+Wg5tGobmQ0hmddfIle/uoN4Aek96ojnfQO24E67h8jT5VY0gRGkd0vgmFSRrsiCCeRors72Za4lp0+9yYLtpE6oIabmFNoNG7oOKQUGZoELGUFTFoE46/a4jwUltvQxeQcHdvJWpDcThleE6enti9CAyV0yFDaV5K8k3ysu0kKTAqO5DXd7263HB1/9ySf6tuspmNmsrkT/I/ZV7Gz3fSei35iYZin0fP+U+aJg==",
+            "Content": "eyJJZCI6IjQ1MTc0NDAwMiIsICJWZXJzaW9uIjoyLCAiQ2hhbm5lbCI6ImFkX2NzaiIsICJUeXBlIjoyLCAiUGFja2FnZU5hbWUiOiJjb20uaHVqaWFvZmVuLnNlYUhvcnNlVGhlYXRlciIsICJCdW5kbGVJZCI6ImNvbS5odWppYW9mZW4uc2VhSG9yc2VUaGVhdGVyIiwgIk1vZHVsZXMiOlt7Ik5hbWUiOiJ2b2RfcGxheSIsICJFZGl0aW9uIjoicHJlbWl1bV9lZGl0aW9uIiwgIlN0YXJ0VGltZSI6MTczNzI2MjgyMDM2MSwgIkV4cGlyZVRpbWUiOjE4MDAzMzQ4MjAzNjEsICJFeHBpcmVCdWZmZXIiOjE1NTUyMDAwMDAwfV0sICJGaWxlVmVyc2lvbiI6IjE3MzcyNjI4MjAzNzQ5NzU3ODAifQ==",
+            "MainURL": "https://vod-license-m.volccdn.com/vod-license/l-451744002-ch-ad_csj-a-645560.lic?lk3s=0d9f7a7d\u0026x-expires=4890862820\u0026x-signature=x6IIw66Q0FeGtUi9lr5EM91dztE%3D",
+            "BackupURL": "https://vod-license-b.volccdn.com/vod-license/l-451744002-ch-ad_csj-a-645560.lic?lk3s=0d9f7a7d\u0026x-expires=4890862820\u0026x-signature=JnLIDqBxz20wueaKw9aVZMzin08%3D",
+            "Id": "451744002"
+        }
 	]
 }
