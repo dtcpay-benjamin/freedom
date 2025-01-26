@@ -11,13 +11,12 @@
 		721C67242D3CD8E400843445 /* SHTMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67232D3CD8E400843445 /* SHTMacros.m */; };
 		721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67272D3CDCC300843445 /* UIView+SHT.m */; };
 		72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C2D2D2A260B003E6189 /* AppDelegate.m */; };
-		72443C312D2A260B003E6189 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C302D2A260B003E6189 /* SceneDelegate.m */; };
-		72443C342D2A260B003E6189 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C332D2A260B003E6189 /* ViewController.m */; };
-		72443C372D2A260B003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C362D2A260B003E6189 /* Base */; };
 		72443C392D2A260D003E6189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72443C382D2A260D003E6189 /* Assets.xcassets */; };
 		72443C3C2D2A260D003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C3B2D2A260D003E6189 /* Base */; };
 		72443C3F2D2A260D003E6189 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C3E2D2A260D003E6189 /* main.m */; };
 		727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */ = {isa = PBXBuildFile; fileRef = 727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */; };
+		72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */; };
+		72C98E7B2D460F6400978694 /* SHTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E7A2D460F6400978694 /* SHTMainViewController.m */; };
 		FF4F5F36BB0BF703BFE1592F /* libPods-seaHorseTheater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */; };
 /* End PBXBuildFile section */
 
@@ -36,16 +35,15 @@
 		72443C292D2A260B003E6189 /* seaHorseTheater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seaHorseTheater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72443C2C2D2A260B003E6189 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		72443C2D2D2A260B003E6189 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		72443C2F2D2A260B003E6189 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		72443C302D2A260B003E6189 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		72443C322D2A260B003E6189 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		72443C332D2A260B003E6189 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		72443C362D2A260B003E6189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72443C382D2A260D003E6189 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72443C3B2D2A260D003E6189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72443C3D2D2A260D003E6189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72443C3E2D2A260D003E6189 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SDK_Setting_5603361.json; sourceTree = "<group>"; };
+		72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ADSDK.h"; sourceTree = "<group>"; };
+		72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ADSDK.m"; sourceTree = "<group>"; };
+		72C98E792D460F6400978694 /* SHTMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMainViewController.h; sourceTree = "<group>"; };
+		72C98E7A2D460F6400978694 /* SHTMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMainViewController.m; sourceTree = "<group>"; };
 		CCD3A7814895ECFE78979364 /* Pods-seaHorseTheater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.release.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +71,7 @@
 		721C671A2D3CC80700843445 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				72C98E752D4606CF00978694 /* Ad */,
 				721C671B2D3CC82700843445 /* Media */,
 			);
 			path = Modules;
@@ -81,6 +80,7 @@
 		721C671B2D3CC82700843445 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				72C98E712D46039600978694 /* viewController */,
 				721C67202D3CD8C500843445 /* Utils */,
 				721C671C2D3CC83E00843445 /* config */,
 				721C671D2D3CC87F00843445 /* AppDelegate+DJXDelegate.h */,
@@ -132,11 +132,6 @@
 				721C671A2D3CC80700843445 /* Modules */,
 				72443C2C2D2A260B003E6189 /* AppDelegate.h */,
 				72443C2D2D2A260B003E6189 /* AppDelegate.m */,
-				72443C2F2D2A260B003E6189 /* SceneDelegate.h */,
-				72443C302D2A260B003E6189 /* SceneDelegate.m */,
-				72443C322D2A260B003E6189 /* ViewController.h */,
-				72443C332D2A260B003E6189 /* ViewController.m */,
-				72443C352D2A260B003E6189 /* Main.storyboard */,
 				72443C382D2A260D003E6189 /* Assets.xcassets */,
 				72443C3A2D2A260D003E6189 /* LaunchScreen.storyboard */,
 				727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */,
@@ -145,6 +140,24 @@
 				721C672B2D3CE60F00843445 /* seaHorseTheater-PrefixHeader.pch */,
 			);
 			path = seaHorseTheater;
+			sourceTree = "<group>";
+		};
+		72C98E712D46039600978694 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				72C98E792D460F6400978694 /* SHTMainViewController.h */,
+				72C98E7A2D460F6400978694 /* SHTMainViewController.m */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
+		72C98E752D4606CF00978694 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */,
+				72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */,
+			);
+			path = Ad;
 			sourceTree = "<group>";
 		};
 		8213ADE5FA97E88633DD75BB /* Pods */ = {
@@ -219,7 +232,6 @@
 				72443C392D2A260D003E6189 /* Assets.xcassets in Resources */,
 				72443C3C2D2A260D003E6189 /* Base in Resources */,
 				727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */,
-				72443C372D2A260B003E6189 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,26 +302,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */,
-				72443C342D2A260B003E6189 /* ViewController.m in Sources */,
 				72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */,
 				72443C3F2D2A260D003E6189 /* main.m in Sources */,
-				72443C312D2A260B003E6189 /* SceneDelegate.m in Sources */,
 				721C67242D3CD8E400843445 /* SHTMacros.m in Sources */,
+				72C98E7B2D460F6400978694 /* SHTMainViewController.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,
+				72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		72443C352D2A260B003E6189 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				72443C362D2A260B003E6189 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		72443C3A2D2A260D003E6189 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -446,14 +450,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 396F66BN9F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "seaHorseTheater/seaHorseTheater-PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = seaHorseTheater/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Pangrowth;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "需要使用IDFA个性化您的广告";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,14 +484,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 396F66BN9F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "seaHorseTheater/seaHorseTheater-PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = seaHorseTheater/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Pangrowth;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "需要使用IDFA个性化您的广告";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -167,7 +167,7 @@
 		BFF65A4BBCCD7318BD48C2AE /* LCSVideoSingleCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSVideoSingleCardViewController.m; sourceTree = "<group>"; };
 		C07F3934328E423206DC57B2 /* LCSPlayletInterfaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSPlayletInterfaceViewController.h; sourceTree = "<group>"; };
 		C0F02838FE51C8362991CC22 /* LCSBaseSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSBaseSettingCell.h; sourceTree = "<group>"; };
-		C1E5246A08FC217B0211BA3A /* EmpowerDemo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = EmpowerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1E5246A08FC217B0211BA3A /* EmpowerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpowerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C355AA2655397C37352314F9 /* LCSSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSSettingViewController.h; sourceTree = "<group>"; };
 		C6E14376086155C1BCE6439F /* LCSChannelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCSChannelViewController.m; sourceTree = "<group>"; };
 		C8FE8FD67C09C948E00246F3 /* LCSMineMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCSMineMainViewController.h; sourceTree = "<group>"; };
@@ -508,7 +508,6 @@
 				6E1966E76D007D1E0AE832D2 /* Pods-EmpowerDemo.debug.xcconfig */,
 				9F938B1E482EF68493377B11 /* Pods-EmpowerDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -580,10 +579,6 @@
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = bytedance;
 				TargetAttributes = {
-					1A4A850CAAFF97853079CACF = {
-						DevelopmentTeam = X46375UBYG;
-						ProvisioningStyle = Manual;
-					};
 					33B1B75A315CF93F0AC6AC53 = {
 						TestTargetID = 1A4A850CAAFF97853079CACF;
 					};
@@ -851,9 +846,9 @@
 			baseConfigurationReference = 9F938B1E482EF68493377B11 /* Pods-EmpowerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = X46375UBYG;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 396F66BN9F;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "EmpowerDemo/App/EmpowerDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
@@ -868,8 +863,8 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.pangrowth;
-				PROVISIONING_PROFILE_SPECIFIER = PanGrowthDist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.pangrowthqw;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -880,9 +875,9 @@
 			baseConfigurationReference = 6E1966E76D007D1E0AE832D2 /* Pods-EmpowerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = X46375UBYG;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 396F66BN9F;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "EmpowerDemo/App/EmpowerDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
@@ -897,8 +892,8 @@
 					"$(inherited)",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.pangrowth;
-				PROVISIONING_PROFILE_SPECIFIER = PanGrowthDist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bytedance.pangrowthqw;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

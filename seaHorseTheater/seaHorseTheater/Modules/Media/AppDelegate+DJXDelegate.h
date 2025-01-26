@@ -15,6 +15,8 @@ FOUNDATION_EXPORT NSNotificationName _Nonnull const SHTDJXSDKSetConfigNotificati
 @interface AppDelegate(DJXDelegate) <DJXAuthorityConfigDelegate, DJXScrollViewDelegate>
 /// 初始化配置
 - (void)initSDKConfig;
+/// 初始化更多页
+- (UINavigationController *)configAllVideoVC;
 /// 初始化短剧
 - (void)setUpDJXSDK:(DJXStartCompletionBlock)block;
 /// 初始化短剧滑滑流
