@@ -15,6 +15,7 @@
 		72443C3C2D2A260D003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C3B2D2A260D003E6189 /* Base */; };
 		72443C3F2D2A260D003E6189 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C3E2D2A260D003E6189 /* main.m */; };
 		727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */ = {isa = PBXBuildFile; fileRef = 727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */; };
+		72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72821D1D2D521DD100074647 /* SHTKaiPingADViewController.m */; };
 		72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */; };
 		72C98E7B2D460F6400978694 /* SHTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E7A2D460F6400978694 /* SHTMainViewController.m */; };
 		FF4F5F36BB0BF703BFE1592F /* libPods-seaHorseTheater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */; };
@@ -40,6 +41,8 @@
 		72443C3D2D2A260D003E6189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72443C3E2D2A260D003E6189 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SDK_Setting_5603361.json; sourceTree = "<group>"; };
+		72821D1C2D521DD100074647 /* SHTKaiPingADViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKaiPingADViewController.h; sourceTree = "<group>"; };
+		72821D1D2D521DD100074647 /* SHTKaiPingADViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKaiPingADViewController.m; sourceTree = "<group>"; };
 		72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ADSDK.h"; sourceTree = "<group>"; };
 		72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ADSDK.m"; sourceTree = "<group>"; };
 		72C98E792D460F6400978694 /* SHTMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMainViewController.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 			children = (
 				72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */,
 				72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */,
+				72821D1C2D521DD100074647 /* SHTKaiPingADViewController.h */,
+				72821D1D2D521DD100074647 /* SHTKaiPingADViewController.m */,
 			);
 			path = Ad;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				72443C3F2D2A260D003E6189 /* main.m in Sources */,
 				721C67242D3CD8E400843445 /* SHTMacros.m in Sources */,
 				72C98E7B2D460F6400978694 /* SHTMainViewController.m in Sources */,
+				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,
 				72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */,
 			);

@@ -9,15 +9,12 @@
 #import "AppDelegate+DJXDelegate.h"
 #import "AppDelegate+ADSDK.h"
 #import <Reachability/Reachability.h>
-
-@interface AppDelegate ()
-
-@end
+#import "SHTKaiPingADViewController.h"
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 短剧SDK初始化
     [self initDJX];
     [self setUpHome];
@@ -36,7 +33,11 @@
     [self requestIDFAIfNeeded];
     [self setupADSDK:^(BOOL success) {
         if (success) {
-            [self setupPangrowthSDK];
+//            [self setupPangrowthSDK];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.window.rootViewController = [[SHTKaiPingADViewController alloc] init];
+                [self.window makeKeyAndVisible];
+            });
         }
     }];
 }
@@ -71,7 +72,6 @@
     addChildVC([self configAllVideoVC]);
     tabBarController.viewControllers = [viewControllers copy];
     [tabBarController.navigationController.navigationBar setHidden:YES];
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 }

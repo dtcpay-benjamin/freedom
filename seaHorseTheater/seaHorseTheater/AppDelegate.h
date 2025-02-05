@@ -9,10 +9,6 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
-
-// 初始化短剧SDK
-- (void)initDJX;
-// 创建主页
-- (void)setUpHome;
+- (void)setupPangrowthSDK;
 @end
 
