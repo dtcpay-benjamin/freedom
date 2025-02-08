@@ -49,18 +49,16 @@
 
 }
 
-
-// 广告展示完成
-- (void)splashAdDidClosed:(BUSplashAd *)splashAd {
-    NSLog(@"广告关闭");
-    AppDelegate *applicationShare = [[UIApplication sharedApplication] delegate];
+// 广告点击
+- (void)splashAdDidClick:(BUSplashAd *)splashAd {
+    AppDelegate *applicationShare = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [applicationShare setupPangrowthSDK];
 }
 
-// 广告点击
-- (void)splashAdDidClick:(BUSplashAd *)splashAd {
-    NSLog(@"广告点击");
-    AppDelegate *applicationShare = [[UIApplication sharedApplication] delegate];
+// 广告播放控制器关闭(跳过或者播放完成)
+- (void)splashAdViewControllerDidClose:(BUSplashAd *)splashAd {
+    NSLog(@"广告关闭1");
+    AppDelegate *applicationShare = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [applicationShare setupPangrowthSDK];
 }
 
