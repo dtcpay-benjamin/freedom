@@ -10,6 +10,7 @@
 #import "AppDelegate+ADSDK.h"
 #import <Reachability/Reachability.h>
 #import "SHTKaiPingADViewController.h"
+#import "SHTabBarController.h"
 
 @implementation AppDelegate
 
@@ -60,18 +61,7 @@
 /// 配置主页面
 - (void)configMainController {
     NSMutableArray *viewControllers = [NSMutableArray array];
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-
-    void(^addChildVC)(UIViewController *) = ^(UIViewController * _Nullable childVC) {
-        if (childVC) {
-            [viewControllers addObject:childVC];
-        }
-    };
-    addChildVC([self configPlayletVC]);
-    addChildVC([self configPlayletTheater]);
-    addChildVC([self configAllVideoVC]);
-    tabBarController.viewControllers = [viewControllers copy];
-    [tabBarController.navigationController.navigationBar setHidden:YES];
+    SHTabBarController *tabBarController = [[SHTabBarController alloc] init];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 }

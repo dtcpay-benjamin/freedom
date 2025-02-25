@@ -1,17 +1,17 @@
 //
-//  SHTMainViewController.m
+//  SHTMnieViewController.m
 //  seaHorseTheater
 //
-//  Created by 褚红彪 on 1/26/25.
+//  Created by 褚红彪 on 2/25/25.
 //
 
-#import "SHTMainViewController.h"
+#import "SHTMineViewController.h"
 
-@interface SHTMainViewController ()
+@interface SHTMineViewController ()
 
 @end
 
-@implementation SHTMainViewController
+@implementation SHTMineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
