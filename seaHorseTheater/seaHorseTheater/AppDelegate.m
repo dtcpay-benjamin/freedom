@@ -10,7 +10,7 @@
 #import "AppDelegate+ADSDK.h"
 #import <Reachability/Reachability.h>
 #import "SHTKaiPingADViewController.h"
-#import "SHTabBarController.h"
+#import "SHTTabBarController.h"
 
 @implementation AppDelegate
 
@@ -61,7 +61,7 @@
 /// 配置主页面
 - (void)configMainController {
     NSMutableArray *viewControllers = [NSMutableArray array];
-    SHTabBarController *tabBarController = [[SHTabBarController alloc] init];
+    SHTTabBarController *tabBarController = [[SHTTabBarController alloc] init];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
     [self.window makeKeyAndVisible];
 }
