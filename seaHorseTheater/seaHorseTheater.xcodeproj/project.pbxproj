@@ -10,6 +10,7 @@
 		721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */; };
 		721C67242D3CD8E400843445 /* SHTMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67232D3CD8E400843445 /* SHTMacros.m */; };
 		721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67272D3CDCC300843445 /* UIView+SHT.m */; };
+		722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */; };
 		72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C2D2D2A260B003E6189 /* AppDelegate.m */; };
 		72443C392D2A260D003E6189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72443C382D2A260D003E6189 /* Assets.xcassets */; };
 		72443C3C2D2A260D003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C3B2D2A260D003E6189 /* Base */; };
@@ -35,6 +36,8 @@
 		721C67272D3CDCC300843445 /* UIView+SHT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHT.m"; sourceTree = "<group>"; };
 		721C67292D3CDED500843445 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		721C672B2D3CE60F00843445 /* seaHorseTheater-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seaHorseTheater-PrefixHeader.pch"; sourceTree = "<group>"; };
+		722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoriteViewController.h; sourceTree = "<group>"; };
+		722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoriteViewController.m; sourceTree = "<group>"; };
 		72443C292D2A260B003E6189 /* seaHorseTheater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seaHorseTheater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72443C2C2D2A260B003E6189 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		72443C2D2D2A260B003E6189 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */,
 				72EB882C2D6D40430024DDBD /* SHTMineViewController.h */,
 				72EB882D2D6D40430024DDBD /* SHTMineViewController.m */,
+				722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */,
+				722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				72443C3F2D2A260D003E6189 /* main.m in Sources */,
 				721C67242D3CD8E400843445 /* SHTMacros.m in Sources */,
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
+				722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */,
 				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,
 				72EB882E2D6D40430024DDBD /* SHTMineViewController.m in Sources */,

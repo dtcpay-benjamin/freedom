@@ -7,6 +7,7 @@
 
 #import "SHTHomeViewController.h"
 #import <PangrowthDJX/DJXSDK.h>
+#import "SHTFavoriteViewController.h"
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -30,13 +31,17 @@
     [self slideUnderline: self.segmentedControl.selectedSegmentIndex];
 }
 
+- (CGFloat)underlineWidth {
+    return self.segmentedControl.bounds.size.width / 12.0;
+}
+
 - (void)initConfig {
     [self setupSegmentedControl];
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
-    self.pages = @[[self configPlayletTheater], [self configPlayletVC]];
+    self.pages = @[[self configFavoriteVC], [self configPlayletTheater], [self configPlayletVC]];
     
-    [self.pageViewController setViewControllers:@[self.pages[1]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.pageViewController setViewControllers:@[self.pages[2]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
@@ -48,13 +53,13 @@
 }
 
 - (void)setupSegmentedControl {
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"剧单", @"精选"]];
-    self.segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width, 40);
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"收藏", @"剧单", @"精选"]];
+    self.segmentedControl.frame = CGRectMake(0, 0, SHTScreenWidth, 40);
     // 设置选中的字体颜色为白色
     NSDictionary *selectedAttributes = @{
-           NSForegroundColorAttributeName: [UIColor whiteColor],
-           NSFontAttributeName: [UIFont boldSystemFontOfSize:18]
-       };
+        NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSFontAttributeName: [UIFont boldSystemFontOfSize:18]
+    };
     [self.segmentedControl setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
     // 设置未选中项的字体颜色，带透明度
     if (@available(iOS 14.0, *)) {
@@ -79,7 +84,7 @@
     [self.segmentedControl setBackgroundImage:[[UIImage alloc] init] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     [self.segmentedControl setDividerImage:[[UIImage alloc] init] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     self.segmentedControl.tintColor = [UIColor clearColor];
-    self.segmentedControl.selectedSegmentIndex = 1;
+    self.segmentedControl.selectedSegmentIndex = 2;
     [self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = self.segmentedControl;
 }
@@ -87,8 +92,7 @@
 // 设置下划线
 - (void)setSegmentedControlUnderline {
     if (![self.segmentedControl.subviews containsObject:self.underlineView]) {
-        CGFloat segmentWidth = self.segmentedControl.frame.size.width / 8;
-        self.underlineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, segmentWidth, 2)];
+        self.underlineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.underlineWidth, 2)];
         self.underlineView.backgroundColor = [UIColor whiteColor];
         [self.segmentedControl addSubview:self.underlineView];
     }
@@ -96,9 +100,9 @@
 
 - (void)slideUnderline:(NSInteger)index {
     [UIView animateWithDuration:0.3 animations:^{
-            CGFloat segmentWidth = self.segmentedControl.frame.size.width / 8;
-        self.underlineView.center = CGPointMake((2 * index + 1) * segmentWidth * 2, self.segmentedControl.frame.size.height - 1);
-        }];
+        CGFloat x = (2 * index + 1) * self.underlineWidth * 2;
+        self.underlineView.center = CGPointMake(x, self.segmentedControl.frame.size.height - 1);
+    }];
 }
 
 /// 初始化短剧剧场页
@@ -113,19 +117,13 @@
         config.isShowNavigationItemBackButton = NO;
     }];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    navigationController.title = @"剧场";
-    navigationController.tabBarItem.image = [UIImage imageNamed:@"theater"];
     return navigationController;
 }
+
 /// 初始化短剧滑滑流
 - (nonnull UINavigationController *)configPlayletVC {
     UIViewController *vc = [[UIViewController alloc] init];
-    // TODO:暂时没有图标
-    vc.tabBarItem.image = [UIImage imageNamed:@"video"];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
-    navi.title = @"短剧";
-    navi.navigationBar.hidden = YES;
-
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, vc.view.width, vc.view.height - SHT_tabBarHeight)];
     view.backgroundColor = UIColor.whiteColor;
     [vc.view addSubview:view];
@@ -146,6 +144,13 @@
     [view addSubview:smallVideoVC.view];
     view.layer.masksToBounds = YES;
     return navi;
+}
+
+/// 初始化收藏页
+- (nonnull UINavigationController *)configFavoriteVC {
+    SHTFavoriteViewController *vc = [[SHTFavoriteViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+    return navigationController;
 }
 
 - (void)segmentChanged:(UISegmentedControl *)sender {
