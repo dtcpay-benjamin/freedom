@@ -7,7 +7,7 @@ PODS:
   - PangrowthDJX (2.6.0.0):
     - PGXToolbox (= 2.6.0.0)
   - PangrowthX/shortplay (2.6.0.0):
-    - Ads-CN (>= 5.8.0.9)
+    - Ads-CN/BUAdSDK (>= 5.8.0.9)
     - PangrowthDJX (= 2.6.0.0)
     - PGXToolbox (= 2.6.0.0)
     - TTSDKFramework/Player (>= 1.42.3.4-premium)
@@ -117,7 +117,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
   PangrowthDJX: 275924169cae77df14191c52f3ec6e2562c400c1
-  PangrowthX: 7331b3150d773e7af1a3c1efa7aa6b38203cb432
+  PangrowthX: 6cae9a1cc5a46870212a4873faa5f3ce161db8ca
   PGXToolbox: 3b775b34f87eb5817554f41cf96ba5b117ca4fa2
   RangersAPM: 99d0ff9dd5f33d3ffbeb5a2f00298236abc79cc9
   RangersAppLog: d4fa640a806e5fef583b07bea2f610684e81161e
@@ -127,4 +127,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7ca3752566495d92d86e22dc55e16ded2b8108d5
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.16.2
