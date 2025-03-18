@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate+ADSDK.h"
+#import <BUAdSDK/BUAdSDK.h>
 #import <AppTrackingTransparency/ATTrackingManager.h>
 #import <objc/runtime.h>
 

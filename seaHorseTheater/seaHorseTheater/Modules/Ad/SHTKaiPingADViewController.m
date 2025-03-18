@@ -7,7 +7,7 @@
 
 #import "SHTKaiPingADViewController.h"
 #import "AppDelegate.h"
-
+#import <BUAdSDK/BUAdSDK.h>
 
 @interface SHTKaiPingADViewController () <BUSplashAdDelegate>
 @property (strong, nonatomic) BUSplashAd *shtSplashAd;

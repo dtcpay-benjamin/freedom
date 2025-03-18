@@ -6,6 +6,8 @@
 //
 
 #import "SHTFavoriteViewController.h"
+#import <PangrowthDJX/DJXSDK.h>
+
 @interface SHTFavoriteViewController ()
 
 @end
