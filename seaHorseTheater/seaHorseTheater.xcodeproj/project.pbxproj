@@ -71,6 +71,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1825940D2D8949E500B0AD44 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1825940E2D894A0A00B0AD44 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5659F838BE15B9A534274E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +97,8 @@
 		721C671A2D3CC80700843445 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				721C671C2D3CC83E00843445 /* Config */,
+				721C67202D3CD8C500843445 /* Utils */,
 				72C98E752D4606CF00978694 /* Ad */,
 				721C671B2D3CC82700843445 /* Media */,
 			);
@@ -92,21 +108,21 @@
 		721C671B2D3CC82700843445 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				72C98E712D46039600978694 /* viewController */,
-				721C67202D3CD8C500843445 /* Utils */,
-				721C671C2D3CC83E00843445 /* config */,
+				72C98E712D46039600978694 /* ViewControllers */,
+				1825940E2D894A0A00B0AD44 /* Views */,
+				1825940D2D8949E500B0AD44 /* Models */,
 				721C671D2D3CC87F00843445 /* AppDelegate+DJXDelegate.h */,
 				721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */,
 			);
 			path = Media;
 			sourceTree = "<group>";
 		};
-		721C671C2D3CC83E00843445 /* config */ = {
+		721C671C2D3CC83E00843445 /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				721C67252D3CD97D00843445 /* SHTConfigID.h */,
 			);
-			path = config;
+			path = Config;
 			sourceTree = "<group>";
 		};
 		721C67202D3CD8C500843445 /* Utils */ = {
@@ -154,7 +170,7 @@
 			path = seaHorseTheater;
 			sourceTree = "<group>";
 		};
-		72C98E712D46039600978694 /* viewController */ = {
+		72C98E712D46039600978694 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				72C98E792D460F6400978694 /* SHTHomeViewController.h */,
@@ -166,7 +182,7 @@
 				722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */,
 				722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */,
 			);
-			path = viewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		72C98E752D4606CF00978694 /* Ad */ = {

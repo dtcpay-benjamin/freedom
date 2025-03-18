@@ -23,7 +23,7 @@
 // 获取收藏的短剧数据
 - (void)requestCollection {
     [[DJXPlayletManager shareInstance] requestCollectionList:0 pageSize:10 success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
-            
+        NSLog(@"收藏的短剧信息:%@, 是否还有更多:%d", playletList, hasMore);
     } failure:^(NSError * _Nonnull error) {
             
     }];
