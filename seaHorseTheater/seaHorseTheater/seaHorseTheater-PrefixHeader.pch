@@ -8,7 +8,6 @@
 #ifndef seaHorseTheater_PrefixHeader_pch
 #define seaHorseTheater_PrefixHeader_pch
 #import "SHTMacros.h"
-
 #ifdef __OBJC__
     @import UIKit;
     @import Foundation;

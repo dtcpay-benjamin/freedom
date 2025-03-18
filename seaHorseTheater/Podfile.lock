@@ -17,37 +17,37 @@ PODS:
     - RangersAPM/EventMonitor (>= 3.10.6)
     - RangersAppLog/Host/CN (>= 6.16.3)
     - RangersAppLog/Log (>= 6.16.3)
-  - RangersAPM/Above (5.1.3)
-  - RangersAPM/CN (5.1.3):
+  - RangersAPM/Above (5.1.7)
+  - RangersAPM/CN (5.1.7):
     - RangersAPM/Core
     - RangersAPM/Public
-  - RangersAPM/Core (5.1.3):
+  - RangersAPM/Core (5.1.7):
     - RangersAPM/HMDLite
-  - RangersAPM/Crash (5.1.3):
+  - RangersAPM/Crash (5.1.7):
     - RangersAPM/Core
     - RangersAPM/HMD
     - RangersAPM/Public
     - RangersAPM/SessionTracker
     - RangersAPM/Zip
-  - RangersAPM/EventMonitor (5.1.3):
+  - RangersAPM/EventMonitor (5.1.7):
     - RangersAPM/Core
     - RangersAPM/HMD
     - RangersAPM/Public
-  - RangersAPM/HMD (5.1.3):
+  - RangersAPM/HMD (5.1.7):
     - RangersAPM/Core
     - RangersAPM/Public
-  - RangersAPM/HMDLite (5.1.3)
-  - RangersAPM/Public (5.1.3):
+  - RangersAPM/HMDLite (5.1.7)
+  - RangersAPM/Public (5.1.7):
     - RangersAPM/Above
     - RangersAPM/Core
     - RangersAPM/HMDLite
     - RangersAPM/Zyone
-  - RangersAPM/SessionTracker (5.1.3):
+  - RangersAPM/SessionTracker (5.1.7):
     - RangersAPM/Core
     - RangersAPM/HMD
     - RangersAPM/Public
-  - RangersAPM/Zip (5.1.3)
-  - RangersAPM/Zyone (5.1.3)
+  - RangersAPM/Zip (5.1.7)
+  - RangersAPM/Zyone (5.1.7)
   - RangersAppLog/Core (6.16.9):
     - RangersAppLog/Encryptor/VOLC
   - RangersAppLog/Encryptor/VOLC (6.16.9)
@@ -56,9 +56,9 @@ PODS:
   - RangersAppLog/Log (6.16.9):
     - RangersAppLog/Core
   - Reachability (3.2)
-  - SDWebImage (5.9.5):
-    - SDWebImage/Core (= 5.9.5)
-  - SDWebImage/Core (5.9.5)
+  - SDWebImage (5.21.0):
+    - SDWebImage/Core (= 5.21.0)
+  - SDWebImage/Core (5.21.0)
   - TTSDKFramework/Core (1.42.3.4-premium):
     - RangersAppLog/Core (~> 6.16.2)
     - RangersAppLog/Host/CN (~> 6.16.2)
@@ -94,7 +94,7 @@ DEPENDENCIES:
   - MJRefresh (= 3.6.1)
   - PangrowthX/shortplay (= 2.6.0.0)
   - Reachability (= 3.2)
-  - SDWebImage (= 5.9.5)
+  - SDWebImage
   - TTSDKFramework/Player (= 1.42.3.4-premium)
 
 SPEC REPOS:
@@ -119,12 +119,12 @@ SPEC CHECKSUMS:
   PangrowthDJX: 275924169cae77df14191c52f3ec6e2562c400c1
   PangrowthX: 6cae9a1cc5a46870212a4873faa5f3ce161db8ca
   PGXToolbox: 3b775b34f87eb5817554f41cf96ba5b117ca4fa2
-  RangersAPM: 99d0ff9dd5f33d3ffbeb5a2f00298236abc79cc9
+  RangersAPM: 4f79008d618bab45bcbc437c9dae3755195d389a
   RangersAppLog: d4fa640a806e5fef583b07bea2f610684e81161e
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
+  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
   TTSDKFramework: 3cba00b346c4a9adaa014e26fd081bb8ad9c5314
 
-PODFILE CHECKSUM: 7ca3752566495d92d86e22dc55e16ded2b8108d5
+PODFILE CHECKSUM: a017c11949b0f5b9004934c6ba1ef7569c259449
 
 COCOAPODS: 1.16.2

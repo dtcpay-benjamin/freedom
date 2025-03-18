@@ -6,9 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#if __has_include (<BUAdSDK/BUAdSDK.h>)
-#import <BUAdSDK/BUAdSDK.h>
-#endif
+
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -14,7 +14,7 @@ target 'seaHorseTheater' do
     pod 'PangrowthX', '2.6.0.0', :subspecs => [ 'shortplay' ]
     
     pod 'Reachability', '3.2'
-    pod 'SDWebImage', '5.9.5'
+    pod 'SDWebImage'
     pod 'MJRefresh', '3.6.1'
     pod 'MBProgressHUD'
 end
