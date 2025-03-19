@@ -55,6 +55,7 @@
 - (void)setupSegmentedControl {
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"收藏", @"剧单", @"精选"]];
     self.segmentedControl.frame = CGRectMake(0, 0, SHTScreenWidth, 40);
+    self.segmentedControl.backgroundColor = [UIColor redColor];
     // 设置选中的字体颜色为白色
     NSDictionary *selectedAttributes = @{
         NSForegroundColorAttributeName: [UIColor whiteColor],
@@ -106,28 +107,21 @@
 }
 
 /// 初始化短剧剧场页
-- (nonnull UINavigationController *)configPlayletTheater {
+- (nonnull UIViewController *)configPlayletTheater {
     DJXPlayletAggregatePageViewController *vc = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
         DJXPlayletConfig *playletConfig = [DJXPlayletConfig new];
         playletConfig.freeEpisodesCount = 10;
         playletConfig.unlockEpisodesCountUsingAD = 5;
         playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
         config.playletConfig = playletConfig;
-        config.isShowNavigationItemTitle = YES;
+        config.isShowNavigationItemTitle = NO;
         config.isShowNavigationItemBackButton = NO;
     }];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    return navigationController;
+    return vc;
 }
 
 /// 初始化短剧滑滑流
-- (nonnull UINavigationController *)configPlayletVC {
-    UIViewController *vc = [[UIViewController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, vc.view.width, vc.view.height - SHT_tabBarHeight)];
-    view.backgroundColor = UIColor.whiteColor;
-    [vc.view addSubview:view];
-    
+- (nonnull UIViewController *)configPlayletVC {
     DJXDrawVideoViewController *smallVideoVC = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
         DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
         playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
@@ -139,18 +133,13 @@
         config.shouldHideTabBarView = YES;
         config.playletConfig = playletConfig;
     }];
-    
-    [vc addChildViewController:smallVideoVC];
-    [view addSubview:smallVideoVC.view];
-    view.layer.masksToBounds = YES;
-    return navi;
+    return smallVideoVC;
 }
 
 /// 初始化收藏页
-- (nonnull UINavigationController *)configFavoriteVC {
+- (nonnull UIViewController *)configFavoriteVC {
     SHTFavoriteViewController *vc = [[SHTFavoriteViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    return navigationController;
+    return vc;
 }
 
 - (void)segmentChanged:(UISegmentedControl *)sender {

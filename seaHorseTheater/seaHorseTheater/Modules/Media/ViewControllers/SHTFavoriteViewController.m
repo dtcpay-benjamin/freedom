@@ -25,12 +25,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configCollectionView];
-    self.currentPage = 0;
-    [self requestCollection];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.collectionView.mj_header beginRefreshing];
 }
 
 - (void)setupRefresh {
@@ -66,11 +65,11 @@
             [self.collectionView.mj_footer endRefreshing];
             
             // 如果没有更多了，显示“没有更多数据”
-//            if (!hasMore) {
-//                [self.collectionView.mj_footer endRefreshingWithNoMoreData];
-//            } else {
-//                [self.collectionView.mj_footer resetNoMoreData];
-//            }
+            if (playletList.count == 0 || !playletList) {
+                [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+            } else {
+                [self.collectionView.mj_footer resetNoMoreData];
+            }
             
         } failure:^(NSError * _Nonnull error) {
             NSLog(@"获取收藏短剧列表报错error:%@", error);

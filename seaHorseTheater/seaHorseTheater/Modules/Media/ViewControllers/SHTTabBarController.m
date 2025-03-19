@@ -36,10 +36,24 @@
 /// 初始化首页
 - (UINavigationController *)configHomeVideoVC {
     SHTHomeViewController *homeVideoVc = [[SHTHomeViewController alloc] init];
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:homeVideoVc];
-    navigationVC.title = @"首页";
-    navigationVC.tabBarItem.image = [UIImage imageNamed:@"collection"];
-    return navigationVC;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeVideoVc];
+//    navigationController.navigationBarHidden = YES;
+    // 设置黑色导航栏
+//    if (@available(iOS 13.0, *)) {
+//        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+//        [appearance configureWithOpaqueBackground];
+//        appearance.backgroundColor = [UIColor blackColor];
+//        appearance.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+//        navigationController.navigationBar.standardAppearance = appearance;
+//        navigationController.navigationBar.scrollEdgeAppearance = appearance;
+//    } else {
+//        navigationController.navigationBar.barTintColor = [UIColor blackColor];
+//        navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+//    }
+//    navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    navigationController.navigationBar.translucent = NO;
+//    navigationController.tabBarItem.image = [UIImage imageNamed:@"collection"];
+    return navigationController;
 }
 /// 初始化我的
 - (UINavigationController *)configMineVideoVC {
