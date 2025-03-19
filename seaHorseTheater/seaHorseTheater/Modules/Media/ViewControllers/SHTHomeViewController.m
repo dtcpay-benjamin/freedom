@@ -87,7 +87,7 @@
     self.segmentedControl.tintColor = [UIColor clearColor];
     self.segmentedControl.selectedSegmentIndex = 2;
     [self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView = self.segmentedControl;
+//    self.navigationItem.titleView = self.segmentedControl;
 }
 
 // 设置下划线
