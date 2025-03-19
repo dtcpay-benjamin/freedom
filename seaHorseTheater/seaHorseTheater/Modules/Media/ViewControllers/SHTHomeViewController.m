@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) UIView *underlineView;
+@property (nonatomic, strong) UIView *segmentedBackView;
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
 @end
 
@@ -53,9 +54,12 @@
 }
 
 - (void)setupSegmentedControl {
+    self.segmentedBackView = [[UIView alloc] init];
+    self.segmentedBackView.backgroundColor = [UIColor clearColor];
+    self.segmentedBackView.frame = CGRectMake(0, 0, SHTScreenWidth, SHT_STATUS_BAR_HEIGHT + 40);
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"收藏", @"剧单", @"精选"]];
-    self.segmentedControl.frame = CGRectMake(0, 0, SHTScreenWidth, 40);
-    self.segmentedControl.backgroundColor = [UIColor redColor];
+    self.segmentedControl.frame = CGRectMake(0, SHT_STATUS_BAR_HEIGHT, SHTScreenWidth, 40);
+    self.segmentedControl.backgroundColor = [UIColor clearColor];
     // 设置选中的字体颜色为白色
     NSDictionary *selectedAttributes = @{
         NSForegroundColorAttributeName: [UIColor whiteColor],
@@ -79,15 +83,22 @@
         };
         [self.segmentedControl setTitleTextAttributes:unselectedAttributes forState:UIControlStateNormal];
     }
-    // 设置背景色
-    self.segmentedControl.backgroundColor = [UIColor clearColor];
     [self.segmentedControl setBackgroundImage:[[UIImage alloc] init] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.segmentedControl setBackgroundImage:[[UIImage alloc] init] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
     [self.segmentedControl setDividerImage:[[UIImage alloc] init] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     self.segmentedControl.tintColor = [UIColor clearColor];
     self.segmentedControl.selectedSegmentIndex = 2;
     [self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
-//    self.navigationItem.titleView = self.segmentedControl;
+    [self.navigationController.view addSubview:self.segmentedBackView];
+    [self.segmentedBackView addSubview:self.segmentedControl];
+}
+
+- (void)setUpSegmentedBackColor:(NSInteger)index {
+    if (index == 0) {
+        self.segmentedBackView.backgroundColor = [UIColor blackColor];
+    } else {
+        self.segmentedBackView.backgroundColor = [UIColor clearColor];
+    }
 }
 
 // 设置下划线
@@ -149,6 +160,7 @@
                                        animated:YES
                                      completion:nil];
     [self slideUnderline:sender.selectedSegmentIndex];
+    [self setUpSegmentedBackColor:sender.selectedSegmentIndex];
 }
 
 #pragma mark - UIPageViewControllerDelegate
@@ -161,6 +173,7 @@
         // 更新 UISegmentedControl 的选中项
         self.segmentedControl.selectedSegmentIndex = index;
         [self slideUnderline:index];
+        [self setUpSegmentedBackColor:index];
     }
 }
 

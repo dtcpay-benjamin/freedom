@@ -53,6 +53,7 @@
 //    navigationController.navigationBar.tintColor = [UIColor whiteColor];
 //    navigationController.navigationBar.translucent = NO;
 //    navigationController.tabBarItem.image = [UIImage imageNamed:@"collection"];
+    navigationController.title = @"首页";
     return navigationController;
 }
 /// 初始化我的
@@ -60,7 +61,6 @@
     SHTMineViewController *mineVideoVc = [[SHTMineViewController alloc] init];
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:mineVideoVc];
     navigationVC.title = @"我的";
-    navigationVC.tabBarItem.image = [UIImage imageNamed:@"collection"];
     return navigationVC;
 }
 /*
