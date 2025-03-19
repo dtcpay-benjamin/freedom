@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
+@property (nonatomic, strong) UIActivityIndicatorView *loadingView;
 
 @end
 
@@ -39,8 +40,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    self.imageView.frame = CGRectMake(0, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height - 50);
+    CGFloat defaultHeight = self.contentView.bounds.size.width * (16.0 / 9.0); // 默认 16:9 比例
+    self.imageView.frame = CGRectMake(0, 0, self.contentView.bounds.size.width, defaultHeight);
     self.titleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.imageView.frame) + 5, self.contentView.bounds.size.width - 10, 20);
     self.subtitleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.titleLabel.frame) + 2, self.contentView.bounds.size.width - 10, 18);
 }
@@ -55,8 +56,23 @@
 - (void)setPlayletinfoModel:(DJXPlayletInfoModel *)playletinfoModel{
     _playletinfoModel = playletinfoModel;
     NSURL *url = [NSURL URLWithString:_playletinfoModel.cover_image];
-    [self.imageView sd_setImageWithURL:url completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        if (error) {
+    // 开始加载时展示 loadingView
+    [self.loadingView startAnimating];
+    self.loadingView.hidden = NO;
+    [self.imageView sd_setImageWithURL:url
+                      placeholderImage:nil
+                               options:SDWebImageAvoidAutoSetImage
+                             completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        // 下载完成，隐藏 loading
+        [self.loadingView stopAnimating];
+        self.loadingView.hidden = YES;
+        if (image) {
+            self.imageView.alpha = 0.0;
+            self.imageView.image = image;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.imageView.alpha = 1.0;
+            }];
+        } else {
             NSLog(@"收藏短剧封面下载失败error:%@", error);
         }
     }];
@@ -71,6 +87,7 @@
         _imageView = [[UIImageView alloc] init];
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         _imageView.clipsToBounds = YES;
+        _imageView.layer.cornerRadius = 4.0; // 圆角
     }
     return  _imageView;
 }
@@ -92,5 +109,15 @@
         _subtitleLabel.textColor = [UIColor lightGrayColor];
     }
     return _subtitleLabel;
+}
+
+- (UIActivityIndicatorView *)loadingView {
+    if (!_loadingView) {
+        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _loadingView.center = self.contentView.center;
+        _loadingView.hidesWhenStopped = YES;
+        [self.contentView addSubview:_loadingView];
+    }
+    return _loadingView;
 }
 @end
