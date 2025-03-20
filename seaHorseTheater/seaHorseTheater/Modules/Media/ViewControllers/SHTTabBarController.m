@@ -38,6 +38,8 @@
     SHTHomeViewController *homeVideoVc = [[SHTHomeViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeVideoVc];
     navigationController.navigationBarHidden = YES;
+    navigationController.navigationBar.alpha = 0.0;
+    navigationController.navigationBar.userInteractionEnabled = NO;
     // 设置黑色导航栏
 //    if (@available(iOS 13.0, *)) {
 //        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];

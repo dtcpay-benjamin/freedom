@@ -37,7 +37,6 @@
 }
 
 - (void)initConfig {
-    [self setupSegmentedControl];
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     self.pages = @[[self configFavoriteVC], [self configPlayletTheater], [self configPlayletVC]];
@@ -51,6 +50,11 @@
     [self.view addSubview:self.pageViewController.view];
     self.pageViewController.view.frame = self.view.bounds;
     [self.pageViewController didMoveToParentViewController:self];
+    [self setupSegmentedControl];
+    // 强制彻底移除 navigationBar 相关视图
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationController.navigationBar removeFromSuperview];
+    });
 }
 
 - (void)setupSegmentedControl {
@@ -90,6 +94,7 @@
     self.segmentedControl.selectedSegmentIndex = 2;
     [self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
     [self.navigationController.view addSubview:self.segmentedBackView];
+    [self.navigationController.view bringSubviewToFront:self.segmentedBackView];
     [self.segmentedBackView addSubview:self.segmentedControl];
 }
 
@@ -154,13 +159,24 @@
 }
 
 - (void)segmentChanged:(UISegmentedControl *)sender {
-    UIPageViewControllerNavigationDirection direction = (sender.selectedSegmentIndex == 0) ? UIPageViewControllerNavigationDirectionReverse : UIPageViewControllerNavigationDirectionForward;
-    [self.pageViewController setViewControllers:@[self.pages[sender.selectedSegmentIndex]]
+    NSLog(@"segment切换标题~~~");
+
+    UIViewController *currentVC = self.pageViewController.viewControllers.firstObject;
+    NSUInteger currentIndex = [self.pages indexOfObject:currentVC];
+    NSUInteger targetIndex = sender.selectedSegmentIndex;
+    
+    if (targetIndex == currentIndex) {
+        return; // 如果点击的就是当前页，直接 return，不切换
+    }
+    
+    UIPageViewControllerNavigationDirection direction = (targetIndex < currentIndex) ? UIPageViewControllerNavigationDirectionReverse : UIPageViewControllerNavigationDirectionForward;
+    
+    [self.pageViewController setViewControllers:@[self.pages[targetIndex]]
                                       direction:direction
                                        animated:YES
                                      completion:nil];
-    [self slideUnderline:sender.selectedSegmentIndex];
-    [self setUpSegmentedBackColor:sender.selectedSegmentIndex];
+    [self slideUnderline:targetIndex];
+    [self setUpSegmentedBackColor:targetIndex];
 }
 
 #pragma mark - UIPageViewControllerDelegate
