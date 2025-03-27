@@ -22,7 +22,6 @@
 
 - (void)setChilds {
     NSMutableArray *viewControllers = [NSMutableArray array];
-
     void(^addChildVC)(UIViewController *) = ^(UIViewController * _Nullable childVC) {
         if (childVC) {
             [viewControllers addObject:childVC];
@@ -30,33 +29,12 @@
     };
     addChildVC([self configHomeVideoVC]);
     self.viewControllers = [viewControllers copy];
-    [self.navigationController.navigationBar setHidden:YES];
-
 }
 /// 初始化首页
-- (UINavigationController *)configHomeVideoVC {
+- (UIViewController *)configHomeVideoVC {
     SHTHomeViewController *homeVideoVc = [[SHTHomeViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeVideoVc];
-    navigationController.navigationBarHidden = YES;
-    navigationController.navigationBar.alpha = 0.0;
-    navigationController.navigationBar.userInteractionEnabled = NO;
-    // 设置黑色导航栏
-//    if (@available(iOS 13.0, *)) {
-//        UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
-//        [appearance configureWithOpaqueBackground];
-//        appearance.backgroundColor = [UIColor blackColor];
-//        appearance.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-//        navigationController.navigationBar.standardAppearance = appearance;
-//        navigationController.navigationBar.scrollEdgeAppearance = appearance;
-//    } else {
-//        navigationController.navigationBar.barTintColor = [UIColor blackColor];
-//        navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-//    }
-//    navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    navigationController.navigationBar.translucent = NO;
-//    navigationController.tabBarItem.image = [UIImage imageNamed:@"collection"];
-    navigationController.title = @"首页";
-    return navigationController;
+    homeVideoVc.title = @"首页";
+    return homeVideoVc;
 }
 /// 初始化我的
 - (UINavigationController *)configMineVideoVC {

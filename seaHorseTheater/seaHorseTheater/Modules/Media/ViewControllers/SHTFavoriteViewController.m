@@ -87,8 +87,6 @@
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor blackColor];
     [self.collectionView registerClass:[SHTFavoritePlayletCell class] forCellWithReuseIdentifier:@"SHTFavoritePlayletCell"];
-    CGFloat headerHeight = 50 - 2; // MJRefreshNormalHeader 默认高度一般是 50
-    self.collectionView.contentInset = UIEdgeInsetsMake(-headerHeight, 0, 0, 0);
     self.collectionView.scrollIndicatorInsets = self.collectionView.contentInset;
     [self.view addSubview:self.collectionView];
     [self setupRefresh];

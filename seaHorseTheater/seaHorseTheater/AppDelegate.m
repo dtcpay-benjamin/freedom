@@ -60,9 +60,8 @@
 
 /// 配置主页面
 - (void)configMainController {
-    NSMutableArray *viewControllers = [NSMutableArray array];
     SHTTabBarController *tabBarController = [[SHTTabBarController alloc] init];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tabBarController];
+    self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
 }
 

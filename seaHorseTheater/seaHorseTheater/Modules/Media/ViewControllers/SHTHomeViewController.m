@@ -11,6 +11,9 @@
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) DJXPlayletAggregatePageViewController *playletTheater; //短剧剧场
+@property (nonatomic, strong) DJXDrawVideoViewController *playletVC; //短剧滑滑页
+@property (nonatomic, strong) SHTFavoriteViewController *favoriteVC; //短剧收藏页
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) UIView *underlineView;
 @property (nonatomic, strong) UIView *segmentedBackView;
@@ -38,9 +41,7 @@
 
 - (void)initConfig {
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    
-    self.pages = @[[self configFavoriteVC], [self configPlayletTheater], [self configPlayletVC]];
-    
+    self.pages = @[self.favoriteVC, self.playletTheater, self.playletVC];
     [self.pageViewController setViewControllers:@[self.pages[2]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     self.pageViewController.dataSource = self;
@@ -51,10 +52,6 @@
     self.pageViewController.view.frame = self.view.bounds;
     [self.pageViewController didMoveToParentViewController:self];
     [self setupSegmentedControl];
-    // 强制彻底移除 navigationBar 相关视图
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.navigationController.navigationBar removeFromSuperview];
-    });
 }
 
 - (void)setupSegmentedControl {
@@ -93,9 +90,9 @@
     self.segmentedControl.tintColor = [UIColor clearColor];
     self.segmentedControl.selectedSegmentIndex = 2;
     [self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
-    [self.navigationController.view addSubview:self.segmentedBackView];
-    [self.navigationController.view bringSubviewToFront:self.segmentedBackView];
+    [self.view addSubview:self.segmentedBackView];
     [self.segmentedBackView addSubview:self.segmentedControl];
+    [self.view bringSubviewToFront:self.segmentedBackView];
 }
 
 - (void)setUpSegmentedBackColor:(NSInteger)index {
@@ -123,44 +120,47 @@
 }
 
 /// 初始化短剧剧场页
-- (nonnull UIViewController *)configPlayletTheater {
-    DJXPlayletAggregatePageViewController *vc = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
-        DJXPlayletConfig *playletConfig = [DJXPlayletConfig new];
-        playletConfig.freeEpisodesCount = 10;
-        playletConfig.unlockEpisodesCountUsingAD = 5;
-        playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-        config.playletConfig = playletConfig;
-        config.isShowNavigationItemTitle = NO;
-        config.isShowNavigationItemBackButton = NO;
-    }];
-    return vc;
+- (DJXPlayletAggregatePageViewController *)playletTheater{
+    if (!_playletTheater) {
+        _playletTheater = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
+            DJXPlayletConfig *playletConfig = [DJXPlayletConfig new];
+            playletConfig.freeEpisodesCount = 10;
+            playletConfig.unlockEpisodesCountUsingAD = 5;
+            playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
+            config.playletConfig = playletConfig;
+            config.isShowNavigationItemTitle = NO;
+            config.isShowNavigationItemBackButton = NO;
+        }];
+    }
+    return _playletTheater;
 }
 
 /// 初始化短剧滑滑流
-- (nonnull UIViewController *)configPlayletVC {
-    DJXDrawVideoViewController *smallVideoVC = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
-        DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
-        playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-        playletConfig.freeEpisodesCount = 5;
-        playletConfig.unlockEpisodesCountUsingAD = 2;
-        
-        config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet_feed;
-        config.viewSize = CGSizeMake(SHTScreenWidth, SHTScreenHeight - SHT_tabBarHeight);
-        config.shouldHideTabBarView = YES;
-        config.playletConfig = playletConfig;
-    }];
-    return smallVideoVC;
+- (DJXDrawVideoViewController *)playletVC {
+    if (!_playletVC) {
+        _playletVC = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
+            DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
+            playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
+            playletConfig.freeEpisodesCount = 5;
+            playletConfig.unlockEpisodesCountUsingAD = 2;
+            
+            config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet_feed;
+            config.viewSize = CGSizeMake(SHTScreenWidth, SHTScreenHeight - SHT_tabBarHeight);
+            config.shouldHideTabBarView = YES;
+            config.playletConfig = playletConfig;
+        }];
+    }
+    return  _playletVC;
 }
 
 /// 初始化收藏页
-- (nonnull UIViewController *)configFavoriteVC {
-    SHTFavoriteViewController *vc = [[SHTFavoriteViewController alloc] init];
-    return vc;
+- (SHTFavoriteViewController *)favoriteVC {
+    if (!_favoriteVC) {
+        _favoriteVC = [[SHTFavoriteViewController alloc] init];
+    }
+    return _favoriteVC;
 }
-
 - (void)segmentChanged:(UISegmentedControl *)sender {
-    NSLog(@"segment切换标题~~~");
-
     UIViewController *currentVC = self.pageViewController.viewControllers.firstObject;
     NSUInteger currentIndex = [self.pages indexOfObject:currentVC];
     NSUInteger targetIndex = sender.selectedSegmentIndex;
@@ -170,7 +170,6 @@
     }
     
     UIPageViewControllerNavigationDirection direction = (targetIndex < currentIndex) ? UIPageViewControllerNavigationDirectionReverse : UIPageViewControllerNavigationDirectionForward;
-    
     [self.pageViewController setViewControllers:@[self.pages[targetIndex]]
                                       direction:direction
                                        animated:YES
@@ -188,8 +187,10 @@
         NSUInteger index = [self.pages indexOfObject:currentVC];
         // 更新 UISegmentedControl 的选中项
         self.segmentedControl.selectedSegmentIndex = index;
-        [self slideUnderline:index];
-        [self setUpSegmentedBackColor:index];
+        [UIView animateWithDuration:0.25 animations:^{
+            [self slideUnderline:index];
+            [self setUpSegmentedBackColor:index];
+        }];
     }
 }
 
