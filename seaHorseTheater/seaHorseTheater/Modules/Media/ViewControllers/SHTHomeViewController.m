@@ -176,8 +176,7 @@
             DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
             playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
             playletConfig.freeEpisodesCount = 5;
-            playletConfig.unlockEpisodesCountUsingAD = 2;
-            
+            playletConfig.unlockEpisodesCountUsingAD = 1;
             config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet_feed;
             config.viewSize = CGSizeMake(SHTScreenWidth, SHTScreenHeight - SHT_tabBarHeight);
             config.shouldHideTabBarView = YES;

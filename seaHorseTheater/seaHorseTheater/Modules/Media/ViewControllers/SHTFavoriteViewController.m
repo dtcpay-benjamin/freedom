@@ -92,6 +92,23 @@
     [self setupRefresh];
 }
 
+- (void)enterPlayer:(DJXPlayletInfoModel *)infoModel {
+    DJXDrawVideoViewController *vc = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
+        DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
+        playletConfig.skitId = infoModel.shortplay_id;
+        playletConfig.episode = infoModel.current_episode;
+        playletConfig.playStartTime = (CGFloat)infoModel.action_time;
+        playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
+        playletConfig.freeEpisodesCount = 5;
+        playletConfig.unlockEpisodesCountUsingAD = 1;
+        config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet;
+        config.shouldHideTabBarView = YES;
+        config.playletConfig = playletConfig;
+    }];
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - UICollectionView DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -104,6 +121,13 @@
     cell.playletinfoModel = model;
     return cell;
 }
+
+#pragma mark - UICollectionView Delegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
+    [self enterPlayer:model];
+}
+
 
 #pragma mark - UICollectionView DelegateFlowLayout
 
