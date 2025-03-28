@@ -11,9 +11,11 @@
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) UIViewController *favoriteBgdVC;
+@property (nonatomic, strong) SHTFavoriteViewController *favoriteVC; //短剧收藏页
+@property (nonatomic, strong) UIViewController *playletTheaterBgdVC;
 @property (nonatomic, strong) DJXPlayletAggregatePageViewController *playletTheater; //短剧剧场
 @property (nonatomic, strong) DJXDrawVideoViewController *playletVC; //短剧滑滑页
-@property (nonatomic, strong) SHTFavoriteViewController *favoriteVC; //短剧收藏页
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) UIView *underlineView;
 @property (nonatomic, strong) UIView *segmentedBackView;
@@ -41,7 +43,7 @@
 
 - (void)initConfig {
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    self.pages = @[self.favoriteVC, self.playletTheater, self.playletVC];
+    self.pages = @[self.favoriteBgdVC, self.playletTheaterBgdVC, self.playletVC];
     [self.pageViewController setViewControllers:@[self.pages[2]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     self.pageViewController.dataSource = self;
@@ -51,6 +53,17 @@
     [self.view addSubview:self.pageViewController.view];
     self.pageViewController.view.frame = self.view.bounds;
     [self.pageViewController didMoveToParentViewController:self];
+    
+    [self.favoriteBgdVC addChildViewController:self.favoriteVC];
+    [self.favoriteBgdVC.view addSubview:self.favoriteVC.view];
+    self.favoriteVC.view.frame = CGRectMake(0, SHT_STATUS_BAR_HEIGHT + 40, SHTScreenWidth, SHTScreenHeight - (SHT_STATUS_BAR_HEIGHT + 40) - SHT_tabBarHeight);
+    [self.favoriteVC didMoveToParentViewController:self.favoriteBgdVC];
+    
+    [self.playletTheaterBgdVC addChildViewController:self.playletTheater];
+    [self.playletTheaterBgdVC.view addSubview:self.playletTheater.view];
+    self.playletTheater.view.frame = CGRectMake(0, SHT_STATUS_BAR_HEIGHT + 40, SHTScreenWidth, SHTScreenHeight - (SHT_STATUS_BAR_HEIGHT + 40) - SHT_tabBarHeight);
+    [self.playletTheater didMoveToParentViewController:self.playletTheaterBgdVC];
+    
     [self setupSegmentedControl];
 }
 
@@ -119,8 +132,29 @@
     }];
 }
 
+- (UIViewController *)favoriteBgdVC {
+    if (!_favoriteBgdVC) {
+        _favoriteBgdVC = [[UIViewController alloc] init];
+    }
+    return _favoriteBgdVC;
+}
+/// 初始化收藏页
+- (SHTFavoriteViewController *)favoriteVC {
+    if (!_favoriteVC) {
+        _favoriteVC = [[SHTFavoriteViewController alloc] init];
+    }
+    return _favoriteVC;
+}
+
 /// 初始化短剧剧场页
-- (DJXPlayletAggregatePageViewController *)playletTheater{
+- (UIViewController *)playletTheaterBgdVC {
+    if (!_playletTheaterBgdVC) {
+        _playletTheaterBgdVC = [[UIViewController alloc] init];
+    }
+    return _playletTheaterBgdVC;
+}
+
+- (UIViewController *)playletTheater{
     if (!_playletTheater) {
         _playletTheater = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
             DJXPlayletConfig *playletConfig = [DJXPlayletConfig new];
@@ -153,13 +187,6 @@
     return  _playletVC;
 }
 
-/// 初始化收藏页
-- (SHTFavoriteViewController *)favoriteVC {
-    if (!_favoriteVC) {
-        _favoriteVC = [[SHTFavoriteViewController alloc] init];
-    }
-    return _favoriteVC;
-}
 - (void)segmentChanged:(UISegmentedControl *)sender {
     UIViewController *currentVC = self.pageViewController.viewControllers.firstObject;
     NSUInteger currentIndex = [self.pages indexOfObject:currentVC];
