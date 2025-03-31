@@ -16,7 +16,7 @@
 @property (nonatomic, assign) BOOL hasMore;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *dataSource;
-
+@property (nonatomic, assign) bool isEdit;
 @end
 
 @implementation SHTFavoriteViewController
@@ -107,6 +107,10 @@
     }];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)editFavorites:(BOOL)isEdit {
+    self.isEdit = isEdit;
 }
 
 #pragma mark - UICollectionView DataSource

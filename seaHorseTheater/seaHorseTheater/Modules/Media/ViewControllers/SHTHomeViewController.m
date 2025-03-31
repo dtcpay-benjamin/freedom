@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UIButton *editBtn; //编辑按钮
 @property (nonatomic, assign) NSUInteger currentIndex; //当前位置
 @property (nonatomic, assign) NSUInteger preIndex; //当前位置
+
 @end
 
 @implementation SHTHomeViewController
@@ -142,6 +143,7 @@
                                            animated:YES
                                          completion:nil];
     }
+    [self.favoriteVC editFavorites:sender.isSelected];
 }
 
 - (UIButton *)editBtn {

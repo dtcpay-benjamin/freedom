@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHTHomeViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface SHTFavoriteViewController : UIViewController
+
+- (void)editFavorites:(BOOL)isEdit;
 
 @end
 
