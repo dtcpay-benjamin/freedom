@@ -17,9 +17,13 @@
 @property (nonatomic, strong) DJXPlayletAggregatePageViewController *playletTheater; //短剧剧场
 @property (nonatomic, strong) DJXDrawVideoViewController *playletVC; //短剧滑滑页
 @property (nonatomic, strong) NSArray *pages;
-@property (nonatomic, strong) UIView *underlineView;
-@property (nonatomic, strong) UIView *segmentedBackView;
-@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) UIView *underlineView; //下划线
+@property (nonatomic, strong) UIView *segmentedBackView; //标题栏背景
+@property (nonatomic, strong) UISegmentedControl *segmentedControl; //标题栏
+@property (nonatomic, strong) UILabel *editTitleLabel; //收藏编辑时候的标题栏
+@property (nonatomic, strong) UIButton *editBtn; //编辑按钮
+@property (nonatomic, assign) NSUInteger currentIndex; //当前位置
+@property (nonatomic, assign) NSUInteger preIndex; //当前位置
 @end
 
 @implementation SHTHomeViewController
@@ -72,7 +76,7 @@
     self.segmentedBackView.backgroundColor = [UIColor clearColor];
     self.segmentedBackView.frame = CGRectMake(0, 0, SHTScreenWidth, SHT_STATUS_BAR_HEIGHT + 40);
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"收藏", @"剧单", @"精选"]];
-    self.segmentedControl.frame = CGRectMake(0, SHT_STATUS_BAR_HEIGHT, SHTScreenWidth, 40);
+    self.segmentedControl.frame = CGRectMake(80, SHT_STATUS_BAR_HEIGHT, SHTScreenWidth - 160, 40);
     self.segmentedControl.backgroundColor = [UIColor clearColor];
     // 设置选中的字体颜色为白色
     NSDictionary *selectedAttributes = @{
@@ -102,9 +106,12 @@
     [self.segmentedControl setDividerImage:[[UIImage alloc] init] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     self.segmentedControl.tintColor = [UIColor clearColor];
     self.segmentedControl.selectedSegmentIndex = 2;
+    self.currentIndex = 2;
     [self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.segmentedBackView];
     [self.segmentedBackView addSubview:self.segmentedControl];
+    [self.segmentedBackView addSubview:self.editTitleLabel];
+    [self.segmentedBackView addSubview:self.editBtn];
     [self.view bringSubviewToFront:self.segmentedBackView];
 }
 
@@ -114,6 +121,53 @@
     } else {
         self.segmentedBackView.backgroundColor = [UIColor clearColor];
     }
+}
+
+#pragma mark - 编辑按钮点击事件
+- (void)actionEdtit:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    if (sender.isSelected) {
+        self.preIndex = self.currentIndex;
+        self.segmentedControl.hidden = YES;
+        self.editTitleLabel.hidden = NO;
+        [self.pageViewController setViewControllers:@[self.pages[0]]
+                                          direction:UIPageViewControllerNavigationDirectionReverse
+                                           animated:YES
+                                         completion:nil];
+    } else {
+        self.segmentedControl.hidden = NO;
+        self.editTitleLabel.hidden = YES;
+        [self.pageViewController setViewControllers:@[self.pages[self.preIndex]]
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:YES
+                                         completion:nil];
+    }
+}
+
+- (UIButton *)editBtn {
+    if (!_editBtn) {
+        _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _editBtn.frame = CGRectMake(SHTScreenWidth - 60, SHT_STATUS_BAR_HEIGHT, 40, 40);
+        [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [_editBtn setTitle:@"退出" forState:UIControlStateSelected];
+        [_editBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_editBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        _editBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        [_editBtn addTarget:self action:@selector(actionEdtit:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _editBtn;
+}
+
+- (UILabel *)editTitleLabel {
+    if (!_editTitleLabel) {
+        _editTitleLabel = [[UILabel alloc] init];
+        _editTitleLabel.frame = CGRectMake(SHTScreenWidth * 0.5 - 20.0, SHT_STATUS_BAR_HEIGHT, 40.0, 40.0);
+        _editTitleLabel.textColor = [UIColor whiteColor];
+        _editTitleLabel.font = [UIFont systemFontOfSize:18];
+        _editTitleLabel.text = @"收藏";
+        _editTitleLabel.hidden = YES;
+    }
+    return _editTitleLabel;
 }
 
 // 设置下划线
@@ -154,7 +208,7 @@
     return _playletTheaterBgdVC;
 }
 
-- (UIViewController *)playletTheater{
+- (UIViewController *)playletTheater {
     if (!_playletTheater) {
         _playletTheater = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
             DJXPlayletConfig *playletConfig = [DJXPlayletConfig new];
@@ -190,7 +244,6 @@
     UIViewController *currentVC = self.pageViewController.viewControllers.firstObject;
     NSUInteger currentIndex = [self.pages indexOfObject:currentVC];
     NSUInteger targetIndex = sender.selectedSegmentIndex;
-    
     if (targetIndex == currentIndex) {
         return; // 如果点击的就是当前页，直接 return，不切换
     }
@@ -200,6 +253,9 @@
                                       direction:direction
                                        animated:YES
                                      completion:nil];
+    if (!self.editBtn.isSelected) {
+        self.currentIndex = targetIndex;
+    }
     [self slideUnderline:targetIndex];
     [self setUpSegmentedBackColor:targetIndex];
 }
@@ -213,6 +269,9 @@
         NSUInteger index = [self.pages indexOfObject:currentVC];
         // 更新 UISegmentedControl 的选中项
         self.segmentedControl.selectedSegmentIndex = index;
+        if (!self.editBtn.isSelected) {
+            self.currentIndex = index;
+        }
         [UIView animateWithDuration:0.25 animations:^{
             [self slideUnderline:index];
             [self setUpSegmentedBackColor:index];
