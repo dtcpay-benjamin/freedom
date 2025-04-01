@@ -317,12 +317,17 @@
 - (void)selectAllAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     self.deleteButton.selected = !sender.isSelected;
+    if (sender.isSelected) {
+        [self.favoriteVC selectAllFavoriteData];
+    } else {
+        [self.favoriteVC cancelSelectAllFavoriteData];
+    }
 }
 
 - (void)deleteAction:(UIButton *)sender {
-    //    只有删除按钮是选中状态的时候才可以操作
+    // 只有删除按钮是选中状态的时候才可以操作
     if (sender.isSelected) {
-        
+        [self.favoriteVC deleteFavoriteData];
     }
 }
 

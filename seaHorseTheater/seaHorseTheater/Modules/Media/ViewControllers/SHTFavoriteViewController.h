@@ -13,7 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHTFavoriteViewController : UIViewController
 
+// 编辑收藏
 - (void)editFavorites:(BOOL)isEdit;
+// 全选收藏数据
+- (void)selectAllFavoriteData;
+// 取消全选收藏数据
+- (void)cancelSelectAllFavoriteData;
+// 删除收藏数据
+- (void)deleteFavoriteData;
 
 @end
 
