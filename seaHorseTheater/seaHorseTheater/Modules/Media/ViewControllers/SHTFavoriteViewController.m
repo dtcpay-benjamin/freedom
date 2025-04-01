@@ -9,14 +9,17 @@
 #import <PangrowthDJX/DJXSDK.h>
 #import "SHTFavoritePlayletCell.h"
 #import <MJRefresh/MJRefresh.h>
+#import "SHTFavoritePlayletModel.h"
 
 @interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) BOOL hasMore;
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *favoriteDataSource;
 @property (nonatomic, assign) bool isEdit;
+
 @end
 
 @implementation SHTFavoriteViewController
@@ -53,9 +56,12 @@
             NSLog(@"获取收藏短剧列表:%@, 是否还有更多:%d", playletList, hasMore);
             // 刷新 or 加载更多
             if (self.currentPage == 0) {
-                self.dataSource = playletList;
-            } else {
-                self.dataSource = [self.dataSource arrayByAddingObjectsFromArray:playletList];
+                [self.dataSource removeAllObjects];
+                [self.favoriteDataSource removeAllObjects];
+            }
+            [self.dataSource addObjectsFromArray:playletList];
+            for (int i = 0; i < playletList.count; i++) {
+                [self.favoriteDataSource addObject:[[SHTFavoritePlayletModel alloc] init]];
             }
             self.hasMore = hasMore;
             [self.collectionView reloadData];
@@ -92,6 +98,7 @@
     [self setupRefresh];
 }
 
+
 - (void)enterPlayer:(DJXPlayletInfoModel *)infoModel {
     DJXDrawVideoViewController *vc = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
         DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
@@ -111,7 +118,31 @@
 
 - (void)editFavorites:(BOOL)isEdit {
     self.isEdit = isEdit;
+    if (!isEdit) {
+        for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
+            model.isSelected = NO;
+        }
+        [self.tabBarController.tabBar setHidden:NO];
+    } else {
+        [self.tabBarController.tabBar setHidden:YES];
+    }
+    [self.collectionView reloadData];
 }
+
+- (NSMutableArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [[NSMutableArray alloc] init];
+    }
+    return _dataSource;
+}
+
+- (NSMutableArray *)favoriteDataSource {
+    if (!_favoriteDataSource) {
+        _favoriteDataSource = [[NSMutableArray alloc] init];
+    }
+    return _favoriteDataSource;
+}
+
 
 #pragma mark - UICollectionView DataSource
 
@@ -122,14 +153,23 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SHTFavoritePlayletCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTFavoritePlayletCell" forIndexPath:indexPath];
     DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
+    SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[indexPath.item];
     cell.playletinfoModel = model;
+    cell.isEdit = self.isEdit;
+    cell.favoriteModel = favoritePlayletModel;
     return cell;
 }
 
 #pragma mark - UICollectionView Delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
-    [self enterPlayer:model];
+    if (self.isEdit) {
+        SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[indexPath.item];
+        favoritePlayletModel.isSelected = !favoritePlayletModel.isSelected;
+        [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    } else {
+        DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
+        [self enterPlayer:model];
+    }
 }
 
 

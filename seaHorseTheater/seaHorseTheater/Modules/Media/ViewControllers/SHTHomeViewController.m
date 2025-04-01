@@ -24,7 +24,9 @@
 @property (nonatomic, strong) UIButton *editBtn; //编辑按钮
 @property (nonatomic, assign) NSUInteger currentIndex; //当前位置
 @property (nonatomic, assign) NSUInteger preIndex; //当前位置
-
+@property (nonatomic, strong) UIView *editBar;
+@property (nonatomic, strong) UIButton *selectAllButton;
+@property (nonatomic, strong) UIButton *deleteButton;
 @end
 
 @implementation SHTHomeViewController
@@ -70,6 +72,7 @@
     [self.playletTheater didMoveToParentViewController:self.playletTheaterBgdVC];
     
     [self setupSegmentedControl];
+    [self setUpEditBar];
 }
 
 - (void)setupSegmentedControl {
@@ -124,6 +127,16 @@
     }
 }
 
+- (void)setUpEditBar {
+    self.editBar.frame = CGRectMake(0, SHTScreenHeight - SHT_tabBarHeight, SHTScreenWidth, SHT_tabBarHeight);
+    self.selectAllButton.frame = CGRectMake(80, 0, 80, 50);
+    self.deleteButton.frame = CGRectMake(SHTScreenWidth - 80 - 80, 0, 80, 50);
+    [self.view addSubview:self.editBar];
+    [self.editBar addSubview:self.selectAllButton];
+    [self.editBar addSubview:self.deleteButton];
+    [self.editBar setHidden:YES];
+}
+
 #pragma mark - 编辑按钮点击事件
 - (void)actionEdtit:(UIButton *)sender {
     sender.selected = !sender.isSelected;
@@ -135,6 +148,7 @@
                                           direction:UIPageViewControllerNavigationDirectionReverse
                                            animated:YES
                                          completion:nil];
+        [self.editBar setHidden:NO];
     } else {
         self.segmentedControl.hidden = NO;
         self.editTitleLabel.hidden = YES;
@@ -142,6 +156,7 @@
                                           direction:UIPageViewControllerNavigationDirectionForward
                                            animated:YES
                                          completion:nil];
+        [self.editBar setHidden:YES];
     }
     [self.favoriteVC editFavorites:sender.isSelected];
 }
@@ -242,6 +257,43 @@
     return  _playletVC;
 }
 
+- (UIView *)editBar {
+    if (!_editBar) {
+        _editBar = [[UIView alloc] init];
+        _editBar.backgroundColor = [UIColor blackColor];
+    }
+    return _editBar;
+}
+
+- (UIButton *)selectAllButton {
+    if (!_selectAllButton) {
+        _selectAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _selectAllButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [_selectAllButton setTitle:@"取消全选" forState:UIControlStateNormal];
+        [_selectAllButton setTitle:@"全选" forState:UIControlStateSelected];
+        [_selectAllButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_selectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [_selectAllButton addTarget:self action:@selector(selectAllAction:) forControlEvents:UIControlEventTouchUpInside];
+        _selectAllButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        _selectAllButton.selected = YES;
+    }
+    return _selectAllButton;
+}
+
+- (UIButton *)deleteButton {
+    if (!_deleteButton) {
+        _deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _deleteButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleteButton setTitle:@"删除" forState:UIControlStateSelected];
+        [_deleteButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [_deleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
+        _deleteButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    }
+    return _deleteButton;
+}
+
 - (void)segmentChanged:(UISegmentedControl *)sender {
     UIViewController *currentVC = self.pageViewController.viewControllers.firstObject;
     NSUInteger currentIndex = [self.pages indexOfObject:currentVC];
@@ -260,6 +312,18 @@
     }
     [self slideUnderline:targetIndex];
     [self setUpSegmentedBackColor:targetIndex];
+}
+
+- (void)selectAllAction:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    self.deleteButton.selected = !sender.isSelected;
+}
+
+- (void)deleteAction:(UIButton *)sender {
+    //    只有删除按钮是选中状态的时候才可以操作
+    if (sender.isSelected) {
+        
+    }
 }
 
 #pragma mark - UIPageViewControllerDelegate

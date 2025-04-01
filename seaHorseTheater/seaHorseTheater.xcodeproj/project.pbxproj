@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		182594152D894B4700B0AD44 /* SHTFavoritePlayletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */; };
+		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
 		721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */; };
 		721C67242D3CD8E400843445 /* SHTMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67232D3CD8E400843445 /* SHTMacros.m */; };
 		721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67272D3CDCC300843445 /* UIView+SHT.m */; };
@@ -29,6 +30,8 @@
 		0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.debug.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.debug.xcconfig"; sourceTree = "<group>"; };
 		182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletCell.h; sourceTree = "<group>"; };
 		182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletCell.m; sourceTree = "<group>"; };
+		18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletModel.h; sourceTree = "<group>"; };
+		18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletModel.m; sourceTree = "<group>"; };
 		31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-seaHorseTheater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		721C671D2D3CC87F00843445 /* AppDelegate+DJXDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DJXDelegate.h"; sourceTree = "<group>"; };
 		721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DJXDelegate.m"; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 		1825940D2D8949E500B0AD44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */,
+				18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
 				722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */,
 				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
+				18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,
 				72EB882E2D6D40430024DDBD /* SHTMineViewController.m in Sources */,
 				72EB882B2D6D3CE60024DDBD /* SHTTabBarController.m in Sources */,

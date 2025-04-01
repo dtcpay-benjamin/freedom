@@ -9,9 +9,12 @@
 #import <PangrowthDJX/DJXSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class SHTFavoritePlayletModel;
 
 @interface SHTFavoritePlayletCell : UICollectionViewCell
 @property(nonatomic, strong)DJXPlayletInfoModel *playletinfoModel;
+@property (nonatomic, assign) bool isEdit;
+@property (nonatomic, strong) SHTFavoritePlayletModel *favoriteModel;
 @end
 
 NS_ASSUME_NONNULL_END

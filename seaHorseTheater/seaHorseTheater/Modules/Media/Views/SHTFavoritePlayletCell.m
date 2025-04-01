@@ -7,6 +7,7 @@
 
 #import "SHTFavoritePlayletCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "SHTFavoritePlayletModel.h"
 
 @interface SHTFavoritePlayletCell()
 
@@ -14,6 +15,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UIActivityIndicatorView *loadingView;
+@property (nonatomic, strong) UIImageView *deleteImageView;
 
 @end
 
@@ -44,6 +46,7 @@
     self.imageView.frame = CGRectMake(0, 0, self.contentView.bounds.size.width, defaultHeight);
     self.titleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.imageView.frame) + 5, self.contentView.bounds.size.width - 10, 20);
     self.subtitleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.titleLabel.frame) + 2, self.contentView.bounds.size.width - 10, 18);
+    self.deleteImageView.frame = CGRectMake(self.contentView.bounds.size.width - 22 - 8, 8, 22, 22);
 }
 
 
@@ -51,9 +54,10 @@
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.subtitleLabel];
+    [self.contentView addSubview:self.deleteImageView];
 }
 
-- (void)setPlayletinfoModel:(DJXPlayletInfoModel *)playletinfoModel{
+- (void)setPlayletinfoModel:(DJXPlayletInfoModel *)playletinfoModel {
     _playletinfoModel = playletinfoModel;
     NSURL *url = [NSURL URLWithString:_playletinfoModel.cover_image];
     // 开始加载时展示 loadingView
@@ -80,6 +84,19 @@
     self.subtitleLabel.text = [NSString stringWithFormat:@"观看至%ld集",(long)_playletinfoModel.current_episode];
 }
 
+- (void)setIsEdit:(bool)isEdit {
+    _isEdit = isEdit;
+    self.deleteImageView.hidden = !_isEdit;
+}
+
+- (void)setFavoriteModel:(SHTFavoritePlayletModel *)favoriteModel{
+    _favoriteModel = favoriteModel;
+    if (favoriteModel.isSelected) {
+        self.deleteImageView.image = [UIImage imageNamed:@"selected"];
+    } else {
+        self.deleteImageView.image = [UIImage imageNamed:@"unselected"];
+    }
+}
 #pragma mark - 懒加载
 
 - (UIImageView *)imageView {
@@ -120,4 +137,13 @@
     }
     return _loadingView;
 }
+
+- (UIImageView *)deleteImageView {
+    if (!_deleteImageView) {
+        _deleteImageView = [[UIImageView alloc] init];
+        _deleteImageView.image = [UIImage imageNamed:@"unselected"];
+    }
+    return _deleteImageView;
+}
+
 @end
