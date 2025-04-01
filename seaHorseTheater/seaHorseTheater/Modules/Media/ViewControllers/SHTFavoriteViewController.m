@@ -145,19 +145,17 @@
 
 - (void)deleteFavoriteData {
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    NSMutableArray *tempArray1 = [[NSMutableArray alloc] init];
     for (int i = 0; i < self.favoriteDataSource.count; i++) {
         SHTFavoritePlayletModel *model = self.favoriteDataSource[i];
         if (model.isSelected == YES) {
             DJXPlayletInfoModel *infoModel = self.dataSource[i];
             [tempArray addObject:infoModel];
+            [tempArray1 addObject:model];
         }
     }
     [self.dataSource removeObjectsInArray:tempArray];
-    for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
-        if (model.isSelected == YES) {
-            [self.favoriteDataSource removeObject:model];
-        }
-    }
+    [self.favoriteDataSource removeObjectsInArray:tempArray1];
     [self.collectionView reloadData];
     [self requestDeleteFavorites];
 }

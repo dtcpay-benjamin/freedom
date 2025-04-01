@@ -318,9 +318,9 @@
     sender.selected = !sender.isSelected;
     self.deleteButton.selected = !sender.isSelected;
     if (sender.isSelected) {
-        [self.favoriteVC selectAllFavoriteData];
-    } else {
         [self.favoriteVC cancelSelectAllFavoriteData];
+    } else {
+        [self.favoriteVC selectAllFavoriteData];
     }
 }
 
