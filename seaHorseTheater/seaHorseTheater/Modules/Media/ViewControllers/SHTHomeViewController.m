@@ -156,6 +156,9 @@
                                           direction:UIPageViewControllerNavigationDirectionForward
                                            animated:YES
                                          completion:nil];
+        if (!self.selectAllButton.isSelected) {
+            [self selectAllAction:self.selectAllButton];
+        }
         [self.editBar setHidden:YES];
     }
     [self.favoriteVC editFavorites:sender.isSelected];
@@ -213,6 +216,10 @@
 - (SHTFavoriteViewController *)favoriteVC {
     if (!_favoriteVC) {
         _favoriteVC = [[SHTFavoriteViewController alloc] init];
+        _favoriteVC.selectActionCallBack = ^(_Bool isAllSelect) {
+           // 是否全选中
+            
+        };
     }
     return _favoriteVC;
 }
@@ -314,6 +321,7 @@
     [self setUpSegmentedBackColor:targetIndex];
 }
 
+#pragma mark - “全选按钮”点击事件
 - (void)selectAllAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     self.deleteButton.selected = !sender.isSelected;

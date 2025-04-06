@@ -13,12 +13,13 @@
 
 @interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, assign) NSInteger currentPage;
-@property (nonatomic, assign) BOOL hasMore;
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) NSMutableArray *favoriteDataSource;
-@property (nonatomic, assign) bool isEdit;
+@property (nonatomic, assign) NSInteger currentPage; // 当前请求页
+@property (nonatomic, assign) BOOL hasMore; // 是否还有更多
+@property (nonatomic, strong) UICollectionView *collectionView; // 收藏列表
+@property (nonatomic, strong) NSMutableArray *dataSource; // 短剧数据组
+@property (nonatomic, strong) NSMutableArray *favoriteDataSource; // 选中短剧记录数据组
+@property (nonatomic, assign) bool isEdit; // 是否在编辑
+@property (nonatomic, assign) bool isAllSelect; // 是否全选中
 
 @end
 
@@ -118,6 +119,10 @@
 
 - (void)editFavorites:(BOOL)isEdit {
     self.isEdit = isEdit;
+    self.isAllSelect = isEdit;
+    if (self.selectActionCallBack) {
+        self.selectActionCallBack(self.isAllSelect);
+    }
     if (!isEdit) {
         for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
             model.isSelected = NO;
@@ -200,6 +205,12 @@
     if (self.isEdit) {
         SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[indexPath.item];
         favoritePlayletModel.isSelected = !favoritePlayletModel.isSelected;
+        if (!favoritePlayletModel.isSelected) {
+            self.isAllSelect = NO;
+        }
+        if (self.selectActionCallBack) {
+            self.selectActionCallBack(self.isAllSelect);
+        }
         [collectionView reloadItemsAtIndexPaths:@[indexPath]];
     } else {
         DJXPlayletInfoModel *model = self.dataSource[indexPath.item];

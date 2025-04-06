@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface SHTFavoriteViewController : UIViewController
-
+@property (nonatomic, copy) void (^selectActionCallBack)(bool isAllSelect); // cell点击操作回调，是否全选
 // 编辑收藏
 - (void)editFavorites:(BOOL)isEdit;
 // 全选收藏数据
