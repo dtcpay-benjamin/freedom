@@ -21,12 +21,12 @@
 @property (nonatomic, strong) UIView *segmentedBackView; //标题栏背景
 @property (nonatomic, strong) UISegmentedControl *segmentedControl; //标题栏
 @property (nonatomic, strong) UILabel *editTitleLabel; //收藏编辑时候的标题栏
-@property (nonatomic, strong) UIButton *editBtn; //编辑按钮
+@property (nonatomic, strong) UIButton *favoriteEditBtn; //收藏标题栏编辑按钮
 @property (nonatomic, assign) NSUInteger currentIndex; //当前位置
 @property (nonatomic, assign) NSUInteger preIndex; //当前位置
-@property (nonatomic, strong) UIView *editBar;
-@property (nonatomic, strong) UIButton *selectAllButton;
-@property (nonatomic, strong) UIButton *deleteButton;
+@property (nonatomic, strong) UIView *favoriteEditBar; //收藏底部编辑栏
+@property (nonatomic, strong) UIButton *favoriteSelectAllButton; //收藏底部是否“全选”按钮
+@property (nonatomic, strong) UIButton *favoriteDeleteButton; //收藏底部删除按钮
 @end
 
 @implementation SHTHomeViewController
@@ -72,7 +72,7 @@
     [self.playletTheater didMoveToParentViewController:self.playletTheaterBgdVC];
     
     [self setupSegmentedControl];
-    [self setUpEditBar];
+    [self setUpfavoriteEditBar];
 }
 
 - (void)setupSegmentedControl {
@@ -115,7 +115,8 @@
     [self.view addSubview:self.segmentedBackView];
     [self.segmentedBackView addSubview:self.segmentedControl];
     [self.segmentedBackView addSubview:self.editTitleLabel];
-    [self.segmentedBackView addSubview:self.editBtn];
+    [self.segmentedBackView addSubview:self.favoriteEditBtn];
+    self.favoriteEditBtn.hidden = YES;
     [self.view bringSubviewToFront:self.segmentedBackView];
 }
 
@@ -127,14 +128,14 @@
     }
 }
 
-- (void)setUpEditBar {
-    self.editBar.frame = CGRectMake(0, SHTScreenHeight - SHT_tabBarHeight, SHTScreenWidth, SHT_tabBarHeight);
-    self.selectAllButton.frame = CGRectMake(80, 0, 80, 50);
-    self.deleteButton.frame = CGRectMake(SHTScreenWidth - 80 - 80, 0, 80, 50);
-    [self.view addSubview:self.editBar];
-    [self.editBar addSubview:self.selectAllButton];
-    [self.editBar addSubview:self.deleteButton];
-    [self.editBar setHidden:YES];
+- (void)setUpfavoriteEditBar {
+    self.favoriteEditBar.frame = CGRectMake(0, SHTScreenHeight - SHT_tabBarHeight, SHTScreenWidth, SHT_tabBarHeight);
+    self.favoriteSelectAllButton.frame = CGRectMake(80, 0, 80, 50);
+    self.favoriteDeleteButton.frame = CGRectMake(SHTScreenWidth - 80 - 80, 0, 80, 50);
+    [self.view addSubview:self.favoriteEditBar];
+    [self.favoriteEditBar addSubview:self.favoriteSelectAllButton];
+    [self.favoriteEditBar addSubview:self.favoriteDeleteButton];
+    [self.favoriteEditBar setHidden:YES];
 }
 
 #pragma mark - 编辑按钮点击事件
@@ -148,7 +149,8 @@
                                           direction:UIPageViewControllerNavigationDirectionReverse
                                            animated:YES
                                          completion:nil];
-        [self.editBar setHidden:NO];
+        [self.favoriteEditBar setHidden:NO];
+        [self enablePageControllerSliding:NO];
     } else {
         self.segmentedControl.hidden = NO;
         self.editTitleLabel.hidden = YES;
@@ -156,26 +158,38 @@
                                           direction:UIPageViewControllerNavigationDirectionForward
                                            animated:YES
                                          completion:nil];
-        self.selectAllButton.selected = NO;
-        self.deleteButton.selected = NO;
+        self.favoriteSelectAllButton.selected = NO;
+        self.favoriteDeleteButton.selected = NO;
         [self.favoriteVC cancelSelectAllFavoriteData];
-        [self.editBar setHidden:YES];
+        [self.favoriteEditBar setHidden:YES];
+        [self enablePageControllerSliding:YES];
     }
     [self.favoriteVC editFavorites:sender.isSelected];
 }
 
-- (UIButton *)editBtn {
-    if (!_editBtn) {
-        _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _editBtn.frame = CGRectMake(SHTScreenWidth - 60, SHT_STATUS_BAR_HEIGHT, 40, 40);
-        [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        [_editBtn setTitle:@"退出" forState:UIControlStateSelected];
-        [_editBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_editBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        _editBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-        [_editBtn addTarget:self action:@selector(actionEdtit:) forControlEvents:UIControlEventTouchUpInside];
+#pragma mark - 禁止或启动UIPageViewController滑动
+- (void)enablePageControllerSliding:(BOOL)enable{
+    for (UIView *view in self.pageViewController.view.subviews) {
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            UIScrollView *scrollView = (UIScrollView *)view;
+            scrollView.scrollEnabled = enable; //设置是否滑动
+            break;
+        }
     }
-    return _editBtn;
+}
+
+- (UIButton *)favoriteEditBtn {
+    if (!_favoriteEditBtn) {
+        _favoriteEditBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _favoriteEditBtn.frame = CGRectMake(SHTScreenWidth - 60, SHT_STATUS_BAR_HEIGHT, 40, 40);
+        [_favoriteEditBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [_favoriteEditBtn setTitle:@"退出" forState:UIControlStateSelected];
+        [_favoriteEditBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_favoriteEditBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        _favoriteEditBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        [_favoriteEditBtn addTarget:self action:@selector(actionEdtit:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _favoriteEditBtn;
 }
 
 - (UILabel *)editTitleLabel {
@@ -223,7 +237,7 @@
                 return;
             }
            // 是否全选中
-           strongSelf.selectAllButton.selected = isAllSelect;
+           strongSelf.favoriteSelectAllButton.selected = isAllSelect;
         };
     }
     return _favoriteVC;
@@ -269,40 +283,40 @@
     return  _playletVC;
 }
 
-- (UIView *)editBar {
-    if (!_editBar) {
-        _editBar = [[UIView alloc] init];
-        _editBar.backgroundColor = [UIColor blackColor];
+- (UIView *)favoriteEditBar {
+    if (!_favoriteEditBar) {
+        _favoriteEditBar = [[UIView alloc] init];
+        _favoriteEditBar.backgroundColor = [UIColor blackColor];
     }
-    return _editBar;
+    return _favoriteEditBar;
 }
 
-- (UIButton *)selectAllButton {
-    if (!_selectAllButton) {
-        _selectAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _selectAllButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_selectAllButton setTitle:@"全选" forState:UIControlStateNormal];
-        [_selectAllButton setTitle:@"取消全选" forState:UIControlStateSelected];
-        [_selectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_selectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [_selectAllButton addTarget:self action:@selector(selectAllAction:) forControlEvents:UIControlEventTouchUpInside];
-        _selectAllButton.titleLabel.font = [UIFont systemFontOfSize:16];
+- (UIButton *)favoriteSelectAllButton {
+    if (!_favoriteSelectAllButton) {
+        _favoriteSelectAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _favoriteSelectAllButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [_favoriteSelectAllButton setTitle:@"全选" forState:UIControlStateNormal];
+        [_favoriteSelectAllButton setTitle:@"取消全选" forState:UIControlStateSelected];
+        [_favoriteSelectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_favoriteSelectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [_favoriteSelectAllButton addTarget:self action:@selector(selectAllAction:) forControlEvents:UIControlEventTouchUpInside];
+        _favoriteSelectAllButton.titleLabel.font = [UIFont systemFontOfSize:16];
     }
-    return _selectAllButton;
+    return _favoriteSelectAllButton;
 }
 
-- (UIButton *)deleteButton {
-    if (!_deleteButton) {
-        _deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _deleteButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
-        [_deleteButton setTitle:@"删除" forState:UIControlStateSelected];
-        [_deleteButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [_deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [_deleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
-        _deleteButton.titleLabel.font = [UIFont systemFontOfSize:16];
+- (UIButton *)favoriteDeleteButton {
+    if (!_favoriteDeleteButton) {
+        _favoriteDeleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _favoriteDeleteButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [_favoriteDeleteButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_favoriteDeleteButton setTitle:@"删除" forState:UIControlStateSelected];
+        [_favoriteDeleteButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_favoriteDeleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [_favoriteDeleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
+        _favoriteDeleteButton.titleLabel.font = [UIFont systemFontOfSize:16];
     }
-    return _deleteButton;
+    return _favoriteDeleteButton;
 }
 
 - (void)segmentChanged:(UISegmentedControl *)sender {
@@ -318,17 +332,22 @@
                                       direction:direction
                                        animated:YES
                                      completion:nil];
-    if (!self.editBtn.isSelected) {
+    if (!self.favoriteEditBtn.isSelected) {
         self.currentIndex = targetIndex;
     }
     [self slideUnderline:targetIndex];
     [self setUpSegmentedBackColor:targetIndex];
+    if (targetIndex == 0) {
+        self.favoriteEditBtn.hidden = NO;
+    } else {
+        self.favoriteEditBtn.hidden = YES;
+    }
 }
 
 #pragma mark - “全选按钮”点击事件
 - (void)selectAllAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
-    self.deleteButton.selected = sender.isSelected;
+    self.favoriteDeleteButton.selected = sender.isSelected;
     if (sender.isSelected) {
         [self.favoriteVC selectAllFavoriteData];
     } else {
@@ -340,8 +359,8 @@
     // 只有删除按钮是选中状态的时候才可以操作
     if (sender.isSelected) {
         [self.favoriteVC deleteFavoriteData];
-        self.selectAllButton.selected = NO;
-        self.deleteButton.selected = NO;
+        self.favoriteSelectAllButton.selected = NO;
+        self.favoriteDeleteButton.selected = NO;
     }
 }
 
@@ -354,8 +373,13 @@
         NSUInteger index = [self.pages indexOfObject:currentVC];
         // 更新 UISegmentedControl 的选中项
         self.segmentedControl.selectedSegmentIndex = index;
-        if (!self.editBtn.isSelected) {
+        if (!self.favoriteEditBtn.isSelected) {
             self.currentIndex = index;
+        }
+        if (index == 0) {
+            self.favoriteEditBtn.hidden = NO;
+        } else {
+            self.favoriteEditBtn.hidden = YES;
         }
         [UIView animateWithDuration:0.25 animations:^{
             [self slideUnderline:index];
