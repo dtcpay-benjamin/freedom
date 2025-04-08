@@ -156,9 +156,9 @@
                                           direction:UIPageViewControllerNavigationDirectionForward
                                            animated:YES
                                          completion:nil];
-        if (!self.selectAllButton.isSelected) {
-            [self selectAllAction:self.selectAllButton];
-        }
+        self.selectAllButton.selected = NO;
+        self.deleteButton.selected = NO;
+        [self.favoriteVC cancelSelectAllFavoriteData];
         [self.editBar setHidden:YES];
     }
     [self.favoriteVC editFavorites:sender.isSelected];
@@ -216,9 +216,14 @@
 - (SHTFavoriteViewController *)favoriteVC {
     if (!_favoriteVC) {
         _favoriteVC = [[SHTFavoriteViewController alloc] init];
-        _favoriteVC.selectActionCallBack = ^(_Bool isAllSelect) {
+        __weak typeof(self) weakSelf = self;
+        _favoriteVC.selectActionCallBack = ^(bool isAllSelect) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (!strongSelf) {
+                return;
+            }
            // 是否全选中
-            
+           strongSelf.selectAllButton.selected = isAllSelect;
         };
     }
     return _favoriteVC;
@@ -276,13 +281,12 @@
     if (!_selectAllButton) {
         _selectAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _selectAllButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_selectAllButton setTitle:@"取消全选" forState:UIControlStateNormal];
-        [_selectAllButton setTitle:@"全选" forState:UIControlStateSelected];
-        [_selectAllButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_selectAllButton setTitle:@"全选" forState:UIControlStateNormal];
+        [_selectAllButton setTitle:@"取消全选" forState:UIControlStateSelected];
+        [_selectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_selectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [_selectAllButton addTarget:self action:@selector(selectAllAction:) forControlEvents:UIControlEventTouchUpInside];
         _selectAllButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        _selectAllButton.selected = YES;
     }
     return _selectAllButton;
 }
@@ -324,11 +328,11 @@
 #pragma mark - “全选按钮”点击事件
 - (void)selectAllAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
-    self.deleteButton.selected = !sender.isSelected;
+    self.deleteButton.selected = sender.isSelected;
     if (sender.isSelected) {
-        [self.favoriteVC cancelSelectAllFavoriteData];
-    } else {
         [self.favoriteVC selectAllFavoriteData];
+    } else {
+        [self.favoriteVC cancelSelectAllFavoriteData];
     }
 }
 
@@ -336,6 +340,8 @@
     // 只有删除按钮是选中状态的时候才可以操作
     if (sender.isSelected) {
         [self.favoriteVC deleteFavoriteData];
+        self.selectAllButton.selected = NO;
+        self.deleteButton.selected = NO;
     }
 }
 

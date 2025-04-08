@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *dataSource; // 短剧数据组
 @property (nonatomic, strong) NSMutableArray *favoriteDataSource; // 选中短剧记录数据组
 @property (nonatomic, assign) bool isEdit; // 是否在编辑
-@property (nonatomic, assign) bool isAllSelect; // 是否全选中
+@property (nonatomic, assign) bool isAllSelect; // 编辑-全选
 
 @end
 
@@ -62,7 +62,9 @@
         }
         [self.dataSource addObjectsFromArray:playletList];
         for (int i = 0; i < playletList.count; i++) {
-            [self.favoriteDataSource addObject:[[SHTFavoritePlayletModel alloc] init]];
+            SHTFavoritePlayletModel *favoritePlayletModel = [[SHTFavoritePlayletModel alloc] init];
+            favoritePlayletModel.isSelected = self.isAllSelect;
+            [self.favoriteDataSource addObject:favoritePlayletModel];
         }
         self.hasMore = hasMore;
         [self.collectionView reloadData];
@@ -119,10 +121,6 @@
 
 - (void)editFavorites:(BOOL)isEdit {
     self.isEdit = isEdit;
-    self.isAllSelect = isEdit;
-    if (self.selectActionCallBack) {
-        self.selectActionCallBack(self.isAllSelect);
-    }
     if (!isEdit) {
         for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
             model.isSelected = NO;
@@ -138,6 +136,7 @@
     for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
         model.isSelected = YES;
     }
+    self.isAllSelect = YES;
     [self.collectionView reloadData];
 }
 
@@ -145,6 +144,7 @@
     for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
         model.isSelected = NO;
     }
+    self.isAllSelect = NO;
     [self.collectionView reloadData];
 }
 
@@ -167,6 +167,20 @@
 
 - (void)requestDeleteFavorites {
     
+}
+
+// 是否是全选的检测与赋值
+- (void)selectAllAssignment {
+    bool isAllSelect = YES;
+    for (int i = 0; i < self.favoriteDataSource.count; i++) {
+        SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[i];
+        if (!favoritePlayletModel.isSelected) {
+            isAllSelect = NO;
+        }
+    }
+    if (self.selectActionCallBack) {
+        self.selectActionCallBack(isAllSelect);
+    }
 }
 
 - (NSMutableArray *)dataSource {
@@ -205,12 +219,7 @@
     if (self.isEdit) {
         SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[indexPath.item];
         favoritePlayletModel.isSelected = !favoritePlayletModel.isSelected;
-        if (!favoritePlayletModel.isSelected) {
-            self.isAllSelect = NO;
-        }
-        if (self.selectActionCallBack) {
-            self.selectActionCallBack(self.isAllSelect);
-        }
+        [self selectAllAssignment];
         [collectionView reloadItemsAtIndexPaths:@[indexPath]];
     } else {
         DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
