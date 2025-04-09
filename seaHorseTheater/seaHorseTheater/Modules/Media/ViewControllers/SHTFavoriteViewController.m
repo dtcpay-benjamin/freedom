@@ -10,6 +10,7 @@
 #import "SHTFavoritePlayletCell.h"
 #import <MJRefresh/MJRefresh.h>
 #import "SHTFavoritePlayletModel.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -52,7 +53,7 @@
 
 // 获取收藏的短剧数据
 - (void)requestCollection {
-    NSInteger pageSize = 10;
+    NSInteger pageSize = 6;
     [[DJXPlayletManager shareInstance] requestCollectionList:self.currentPage pageSize:pageSize success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
         NSLog(@"获取收藏短剧列表:%@, 是否还有更多:%d", playletList, hasMore);
         // 刷新 or 加载更多
@@ -162,25 +163,87 @@
     [self.dataSource removeObjectsInArray:tempArray];
     [self.favoriteDataSource removeObjectsInArray:tempArray1];
     [self.collectionView reloadData];
-    [self requestDeleteFavorites];
+    [self requestDeleteFavoritesInBatches:tempArray maxConcurrent:6 completion:^{
+        // 重置是否全选的状态
+        self.isAllSelect = [self selectAllAssignment];
+    }];
 }
 
-- (void)requestDeleteFavorites {
+#pragma mark - 删除收藏短剧请求
+- (void)requestDeleteFavoritesInBatches:(NSArray<DJXPlayletInfoModel *> *)favoriteDatas
+                        maxConcurrent:(NSInteger)maxConcurrent
+                           completion:(void (^)(void))completion {
     
+    if (favoriteDatas.count == 0) {
+        if (completion) completion();
+        return;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    });
+
+    // 分片处理，每次取 maxConcurrent 条
+    NSUInteger total = favoriteDatas.count;
+    __block NSUInteger currentIndex = 0;
+
+    void (^processNextBatch)(void);
+    __block void (^__weak weakProcessNextBatch)(void);
+    weakProcessNextBatch = processNextBatch = ^{
+        __block void (^__strong strongProcessNextBatch)(void) = weakProcessNextBatch;
+        if (currentIndex >= total) {
+            // 所有批次处理完毕
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                if (completion) completion();
+            });
+            return;
+        }
+
+        NSUInteger batchEnd = MIN(currentIndex + maxConcurrent, total);
+        NSArray *batch = [favoriteDatas subarrayWithRange:NSMakeRange(currentIndex, batchEnd - currentIndex)];
+        currentIndex = batchEnd;
+
+        // 并发删除当前 batch
+        dispatch_group_t group = dispatch_group_create();
+        for (DJXPlayletInfoModel *infoModel in batch) {
+            dispatch_group_enter(group);
+            [[DJXPlayletManager shareInstance] cancelCollectShortplay:infoModel.shortplay_id success:^{
+                NSLog(@"✅ 删除成功：%ld", (long)infoModel.shortplay_id);
+                dispatch_group_leave(group);
+            } failure:^(NSError *error) {
+                NSLog(@"❌ 删除失败：%ld 错误：%@", (long)infoModel.shortplay_id, error);
+                dispatch_group_leave(group);
+            }];
+        }
+
+        // 等当前 batch 完成后处理下一个 batch
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            NSLog(@"🚩 当前批次完成，处理下一批...");
+            strongProcessNextBatch(); // 调用下一批
+        });
+    };
+
+    processNextBatch(); // 启动第一个批次
 }
 
 // 是否是全选的检测与赋值
-- (void)selectAllAssignment {
+- (bool)selectAllAssignment {
     bool isAllSelect = YES;
-    for (int i = 0; i < self.favoriteDataSource.count; i++) {
-        SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[i];
-        if (!favoritePlayletModel.isSelected) {
-            isAllSelect = NO;
+    if (self.favoriteDataSource.count > 0) {
+        for (int i = 0; i < self.favoriteDataSource.count; i++) {
+            SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[i];
+            if (!favoritePlayletModel.isSelected) {
+                isAllSelect = NO;
+            }
         }
+    } else {
+        isAllSelect = NO;
     }
     if (self.selectActionCallBack) {
         self.selectActionCallBack(isAllSelect);
     }
+    return isAllSelect;
 }
 
 - (NSMutableArray *)dataSource {
