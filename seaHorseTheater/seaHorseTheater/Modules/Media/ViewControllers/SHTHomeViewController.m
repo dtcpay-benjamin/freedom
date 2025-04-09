@@ -8,6 +8,7 @@
 #import "SHTHomeViewController.h"
 #import <PangrowthDJX/DJXSDK.h>
 #import "SHTFavoriteViewController.h"
+#import "SHTAlertHelper.h"
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -231,13 +232,41 @@
     if (!_favoriteVC) {
         _favoriteVC = [[SHTFavoriteViewController alloc] init];
         __weak typeof(self) weakSelf = self;
-        _favoriteVC.selectActionCallBack = ^(bool isAllSelect) {
+        _favoriteVC.selectActionCallBack = ^(bool isAllSelect, bool isSomeSelect) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             if (!strongSelf) {
                 return;
             }
            // 是否全选中
            strongSelf.favoriteSelectAllButton.selected = isAllSelect;
+            strongSelf.favoriteDeleteButton.selected = isSomeSelect;
+        };
+        
+        _favoriteVC.contentDetectionCallBack = ^(bool isEmpty) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (isEmpty) {
+                // 没有收藏数据则隐藏编辑按钮
+                strongSelf.favoriteEditBtn.hidden = YES;
+                if (strongSelf.favoriteEditBtn.isSelected) {
+                    [strongSelf actionEdtit:strongSelf.favoriteEditBtn];
+                }
+            } else {
+                strongSelf.favoriteEditBtn.hidden = NO;
+            }
+        };
+        
+        _favoriteVC.goToDramaMarketCallBack = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            UIPageViewControllerNavigationDirection direction = UIPageViewControllerNavigationDirectionForward;
+            [strongSelf.pageViewController setViewControllers:@[strongSelf.pages[2]]
+                                              direction:direction
+                                               animated:YES
+                                             completion:nil];
+            [UIView animateWithDuration:0.25 animations:^{
+                strongSelf.segmentedControl.selectedSegmentIndex = 2;
+                [strongSelf slideUnderline:2];
+                [strongSelf setUpSegmentedBackColor:2];
+            }];
         };
     }
     return _favoriteVC;
@@ -337,9 +366,7 @@
     }
     [self slideUnderline:targetIndex];
     [self setUpSegmentedBackColor:targetIndex];
-    if (targetIndex == 0) {
-        self.favoriteEditBtn.hidden = NO;
-    } else {
+    if (targetIndex != 0) {
         self.favoriteEditBtn.hidden = YES;
     }
 }
@@ -358,9 +385,16 @@
 - (void)deleteAction:(UIButton *)sender {
     // 只有删除按钮是选中状态的时候才可以操作
     if (sender.isSelected) {
-        [self.favoriteVC deleteFavoriteData];
-        self.favoriteSelectAllButton.selected = NO;
-        self.favoriteDeleteButton.selected = NO;
+        [SHTAlertHelper showAlertWithTitle:@"提示"
+                                   message:@"确认要删除收藏记录吗？"
+                             cancelBtnText:nil
+                            confirmBtnText:nil
+                             inController:nil
+                              cancelAction:nil confirmAction:^{
+            [self.favoriteVC deleteFavoriteData];
+            self.favoriteSelectAllButton.selected = NO;
+            self.favoriteDeleteButton.selected = NO;
+        }];
     }
 }
 
@@ -376,9 +410,7 @@
         if (!self.favoriteEditBtn.isSelected) {
             self.currentIndex = index;
         }
-        if (index == 0) {
-            self.favoriteEditBtn.hidden = NO;
-        } else {
+        if (index != 0) {
             self.favoriteEditBtn.hidden = YES;
         }
         [UIView animateWithDuration:0.25 animations:^{

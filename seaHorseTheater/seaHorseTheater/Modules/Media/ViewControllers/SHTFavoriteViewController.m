@@ -11,12 +11,14 @@
 #import <MJRefresh/MJRefresh.h>
 #import "SHTFavoritePlayletModel.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "SHTEmptyPlaceholderView.h"
 
 @interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, assign) NSInteger currentPage; // 当前请求页
 @property (nonatomic, assign) BOOL hasMore; // 是否还有更多
 @property (nonatomic, strong) UICollectionView *collectionView; // 收藏列表
+@property (nonatomic, strong) SHTEmptyPlaceholderView *emptyView; // 空数据站位
 @property (nonatomic, strong) NSMutableArray *dataSource; // 短剧数据组
 @property (nonatomic, strong) NSMutableArray *favoriteDataSource; // 选中短剧记录数据组
 @property (nonatomic, assign) bool isEdit; // 是否在编辑
@@ -41,7 +43,7 @@
     __weak typeof(self) weakSelf = self;
     // 下拉刷新
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.currentPage = 0;
+        weakSelf.currentPage = 1;
         [weakSelf requestCollection];
     }];
     // 上拉加载更多
@@ -56,10 +58,13 @@
     NSInteger pageSize = 6;
     [[DJXPlayletManager shareInstance] requestCollectionList:self.currentPage pageSize:pageSize success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
         NSLog(@"获取收藏短剧列表:%@, 是否还有更多:%d", playletList, hasMore);
+        NSArray *shortplayIdArray = [playletList valueForKey:@"shortplay_id"];
+        NSLog(@"收藏短剧id列表:%@", shortplayIdArray);
         // 刷新 or 加载更多
-        if (self.currentPage == 0) {
+        if (self.currentPage == 1) {
             [self.dataSource removeAllObjects];
             [self.favoriteDataSource removeAllObjects];
+            [self selectAllAssignment];
         }
         [self.dataSource addObjectsFromArray:playletList];
         for (int i = 0; i < playletList.count; i++) {
@@ -80,12 +85,27 @@
         } else {
             [self.collectionView.mj_footer resetNoMoreData];
         }
-        
+        [self checkEmpty];
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"获取收藏短剧列表报错error:%@", error);
         [self.collectionView.mj_header endRefreshing];
         [self.collectionView.mj_footer endRefreshing];
     }];
+}
+
+- (void)checkEmpty {
+    bool isEmpty = NO;
+    if (self.dataSource.count == 0) {
+        self.collectionView.hidden = YES;
+        self.emptyView.hidden = NO;
+        isEmpty = YES;
+    } else {
+        self.collectionView.hidden = NO;
+        self.emptyView.hidden = YES;
+    }
+    if (self.contentDetectionCallBack) {
+        self.contentDetectionCallBack(isEmpty);
+    }
 }
 
 - (void)configCollectionView {
@@ -102,6 +122,25 @@
     [self setupRefresh];
 }
 
+- (SHTEmptyPlaceholderView *)emptyView {
+    if (!_emptyView) {
+        _emptyView = [[SHTEmptyPlaceholderView alloc] init];
+        __weak typeof(self) weakSelf = self;
+        _emptyView = [[SHTEmptyPlaceholderView alloc] initWithFrame:self.view.bounds
+                                                          imageName:nil
+                                                                                     message:@"暂无内容"
+                                                                                 buttonTitle:@"去剧场"
+                                                                                 actionBlock:^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            // 去剧场
+            if (strongSelf.goToDramaMarketCallBack) {
+                strongSelf.goToDramaMarketCallBack();
+            }
+        }];
+        [self.view addSubview:_emptyView];
+    }
+    return _emptyView;
+}
 
 - (void)enterPlayer:(DJXPlayletInfoModel *)infoModel {
     DJXDrawVideoViewController *vc = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
@@ -165,8 +204,10 @@
     [self.collectionView reloadData];
     [self requestDeleteFavoritesInBatches:tempArray maxConcurrent:6 completion:^{
         // 重置是否全选的状态
-        self.isAllSelect = [self selectAllAssignment];
+        [self selectAllAssignment];
+        [self checkEmpty];
     }];
+
 }
 
 #pragma mark - 删除收藏短剧请求
@@ -228,22 +269,26 @@
 }
 
 // 是否是全选的检测与赋值
-- (bool)selectAllAssignment {
+- (void)selectAllAssignment {
     bool isAllSelect = YES;
+    bool isSomeSelect = NO;
     if (self.favoriteDataSource.count > 0) {
         for (int i = 0; i < self.favoriteDataSource.count; i++) {
             SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[i];
             if (!favoritePlayletModel.isSelected) {
                 isAllSelect = NO;
             }
+            if (favoritePlayletModel.isSelected) {
+                isSomeSelect = YES;
+            }
         }
     } else {
         isAllSelect = NO;
     }
+    self.isAllSelect = isAllSelect;
     if (self.selectActionCallBack) {
-        self.selectActionCallBack(isAllSelect);
+        self.selectActionCallBack(isAllSelect, isSomeSelect);
     }
-    return isAllSelect;
 }
 
 - (NSMutableArray *)dataSource {
