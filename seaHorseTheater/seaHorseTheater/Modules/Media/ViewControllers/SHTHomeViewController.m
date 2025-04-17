@@ -295,7 +295,7 @@
     return _playletTheater;
 }
 
-/// 初始化短剧滑滑流
+#pragma mark - 初始化短剧滑滑流
 - (DJXDrawVideoViewController *)playletVC {
     if (!_playletVC) {
         _playletVC = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
@@ -307,6 +307,8 @@
             config.viewSize = CGSizeMake(SHTScreenWidth, SHTScreenHeight - SHT_tabBarHeight);
             config.shouldHideTabBarView = YES;
             config.playletConfig = playletConfig;
+            // 隐藏收藏按钮,用自定的
+            config.hideCollectIcon = YES;
         }];
     }
     return  _playletVC;
