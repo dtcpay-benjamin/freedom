@@ -9,8 +9,9 @@
 #import <PangrowthDJX/DJXSDK.h>
 #import "SHTFavoriteViewController.h"
 #import "SHTAlertHelper.h"
+#import "SHTDrawVideoCollectView.h"
 
-@interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, DJXDrawVideoCellAddSubviewDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) UIViewController *favoriteBgdVC;
 @property (nonatomic, strong) SHTFavoriteViewController *favoriteVC; //短剧收藏页
@@ -268,6 +269,11 @@
                 [strongSelf setUpSegmentedBackColor:2];
             }];
         };
+        
+        _favoriteVC.deleteActionCompletion = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf.playletVC refreshDataWithCompletion:nil];
+        };
     }
     return _favoriteVC;
 }
@@ -307,8 +313,9 @@
             config.viewSize = CGSizeMake(SHTScreenWidth, SHTScreenHeight - SHT_tabBarHeight);
             config.shouldHideTabBarView = YES;
             config.playletConfig = playletConfig;
-            // 隐藏收藏按钮,用自定的
+            // 隐藏收藏按钮,用自定义的
             config.hideCollectIcon = YES;
+            config.drawVideoCellAddSubviewDelegate = self;
         }];
     }
     return  _playletVC;
@@ -436,4 +443,35 @@
     return self.pages[index + 1];
 }
 
+#pragma mark - DJXDrawVideoCellAddSubviewDelegate
+
+- (UIView *)djx_drawVideoCellSubview:(UITableViewCell *)cell {
+    //     自定义收藏按钮
+    SHTDrawVideoCollectView *collectView = [[SHTDrawVideoCollectView alloc] init];
+    collectView.backgroundColor = [UIColor clearColor];
+    return collectView;
+}
+
+- (void)djx_drawVideoCell:(UITableViewCell *)cell layoutSubviews:(UIView *)subview{
+    subview.frame = CGRectMake(0.0, 80.0, 40.0, 56.0);
+    Class viewClass = NSClassFromString(@"DJXDrawSideInteractArea");
+    for (UIView *view in cell.contentView.subviews) {
+        if ([view isKindOfClass:viewClass]) {
+            view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, 136.0);
+            [view addSubview:subview];
+            break;
+        }
+    }
+}
+
+- (void)djx_drawVideoCell:(UITableViewCell *)cell updateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel {
+    SHTDrawVideoCollectView *collectView = (SHTDrawVideoCollectView *)subview;
+    collectView.collectActionCallBack = ^(BOOL isCollect) {
+        if (isCollect) {
+            [[DJXPlayletManager shareInstance] collectShortplay:playletInfoModel.shortplay_id success:nil failure:nil];
+        } else {
+            [[DJXPlayletManager shareInstance] cancelCollectShortplay:playletInfoModel.shortplay_id success:nil failure:nil];
+        }
+    };
+}
 @end

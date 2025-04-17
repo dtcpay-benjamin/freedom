@@ -206,6 +206,9 @@
         // 重置是否全选的状态
         [self selectAllAssignment];
         [self checkEmpty];
+        if (self.deleteActionCompletion) {
+            self.deleteActionCompletion();
+        }
     }];
 
 }

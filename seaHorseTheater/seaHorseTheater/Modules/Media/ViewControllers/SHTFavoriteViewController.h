@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface SHTFavoriteViewController : UIViewController
+@property(nonatomic, copy) void (^deleteActionCompletion)(void); // 删除完成回调
 @property (nonatomic, copy) void (^selectActionCallBack)(bool isAllSelect, bool isSomeSelect); // cell点击操作回调，是否全选
 @property (nonatomic, copy) void (^contentDetectionCallBack)(bool isEmpty); // 收藏剧场是否为空回调
 @property (nonatomic, copy) void (^goToDramaMarketCallBack)(void); // 去剧场回调
