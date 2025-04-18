@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, copy) void (^collectActionCallBack)(BOOL isCollect);
 
+// 设置收藏状态
+- (void)setStatus:(NSInteger)favorite_state;
 @end
 
 NS_ASSUME_NONNULL_END

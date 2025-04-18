@@ -36,6 +36,16 @@
 
 #pragma mark - actions
 
+- (void)setStatus:(NSInteger)favorite_state {
+    if (favorite_state == 1) {
+        self.collectBtn.selected = YES;
+        self.collectLabel.text = @"已收藏";
+    } else {
+        self.collectBtn.selected = NO;
+        self.collectLabel.text = @"收藏";
+    }
+}
+
 - (void)collectAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     if (sender.isSelected) {

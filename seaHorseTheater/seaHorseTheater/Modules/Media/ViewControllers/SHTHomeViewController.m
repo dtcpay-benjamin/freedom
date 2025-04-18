@@ -29,6 +29,8 @@
 @property (nonatomic, strong) UIView *favoriteEditBar; //收藏底部编辑栏
 @property (nonatomic, strong) UIButton *favoriteSelectAllButton; //收藏底部是否“全选”按钮
 @property (nonatomic, strong) UIButton *favoriteDeleteButton; //收藏底部删除按钮
+@property (nonatomic, strong) NSMutableArray *drawVideosArrays; //滑滑流已展示数据数组
+@property (nonatomic, strong) NSMutableArray *drawFavoriteArrays; //滑滑流已收藏数据数组
 @end
 
 @implementation SHTHomeViewController
@@ -301,7 +303,10 @@
     return _playletTheater;
 }
 
+#pragma mark - 懒加载
+
 #pragma mark - 初始化短剧滑滑流
+
 - (DJXDrawVideoViewController *)playletVC {
     if (!_playletVC) {
         _playletVC = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
@@ -357,6 +362,20 @@
     return _favoriteDeleteButton;
 }
 
+- (NSMutableArray *)drawVideosArrays {
+    if (!_drawVideosArrays) {
+        _drawVideosArrays = [[NSMutableArray alloc] init];
+    }
+    return _drawVideosArrays;
+}
+
+- (NSMutableArray *)drawFavoriteArrays {
+    if (!_drawFavoriteArrays) {
+        _drawFavoriteArrays = [[NSMutableArray alloc] init];
+    }
+    return _drawFavoriteArrays;
+}
+
 - (void)segmentChanged:(UISegmentedControl *)sender {
     UIViewController *currentVC = self.pageViewController.viewControllers.firstObject;
     NSUInteger currentIndex = [self.pages indexOfObject:currentVC];
@@ -407,6 +426,24 @@
     }
 }
 
+// 滑滑流数据是否添加到数组过，如果有则添加
+- (void)drawVideosAddDrawPlayletInfo:(DJXPlayletInfoModel *)playletInfoModel {
+    if ([self isAddToDrawVideos:playletInfoModel]) {
+        [self.drawVideosArrays addObject:playletInfoModel];
+    }
+}
+
+// 是否要添加到数组过
+- (BOOL)isAddToDrawVideos:(DJXPlayletInfoModel *)playletInfoModel {
+    BOOL isAdd = YES;
+    for (DJXPlayletInfoModel *model in self.drawVideosArrays) {
+        if (model.shortplay_id == playletInfoModel.shortplay_id) {
+            isAdd = NO;
+        }
+    }
+    return isAdd;
+}
+
 #pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
@@ -449,6 +486,7 @@
     //     自定义收藏按钮
     SHTDrawVideoCollectView *collectView = [[SHTDrawVideoCollectView alloc] init];
     collectView.backgroundColor = [UIColor clearColor];
+    NSLog(@"cell重用标识符:%@", cell.reuseIdentifier);
     return collectView;
 }
 
@@ -466,11 +504,24 @@
 
 - (void)djx_drawVideoCell:(UITableViewCell *)cell updateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel {
     SHTDrawVideoCollectView *collectView = (SHTDrawVideoCollectView *)subview;
+    [collectView setStatus:playletInfoModel.favorite_state];
+    [self drawVideosAddDrawPlayletInfo:playletInfoModel];
+    NSLog(@"当前短剧:(%@)-id:%ld-收藏状态:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id, (long)playletInfoModel.favorite_state);
     collectView.collectActionCallBack = ^(BOOL isCollect) {
         if (isCollect) {
-            [[DJXPlayletManager shareInstance] collectShortplay:playletInfoModel.shortplay_id success:nil failure:nil];
+            // 收藏短剧
+            [[DJXPlayletManager shareInstance] collectShortplay:playletInfoModel.shortplay_id success:^{
+                NSLog(@"短剧:(%@)收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
+            } failure:^(NSError * _Nonnull error) {
+                NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
+            }];
         } else {
-            [[DJXPlayletManager shareInstance] cancelCollectShortplay:playletInfoModel.shortplay_id success:nil failure:nil];
+            // 取消收藏短剧
+            [[DJXPlayletManager shareInstance] cancelCollectShortplay:playletInfoModel.shortplay_id success:^{
+                NSLog(@"短剧:(%@)取消收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
+            } failure:^(NSError * _Nonnull error) {
+                NSLog(@"短剧:(%@)取消收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
+            }];
         }
     };
 }
