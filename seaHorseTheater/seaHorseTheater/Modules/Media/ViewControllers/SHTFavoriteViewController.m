@@ -207,7 +207,7 @@
         [self selectAllAssignment];
         [self checkEmpty];
         if (self.deleteActionCompletion) {
-            self.deleteActionCompletion();
+            self.deleteActionCompletion(tempArray);
         }
     }];
 

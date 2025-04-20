@@ -31,6 +31,7 @@
 @property (nonatomic, strong) UIButton *favoriteDeleteButton; //收藏底部删除按钮
 @property (nonatomic, strong) NSMutableArray *drawVideosArrays; //滑滑流已展示数据数组
 @property (nonatomic, strong) NSMutableArray *drawFavoriteArrays; //滑滑流已收藏数据数组
+@property (nonatomic, strong) SHTDrawVideoCollectView *currentCollectView;
 @end
 
 @implementation SHTHomeViewController
@@ -272,9 +273,9 @@
             }];
         };
         
-        _favoriteVC.deleteActionCompletion = ^{
+        _favoriteVC.deleteActionCompletion = ^(NSArray *deleteArray){
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            [strongSelf.playletVC refreshDataWithCompletion:nil];
+            [strongSelf deleteFavorites:deleteArray];
         };
     }
     return _favoriteVC;
@@ -303,8 +304,6 @@
     return _playletTheater;
 }
 
-#pragma mark - 懒加载
-
 #pragma mark - 初始化短剧滑滑流
 
 - (DJXDrawVideoViewController *)playletVC {
@@ -325,7 +324,8 @@
     }
     return  _playletVC;
 }
-
+#pragma mark - 懒加载
+    
 - (UIView *)favoriteEditBar {
     if (!_favoriteEditBar) {
         _favoriteEditBar = [[UIView alloc] init];
@@ -433,7 +433,7 @@
     }
 }
 
-// 是否要添加到数组过
+// 是否要添加到数组
 - (BOOL)isAddToDrawVideos:(DJXPlayletInfoModel *)playletInfoModel {
     BOOL isAdd = YES;
     for (DJXPlayletInfoModel *model in self.drawVideosArrays) {
@@ -444,6 +444,52 @@
     return isAdd;
 }
 
+// 添加收藏短剧到数组
+- (void)addDrawPlayletInfoToFavorites:(DJXPlayletInfoModel *)playletInfoModel {
+    if ([self isAddToFavorites:playletInfoModel]) {
+        [self.drawFavoriteArrays addObject:playletInfoModel];
+    }
+}
+
+// 从收藏数组删除收藏短剧
+- (void)deleteDrawPlayletInfoFromFavorites:(DJXPlayletInfoModel *)playletInfoModel {
+    if (![self isAddToFavorites:playletInfoModel]) {
+        [self.drawFavoriteArrays removeObject:playletInfoModel];
+    }
+}
+
+
+// 是否要添加到收藏数组
+- (BOOL)isAddToFavorites:(DJXPlayletInfoModel *)playletInfoModel {
+    BOOL isAdd = YES;
+    for (DJXPlayletInfoModel *model in self.drawFavoriteArrays) {
+        if (model.shortplay_id == playletInfoModel.shortplay_id) {
+            isAdd = NO;
+        }
+    }
+    return isAdd;
+}
+
+// 从收藏数组删除已删除的收藏数据
+- (void)deleteFavorites:(NSArray *)deleteArray {
+    BOOL isCurrent = NO;
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    for (DJXPlayletInfoModel *model in deleteArray) {
+        if (self.currentCollectView.shortplay_id == model.shortplay_id) {
+            isCurrent = YES;
+        }
+        for (DJXPlayletInfoModel *favorite in self.drawFavoriteArrays) {
+            if (favorite.shortplay_id == model.shortplay_id) {
+                [tempArray addObject:favorite];
+            }
+        }
+    }
+    if (isCurrent == YES) {
+        [self.currentCollectView setStatus:0];
+    }
+    [self.drawFavoriteArrays removeObjectsInArray:tempArray];
+}
+    
 #pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
@@ -504,14 +550,21 @@
 
 - (void)djx_drawVideoCell:(UITableViewCell *)cell updateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel {
     SHTDrawVideoCollectView *collectView = (SHTDrawVideoCollectView *)subview;
-    [collectView setStatus:playletInfoModel.favorite_state];
+    collectView.shortplay_id = playletInfoModel.shortplay_id; //短剧ID
+    NSInteger favoriteState = playletInfoModel.favorite_state;
+    if (![self isAddToFavorites:playletInfoModel]) {
+        favoriteState = 1;
+    }
+    [collectView setStatus:favoriteState];
     [self drawVideosAddDrawPlayletInfo:playletInfoModel];
     NSLog(@"当前短剧:(%@)-id:%ld-收藏状态:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id, (long)playletInfoModel.favorite_state);
+    self.currentCollectView = collectView;
     collectView.collectActionCallBack = ^(BOOL isCollect) {
         if (isCollect) {
             // 收藏短剧
             [[DJXPlayletManager shareInstance] collectShortplay:playletInfoModel.shortplay_id success:^{
                 NSLog(@"短剧:(%@)收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
+                [self addDrawPlayletInfoToFavorites:playletInfoModel];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
@@ -519,6 +572,7 @@
             // 取消收藏短剧
             [[DJXPlayletManager shareInstance] cancelCollectShortplay:playletInfoModel.shortplay_id success:^{
                 NSLog(@"短剧:(%@)取消收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
+                [self deleteDrawPlayletInfoFromFavorites:playletInfoModel];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)取消收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];

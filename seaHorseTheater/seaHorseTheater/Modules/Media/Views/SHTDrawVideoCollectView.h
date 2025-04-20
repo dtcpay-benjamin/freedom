@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHTDrawVideoCollectView : UIView
 
+@property (nonatomic, assign) NSInteger shortplay_id;            // 短剧ID
 @property(nonatomic, copy) void (^collectActionCallBack)(BOOL isCollect);
 
 // 设置收藏状态
