@@ -6,12 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PangrowthDJX/DJXSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SHTDrawVideoCollectView : UIView
-
-@property (nonatomic, assign) NSInteger shortplay_id;            // 短剧ID
+@property (nonatomic, strong) DJXPlayletInfoModel *playletInfoModel;
 @property(nonatomic, copy) void (^collectActionCallBack)(BOOL isCollect);
 
 // 设置收藏状态

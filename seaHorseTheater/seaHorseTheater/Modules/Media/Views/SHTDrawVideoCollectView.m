@@ -36,22 +36,44 @@
 
 #pragma mark - actions
 
+- (void)setPlayletInfoModel:(DJXPlayletInfoModel *)playletInfoModel {
+    _playletInfoModel = playletInfoModel;
+}
+
 - (void)setStatus:(NSInteger)favorite_state {
     if (favorite_state == 1) {
         self.collectBtn.selected = YES;
-        self.collectLabel.text = @"已收藏";
+        [self updateFavoriteCountLabel];
     } else {
         self.collectBtn.selected = NO;
         self.collectLabel.text = @"收藏";
     }
 }
 
+- (void)updateFavoriteCountLabel {
+    NSString *displayText = @"";
+    if (self.playletInfoModel.favorite_count >= 100000000) {
+        // 超过一亿，保留1位小数，单位“亿”
+        CGFloat billion = self.playletInfoModel.favorite_count / 100000000.0;
+        displayText = [NSString stringWithFormat:@"%.1f亿", billion];
+    } else if (self.playletInfoModel.favorite_count >= 10000) {
+        // 超过一万，保留1位小数，单位“万”
+        CGFloat tenThousand = self.playletInfoModel.favorite_count / 10000.0;
+        displayText = [NSString stringWithFormat:@"%.1f万", tenThousand];
+    } else {
+        // 不足一万，直接显示整数
+        displayText = [NSString stringWithFormat:@"%ld", (long)self.playletInfoModel.favorite_count];
+    }
+    self.collectLabel.text = displayText;
+}
+
 - (void)collectAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     if (sender.isSelected) {
-        self.collectLabel.text = @"已收藏";
+        [self updateFavoriteCountLabel];
     } else {
         self.collectLabel.text = @"收藏";
+
     }
     if (self.collectActionCallBack) {
         self.collectActionCallBack(sender.isSelected);
