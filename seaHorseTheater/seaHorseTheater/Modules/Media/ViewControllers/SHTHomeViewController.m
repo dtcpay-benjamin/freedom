@@ -231,6 +231,11 @@
             __strong typeof(weakSelf) strongSelf = weakSelf;
             [strongSelf deleteFavorites:deleteArray];
         };
+        
+        _favoriteVC.cellLongPressHandler = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf actionEdtit:strongSelf.favoriteEditBtn];
+        };
     }
     return _favoriteVC;
 }

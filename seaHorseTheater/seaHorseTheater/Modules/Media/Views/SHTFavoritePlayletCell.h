@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class SHTFavoritePlayletModel;
 
 @interface SHTFavoritePlayletCell : UICollectionViewCell
+@property (nonatomic, copy) void (^longPressHandler)(void); // 长按回调
 @property(nonatomic, strong)DJXPlayletInfoModel *playletinfoModel;
 @property (nonatomic, assign) bool isEdit;
 @property (nonatomic, strong) SHTFavoritePlayletModel *favoriteModel;

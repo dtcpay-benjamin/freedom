@@ -317,6 +317,13 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SHTFavoritePlayletCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTFavoritePlayletCell" forIndexPath:indexPath];
+    __weak typeof(self) weakSelf = self;
+    cell.longPressHandler = ^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf.cellLongPressHandler) {
+            strongSelf.cellLongPressHandler();
+        }
+    };
     DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
     SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[indexPath.item];
     cell.playletinfoModel = model;

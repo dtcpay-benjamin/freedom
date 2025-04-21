@@ -35,6 +35,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self  addSubviews];
+        // 添加长按手势
+        UILongPressGestureRecognizer *longPress =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        [self.contentView addGestureRecognizer:longPress];
     }
     return self;
 }
@@ -55,6 +59,14 @@
     [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.subtitleLabel];
     [self.contentView addSubview:self.deleteImageView];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        if (self.longPressHandler) {
+            self.longPressHandler();
+        }
+    }
 }
 
 - (void)setPlayletinfoModel:(DJXPlayletInfoModel *)playletinfoModel {
