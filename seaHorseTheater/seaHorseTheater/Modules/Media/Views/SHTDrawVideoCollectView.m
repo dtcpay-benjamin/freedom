@@ -69,11 +69,25 @@
 
 - (void)collectAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
+    [UIView animateWithDuration:0.3
+                          delay:0
+         usingSpringWithDamping:0.5
+          initialSpringVelocity:3
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+        sender.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    } completion:^(BOOL finished) {
+        sender.transform = CGAffineTransformIdentity;
+    }];
+    // 添加淡入淡出图片切换动画
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.25;
+    transition.type = kCATransitionFade;
+    [sender.imageView.layer addAnimation:transition forKey:nil];
     if (sender.isSelected) {
         [self updateFavoriteCountLabel];
     } else {
         self.collectLabel.text = @"收藏";
-
     }
     if (self.collectActionCallBack) {
         self.collectActionCallBack(sender.isSelected);

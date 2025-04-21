@@ -11,7 +11,7 @@
 #import "SHTAlertHelper.h"
 #import "SHTDrawVideoCollectView.h"
 
-@interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, DJXDrawVideoCellAddSubviewDelegate>
+@interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, DJXDrawVideoCellAddSubviewDelegate, DJXPlayletDetailCellDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) UIViewController *favoriteBgdVC;
 @property (nonatomic, strong) SHTFavoriteViewController *favoriteVC; //短剧收藏页
@@ -31,7 +31,7 @@
 @property (nonatomic, strong) UIButton *favoriteDeleteButton; //收藏底部删除按钮
 @property (nonatomic, strong) NSMutableArray *drawVideosArrays; //滑滑流已展示数据数组
 @property (nonatomic, strong) NSMutableArray *drawFavoriteArrays; //滑滑流已收藏数据数组
-@property (nonatomic, strong) SHTDrawVideoCollectView *currentCollectView;
+@property (nonatomic, strong) SHTDrawVideoCollectView *currentCollectView; // 滑滑流当前播放短剧的收藏按钮
 @end
 
 @implementation SHTHomeViewController
@@ -125,14 +125,6 @@
     [self.view bringSubviewToFront:self.segmentedBackView];
 }
 
-- (void)setUpSegmentedBackColor:(NSInteger)index {
-    if (index == 0) {
-        self.segmentedBackView.backgroundColor = [UIColor blackColor];
-    } else {
-        self.segmentedBackView.backgroundColor = [UIColor clearColor];
-    }
-}
-
 - (void)setUpfavoriteEditBar {
     self.favoriteEditBar.frame = CGRectMake(0, SHTScreenHeight - SHT_tabBarHeight, SHTScreenWidth, SHT_tabBarHeight);
     self.favoriteSelectAllButton.frame = CGRectMake(80, 0, 80, 50);
@@ -143,45 +135,7 @@
     [self.favoriteEditBar setHidden:YES];
 }
 
-#pragma mark - 编辑按钮点击事件
-- (void)actionEdtit:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
-    if (sender.isSelected) {
-        self.preIndex = self.currentIndex;
-        self.segmentedControl.hidden = YES;
-        self.editTitleLabel.hidden = NO;
-        [self.pageViewController setViewControllers:@[self.pages[0]]
-                                          direction:UIPageViewControllerNavigationDirectionReverse
-                                           animated:YES
-                                         completion:nil];
-        [self.favoriteEditBar setHidden:NO];
-        [self enablePageControllerSliding:NO];
-    } else {
-        self.segmentedControl.hidden = NO;
-        self.editTitleLabel.hidden = YES;
-        [self.pageViewController setViewControllers:@[self.pages[self.preIndex]]
-                                          direction:UIPageViewControllerNavigationDirectionForward
-                                           animated:YES
-                                         completion:nil];
-        self.favoriteSelectAllButton.selected = NO;
-        self.favoriteDeleteButton.selected = NO;
-        [self.favoriteVC cancelSelectAllFavoriteData];
-        [self.favoriteEditBar setHidden:YES];
-        [self enablePageControllerSliding:YES];
-    }
-    [self.favoriteVC editFavorites:sender.isSelected];
-}
-
-#pragma mark - 禁止或启动UIPageViewController滑动
-- (void)enablePageControllerSliding:(BOOL)enable{
-    for (UIView *view in self.pageViewController.view.subviews) {
-        if ([view isKindOfClass:[UIScrollView class]]) {
-            UIScrollView *scrollView = (UIScrollView *)view;
-            scrollView.scrollEnabled = enable; //设置是否滑动
-            break;
-        }
-    }
-}
+#pragma mark - 懒加载
 
 - (UIButton *)favoriteEditBtn {
     if (!_favoriteEditBtn) {
@@ -313,6 +267,9 @@
             playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
             playletConfig.freeEpisodesCount = 5;
             playletConfig.unlockEpisodesCountUsingAD = 1;
+            playletConfig.hideCollectIcon = YES;
+            playletConfig.customViewDelegate = self;
+            
             config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet_feed;
             config.viewSize = CGSizeMake(SHTScreenWidth, SHTScreenHeight - SHT_tabBarHeight);
             config.shouldHideTabBarView = YES;
@@ -324,7 +281,6 @@
     }
     return  _playletVC;
 }
-#pragma mark - 懒加载
     
 - (UIView *)favoriteEditBar {
     if (!_favoriteEditBar) {
@@ -399,6 +355,55 @@
     }
 }
 
+- (void)setUpSegmentedBackColor:(NSInteger)index {
+    if (index == 0) {
+        self.segmentedBackView.backgroundColor = [UIColor blackColor];
+    } else {
+        self.segmentedBackView.backgroundColor = [UIColor clearColor];
+    }
+}
+
+#pragma mark - 编辑按钮点击事件
+- (void)actionEdtit:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    if (sender.isSelected) {
+        self.preIndex = self.currentIndex;
+        self.segmentedControl.hidden = YES;
+        self.editTitleLabel.hidden = NO;
+        [self.pageViewController setViewControllers:@[self.pages[0]]
+                                          direction:UIPageViewControllerNavigationDirectionReverse
+                                           animated:YES
+                                         completion:nil];
+        [self.favoriteEditBar setHidden:NO];
+        [self enablePageControllerSliding:NO];
+    } else {
+        self.segmentedControl.hidden = NO;
+        self.editTitleLabel.hidden = YES;
+        [self.pageViewController setViewControllers:@[self.pages[self.preIndex]]
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:YES
+                                         completion:nil];
+        self.favoriteSelectAllButton.selected = NO;
+        self.favoriteDeleteButton.selected = NO;
+        [self.favoriteVC cancelSelectAllFavoriteData];
+        [self.favoriteEditBar setHidden:YES];
+        [self enablePageControllerSliding:YES];
+    }
+    [self.favoriteVC editFavorites:sender.isSelected];
+}
+
+#pragma mark - 禁止或启动UIPageViewController滑动
+
+- (void)enablePageControllerSliding:(BOOL)enable{
+    for (UIView *view in self.pageViewController.view.subviews) {
+        if ([view isKindOfClass:[UIScrollView class]]) {
+            UIScrollView *scrollView = (UIScrollView *)view;
+            scrollView.scrollEnabled = enable; //设置是否滑动
+            break;
+        }
+    }
+}
+
 #pragma mark - “全选按钮”点击事件
 - (void)selectAllAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
@@ -453,9 +458,16 @@
 
 // 从收藏数组删除收藏短剧
 - (void)deleteDrawPlayletInfoFromFavorites:(DJXPlayletInfoModel *)playletInfoModel {
-    if (![self isAddToFavorites:playletInfoModel]) {
-        [self.drawFavoriteArrays removeObject:playletInfoModel];
+    DJXPlayletInfoModel *tempModel;
+    for (DJXPlayletInfoModel *model in self.drawFavoriteArrays) {
+        if (model.shortplay_id == playletInfoModel.shortplay_id) {
+            tempModel = model;
+        }
     }
+    if (tempModel) {
+        [self.drawFavoriteArrays removeObject:tempModel];
+    }
+    NSLog(@"收藏短剧数组内容:%@", self.drawFavoriteArrays);
 }
 
 
@@ -526,17 +538,17 @@
     return self.pages[index + 1];
 }
 
-#pragma mark - DJXDrawVideoCellAddSubviewDelegate
-
-- (UIView *)djx_drawVideoCellSubview:(UITableViewCell *)cell {
-    //     自定义收藏按钮
+// 为播放页(滑滑流与详情)自定义收藏按钮
+- (UIView *)setCollectView:(UITableViewCell *)cell {
+    // 自定义收藏按钮
     SHTDrawVideoCollectView *collectView = [[SHTDrawVideoCollectView alloc] init];
     collectView.backgroundColor = [UIColor clearColor];
     NSLog(@"cell重用标识符:%@", cell.reuseIdentifier);
     return collectView;
 }
 
-- (void)djx_drawVideoCell:(UITableViewCell *)cell layoutSubviews:(UIView *)subview{
+// 为自定义收藏按钮设置frame
+- (void)setCollectViewFrame:(UITableViewCell *)cell layoutSubviews:(UIView *)subview {
     subview.frame = CGRectMake(0.0, 80.0, 40.0, 56.0);
     Class viewClass = NSClassFromString(@"DJXDrawSideInteractArea");
     for (UIView *view in cell.contentView.subviews) {
@@ -548,16 +560,27 @@
     }
 }
 
-- (void)djx_drawVideoCell:(UITableViewCell *)cell updateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel {
+// 自定义收藏按钮数据更新
+- (void)collectViewUpdateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel andIsDraw:(BOOL)IsDraw {
     __block SHTDrawVideoCollectView *collectView = (SHTDrawVideoCollectView *)subview;
     collectView.playletInfoModel = playletInfoModel;
     NSInteger favoriteState = playletInfoModel.favorite_state;
-    if (![self isAddToFavorites:playletInfoModel]) {
-        favoriteState = 1;
+    if (IsDraw) {
+        if (![self isAddToFavorites:playletInfoModel]) {
+            favoriteState = 1;
+        }
+    } else {
+        if ([self isAddToFavorites:playletInfoModel]) {
+            favoriteState = 0;
+        } else {
+            favoriteState = 1;
+        }
     }
     [collectView setStatus:favoriteState];
     [self drawVideosAddDrawPlayletInfo:playletInfoModel];
-    self.currentCollectView = collectView;
+    if (IsDraw) {
+        self.currentCollectView = collectView;
+    }
     NSLog(@"当前短剧:(%@)-id:%ld-收藏状态:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id, (long)playletInfoModel.favorite_state);
     __weak typeof(self) weakSelf = self;
     collectView.collectActionCallBack = ^(BOOL isCollect) {
@@ -568,6 +591,9 @@
                 NSLog(@"短剧:(%@)收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
                 [strongSelf addDrawPlayletInfoToFavorites:playletInfoModel];
                 [collectView setStatus:1];
+                if (!IsDraw) {
+                    [self.currentCollectView setStatus:1];
+                }
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
@@ -577,10 +603,42 @@
                 NSLog(@"短剧:(%@)取消收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
                 [strongSelf deleteDrawPlayletInfoFromFavorites:playletInfoModel];
                 [collectView setStatus:0];
+                if (!IsDraw) {
+                    [self.currentCollectView setStatus:0];
+                }
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)取消收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
         }
     };
 }
+
+#pragma mark - DJXDrawVideoCellAddSubviewDelegate
+
+- (UIView *)djx_drawVideoCellSubview:(UITableViewCell *)cell {
+    return [self setCollectView:cell];
+}
+
+- (void)djx_drawVideoCell:(UITableViewCell *)cell layoutSubviews:(UIView *)subview {
+    [self setCollectViewFrame:cell layoutSubviews:subview];
+}
+
+- (void)djx_drawVideoCell:(UITableViewCell *)cell updateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel {
+    [self collectViewUpdateSubview:subview withData:playletInfoModel andIsDraw:YES];
+}
+
+#pragma mark - DJXPlayletDetailCellDelegate
+
+- (UIView *)djx_playletDetailCellCustomView:(UITableViewCell *)cell {
+    return [self setCollectView:cell];
+}
+
+- (void)djx_playletDetailCell:(UITableViewCell *)cell layoutSubviews:(UIView *)customView {
+    [self setCollectViewFrame:cell layoutSubviews:customView];
+}
+
+- (void)djx_playletDetailCell:(UITableViewCell *)cell updateCustomView:(UIView *)customView withPlayletData:(DJXPlayletInfoModel *)playletInfo {
+    [self collectViewUpdateSubview:customView withData:playletInfo andIsDraw:NO];
+}
+
 @end
