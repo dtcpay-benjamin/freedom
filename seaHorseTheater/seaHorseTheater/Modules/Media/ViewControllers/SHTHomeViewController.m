@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UISegmentedControl *segmentedControl; //标题栏
 @property (nonatomic, strong) UILabel *editTitleLabel; //收藏编辑时候的标题栏
 @property (nonatomic, strong) UIButton *favoriteEditBtn; //收藏标题栏编辑按钮
+@property (nonatomic, strong) UIButton *searchBtn; //搜索按钮
 @property (nonatomic, assign) NSUInteger currentIndex; //当前位置
 @property (nonatomic, assign) NSUInteger preIndex; //当前位置
 @property (nonatomic, strong) UIView *favoriteEditBar; //收藏底部编辑栏
@@ -121,7 +122,9 @@
     [self.segmentedBackView addSubview:self.segmentedControl];
     [self.segmentedBackView addSubview:self.editTitleLabel];
     [self.segmentedBackView addSubview:self.favoriteEditBtn];
+    [self.segmentedBackView addSubview:self.searchBtn];
     self.favoriteEditBtn.hidden = YES;
+    self.searchBtn.hidden = NO;
     [self.view bringSubviewToFront:self.segmentedBackView];
 }
 
@@ -149,6 +152,17 @@
         [_favoriteEditBtn addTarget:self action:@selector(actionEdtit:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _favoriteEditBtn;
+}
+
+- (UIButton *)searchBtn {
+    if (!_searchBtn) {
+        _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _searchBtn.frame = CGRectMake(SHTScreenWidth - 60, SHT_STATUS_BAR_HEIGHT, 40, 40);
+        [_searchBtn setImage:[UIImage imageNamed:@"search_larger"] forState:UIControlStateNormal];
+        [_searchBtn setImage:[UIImage imageNamed:@"search_larger"] forState:UIControlStateSelected];
+        [_searchBtn addTarget:self action:@selector(actionSearch:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _searchBtn;
 }
 
 - (UILabel *)editTitleLabel {
@@ -357,6 +371,9 @@
     [self setUpSegmentedBackColor:targetIndex];
     if (targetIndex != 0) {
         self.favoriteEditBtn.hidden = YES;
+        self.searchBtn.hidden = NO;
+    } else {
+        self.searchBtn.hidden = YES;
     }
 }
 
@@ -368,7 +385,7 @@
     }
 }
 
-#pragma mark - 编辑按钮点击事件
+// 编辑按钮点击事件
 - (void)actionEdtit:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     if (sender.isSelected) {
@@ -395,6 +412,12 @@
         [self enablePageControllerSliding:YES];
     }
     [self.favoriteVC editFavorites:sender.isSelected];
+}
+
+// 搜索按钮点击事件
+- (void)actionSearch:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    NSLog(@"搜索按钮点击~~~");
 }
 
 #pragma mark - 禁止或启动UIPageViewController滑动
@@ -521,6 +544,9 @@
         }
         if (index != 0) {
             self.favoriteEditBtn.hidden = YES;
+            self.searchBtn.hidden = NO;
+        } else {
+            self.searchBtn.hidden = YES;
         }
         [UIView animateWithDuration:0.25 animations:^{
             [self slideUnderline:index];
