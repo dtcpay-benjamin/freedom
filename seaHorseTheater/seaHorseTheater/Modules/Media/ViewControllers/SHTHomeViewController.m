@@ -85,7 +85,7 @@
     self.segmentedBackView = [[UIView alloc] init];
     self.segmentedBackView.backgroundColor = [UIColor clearColor];
     self.segmentedBackView.frame = CGRectMake(0, 0, SHTScreenWidth, SHT_STATUS_BAR_HEIGHT + 40);
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"收藏", @"剧单", @"精选"]];
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"在追", @"剧场", @"精选"]];
     self.segmentedControl.frame = CGRectMake(80, SHT_STATUS_BAR_HEIGHT, SHTScreenWidth - 160, 40);
     self.segmentedControl.backgroundColor = [UIColor clearColor];
     // 设置选中的字体颜色为白色
@@ -171,7 +171,7 @@
         _editTitleLabel.frame = CGRectMake(SHTScreenWidth * 0.5 - 20.0, SHT_STATUS_BAR_HEIGHT, 40.0, 40.0);
         _editTitleLabel.textColor = [UIColor whiteColor];
         _editTitleLabel.font = [UIFont systemFontOfSize:18];
-        _editTitleLabel.text = @"收藏";
+        _editTitleLabel.text = @"在追";
         _editTitleLabel.hidden = YES;
     }
     return _editTitleLabel;
