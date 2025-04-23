@@ -10,6 +10,7 @@
 #import "SHTFavoriteViewController.h"
 #import "SHTAlertHelper.h"
 #import "SHTDrawVideoCollectView.h"
+#import "SHTMBProgressManager.h"
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, DJXDrawVideoCellAddSubviewDelegate, DJXPlayletDetailCellDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -627,6 +628,7 @@
                 if (!IsDraw) {
                     [self.currentCollectView setStatus:1];
                 }
+                [SHTMBProgressManager showText:self.view withText:@"已追剧，可在【追剧】查看" andSubText:NULL isBottom:NO];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
@@ -639,6 +641,7 @@
                 if (!IsDraw) {
                     [self.currentCollectView setStatus:0];
                 }
+                
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)取消收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];

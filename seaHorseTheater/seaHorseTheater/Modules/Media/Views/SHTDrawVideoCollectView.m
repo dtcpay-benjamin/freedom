@@ -7,6 +7,7 @@
 
 #import "SHTDrawVideoCollectView.h"
 #import "SHTVerticalButton.h"
+#import "SHTAlertHelper.h"
 
 @interface SHTDrawVideoCollectView()
 
@@ -52,7 +53,23 @@
 }
 
 - (void)collectAction:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
+    BOOL isSelected = !sender.isSelected;
+    if (isSelected) {
+        [self collectDynamicAction:isSelected];
+    } else {
+        [SHTAlertHelper showAlertWithTitle:@"确认取消追剧吗？"
+                                   message:@"取消后可能找不到本剧哦～"
+                             cancelBtnText:@"再想想"
+                            confirmBtnText:@"确认"
+                              inController:nil
+                              cancelAction:nil confirmAction:^{
+            [self collectDynamicAction:isSelected];
+        }];
+    }
+}
+
+- (void)collectDynamicAction:(BOOL)isSelected {
+    self.collectBtn.selected = isSelected;
     // 增加图片缩放动画效果
     [UIView animateWithDuration:0.3
                           delay:0
@@ -60,20 +77,19 @@
           initialSpringVelocity:3
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-        sender.imageView.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        self.collectBtn.imageView.transform = CGAffineTransformMakeScale(1.3, 1.3);
     } completion:^(BOOL finished) {
-        sender.imageView.transform = CGAffineTransformIdentity;
+        self.collectBtn.imageView.transform = CGAffineTransformIdentity;
     }];
     // 添加淡入淡出图片切换动画
     CATransition *transition = [CATransition animation];
     transition.duration = 0.25;
     transition.type = kCATransitionFade;
-    [sender.imageView.layer addAnimation:transition forKey:nil];
+    [self.collectBtn.imageView.layer addAnimation:transition forKey:nil];
     if (self.collectActionCallBack) {
-        self.collectActionCallBack(sender.isSelected);
+        self.collectActionCallBack(self.collectBtn.isSelected);
     }
 }
-
 #pragma mark - 懒加载
 
 - (SHTVerticalButton *)collectBtn {
