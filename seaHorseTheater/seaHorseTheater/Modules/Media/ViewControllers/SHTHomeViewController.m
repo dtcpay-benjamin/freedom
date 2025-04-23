@@ -286,6 +286,7 @@
             playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
             playletConfig.freeEpisodesCount = 5;
             playletConfig.unlockEpisodesCountUsingAD = 1;
+            playletConfig.hideLikeIcon = YES;
             playletConfig.hideCollectIcon = YES;
             playletConfig.customViewDelegate = self;
             
@@ -293,6 +294,7 @@
             config.viewSize = CGSizeMake(SHTScreenWidth, SHTScreenHeight - SHT_tabBarHeight);
             config.shouldHideTabBarView = YES;
             config.playletConfig = playletConfig;
+            config.hideLikeIcon = YES;
             // 隐藏收藏按钮,用自定义的
             config.hideCollectIcon = YES;
             config.drawVideoCellAddSubviewDelegate = self;
