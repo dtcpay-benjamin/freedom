@@ -199,15 +199,19 @@
             [tempArray1 addObject:model];
         }
     }
-    [self.dataSource removeObjectsInArray:tempArray];
-    [self.favoriteDataSource removeObjectsInArray:tempArray1];
-    [self.collectionView reloadData];
     [self requestDeleteFavoritesInBatches:tempArray maxConcurrent:6 completion:^{
-        // 重置是否全选的状态
-        [self selectAllAssignment];
-        [self checkEmpty];
-        if (self.deleteActionCompletion) {
-            self.deleteActionCompletion(tempArray);
+        if (self.hasMore) {
+            [self.collectionView.mj_header beginRefreshing];
+        } else {
+            [self.dataSource removeObjectsInArray:tempArray];
+            [self.favoriteDataSource removeObjectsInArray:tempArray1];
+            [self.collectionView reloadData];
+            // 重置是否全选的状态
+            [self selectAllAssignment];
+            [self checkEmpty];
+            if (self.deleteActionCompletion) {
+                self.deleteActionCompletion(tempArray);
+            }
         }
     }];
 
