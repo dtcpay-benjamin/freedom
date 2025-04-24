@@ -30,7 +30,7 @@
 }
 
 - (void)setStatus:(NSInteger)favorite_state {
-    if (favorite_state == 1) {
+    if (favorite_state > 0) {
         self.collectBtn.selected = YES;
     } else {
         self.collectBtn.selected = NO;

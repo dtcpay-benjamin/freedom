@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 设置收藏状态
 - (void)setStatus:(NSInteger)favorite_state;
+
+/// 收藏动作
+- (void)collectDynamicAction:(BOOL)isSelected;
 @end
 
 NS_ASSUME_NONNULL_END

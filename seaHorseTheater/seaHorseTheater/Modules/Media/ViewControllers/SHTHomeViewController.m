@@ -12,7 +12,7 @@
 #import "SHTDrawVideoCollectView.h"
 #import "SHTMBProgressManager.h"
 
-@interface SHTHomeViewController ()<UIPageViewControllerDataSource, UIPageViewControllerDelegate, DJXDrawVideoCellAddSubviewDelegate, DJXPlayletDetailCellDelegate>
+@interface SHTHomeViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,DJXDrawVideoCellAddSubviewDelegate,DJXPlayletDetailCellDelegate,DJXDrawVideoViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) UIViewController *favoriteBgdVC;
 @property (nonatomic, strong) SHTFavoriteViewController *favoriteVC; //短剧收藏页
@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSMutableArray *drawVideosArrays; //滑滑流已展示数据数组
 @property (nonatomic, strong) NSMutableArray *drawFavoriteArrays; //滑滑流已收藏数据数组
 @property (nonatomic, strong) SHTDrawVideoCollectView *currentCollectView; // 滑滑流当前播放短剧的收藏按钮
+@property (nonatomic, strong) SHTDrawVideoCollectView *videoDetailscurrentCollectView; // 视频详情当前播放短剧的收藏按钮
 @end
 
 @implementation SHTHomeViewController
@@ -299,6 +300,7 @@
             // 隐藏收藏按钮,用自定义的
             config.hideCollectIcon = YES;
             config.drawVideoCellAddSubviewDelegate = self;
+            config.delegate = self;
         }];
     }
     return  _playletVC;
@@ -532,7 +534,7 @@
     }
     [self.drawFavoriteArrays removeObjectsInArray:tempArray];
 }
-    
+
 #pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
@@ -614,6 +616,8 @@
     [self drawVideosAddDrawPlayletInfo:playletInfoModel];
     if (IsDraw) {
         self.currentCollectView = collectView;
+    } else {
+        self.videoDetailscurrentCollectView = collectView;
     }
     NSLog(@"当前短剧:(%@)-id:%ld-收藏状态:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id, (long)playletInfoModel.favorite_state);
     __weak typeof(self) weakSelf = self;
@@ -628,7 +632,7 @@
                 if (!IsDraw) {
                     [self.currentCollectView setStatus:1];
                 }
-                [SHTMBProgressManager showText:self.view withText:@"已追剧，可在【追剧】查看" andSubText:NULL isBottom:NO];
+                [SHTMBProgressManager showText:NULL withText:@"已追剧，可在【追剧】查看" andSubText:NULL isBottom:NO];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
@@ -676,5 +680,21 @@
 - (void)djx_playletDetailCell:(UITableViewCell *)cell updateCustomView:(UIView *)customView withPlayletData:(DJXPlayletInfoModel *)playletInfo {
     [self collectViewUpdateSubview:customView withData:playletInfo andIsDraw:NO];
 }
+
+#pragma mark - DJXDrawVideoViewControllerDelegate
+- (void)drawVideoPlayCompletion:(UIViewController *)viewController event:(DJXEvent *)event {
+    NSLog(@"滑滑流视频完整播放一遍回调:%@", event);
+    [SHTMBProgressManager showText:NULL withText:@"即将为您播放下一集" andSubText:NULL isBottom:NO];
+    [self.playletVC enterPlayPage];
+}
+
+//#pragma mark - DJXPlayletPlayerProtocol
+//- (void)drawVideoPlayCompletion:(UIViewController *)viewController config:(DJXPlayletInfoModel *)config {
+//    NSLog(@"视频详情视频完整播放一遍回调:%@", config);
+//    if (config.current_episode >= 4) {
+//        [self.videoDetailscurrentCollectView setStatus:1];
+//        [self.videoDetailscurrentCollectView collectDynamicAction:YES];
+//    }
+//}
 
 @end
