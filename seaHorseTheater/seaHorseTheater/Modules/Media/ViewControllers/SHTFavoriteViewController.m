@@ -79,11 +79,11 @@
         [self.collectionView.mj_header endRefreshing];
         [self.collectionView.mj_footer endRefreshing];
         
-        // 如果没有更多了，显示“没有更多数据”
-        if (playletList.count == 0 || !playletList) {
-            [self.collectionView.mj_footer endRefreshingWithNoMoreData];
-        } else {
+        if (hasMore) {
             [self.collectionView.mj_footer resetNoMoreData];
+        } else {
+            // 如果没有更多了，显示“没有更多数据”
+            [self.collectionView.mj_footer endRefreshingWithNoMoreData];
         }
         [self checkEmpty];
     } failure:^(NSError * _Nonnull error) {
