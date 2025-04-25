@@ -43,7 +43,6 @@
     return self;
 }
 
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat defaultHeight = self.contentView.bounds.size.width * (16.0 / 9.0); // 默认 16:9 比例
@@ -109,6 +108,7 @@
         self.deleteImageView.image = [UIImage imageNamed:@"unselected"];
     }
 }
+
 #pragma mark - 懒加载
 
 - (UIImageView *)imageView {

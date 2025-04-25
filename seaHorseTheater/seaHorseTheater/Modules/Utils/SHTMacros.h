@@ -29,6 +29,8 @@ typedef NS_ENUM(NSUInteger, SHTToastType) {
 #define SHT_bottomHeight          (SHT_IS_iphoneX?34:0)
 #define SHT_tabBarHeight          (50+SHT_bottomHeight)
 
+#define SHT_SEARCH_BACK_COLOR  [UIColor whiteColor]
+#define SHT_SEARCH_BACK_BORDERCOLOR  [UIColor colorWithWhite:0.95 alpha:1.0]
 
 extern BOOL SHT_isNotchScreen(void);
 NS_ASSUME_NONNULL_BEGIN

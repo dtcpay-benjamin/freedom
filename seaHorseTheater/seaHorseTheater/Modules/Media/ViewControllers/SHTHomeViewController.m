@@ -11,6 +11,8 @@
 #import "SHTAlertHelper.h"
 #import "SHTDrawVideoCollectView.h"
 #import "SHTMBProgressManager.h"
+#import "SHTSearchViewController.h"
+#import "SHTRouteUtil.h"
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,DJXDrawVideoCellAddSubviewDelegate,DJXPlayletDetailCellDelegate,DJXDrawVideoViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -19,6 +21,7 @@
 @property (nonatomic, strong) UIViewController *playletTheaterBgdVC;
 @property (nonatomic, strong) DJXPlayletAggregatePageViewController *playletTheater; //短剧剧场
 @property (nonatomic, strong) DJXDrawVideoViewController *playletVC; //短剧滑滑页
+@property (nonatomic, strong) SHTSearchViewController *searchViewController; // 搜索页
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) UIView *underlineView; //下划线
 @property (nonatomic, strong) UIView *segmentedBackView; //标题栏背景
@@ -35,6 +38,7 @@
 @property (nonatomic, strong) NSMutableArray *drawFavoriteArrays; //滑滑流已收藏数据数组
 @property (nonatomic, strong) SHTDrawVideoCollectView *currentCollectView; // 滑滑流当前播放短剧的收藏按钮
 @property (nonatomic, strong) SHTDrawVideoCollectView *videoDetailscurrentCollectView; // 视频详情当前播放短剧的收藏按钮
+
 @end
 
 @implementation SHTHomeViewController
@@ -162,7 +166,7 @@
         _searchBtn.frame = CGRectMake(SHTScreenWidth - 60, SHT_STATUS_BAR_HEIGHT, 40, 40);
         [_searchBtn setImage:[UIImage imageNamed:@"search_larger"] forState:UIControlStateNormal];
         [_searchBtn setImage:[UIImage imageNamed:@"search_larger"] forState:UIControlStateSelected];
-        [_searchBtn addTarget:self action:@selector(actionSearch:) forControlEvents:UIControlEventTouchUpInside];
+        [_searchBtn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _searchBtn;
 }
@@ -305,7 +309,14 @@
     }
     return  _playletVC;
 }
-    
+
+- (SHTSearchViewController *)searchViewController {
+    if (!_searchViewController) {
+        _searchViewController = [[SHTSearchViewController alloc] init];
+    }
+    return _searchViewController;
+}
+
 - (UIView *)favoriteEditBar {
     if (!_favoriteEditBar) {
         _favoriteEditBar = [[UIView alloc] init];
@@ -420,9 +431,9 @@
 }
 
 // 搜索按钮点击事件
-- (void)actionSearch:(UIButton *)sender {
+- (void)searchAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
-    NSLog(@"搜索按钮点击~~~");
+    [SHTRouteUtil presentFrom:self to:self.searchViewController];
 }
 
 #pragma mark - 禁止或启动UIPageViewController滑动
