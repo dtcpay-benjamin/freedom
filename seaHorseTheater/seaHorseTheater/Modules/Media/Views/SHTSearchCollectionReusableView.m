@@ -55,17 +55,6 @@
 
 - (void)addSubViewsLayouts {
     self.titleLabel.frame = CGRectMake(24.0, 0.0, (SHTScreenWidth - 48.0) * 0.5, 32.0);
-    if (self.actionTitle) {
-        self.actionView.frame = CGRectMake(SHTScreenWidth - 24.0 - 68.0 + 5.0, 0.0, 68.0, 32.0);
-        self.actionImgView.frame = CGRectMake(0.0, 8.0, 16.0, 16.0);
-        self.actionLabel.frame = CGRectMake(20.0, 8.0, 48.0, 16.0);
-        self.actionLabel.hidden = NO;
-    } else {
-        self.actionView.frame = CGRectMake(SHTScreenWidth - 24.0 - 32.0 + 8.0, 0.0, 32.0, 32.0);
-        self.actionImgView.frame = CGRectMake(8.0, 8.0, 16.0, 16.0);
-        self.actionLabel.frame = CGRectMake(0.0, 0.0, 0.0, 0.0);
-        self.actionLabel.hidden = YES;
-    }
 }
 
 #pragma mark - actions
@@ -82,6 +71,17 @@
 - (void)setActionTitle:(NSString *)actionTitle {
     _actionTitle = actionTitle;
     self.actionLabel.text = _actionTitle;
+    if (_actionTitle.length > 0) {
+        self.actionView.frame = CGRectMake(SHTScreenWidth - 24.0 - 68.0 + 5.0, 0.0, 68.0, 32.0);
+        self.actionImgView.frame = CGRectMake(0.0, 8.0, 16.0, 16.0);
+        self.actionLabel.frame = CGRectMake(20.0, 8.0, 48.0, 16.0);
+        self.actionLabel.hidden = NO;
+    } else {
+        self.actionView.frame = CGRectMake(SHTScreenWidth - 24.0 - 32.0 + 8.0, 0.0, 32.0, 32.0);
+        self.actionImgView.frame = CGRectMake(8.0, 8.0, 16.0, 16.0);
+        self.actionLabel.frame = CGRectMake(0.0, 0.0, 0.0, 0.0);
+        self.actionLabel.hidden = YES;
+    }
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)tapGes {

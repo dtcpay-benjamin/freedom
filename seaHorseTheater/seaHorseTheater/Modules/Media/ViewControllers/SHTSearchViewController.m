@@ -14,7 +14,7 @@
 
 @property(nonatomic, strong)SHTSearchBarView *searchBar; // 搜索框
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray<NSString *> *historySearches;
+@property (nonatomic, strong) NSMutableArray *historySearches;
 @property (nonatomic, strong) NSArray<NSArray<NSString *> *> *popularSearchGroups;
 @property (nonatomic, strong) NSArray<NSString *> *popularSearches;
 @property (nonatomic, assign) NSInteger popularIndex;
@@ -28,13 +28,13 @@
     self.view.backgroundColor = SHT_SEARCH_BACK_COLOR; // 浅灰背景
     [self setupSearchBar];
     [self setupCollectionView];
-    [self setupData];
     [self setupGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.searchBar.textField becomeFirstResponder];
+    [self setupData];
 }
 
 #pragma mark - UI
@@ -75,22 +75,33 @@
 - (void)setupData {
     self.historySearches = [NSMutableArray arrayWithArray:@[@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带"]];
     self.popularSearchGroups = @[ @[@"野蛮女友美又飒", @"盲刃", @"庶女成凰"],
-                                   @[@"新生从分手开始", @"我在女尊王朝当卧底"], @[@"野蛮女友美又飒", @"盲刃", @"庶女成凰"],
-                                  @[@"新生从分手开始", @"我在女尊王朝当卧底"] ];
+                                   @[@"jik", @"sccff"], @[@"qdcac", @"pnnc", @"qccxx"],
+                                  @[@"wssxxx", @"onncnddds"] ];
     self.popularIndex = 0;
     self.popularSearches = self.popularSearchGroups[self.popularIndex];
+    [self.collectionView reloadData];
 }
 
 // 设置收起键盘手势
 - (void)setupGestureRecognizer {
     // 添加点击手势隐藏键盘
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    tapGesture.cancelsTouchesInView = NO; // 允许点击事件继续传递给子视图（如按钮等）
+//    tapGesture.cancelsTouchesInView = NO; // 允许点击事件继续传递给子视图（如按钮等）
     [self.view addGestureRecognizer:tapGesture];
     // 滑动手势隐藏键盘
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:pan];
 }
+
+#pragma mark - 懒加载
+
+- (NSMutableArray *)historySearches {
+    if (!_historySearches) {
+        _historySearches = [[NSMutableArray alloc] init];
+    }
+    return _historySearches;
+}
+
 
 #pragma mark - actions
 
@@ -101,32 +112,55 @@
 #pragma mark - CollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 2;
+    if (self.historySearches.count > 0) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
                                  atIndexPath:(NSIndexPath *)indexPath {
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        SHTSearchCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                     withReuseIdentifier:@"SHTSearchCollectionReusableView"
-                                                                            forIndexPath:indexPath];
-        if (indexPath.section == 0) {
-            header.title = @"历史搜索";
-            header.actionImage = [UIImage imageNamed:@"ico-del-grey"];
-        } else {
+    if (self.historySearches.count > 0) {
+        if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+            SHTSearchCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                                         withReuseIdentifier:@"SHTSearchCollectionReusableView"
+                                                                                                forIndexPath:indexPath];
+            if (indexPath.section == 0) {
+                header.title = @"历史搜索";
+                header.actionImage = [UIImage imageNamed:@"ico-del-grey"];
+                header.actionTitle = @"";
+            } else {
+                header.title = @"大家都在搜";
+                header.actionImage = [UIImage imageNamed:@"ico-swap-grey"];
+                header.actionTitle = @"换一换";
+            }
+            header.onTapped = ^{
+                if (indexPath.section == 0) {
+                    NSLog(@"历史搜索-删除");
+                    [self clearAllHistory];
+                } else {
+                    NSLog(@"大家都在搜-换一换");
+                    [self changePopular];
+                }
+            };
+            return header;
+        }
+    } else {
+        if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+            SHTSearchCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                                         withReuseIdentifier:@"SHTSearchCollectionReusableView"
+                                                                                                forIndexPath:indexPath];
             header.title = @"大家都在搜";
             header.actionImage = [UIImage imageNamed:@"ico-swap-grey"];
             header.actionTitle = @"换一换";
-        }
-        header.onTapped = ^{
-            if (indexPath.section == 0) {
-                NSLog(@"历史搜索-删除");
-            } else {
+            header.onTapped = ^{
                 NSLog(@"大家都在搜-换一换");
-            }
-        };
-        return header;
+                [self changePopular];
+            };
+            return header;
+        }
     }
     return nil;
 }
@@ -138,22 +172,33 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (section == 0) return MIN(self.historySearches.count, 9); // 限制三行，假设每行 3 个
-    return MIN(self.popularSearches.count, 9);
+    if (self.historySearches.count > 0) {
+        // 限定16条记录展示
+        if (section == 0) return MIN(self.historySearches.count, 16);
+        return MIN(self.popularSearches.count, 16);
+    } else {
+        return MIN(self.popularSearches.count, 16);
+    }
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    SHTSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTSearchCollectionViewCell" forIndexPath:indexPath];
-    if (indexPath.section == 0) {
-        cell.text = self.historySearches[indexPath.item];
+    if (self.historySearches.count > 0) {
+        SHTSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTSearchCollectionViewCell" forIndexPath:indexPath];
+        if (indexPath.section == 0) {
+            cell.text = self.historySearches[indexPath.item];
+        } else {
+            cell.text = self.popularSearches[indexPath.item];
+        }
+        return cell;
     } else {
+        SHTSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTSearchCollectionViewCell" forIndexPath:indexPath];
         cell.text = self.popularSearches[indexPath.item];
+        return cell;
     }
-    return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *text = indexPath.section == 0 ? self.historySearches[indexPath.item] : self.popularSearches[indexPath.item];
+    NSString *text = self.historySearches.count > 0 ? (indexPath.section == 0 ? self.historySearches[indexPath.item] : self.popularSearches[indexPath.item]) : self.popularSearches[indexPath.item];
     CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
     return CGSizeMake(size.width + 20, 30);
 }
@@ -162,7 +207,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 - (void)clearAllHistory {
     [self.historySearches removeAllObjects];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - 换一换
@@ -170,6 +215,10 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 - (void)changePopular {
     self.popularIndex = (self.popularIndex + 1) % self.popularSearchGroups.count;
     self.popularSearches = self.popularSearchGroups[self.popularIndex];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
+    if (self.historySearches.count > 0) {
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
+    } else {
+        [self.collectionView reloadData];
+    }
 }
 @end

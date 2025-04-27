@@ -7,7 +7,7 @@
 
 #import "SHTSearchBarView.h"
 
-@interface SHTSearchBarView ()
+@interface SHTSearchBarView ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UIButton *searchButton;
@@ -48,6 +48,7 @@
     self.textField.leftViewMode = UITextFieldViewModeAlways;
     self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.textField.returnKeyType = UIReturnKeySearch;
+    self.textField.delegate = self;
     [self addSubview:self.textField];
 
     // 搜索按钮
@@ -83,9 +84,25 @@
 }
 
 - (void)searchTapped {
-    if (self.onSearchTapped) {
-        self.onSearchTapped(self.textField.text);
+    if (self.textField.text.length > 0) {
+        if (self.onSearchTapped) {
+            [self.textField resignFirstResponder];
+            self.onSearchTapped(self.textField.text);
+        }
     }
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (self.textField.text.length > 0) {
+        if (self.onSearchTapped) {
+            [textField resignFirstResponder];
+            self.onSearchTapped(textField.text);
+        }
+        return YES;
+    } else {
+        return NO;
+    }
+}
 @end
