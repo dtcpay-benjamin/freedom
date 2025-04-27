@@ -9,6 +9,7 @@
 #import "SHTSearchBarView.h"
 #import "SHTSearchCollectionViewCell.h"
 #import "SHTSearchCollectionReusableView.h"
+#import "SHTUserDefaults.h"
 
 @interface SHTSearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = SHT_SEARCH_BACK_COLOR; // 浅灰背景
+    [self setupData];
     [self setupSearchBar];
     [self setupCollectionView];
     [self setupGestureRecognizer];
@@ -34,9 +36,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.searchBar.textField becomeFirstResponder];
-    [self setupData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [SHTUserDefaults setObject:self.historySearches forKey:HISTORY_SEARCHES_KEY];
+}
 #pragma mark - UI
 
 // 设置搜索栏
@@ -44,10 +49,18 @@
     self.searchBar = [[SHTSearchBarView alloc] initWithFrame:CGRectMake(0, [UIApplication sharedApplication].statusBarFrame.size.height, self.view.bounds.size.width, 60)];
     __weak typeof(self) weakSelf = self;
     self.searchBar.onBackTapped = ^{
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf dismissViewControllerAnimated:YES completion:nil];
     };
     self.searchBar.onSearchTapped = ^(NSString *keyword) {
-        NSLog(@"搜索关键词：%@", keyword); // 进行搜索操作
+        NSLog(@"搜索关键词：%@", keyword);// 进行搜索操作
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.historySearches addObject:keyword];
+        if (strongSelf.collectionView.numberOfSections > 1) {
+            [strongSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        } else {
+            [strongSelf.collectionView reloadData];
+        }
     };
     [self.view addSubview:self.searchBar];
 }
@@ -73,7 +86,7 @@
 #pragma mark - Data
 
 - (void)setupData {
-    self.historySearches = [NSMutableArray arrayWithArray:@[@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带"]];
+    [self.historySearches addObjectsFromArray:[SHTUserDefaults objectForKey:HISTORY_SEARCHES_KEY]];
     self.popularSearchGroups = @[ @[@"野蛮女友美又飒", @"盲刃", @"庶女成凰"],
                                    @[@"jik", @"sccff"], @[@"qdcac", @"pnnc", @"qccxx"],
                                   @[@"wssxxx", @"onncnddds"] ];

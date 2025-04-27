@@ -32,6 +32,8 @@ typedef NS_ENUM(NSUInteger, SHTToastType) {
 #define SHT_SEARCH_BACK_COLOR  [UIColor whiteColor]
 #define SHT_SEARCH_BACK_BORDERCOLOR  [UIColor colorWithWhite:0.95 alpha:1.0]
 
+#define HISTORY_SEARCHES_KEY  @"historySearchesKey"
+
 extern BOOL SHT_isNotchScreen(void);
 NS_ASSUME_NONNULL_BEGIN
 

@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIViewController *)topViewControllerFrom:(UIViewController *)vc;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

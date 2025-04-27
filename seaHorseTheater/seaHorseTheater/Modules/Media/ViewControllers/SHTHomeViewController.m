@@ -21,7 +21,6 @@
 @property (nonatomic, strong) UIViewController *playletTheaterBgdVC;
 @property (nonatomic, strong) DJXPlayletAggregatePageViewController *playletTheater; //短剧剧场
 @property (nonatomic, strong) DJXDrawVideoViewController *playletVC; //短剧滑滑页
-@property (nonatomic, strong) SHTSearchViewController *searchViewController; // 搜索页
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) UIView *underlineView; //下划线
 @property (nonatomic, strong) UIView *segmentedBackView; //标题栏背景
@@ -310,13 +309,6 @@
     return  _playletVC;
 }
 
-- (SHTSearchViewController *)searchViewController {
-    if (!_searchViewController) {
-        _searchViewController = [[SHTSearchViewController alloc] init];
-    }
-    return _searchViewController;
-}
-
 - (UIView *)favoriteEditBar {
     if (!_favoriteEditBar) {
         _favoriteEditBar = [[UIView alloc] init];
@@ -433,7 +425,7 @@
 // 搜索按钮点击事件
 - (void)searchAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
-    [SHTRouteUtil presentFrom:self to:self.searchViewController];
+    [SHTRouteUtil presentFrom:self to:[[SHTSearchViewController alloc] init]];
 }
 
 #pragma mark - 禁止或启动UIPageViewController滑动
