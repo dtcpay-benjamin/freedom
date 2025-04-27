@@ -8,6 +8,7 @@
 #import "SHTSearchViewController.h"
 #import "SHTSearchBarView.h"
 #import "SHTSearchCollectionViewCell.h"
+#import "SHTSearchCollectionReusableView.h"
 
 @interface SHTSearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -54,14 +55,17 @@
 - (void)setupCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
-    layout.minimumLineSpacing = 10;
-    layout.minimumInteritemSpacing = 10;
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    layout.minimumLineSpacing = 12.0;
+    layout.minimumInteritemSpacing = 12.0;
+    layout.sectionInset = UIEdgeInsetsMake(20.0, 24.0, 20.0, 12.0);
 
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.searchBar.frame) + 20.0, self.view.frame.size.width, self.view.frame.size.height - 100.0) collectionViewLayout:layout];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor clearColor];
+    [self.collectionView registerClass:[SHTSearchCollectionReusableView class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:@"SHTSearchCollectionReusableView"];
     [self.collectionView registerClass:[SHTSearchCollectionViewCell class] forCellWithReuseIdentifier:@"SHTSearchCollectionViewCell"];
     [self.view addSubview:self.collectionView];
 }
@@ -69,9 +73,10 @@
 #pragma mark - Data
 
 - (void)setupData {
-    self.historySearches = [NSMutableArray arrayWithArray:@[@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带"]];
+    self.historySearches = [NSMutableArray arrayWithArray:@[@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带",@"好吧我们", @"如果", @"陈好", @"快快", @"哈哈哈", @"绿丝带"]];
     self.popularSearchGroups = @[ @[@"野蛮女友美又飒", @"盲刃", @"庶女成凰"],
-                                   @[@"新生从分手开始", @"我在女尊王朝当卧底"] ];
+                                   @[@"新生从分手开始", @"我在女尊王朝当卧底"], @[@"野蛮女友美又飒", @"盲刃", @"庶女成凰"],
+                                  @[@"新生从分手开始", @"我在女尊王朝当卧底"] ];
     self.popularIndex = 0;
     self.popularSearches = self.popularSearchGroups[self.popularIndex];
 }
@@ -99,9 +104,42 @@
     return 2;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        SHTSearchCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                     withReuseIdentifier:@"SHTSearchCollectionReusableView"
+                                                                            forIndexPath:indexPath];
+        if (indexPath.section == 0) {
+            header.title = @"历史搜索";
+            header.actionImage = [UIImage imageNamed:@"ico-del-grey"];
+        } else {
+            header.title = @"大家都在搜";
+            header.actionImage = [UIImage imageNamed:@"ico-swap-grey"];
+            header.actionTitle = @"换一换";
+        }
+        header.onTapped = ^{
+            if (indexPath.section == 0) {
+                NSLog(@"历史搜索-删除");
+            } else {
+                NSLog(@"大家都在搜-换一换");
+            }
+        };
+        return header;
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout*)collectionViewLayout
+referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(collectionView.bounds.size.width, 32);
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section == 0) return MIN(self.historySearches.count, 9); // 限制三行，假设每行 3 个
-    return self.popularSearches.count;
+    return MIN(self.popularSearches.count, 9);
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

@@ -41,6 +41,8 @@
 - (void)setText:(NSString *)text {
     _text = text;
     self.titleLabel.text = _text;
+    CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
+    _titleLabel.frame = CGRectMake(0.0, 0.0, size.width + 20.0, 30.0);
 }
 
 #pragma mark - 懒加载
