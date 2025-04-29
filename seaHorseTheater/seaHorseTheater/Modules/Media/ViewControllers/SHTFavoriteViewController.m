@@ -58,8 +58,6 @@
     NSInteger pageSize = 6;
     [[DJXPlayletManager shareInstance] requestCollectionList:self.currentPage pageSize:pageSize success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
         NSLog(@"获取收藏短剧列表:%@, 是否还有更多:%d", playletList, hasMore);
-        NSArray *shortplayIdArray = [playletList valueForKey:@"shortplay_id"];
-        NSLog(@"收藏短剧id列表:%@", shortplayIdArray);
         // 刷新 or 加载更多
         if (self.currentPage == 1) {
             [self.dataSource removeAllObjects];
@@ -82,7 +80,7 @@
         if (hasMore) {
             [self.collectionView.mj_footer resetNoMoreData];
         } else {
-            // 如果没有更多了，显示“没有更多数据”
+            // 如果没有更多了，显示“已经全部加载完毕”
             [self.collectionView.mj_footer endRefreshingWithNoMoreData];
         }
         [self checkEmpty];

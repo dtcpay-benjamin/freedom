@@ -38,6 +38,11 @@
     [self.contentView addSubview:self.titleLabel];
 }
 
+- (void)setModel:(DJXPlayletInfoModel *)model {
+    _model = model;
+    self.text = model.title;
+}
+
 - (void)setText:(NSString *)text {
     _text = text;
     self.titleLabel.text = _text;
@@ -51,9 +56,9 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
         _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.textColor = [UIColor darkGrayColor];
+        _titleLabel.textColor = [UIColor colorWithRed:102.0/255.0 green:104.0/255.0 blue:107.0/255.0 alpha:1.0];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.backgroundColor = SHT_SEARCH_BACK_BORDERCOLOR;
+        _titleLabel.backgroundColor = SHT_SEARCH_CELL_BACK;
         _titleLabel.layer.cornerRadius = 15;
         _titleLabel.layer.masksToBounds = YES;
     }

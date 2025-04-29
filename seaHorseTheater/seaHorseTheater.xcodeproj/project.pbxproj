@@ -8,9 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		182594152D894B4700B0AD44 /* SHTFavoritePlayletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */; };
+		1843A1D82DB8C952008116EB /* SHTVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1D72DB8C952008116EB /* SHTVerticalButton.m */; };
+		1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1DD2DB8D765008116EB /* SHTToolsManager.m */; };
+		1843A1E12DB8D7A3008116EB /* SHTMBProgressManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1E02DB8D7A3008116EB /* SHTMBProgressManager.m */; };
+		1843A1E62DBB3348008116EB /* SHTSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1E52DBB3347008116EB /* SHTSearchViewController.m */; };
+		1843A1E92DBB349A008116EB /* SHTRouteUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1E82DBB349A008116EB /* SHTRouteUtil.m */; };
+		1843A1EC2DBB7700008116EB /* SHTSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1EB2DBB7700008116EB /* SHTSearchBarView.m */; };
+		1843A1EF2DBB8D93008116EB /* SHTSearchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1EE2DBB8D93008116EB /* SHTSearchCollectionViewCell.m */; };
+		1843A1F22DBE099A008116EB /* SHTSearchCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1F12DBE099A008116EB /* SHTSearchCollectionReusableView.m */; };
+		1843A1F52DBE314A008116EB /* SHTUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1F42DBE314A008116EB /* SHTUserDefaults.m */; };
+		1843A1F82DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1F72DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m */; };
+		1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
 		18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */; };
-		18A8C02F2DA649A2003BC3B3 /* SHTToolsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C02E2DA649A2003BC3B3 /* SHTToolsManager.m */; };
 		18A8C0322DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */; };
 		18A8C0382DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0372DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m */; };
 		721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */; };
@@ -34,12 +44,32 @@
 		0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.debug.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.debug.xcconfig"; sourceTree = "<group>"; };
 		182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletCell.h; sourceTree = "<group>"; };
 		182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletCell.m; sourceTree = "<group>"; };
+		1843A1D62DB8C952008116EB /* SHTVerticalButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVerticalButton.h; sourceTree = "<group>"; };
+		1843A1D72DB8C952008116EB /* SHTVerticalButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVerticalButton.m; sourceTree = "<group>"; };
+		1843A1DD2DB8D765008116EB /* SHTToolsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTToolsManager.m; sourceTree = "<group>"; };
+		1843A1DF2DB8D7A3008116EB /* SHTMBProgressManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMBProgressManager.h; sourceTree = "<group>"; };
+		1843A1E02DB8D7A3008116EB /* SHTMBProgressManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMBProgressManager.m; sourceTree = "<group>"; };
+		1843A1E42DBB3347008116EB /* SHTSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTSearchViewController.h; sourceTree = "<group>"; };
+		1843A1E52DBB3347008116EB /* SHTSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTSearchViewController.m; sourceTree = "<group>"; };
+		1843A1E72DBB349A008116EB /* SHTRouteUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTRouteUtil.h; sourceTree = "<group>"; };
+		1843A1E82DBB349A008116EB /* SHTRouteUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTRouteUtil.m; sourceTree = "<group>"; };
+		1843A1EA2DBB7700008116EB /* SHTSearchBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTSearchBarView.h; sourceTree = "<group>"; };
+		1843A1EB2DBB7700008116EB /* SHTSearchBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTSearchBarView.m; sourceTree = "<group>"; };
+		1843A1ED2DBB8D93008116EB /* SHTSearchCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTSearchCollectionViewCell.h; sourceTree = "<group>"; };
+		1843A1EE2DBB8D93008116EB /* SHTSearchCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTSearchCollectionViewCell.m; sourceTree = "<group>"; };
+		1843A1F02DBE099A008116EB /* SHTSearchCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTSearchCollectionReusableView.h; sourceTree = "<group>"; };
+		1843A1F12DBE099A008116EB /* SHTSearchCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTSearchCollectionReusableView.m; sourceTree = "<group>"; };
+		1843A1F32DBE314A008116EB /* SHTUserDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTUserDefaults.h; sourceTree = "<group>"; };
+		1843A1F42DBE314A008116EB /* SHTUserDefaults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTUserDefaults.m; sourceTree = "<group>"; };
+		1843A1F62DC0C85C008116EB /* SHTLeftAlignedFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTLeftAlignedFlowLayout.h; sourceTree = "<group>"; };
+		1843A1F72DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTLeftAlignedFlowLayout.m; sourceTree = "<group>"; };
+		1843A1F92DC0D368008116EB /* SHTSearchTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTSearchTableViewCell.h; sourceTree = "<group>"; };
+		1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTSearchTableViewCell.m; sourceTree = "<group>"; };
 		18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletModel.h; sourceTree = "<group>"; };
 		18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletModel.m; sourceTree = "<group>"; };
 		18A8C02A2DA6485C003BC3B3 /* SHTAlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTAlertHelper.h; sourceTree = "<group>"; };
 		18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTAlertHelper.m; sourceTree = "<group>"; };
 		18A8C02D2DA649A2003BC3B3 /* SHTToolsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTToolsManager.h; sourceTree = "<group>"; };
-		18A8C02E2DA649A2003BC3B3 /* SHTToolsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTToolsManager.m; sourceTree = "<group>"; };
 		18A8C0302DA6608C003BC3B3 /* SHTEmptyPlaceholderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTEmptyPlaceholderView.h; sourceTree = "<group>"; };
 		18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTEmptyPlaceholderView.m; sourceTree = "<group>"; };
 		18A8C0362DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTDrawVideoCollectView.h; sourceTree = "<group>"; };
@@ -107,6 +137,18 @@
 				18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */,
 				18A8C0362DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.h */,
 				18A8C0372DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m */,
+				1843A1D62DB8C952008116EB /* SHTVerticalButton.h */,
+				1843A1D72DB8C952008116EB /* SHTVerticalButton.m */,
+				1843A1EA2DBB7700008116EB /* SHTSearchBarView.h */,
+				1843A1EB2DBB7700008116EB /* SHTSearchBarView.m */,
+				1843A1ED2DBB8D93008116EB /* SHTSearchCollectionViewCell.h */,
+				1843A1EE2DBB8D93008116EB /* SHTSearchCollectionViewCell.m */,
+				1843A1F02DBE099A008116EB /* SHTSearchCollectionReusableView.h */,
+				1843A1F12DBE099A008116EB /* SHTSearchCollectionReusableView.m */,
+				1843A1F62DC0C85C008116EB /* SHTLeftAlignedFlowLayout.h */,
+				1843A1F72DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m */,
+				1843A1F92DC0D368008116EB /* SHTSearchTableViewCell.h */,
+				1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,7 +203,13 @@
 				18A8C02A2DA6485C003BC3B3 /* SHTAlertHelper.h */,
 				18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */,
 				18A8C02D2DA649A2003BC3B3 /* SHTToolsManager.h */,
-				18A8C02E2DA649A2003BC3B3 /* SHTToolsManager.m */,
+				1843A1DD2DB8D765008116EB /* SHTToolsManager.m */,
+				1843A1F32DBE314A008116EB /* SHTUserDefaults.h */,
+				1843A1F42DBE314A008116EB /* SHTUserDefaults.m */,
+				1843A1DF2DB8D7A3008116EB /* SHTMBProgressManager.h */,
+				1843A1E02DB8D7A3008116EB /* SHTMBProgressManager.m */,
+				1843A1E72DBB349A008116EB /* SHTRouteUtil.h */,
+				1843A1E82DBB349A008116EB /* SHTRouteUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -211,6 +259,8 @@
 				72EB882D2D6D40430024DDBD /* SHTMineViewController.m */,
 				722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */,
 				722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */,
+				1843A1E42DBB3347008116EB /* SHTSearchViewController.h */,
+				1843A1E52DBB3347008116EB /* SHTSearchViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -373,17 +423,27 @@
 				721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */,
 				72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */,
 				72443C3F2D2A260D003E6189 /* main.m in Sources */,
+				1843A1E92DBB349A008116EB /* SHTRouteUtil.m in Sources */,
 				721C67242D3CD8E400843445 /* SHTMacros.m in Sources */,
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
+				1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */,
+				1843A1EF2DBB8D93008116EB /* SHTSearchCollectionViewCell.m in Sources */,
 				722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */,
+				1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */,
 				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
 				18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */,
+				1843A1E12DB8D7A3008116EB /* SHTMBProgressManager.m in Sources */,
 				18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,
+				1843A1F52DBE314A008116EB /* SHTUserDefaults.m in Sources */,
 				72EB882E2D6D40430024DDBD /* SHTMineViewController.m in Sources */,
+				1843A1F22DBE099A008116EB /* SHTSearchCollectionReusableView.m in Sources */,
+				1843A1F82DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m in Sources */,
+				1843A1D82DB8C952008116EB /* SHTVerticalButton.m in Sources */,
+				1843A1E62DBB3348008116EB /* SHTSearchViewController.m in Sources */,
 				72EB882B2D6D3CE60024DDBD /* SHTTabBarController.m in Sources */,
 				182594152D894B4700B0AD44 /* SHTFavoritePlayletCell.m in Sources */,
-				18A8C02F2DA649A2003BC3B3 /* SHTToolsManager.m in Sources */,
+				1843A1EC2DBB7700008116EB /* SHTSearchBarView.m in Sources */,
 				72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,7 +607,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheater;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheatera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -586,7 +646,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheater;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheatera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -6,20 +6,27 @@
 //
 
 #import "SHTSearchViewController.h"
+#import <PangrowthDJX/DJXSDK.h>
 #import "SHTSearchBarView.h"
 #import "SHTSearchCollectionViewCell.h"
 #import "SHTSearchCollectionReusableView.h"
 #import "SHTUserDefaults.h"
+#import "SHTLeftAlignedFlowLayout.h"
+#import "SHTSearchTableViewCell.h"
+#import <MJRefresh/MJRefresh.h>
 
-@interface SHTSearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface SHTSearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource>
 
-@property(nonatomic, strong)SHTSearchBarView *searchBar; // 搜索框
+@property (nonatomic, strong) SHTSearchBarView *searchBar; // 搜索框
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray *historySearches;
-@property (nonatomic, strong) NSArray<NSArray<NSString *> *> *popularSearchGroups;
-@property (nonatomic, strong) NSArray<NSString *> *popularSearches;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) NSInteger currentPage; // 当前搜索请求页
+@property (nonatomic, copy) NSString *searchKeys;
+@property (nonatomic, assign) BOOL isSearching; // 在搜索中
+@property (nonatomic, strong) NSMutableArray *searcheDatas; // 搜索数据
+@property (nonatomic, strong) NSMutableArray *historySearcheKeys; // 搜索关键字历史记录
+@property (nonatomic, strong) NSArray *popularSearches; // 大家都在搜
 @property (nonatomic, assign) NSInteger popularIndex;
-
 @end
 
 @implementation SHTSearchViewController
@@ -29,8 +36,11 @@
     self.view.backgroundColor = SHT_SEARCH_BACK_COLOR; // 浅灰背景
     [self setupData];
     [self setupSearchBar];
+    [self setupRefresh];
     [self setupCollectionView];
     [self setupGestureRecognizer];
+    self.tableView.hidden = YES;
+    self.collectionView.hidden = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -40,7 +50,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [SHTUserDefaults setObject:self.historySearches forKey:HISTORY_SEARCHES_KEY];
+    [SHTUserDefaults setObject:self.historySearcheKeys forKey:HISTORY_SEARCHES_KEY];
 }
 #pragma mark - UI
 
@@ -53,23 +63,28 @@
         [strongSelf dismissViewControllerAnimated:YES completion:nil];
     };
     self.searchBar.onSearchTapped = ^(NSString *keyword) {
-        NSLog(@"搜索关键词：%@", keyword);// 进行搜索操作
+        NSLog(@"搜索关键词：%@", keyword); // 进行搜索操作
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf.historySearches addObject:keyword];
+        strongSelf.searchKeys = keyword;
+        [strongSelf.tableView.mj_header beginRefreshing];
+        [strongSelf.historySearcheKeys addObject:keyword];
         if (strongSelf.collectionView.numberOfSections > 1) {
             [strongSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
         } else {
             [strongSelf.collectionView reloadData];
         }
+        strongSelf.isSearching = YES;
+        strongSelf.tableView.hidden = NO;
+        strongSelf.collectionView.hidden = YES;
     };
     [self.view addSubview:self.searchBar];
 }
 
 - (void)setupCollectionView {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    SHTLeftAlignedFlowLayout *layout = [[SHTLeftAlignedFlowLayout alloc] init];
     layout.estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize;
-    layout.minimumLineSpacing = 12.0;
-    layout.minimumInteritemSpacing = 12.0;
+//    layout.minimumLineSpacing = 12.0;
+//    layout.minimumInteritemSpacing = 12.0;
     layout.sectionInset = UIEdgeInsetsMake(20.0, 24.0, 20.0, 12.0);
 
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.searchBar.frame) + 20.0, self.view.frame.size.width, self.view.frame.size.height - 100.0) collectionViewLayout:layout];
@@ -83,16 +98,74 @@
     [self.view addSubview:self.collectionView];
 }
 
+- (void)setupRefresh {
+    __weak typeof(self) weakSelf = self;
+    // 下拉刷新
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        weakSelf.currentPage = 1;
+        [weakSelf requestSearchData];
+    }];
+    // 上拉加载更多
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        weakSelf.currentPage++;
+        [weakSelf requestSearchData];
+    }];
+}
+
 #pragma mark - Data
 
 - (void)setupData {
-    [self.historySearches addObjectsFromArray:[SHTUserDefaults objectForKey:HISTORY_SEARCHES_KEY]];
-    self.popularSearchGroups = @[ @[@"野蛮女友美又飒", @"盲刃", @"庶女成凰"],
-                                   @[@"jik", @"sccff"], @[@"qdcac", @"pnnc", @"qccxx"],
-                                  @[@"wssxxx", @"onncnddds"] ];
-    self.popularIndex = 0;
-    self.popularSearches = self.popularSearchGroups[self.popularIndex];
-    [self.collectionView reloadData];
+    [self.historySearcheKeys addObjectsFromArray:[SHTUserDefaults objectForKey:HISTORY_SEARCHES_KEY]];
+    self.popularIndex = 1;
+    [self requestRecommendedData];
+}
+
+#pragma mark - Actions
+
+// 根据搜索关键词获取短剧数据
+- (void)requestSearchData {
+    [[DJXPlayletManager shareInstance] requestCategoryPlayletLisWithSearchWord:self.searchKeys isFuzzy:YES page:self.currentPage num:10 success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
+        NSLog(@"搜索关键词:%@, 获取搜索短剧列表:%@, 是否还有更多:%d", self.searchKeys, playletList, hasMore);
+        // 刷新 or 加载更多
+        if (self.currentPage == 1) {
+            [self.searcheDatas removeAllObjects];
+        }
+        [self.searcheDatas addObjectsFromArray:playletList];
+        [self.tableView reloadData];
+        // 结束刷新状态
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        if (hasMore) {
+            [self.tableView.mj_footer resetNoMoreData];
+        } else {
+            // 如果没有更多了，显示“已经全部加载完毕”
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"获取搜索短剧列表报错error:%@", error);
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+    }];
+}
+
+// 获取推荐(大家都在搜)短剧数据
+- (void)requestRecommendedData {
+    [[DJXPlayletManager shareInstance] requestRecommendedPlayletListPage:self.popularIndex num:5 success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, NSDictionary<NSString *,NSObject *> * _Nonnull info) {
+        NSLog(@"获取推荐(大家都在搜)短剧数据:%@, 信息:%@", playletList, info);
+        self.popularSearches = playletList;
+        if (self.popularIndex == 1) {
+            [self.collectionView reloadData];
+        } else {
+            if (self.historySearcheKeys.count > 0) {
+                [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
+            } else {
+                [self.collectionView reloadData];
+            }
+        }
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"获取推荐(大家都在搜)短剧数据报错error:%@", error);
+    }];
 }
 
 // 设置收起键盘手势
@@ -108,13 +181,32 @@
 
 #pragma mark - 懒加载
 
-- (NSMutableArray *)historySearches {
-    if (!_historySearches) {
-        _historySearches = [[NSMutableArray alloc] init];
+- (NSMutableArray *)searcheDatas {
+    if (!_searcheDatas) {
+        _searcheDatas = [[NSMutableArray alloc] init];
     }
-    return _historySearches;
+    return _searcheDatas;
 }
 
+- (NSMutableArray *)historySearcheKeys {
+    if (!_historySearcheKeys) {
+        _historySearcheKeys = [[NSMutableArray alloc] init];
+    }
+    return _historySearcheKeys;
+}
+
+//SHTSearchTableViewCell
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.searchBar.frame) + 20.0, self.view.frame.size.width, self.view.frame.size.height - 100.0) style:UITableViewStylePlain];
+        _tableView.estimatedRowHeight = 140;
+        _tableView.bounces = NO;
+        _tableView.backgroundColor = SHT_SEARCH_BACK_COLOR;
+        [_tableView registerClass:[SHTSearchTableViewCell class] forCellReuseIdentifier:@"SHTSearchTableViewCell"];
+        [self.view addSubview:_tableView];
+    }
+    return _tableView;
+}
 
 #pragma mark - actions
 
@@ -125,7 +217,7 @@
 #pragma mark - CollectionView
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    if (self.historySearches.count > 0) {
+    if (self.historySearcheKeys.count > 0) {
         return 2;
     } else {
         return 1;
@@ -135,7 +227,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
                                  atIndexPath:(NSIndexPath *)indexPath {
-    if (self.historySearches.count > 0) {
+    if (self.historySearcheKeys.count > 0) {
         if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
             SHTSearchCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                                          withReuseIdentifier:@"SHTSearchCollectionReusableView"
@@ -185,9 +277,9 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (self.historySearches.count > 0) {
+    if (self.historySearcheKeys.count > 0) {
         // 限定16条记录展示
-        if (section == 0) return MIN(self.historySearches.count, 16);
+        if (section == 0) return MIN(self.historySearcheKeys.count, 16);
         return MIN(self.popularSearches.count, 16);
     } else {
         return MIN(self.popularSearches.count, 16);
@@ -195,23 +287,34 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.historySearches.count > 0) {
+    if (self.historySearcheKeys.count > 0) {
         SHTSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTSearchCollectionViewCell" forIndexPath:indexPath];
         if (indexPath.section == 0) {
-            cell.text = self.historySearches[indexPath.item];
+            cell.text = self.historySearcheKeys[indexPath.item];
         } else {
-            cell.text = self.popularSearches[indexPath.item];
+            cell.model = self.popularSearches[indexPath.item];
         }
         return cell;
     } else {
         SHTSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTSearchCollectionViewCell" forIndexPath:indexPath];
-        cell.text = self.popularSearches[indexPath.item];
+        cell.model = self.popularSearches[indexPath.item];
         return cell;
     }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *text = self.historySearches.count > 0 ? (indexPath.section == 0 ? self.historySearches[indexPath.item] : self.popularSearches[indexPath.item]) : self.popularSearches[indexPath.item];
+    NSString *text = @"";
+    if (self.historySearcheKeys.count > 0) {
+        if (indexPath.section == 0) {
+            text = self.historySearcheKeys[indexPath.item];
+        } else {
+            DJXPlayletInfoModel *model = self.popularSearches[indexPath.item];
+            text = model.title;
+        }
+    } else {
+        DJXPlayletInfoModel *model = self.popularSearches[indexPath.item];
+        text = model.title;
+    }
     CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
     return CGSizeMake(size.width + 20, 30);
 }
@@ -219,19 +322,14 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 #pragma mark - 删除历史记录
 
 - (void)clearAllHistory {
-    [self.historySearches removeAllObjects];
+    [self.historySearcheKeys removeAllObjects];
     [self.collectionView reloadData];
 }
 
 #pragma mark - 换一换
 
 - (void)changePopular {
-    self.popularIndex = (self.popularIndex + 1) % self.popularSearchGroups.count;
-    self.popularSearches = self.popularSearchGroups[self.popularIndex];
-    if (self.historySearches.count > 0) {
-        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:1]];
-    } else {
-        [self.collectionView reloadData];
-    }
+    self.popularIndex++;
+    [self requestRecommendedData];
 }
 @end
