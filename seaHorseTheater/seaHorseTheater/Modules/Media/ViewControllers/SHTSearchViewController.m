@@ -6,6 +6,7 @@
 //
 
 #import "SHTSearchViewController.h"
+#import "SHTToolsManager.h"
 #import <PangrowthDJX/DJXSDK.h>
 #import "SHTSearchBarView.h"
 #import "SHTSearchCollectionViewCell.h"
@@ -41,10 +42,6 @@
     [self setupGestureRecognizer];
     self.tableView.hidden = YES;
     self.collectionView.hidden = NO;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self.searchBar.textField becomeFirstResponder];
 }
 
@@ -65,6 +62,7 @@
             strongSelf.tableView.hidden = YES;
             strongSelf.collectionView.hidden = NO;
             strongSelf.isSearching = NO;
+            [strongSelf.searchBar.textField becomeFirstResponder];
         } else {
             [strongSelf dismissViewControllerAnimated:YES completion:nil];
         }
@@ -74,7 +72,7 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.searchKeys = keyword;
         [strongSelf.tableView.mj_header beginRefreshing];
-        [strongSelf.historySearcheKeys addObject:keyword];
+        [strongSelf.historySearcheKeys insertObject:keyword atIndex:0];
         if (strongSelf.collectionView.numberOfSections > 1) {
             [strongSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
         } else {
@@ -179,7 +177,7 @@
 - (void)setupGestureRecognizer {
     // 添加点击手势隐藏键盘
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-//    tapGesture.cancelsTouchesInView = NO; // 允许点击事件继续传递给子视图（如按钮等）
+    tapGesture.cancelsTouchesInView = NO; // 允许点击事件继续传递给子视图（如按钮等）
     [self.view addGestureRecognizer:tapGesture];
     // 滑动手势隐藏键盘
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -310,6 +308,27 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.historySearcheKeys.count > 0) {
+        if (indexPath.section == 0) {
+            NSString *keys = self.historySearcheKeys[indexPath.item];
+            self.searchBar.textField.text = keys;
+            self.searchKeys = keys;
+            [self.tableView.mj_header beginRefreshing];
+            [self.historySearcheKeys removeObject:keys];
+            [self.historySearcheKeys insertObject:keys atIndex:0];
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+            self.isSearching = YES;
+            self.tableView.hidden = NO;
+            self.collectionView.hidden = YES;
+        } else {
+            [SHTToolsManager enterPlayer:self.popularSearches[indexPath.item] fromVC:self];
+        }
+    } else {
+        [SHTToolsManager enterPlayer:self.popularSearches[indexPath.item] fromVC:self];
+    }
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *text = @"";
     if (self.historySearcheKeys.count > 0) {
@@ -331,6 +350,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
 
 - (void)clearAllHistory {
     [self.historySearcheKeys removeAllObjects];
+    [SHTUserDefaults removeObjectForKey:HISTORY_SEARCHES_KEY];
     [self.collectionView reloadData];
 }
 
@@ -362,6 +382,12 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     SHTSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTSearchTableViewCell" forIndexPath:indexPath];
     cell.playletinfoModel = model;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [SHTToolsManager enterPlayer:self.searcheDatas[indexPath.item] fromVC:self];
+    // 取消选中效果（有动画）
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

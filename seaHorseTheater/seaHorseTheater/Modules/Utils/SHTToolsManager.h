@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <PangrowthDJX/DJXSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIViewController *)topViewController;
 
 + (UIViewController *)topViewControllerFrom:(UIViewController *)vc;
+
++ (void)enterPlayer:(DJXPlayletInfoModel *)infoModel fromVC:(UIViewController *)fromVC;
 
 @end
 

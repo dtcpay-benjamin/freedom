@@ -12,6 +12,7 @@
 #import "SHTFavoritePlayletModel.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "SHTEmptyPlaceholderView.h"
+#import "SHTToolsManager.h"
 
 @interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -138,23 +139,6 @@
         [self.view addSubview:_emptyView];
     }
     return _emptyView;
-}
-
-- (void)enterPlayer:(DJXPlayletInfoModel *)infoModel {
-    DJXDrawVideoViewController *vc = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
-        DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
-        playletConfig.skitId = infoModel.shortplay_id;
-        playletConfig.episode = infoModel.current_episode;
-        playletConfig.playStartTime = (CGFloat)infoModel.action_time;
-        playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-        playletConfig.freeEpisodesCount = 5;
-        playletConfig.unlockEpisodesCountUsingAD = 1;
-        config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet;
-        config.shouldHideTabBarView = YES;
-        config.playletConfig = playletConfig;
-    }];
-    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)editFavorites:(BOOL)isEdit {
@@ -343,7 +327,7 @@
         [collectionView reloadItemsAtIndexPaths:@[indexPath]];
     } else {
         DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
-        [self enterPlayer:model];
+        [SHTToolsManager enterPlayer:model fromVC:self];
     }
 }
 
