@@ -11,8 +11,8 @@
 
 @interface SHTFavoritePlayletCell()
 
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView *imageView; // 短剧封面
+@property (nonatomic, strong) UILabel *titleLabel; // 短剧标题
 @property (nonatomic, strong) UILabel *subtitleLabel;
 @property (nonatomic, strong) UIActivityIndicatorView *loadingView;
 @property (nonatomic, strong) UIImageView *deleteImageView;
@@ -50,6 +50,7 @@
     self.titleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.imageView.frame) + 5, self.contentView.bounds.size.width - 10, 20);
     self.subtitleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.titleLabel.frame) + 2, self.contentView.bounds.size.width - 10, 18);
     self.deleteImageView.frame = CGRectMake(self.contentView.bounds.size.width - 22 - 8, 8, 22, 22);
+    self.loadingView.center = self.imageView.center;
 }
 
 
@@ -143,7 +144,6 @@
 - (UIActivityIndicatorView *)loadingView {
     if (!_loadingView) {
         _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        _loadingView.center = self.contentView.center;
         _loadingView.hidesWhenStopped = YES;
         [self.contentView addSubview:_loadingView];
     }

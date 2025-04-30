@@ -195,12 +195,13 @@
     return _historySearcheKeys;
 }
 
-//SHTSearchTableViewCell
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.searchBar.frame) + 20.0, self.view.frame.size.width, self.view.frame.size.height - 100.0) style:UITableViewStylePlain];
-        _tableView.estimatedRowHeight = 140;
-        _tableView.bounces = NO;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.estimatedRowHeight = 130.0;
         _tableView.backgroundColor = SHT_SEARCH_BACK_COLOR;
         [_tableView registerClass:[SHTSearchTableViewCell class] forCellReuseIdentifier:@"SHTSearchTableViewCell"];
         [self.view addSubview:_tableView];
@@ -332,4 +333,28 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     self.popularIndex++;
     [self requestRecommendedData];
 }
+
+#pragma mark - UITableViewDelegate && UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.searcheDatas.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat imgViewWidth = 85.0;
+    CGFloat imgViewHeight = imgViewWidth * (16.0 / 9.0); // 默认 16:9 比例
+    return imgViewHeight + 20.0;
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    DJXPlayletInfoModel *model = self.searcheDatas[indexPath.item];
+    SHTSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTSearchTableViewCell" forIndexPath:indexPath];
+    cell.playletinfoModel = model;
+    return cell;
+}
+
 @end

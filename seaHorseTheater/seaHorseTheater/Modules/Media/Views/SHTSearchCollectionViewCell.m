@@ -56,7 +56,7 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
         _titleLabel.font = [UIFont systemFontOfSize:14];
-        _titleLabel.textColor = [UIColor colorWithRed:102.0/255.0 green:104.0/255.0 blue:107.0/255.0 alpha:1.0];
+        _titleLabel.textColor = SHT_SEARCH_TEXT_COLOR;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.backgroundColor = SHT_SEARCH_CELL_BACK;
         _titleLabel.layer.cornerRadius = 15;
