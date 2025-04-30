@@ -60,7 +60,14 @@
     __weak typeof(self) weakSelf = self;
     self.searchBar.onBackTapped = ^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf dismissViewControllerAnimated:YES completion:nil];
+        if (strongSelf.isSearching) {
+            strongSelf.searchBar.textField.text = nil;
+            strongSelf.tableView.hidden = YES;
+            strongSelf.collectionView.hidden = NO;
+            strongSelf.isSearching = NO;
+        } else {
+            [strongSelf dismissViewControllerAnimated:YES completion:nil];
+        }
     };
     self.searchBar.onSearchTapped = ^(NSString *keyword) {
         NSLog(@"搜索关键词：%@", keyword); // 进行搜索操作
