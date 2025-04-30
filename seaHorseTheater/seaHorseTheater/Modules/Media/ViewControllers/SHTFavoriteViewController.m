@@ -19,7 +19,7 @@
 @property (nonatomic, assign) NSInteger currentPage; // 当前请求页
 @property (nonatomic, assign) BOOL hasMore; // 是否还有更多
 @property (nonatomic, strong) UICollectionView *collectionView; // 收藏列表
-@property (nonatomic, strong) SHTEmptyPlaceholderView *emptyView; // 空数据站位
+@property (nonatomic, strong) SHTEmptyPlaceholderView *emptyView; // 暂无内容
 @property (nonatomic, strong) NSMutableArray *dataSource; // 短剧数据组
 @property (nonatomic, strong) NSMutableArray *favoriteDataSource; // 选中短剧记录数据组
 @property (nonatomic, assign) bool isEdit; // 是否在编辑
@@ -126,7 +126,7 @@
         _emptyView = [[SHTEmptyPlaceholderView alloc] init];
         __weak typeof(self) weakSelf = self;
         _emptyView = [[SHTEmptyPlaceholderView alloc] initWithFrame:self.view.bounds
-                                                          imageName:nil
+                                                          imageName:@"noData"
                                                                                      message:@"暂无内容"
                                                                                  buttonTitle:@"去剧场"
                                                                                  actionBlock:^{

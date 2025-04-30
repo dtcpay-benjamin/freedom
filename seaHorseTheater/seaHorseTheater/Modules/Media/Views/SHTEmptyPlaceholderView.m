@@ -61,24 +61,26 @@
             [messageLabel.widthAnchor constraintEqualToAnchor:self.widthAnchor multiplier:0.8]
         ]];
         
-        // 按钮
-        UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [actionButton setTitle:buttonTitle forState:UIControlStateNormal];
-        actionButton.backgroundColor = [UIColor colorWithWhite:1 alpha:0.1];
-        actionButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-        actionButton.tintColor = [UIColor whiteColor];
-        actionButton.layer.cornerRadius = 18;
-        actionButton.clipsToBounds = YES;
-        actionButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [actionButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:actionButton];
-        
-        [NSLayoutConstraint activateConstraints:@[
-            [actionButton.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
-            [actionButton.topAnchor constraintEqualToAnchor:messageLabel.bottomAnchor constant:20],
-            [actionButton.widthAnchor constraintEqualToConstant:120],
-            [actionButton.heightAnchor constraintEqualToConstant:36]
-        ]];
+        if (buttonTitle.length > 0) {
+            // 按钮
+            UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeSystem];
+            [actionButton setTitle:buttonTitle forState:UIControlStateNormal];
+            actionButton.backgroundColor = [UIColor colorWithWhite:1 alpha:0.1];
+            actionButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+            actionButton.tintColor = [UIColor whiteColor];
+            actionButton.layer.cornerRadius = 18;
+            actionButton.clipsToBounds = YES;
+            actionButton.translatesAutoresizingMaskIntoConstraints = NO;
+            [actionButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:actionButton];
+            
+            [NSLayoutConstraint activateConstraints:@[
+                [actionButton.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
+                [actionButton.topAnchor constraintEqualToAnchor:messageLabel.bottomAnchor constant:20],
+                [actionButton.widthAnchor constraintEqualToConstant:120],
+                [actionButton.heightAnchor constraintEqualToConstant:36]
+            ]];
+        }
     }
     return self;
 }
