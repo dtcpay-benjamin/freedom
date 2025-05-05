@@ -10,7 +10,7 @@
 
 @implementation SHTMBProgressManager
 
-+ (void)showHUD:(UIView *)view {
++ (void)showHUD:(nullable UIView *)view {
     if (view) {
         [MBProgressHUD showHUDAddedTo:view animated:YES];
     } else {
@@ -19,7 +19,7 @@
     }
 }
 
-+ (void)hideHUD:(UIView *)view {
++ (void)hideHUD:(nullable UIView *)view {
     if (view) {
         [MBProgressHUD hideHUDForView:view animated:YES];
     } else {
@@ -28,7 +28,7 @@
     }
 }
 
-+ (void)showTextHUD:(UIView *)view withText:(NSString *)text andSubText:(NSString *)subText {
++ (void)showTextHUD:(nullable UIView *)view withText:(nullable NSString *)text andSubText:(nullable NSString *)subText {
     UIWindow *window = UIApplication.sharedApplication.keyWindow;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view ? view : window  animated:YES];
     hud.label.text = text;  // 主文字
@@ -38,7 +38,7 @@
 //    hud.bezelView.color = [UIColor colorWithWhite:0 alpha:0.3];
 }
 
-+ (void)showText:(UIView *)view withText:(NSString *)text andSubText:(NSString *)subText  isBottom:(BOOL)isBottom {
++ (void)showText:(nullable UIView *)view withText:(nullable NSString *)text andSubText:(nullable NSString *)subText  isBottom:(BOOL)isBottom {
     UIWindow *window = UIApplication.sharedApplication.keyWindow;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view ? view : window animated:YES];
     hud.mode = MBProgressHUDModeText;
@@ -54,7 +54,7 @@
     [hud hideAnimated:YES afterDelay:2]; // 延时2秒隐藏
 }
 
-+ (void)showActionResult:(UIView *)view isSuccess:(BOOL)isSuccess {
++ (void)showActionResult:(nullable UIView *)view isSuccess:(BOOL)isSuccess {
     UIWindow *window = UIApplication.sharedApplication.keyWindow;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view ? view : window animated:YES];
     hud.mode = MBProgressHUDModeCustomView;

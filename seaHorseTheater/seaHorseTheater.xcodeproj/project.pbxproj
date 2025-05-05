@@ -32,6 +32,7 @@
 		72443C392D2A260D003E6189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72443C382D2A260D003E6189 /* Assets.xcassets */; };
 		72443C3C2D2A260D003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C3B2D2A260D003E6189 /* Base */; };
 		72443C3F2D2A260D003E6189 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C3E2D2A260D003E6189 /* main.m */; };
+		727A4E602DC89C500096E550 /* SHTFavoriteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 727A4E5F2DC89C500096E550 /* SHTFavoriteManager.m */; };
 		727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */ = {isa = PBXBuildFile; fileRef = 727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */; };
 		72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72821D1D2D521DD100074647 /* SHTKaiPingADViewController.m */; };
 		72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */; };
@@ -96,6 +97,8 @@
 		72443C3B2D2A260D003E6189 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72443C3D2D2A260D003E6189 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72443C3E2D2A260D003E6189 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		727A4E5E2DC89C500096E550 /* SHTFavoriteManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoriteManager.h; sourceTree = "<group>"; };
+		727A4E5F2DC89C500096E550 /* SHTFavoriteManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoriteManager.m; sourceTree = "<group>"; };
 		727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SDK_Setting_5603361.json; sourceTree = "<group>"; };
 		72821D1C2D521DD100074647 /* SHTKaiPingADViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKaiPingADViewController.h; sourceTree = "<group>"; };
 		72821D1D2D521DD100074647 /* SHTKaiPingADViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKaiPingADViewController.m; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */,
 				18A8C02D2DA649A2003BC3B3 /* SHTToolsManager.h */,
 				1843A1DD2DB8D765008116EB /* SHTToolsManager.m */,
+				727A4E5E2DC89C500096E550 /* SHTFavoriteManager.h */,
+				727A4E5F2DC89C500096E550 /* SHTFavoriteManager.m */,
 				1843A1F32DBE314A008116EB /* SHTUserDefaults.h */,
 				1843A1F42DBE314A008116EB /* SHTUserDefaults.m */,
 				1843A1DF2DB8D7A3008116EB /* SHTMBProgressManager.h */,
@@ -438,6 +443,7 @@
 				1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */,
 				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
 				18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */,
+				727A4E602DC89C500096E550 /* SHTFavoriteManager.m in Sources */,
 				1843A1E12DB8D7A3008116EB /* SHTMBProgressManager.m in Sources */,
 				18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,

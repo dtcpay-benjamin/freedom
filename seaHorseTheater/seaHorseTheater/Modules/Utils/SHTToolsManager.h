@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIViewController *)topViewControllerFrom:(UIViewController *)vc;
 
-+ (void)enterPlayer:(DJXPlayletInfoModel *)infoModel fromVC:(UIViewController *)fromVC;
++ (void)enterPlayer:(DJXPlayletInfoModel *)infoModel fromVC:(UIViewController<DJXPlayletDetailCellDelegate> *)fromVC;
 
 @end
 

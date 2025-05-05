@@ -17,16 +17,12 @@
 
 @implementation SHTDrawVideoCollectView
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    self.collectBtn.frame = CGRectMake(0.0, 0.0, 40.0, 60.0);
-}
-
 #pragma mark - actions
 
 - (void)setPlayletInfoModel:(DJXPlayletInfoModel *)playletInfoModel {
     _playletInfoModel = playletInfoModel;
     [self updateFavoriteCount];
+    [self.collectBtn setTitle:_displayText forState:UIControlStateSelected];
 }
 
 - (void)setStatus:(NSInteger)favorite_state {
@@ -38,17 +34,17 @@
 }
 
 - (void)updateFavoriteCount {
-    if (self.playletInfoModel.favorite_count >= 100000000) {
+    if (_playletInfoModel.favorite_count >= 100000000) {
         // 超过一亿，保留1位小数，单位“亿”
-        CGFloat billion = self.playletInfoModel.favorite_count / 100000000.0;
-        self.displayText = [NSString stringWithFormat:@"%.1f亿", billion];
-    } else if (self.playletInfoModel.favorite_count >= 10000) {
+        CGFloat billion = _playletInfoModel.favorite_count / 100000000.0;
+        _displayText = [NSString stringWithFormat:@"%.1f亿", billion];
+    } else if (_playletInfoModel.favorite_count >= 10000) {
         // 超过一万，保留1位小数，单位“万”
-        CGFloat tenThousand = self.playletInfoModel.favorite_count / 10000.0;
-        self.displayText = [NSString stringWithFormat:@"%.1f万", tenThousand];
+        CGFloat tenThousand = _playletInfoModel.favorite_count / 10000.0;
+        _displayText = [NSString stringWithFormat:@"%.1f万", tenThousand];
     } else {
         // 不足一万，直接显示整数
-        self.displayText = [NSString stringWithFormat:@"%ld", (long)self.playletInfoModel.favorite_count];
+        _displayText = [NSString stringWithFormat:@"%ld", (long)_playletInfoModel.favorite_count];
     }
 }
 
@@ -98,11 +94,12 @@
         [_collectBtn setImage:[UIImage imageNamed:@"uncollect"] forState:UIControlStateNormal];
         [_collectBtn setImage:[UIImage imageNamed:@"collect"] forState:UIControlStateSelected];
         [_collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
-        [_collectBtn setTitle:self.displayText forState:UIControlStateSelected];
+        [_collectBtn setTitle:_displayText forState:UIControlStateSelected];
         [_collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         _collectBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
         [_collectBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
+        _collectBtn.frame = CGRectMake(0.0, 0.0, 40.0, 60.0);
         [self addSubview:_collectBtn];
     }
     return _collectBtn;

@@ -13,8 +13,9 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "SHTEmptyPlaceholderView.h"
 #import "SHTToolsManager.h"
+#import "SHTFavoriteManager.h"
 
-@interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DJXPlayletDetailCellDelegate>
 
 @property (nonatomic, assign) NSInteger currentPage; // 当前请求页
 @property (nonatomic, assign) BOOL hasMore; // 是否还有更多
@@ -66,6 +67,11 @@
             [self selectAllAssignment];
         }
         [self.dataSource addObjectsFromArray:playletList];
+        for (DJXPlayletInfoModel *model in playletList) {
+            if ([[SHTFavoriteManager sharedInstance] isAddToFavorites:model]) {
+                [[SHTFavoriteManager sharedInstance].drawFavoriteArrays addObject:model];
+            }
+        }
         for (int i = 0; i < playletList.count; i++) {
             SHTFavoritePlayletModel *favoritePlayletModel = [[SHTFavoritePlayletModel alloc] init];
             favoritePlayletModel.isSelected = self.isAllSelect;
@@ -338,6 +344,20 @@
     CGFloat totalSpacing = 10 * 4;
     CGFloat width = (self.view.bounds.size.width - totalSpacing) / 3;
     return CGSizeMake(width, width * (16.0 / 9.0) + 45.0);
+}
+
+#pragma mark - DJXPlayletDetailCellDelegate
+
+- (UIView *)djx_playletDetailCellCustomView:(UITableViewCell *)cell {
+    return [[SHTFavoriteManager sharedInstance] setCollectView:cell];
+}
+
+- (void)djx_playletDetailCell:(UITableViewCell *)cell layoutSubviews:(UIView *)customView {
+    [[SHTFavoriteManager sharedInstance] setCollectViewFrame:cell layoutSubviews:customView];
+}
+
+- (void)djx_playletDetailCell:(UITableViewCell *)cell updateCustomView:(UIView *)customView withPlayletData:(DJXPlayletInfoModel *)playletInfo {
+    [[SHTFavoriteManager sharedInstance] collectViewUpdateSubview:customView withData:playletInfo andIsDraw:NO];
 }
 
 @end

@@ -6,6 +6,7 @@
 //
 
 #import "SHTToolsManager.h"
+#import "SHTDrawVideoCollectView.h"
 
 @implementation SHTToolsManager
 
@@ -26,7 +27,7 @@
     }
 }
 
-+ (void)enterPlayer:(DJXPlayletInfoModel *)infoModel fromVC:(UIViewController *)fromVC {
++ (void)enterPlayer:(DJXPlayletInfoModel *)infoModel fromVC:(UIViewController<DJXPlayletDetailCellDelegate> *)fromVC {
     DJXDrawVideoViewController *vc = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
         DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
         playletConfig.skitId = infoModel.shortplay_id;
@@ -35,6 +36,10 @@
         playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
         playletConfig.freeEpisodesCount = 5;
         playletConfig.unlockEpisodesCountUsingAD = 1;
+        playletConfig.hideLikeIcon = YES;
+        playletConfig.hideCollectIcon = YES;
+        playletConfig.customViewDelegate = fromVC;
+        
         config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet;
         config.shouldHideTabBarView = YES;
         config.playletConfig = playletConfig;
