@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0F7E085A-A72A-4E32-B098-8159D853B468"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "seaHorseTheater/Modules/Media/ViewControllers/SHTFavoriteViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "-djx_playletDetailCell:updateCustomView:withPlayletData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "515D48EC-2E17-4944-84BF-A108247386B0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -224,6 +208,116 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
+            landmarkName = "-collectViewUpdateSubview:withData:andIsDraw:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B48315B6-CE63-4010-9782-47BEA4B740D0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seaHorseTheater/Modules/Utils/SHTFavoriteManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-collectViewUpdateSubview:withData:andIsDraw:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B48315B6-CE63-4010-9782-47BEA4B740D0 - 7a991c32b0f91bee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__66-[SHTFavoriteManager collectViewUpdateSubview:withData:andIsDraw:]_block_invoke"
+                  moduleName = "seaHorseTheater.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuhongbiao/Desktop/freedom/seaHorseTheater/seaHorseTheater/Modules/Utils/SHTFavoriteManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182">
+               </Location>
+               <Location
+                  uuid = "B48315B6-CE63-4010-9782-47BEA4B740D0 - 58917d6d27a8cd5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__66-[SHTFavoriteManager collectViewUpdateSubview:withData:andIsDraw:]_block_invoke.20"
+                  moduleName = "seaHorseTheater.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chuhongbiao/Desktop/freedom/seaHorseTheater/seaHorseTheater/Modules/Utils/SHTFavoriteManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2ACDF80A-96E7-4FBD-8A79-0C39611A909A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seaHorseTheater/Modules/Utils/SHTFavoriteManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "-collectViewUpdateSubview:withData:andIsDraw:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A3648736-E873-45A4-9F41-EF3D5885D53B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seaHorseTheater/Modules/Utils/SHTFavoriteManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "-collectViewUpdateSubview:withData:andIsDraw:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65AB105E-BBF6-4702-952F-5216013C7EB1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seaHorseTheater/Modules/Utils/SHTFavoriteManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "-collectViewUpdateSubview:withData:andIsDraw:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B793F2FC-435A-4357-9063-A14FF3CFC9B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seaHorseTheater/Modules/Utils/SHTFavoriteManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-collectViewUpdateSubview:withData:andIsDraw:"
             landmarkType = "7">
          </BreakpointContent>

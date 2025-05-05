@@ -18,8 +18,9 @@
 #import "SHTAlertHelper.h"
 #import "SHTEmptyPlaceholderView.h"
 #import "SHTMBProgressManager.h"
+#import "SHTFavoriteManager.h"
 
-@interface SHTSearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource>
+@interface SHTSearchViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource, DJXPlayletDetailCellDelegate>
 
 @property (nonatomic, strong) SHTSearchBarView *searchBar; // 搜索框
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -448,6 +449,20 @@ referenceSizeForHeaderInSection:(NSInteger)section {
     [SHTToolsManager enterPlayer:self.searcheDatas[indexPath.item] fromVC:self];
     // 取消选中效果（有动画）
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - DJXPlayletDetailCellDelegate
+
+- (UIView *)djx_playletDetailCellCustomView:(UITableViewCell *)cell {
+    return [[SHTFavoriteManager sharedInstance] setCollectView:cell];
+}
+
+- (void)djx_playletDetailCell:(UITableViewCell *)cell layoutSubviews:(UIView *)customView {
+    [[SHTFavoriteManager sharedInstance] setCollectViewFrame:cell layoutSubviews:customView];
+}
+
+- (void)djx_playletDetailCell:(UITableViewCell *)cell updateCustomView:(UIView *)customView withPlayletData:(DJXPlayletInfoModel *)playletInfo {
+    [[SHTFavoriteManager sharedInstance] collectViewUpdateSubview:customView withData:playletInfo andIsDraw:NO];
 }
 
 @end

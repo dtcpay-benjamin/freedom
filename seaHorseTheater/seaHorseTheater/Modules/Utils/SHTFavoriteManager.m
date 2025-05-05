@@ -183,7 +183,7 @@
                 NSLog(@"短剧:(%@)取消收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
                 [strongSelf deleteDrawPlayletInfoFromFavorites:playletInfoModel];
                 [strongCollectView setStatus:0];
-                if (!IsDraw) {
+                if (!IsDraw && (self.currentCollectView.playletInfoModel.shortplay_id == playletInfoModel.shortplay_id)) {
                     [self.currentCollectView setStatus:0];
                 }
                 
