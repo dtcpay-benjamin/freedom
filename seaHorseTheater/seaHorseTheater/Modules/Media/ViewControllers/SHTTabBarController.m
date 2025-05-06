@@ -18,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setChilds];
+    [self configTabBar];
+}
+
+- (void)configTabBar {
+    self.tabBar.barTintColor = [UIColor whiteColor]; // 背景色
+//    self.tabBar.tintColor = [UIColor redColor];      // 选中时的颜色
+//    self.tabBar.unselectedItemTintColor = [UIColor blackColor]; // 未选中颜色
 }
 
 - (void)setChilds {
@@ -28,29 +35,29 @@
         }
     };
     addChildVC([self configHomeVideoVC]);
+    addChildVC([self configMineVC]);
     self.viewControllers = [viewControllers copy];
 }
+
 /// 初始化首页
 - (UIViewController *)configHomeVideoVC {
-    SHTHomeViewController *homeVideoVc = [[SHTHomeViewController alloc] init];
-    homeVideoVc.title = @"首页";
-    return homeVideoVc;
+    SHTHomeViewController *homeVideoVC = [[SHTHomeViewController alloc] init];
+//    homeVideoVC.tabBarItem.title = @"首页";
+    homeVideoVC.tabBarItem.image = [UIImage imageNamed:@"home_normal"];
+    homeVideoVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; // 保持原图色
+    homeVideoVC.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    return homeVideoVC;
 }
+
 /// 初始化我的
-- (UINavigationController *)configMineVideoVC {
+- (UINavigationController *)configMineVC {
     SHTMineViewController *mineVideoVc = [[SHTMineViewController alloc] init];
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:mineVideoVc];
-    navigationVC.title = @"我的";
+//    navigationVC.tabBarItem.title = @"我的";
+    navigationVC.tabBarItem.image = [UIImage imageNamed:@"me_normal"];
+    navigationVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"me_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]; // 保持原图色
+    navigationVC.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     return navigationVC;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

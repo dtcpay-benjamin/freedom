@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, SHTToastType) {
 #define SHT_bottomHeight          (SHT_IS_iphoneX?34:0)
 #define SHT_tabBarHeight          (50+SHT_bottomHeight)
 
-#define SHT_SEARCH_BACK_COLOR  [UIColor whiteColor]
+#define SHT_BACK_COLOR  [UIColor whiteColor]
 #define SHT_SEARCH_BACK_BORDERCOLOR      [UIColor colorWithWhite:0.95 alpha:1.0]
 #define SHT_SEARCH_CELL_BACK      [UIColor colorWithRed:247.0/255.0 green:248.0/255.0 blue:250.0/255.0 alpha:1.0]
 #define SHT_SEARCH_TEXT_COLOR     [UIColor colorWithRed:102.0/255.0 green:104.0/255.0 blue:107.0/255.0 alpha:1.0]

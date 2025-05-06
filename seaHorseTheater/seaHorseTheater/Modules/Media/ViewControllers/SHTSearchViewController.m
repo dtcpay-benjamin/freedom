@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = SHT_SEARCH_BACK_COLOR; // 浅灰背景
+    self.view.backgroundColor = SHT_BACK_COLOR;
     [self setupData];
 }
 
@@ -232,7 +232,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.estimatedRowHeight = 130.0;
-        _tableView.backgroundColor = SHT_SEARCH_BACK_COLOR;
+        _tableView.backgroundColor = SHT_BACK_COLOR;
         [_tableView registerClass:[SHTSearchTableViewCell class] forCellReuseIdentifier:@"SHTSearchTableViewCell"];
         __weak typeof(self) weakSelf = self;
         // 下拉刷新
