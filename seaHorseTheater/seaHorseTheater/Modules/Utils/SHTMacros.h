@@ -33,6 +33,7 @@ typedef NS_ENUM(NSUInteger, SHTToastType) {
 #define SHT_SEARCH_BACK_BORDERCOLOR      [UIColor colorWithWhite:0.95 alpha:1.0]
 #define SHT_SEARCH_CELL_BACK      [UIColor colorWithRed:247.0/255.0 green:248.0/255.0 blue:250.0/255.0 alpha:1.0]
 #define SHT_SEARCH_TEXT_COLOR     [UIColor colorWithRed:102.0/255.0 green:104.0/255.0 blue:107.0/255.0 alpha:1.0]
+#define SHT_TABBAR_HOME_COLOR     [UIColor colorWithWhite:0 alpha:0.65]
 #define HISTORY_SEARCHES_KEY  @"historySearchesKey"
 
 extern BOOL SHT_isNotchScreen(void);

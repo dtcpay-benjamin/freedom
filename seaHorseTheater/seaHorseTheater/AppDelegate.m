@@ -12,6 +12,12 @@
 #import "SHTKaiPingADViewController.h"
 #import "SHTTabBarController.h"
 
+@interface AppDelegate()<UIApplicationDelegate, UITabBarControllerDelegate>
+
+@property(nonatomic, strong) SHTTabBarController *tabBarController;
+
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -60,13 +66,38 @@
 
 /// 配置主页面
 - (void)configMainController {
-    SHTTabBarController *tabBarController = [[SHTTabBarController alloc] init];
-    self.window.rootViewController = tabBarController;
+    self.tabBarController = [[SHTTabBarController alloc] init];
+    self.tabBarController.delegate = self;
+    [self changeTabBarColor:SHT_TABBAR_HOME_COLOR];
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
 }
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+// 改变tabBar的背景色
+- (void)changeTabBarColor:(UIColor *)color {
+    if (@available(iOS 15.0, *)) {
+        UITabBarAppearance *appearance = [[UITabBarAppearance alloc] init];
+        appearance.backgroundColor = color;
+        self.tabBarController.tabBar.standardAppearance = appearance;
+        self.tabBarController.tabBar.scrollEdgeAppearance = appearance;
+    } else {
+        self.tabBarController.tabBar.barTintColor = color;
+    }
+}
+
+#pragma mark - UITabBarControllerDelegate
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    NSUInteger index = [tabBarController.viewControllers indexOfObject:viewController];
+    if (index == 0) { // 首页
+        [self changeTabBarColor:SHT_TABBAR_HOME_COLOR];
+    } else if (index == 1) { // 我的
+        [self changeTabBarColor:[UIColor whiteColor]];
+    }
 }
 
 @end
