@@ -34,7 +34,7 @@
         playletConfig.episode = infoModel.current_episode;
         playletConfig.playStartTime = (CGFloat)infoModel.action_time;
         playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-        playletConfig.freeEpisodesCount = 5;
+        playletConfig.freeEpisodesCount = 10;
         playletConfig.unlockEpisodesCountUsingAD = 1;
         playletConfig.hideLikeIcon = YES;
         playletConfig.hideCollectIcon = YES;

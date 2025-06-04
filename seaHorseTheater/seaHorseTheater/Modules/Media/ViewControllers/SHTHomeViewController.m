@@ -268,7 +268,7 @@
         _playletTheater = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
             DJXPlayletConfig *playletConfig = [DJXPlayletConfig new];
             playletConfig.freeEpisodesCount = 10;
-            playletConfig.unlockEpisodesCountUsingAD = 5;
+            playletConfig.unlockEpisodesCountUsingAD = 1;
             playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
             config.playletConfig = playletConfig;
             config.isShowNavigationItemTitle = NO;
@@ -285,7 +285,7 @@
         _playletVC = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
             DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
             playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-            playletConfig.freeEpisodesCount = 5;
+            playletConfig.freeEpisodesCount = 10;
             playletConfig.unlockEpisodesCountUsingAD = 1;
             playletConfig.hideLikeIcon = YES;
             playletConfig.hideCollectIcon = YES;
