@@ -288,6 +288,7 @@
             playletConfig.freeEpisodesCount = 10;
             playletConfig.unlockEpisodesCountUsingAD = 1;
             playletConfig.hideLikeIcon = YES;
+            playletConfig.disableDoubleClickLike = YES;
             playletConfig.hideCollectIcon = YES;
             playletConfig.customViewDelegate = self;
             
@@ -296,6 +297,7 @@
             config.shouldHideTabBarView = YES;
             config.playletConfig = playletConfig;
             config.hideLikeIcon = YES;
+            config.disableDoubleClickLike = YES;
             // 隐藏收藏按钮,用自定义的
             config.hideCollectIcon = YES;
             config.drawVideoCellAddSubviewDelegate = self;

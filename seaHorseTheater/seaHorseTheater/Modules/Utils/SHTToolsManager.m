@@ -37,6 +37,7 @@
         playletConfig.freeEpisodesCount = 10;
         playletConfig.unlockEpisodesCountUsingAD = 1;
         playletConfig.hideLikeIcon = YES;
+        playletConfig.disableDoubleClickLike = YES;
         playletConfig.hideCollectIcon = YES;
         playletConfig.customViewDelegate = fromVC;
         
