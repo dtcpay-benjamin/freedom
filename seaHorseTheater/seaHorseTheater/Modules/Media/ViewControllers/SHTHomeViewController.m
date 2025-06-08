@@ -302,6 +302,7 @@
             config.hideCollectIcon = YES;
             config.drawVideoCellAddSubviewDelegate = self;
             config.delegate = self;
+            config.progressBarStyle = DJXDrawVideoProgressBarStyleDarkContent;
         }];
     }
     return  _playletVC;

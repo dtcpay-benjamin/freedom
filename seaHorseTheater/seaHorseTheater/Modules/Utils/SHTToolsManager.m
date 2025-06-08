@@ -44,6 +44,7 @@
         config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet;
         config.shouldHideTabBarView = YES;
         config.playletConfig = playletConfig;
+        config.progressBarStyle = DJXDrawVideoProgressBarStyleDarkContent;
     }];
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [fromVC presentViewController:vc animated:YES completion:nil];
