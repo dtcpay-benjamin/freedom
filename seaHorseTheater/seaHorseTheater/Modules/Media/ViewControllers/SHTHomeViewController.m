@@ -266,10 +266,16 @@
 - (UIViewController *)playletTheater {
     if (!_playletTheater) {
         _playletTheater = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
-            DJXPlayletConfig *playletConfig = [DJXPlayletConfig new];
+            DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
+            playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
             playletConfig.freeEpisodesCount = 10;
             playletConfig.unlockEpisodesCountUsingAD = 1;
-            playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
+            playletConfig.hideLikeIcon = YES;
+            playletConfig.disableDoubleClickLike = YES;
+            playletConfig.hideCollectIcon = YES;
+            playletConfig.hideMoreButton = YES;
+            playletConfig.customViewDelegate = self;
+            
             config.playletConfig = playletConfig;
             config.isShowNavigationItemTitle = NO;
             config.isShowNavigationItemBackButton = NO;
