@@ -290,6 +290,7 @@
             playletConfig.hideLikeIcon = YES;
             playletConfig.disableDoubleClickLike = YES;
             playletConfig.hideCollectIcon = YES;
+            playletConfig.hideMoreButton = YES;
             playletConfig.customViewDelegate = self;
             
             config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet_feed;

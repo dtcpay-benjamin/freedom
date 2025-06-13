@@ -36,9 +36,10 @@
         playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
         playletConfig.freeEpisodesCount = 10;
         playletConfig.unlockEpisodesCountUsingAD = 1;
-        playletConfig.hideLikeIcon = YES;
+        playletConfig.hideLikeIcon = YES; // 隐藏点赞按钮
         playletConfig.disableDoubleClickLike = YES;
-        playletConfig.hideCollectIcon = YES;
+        playletConfig.hideCollectIcon = YES; // 隐藏收藏按钮，用自定义
+        playletConfig.hideMoreButton = YES; // 隐藏更多按钮
         playletConfig.customViewDelegate = fromVC;
         
         config.drawVCTabOptions = DJXDrawVideoVCTabOptions_playlet;
