@@ -28,6 +28,9 @@
 		721C67242D3CD8E400843445 /* SHTMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67232D3CD8E400843445 /* SHTMacros.m */; };
 		721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67272D3CDCC300843445 /* UIView+SHT.m */; };
 		722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */; };
+		723FEA962DFD537E00D05C5E /* SHTMemberCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723FEA952DFD537E00D05C5E /* SHTMemberCenterViewController.m */; };
+		723FEA992DFD56A900D05C5E /* SHTDeviceIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 723FEA982DFD56A900D05C5E /* SHTDeviceIDManager.m */; };
+		723FEA9C2DFD59CA00D05C5E /* SHTStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 723FEA9B2DFD59CA00D05C5E /* SHTStringFormatter.m */; };
 		72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72443C2D2D2A260B003E6189 /* AppDelegate.m */; };
 		72443C392D2A260D003E6189 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72443C382D2A260D003E6189 /* Assets.xcassets */; };
 		72443C3C2D2A260D003E6189 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72443C3B2D2A260D003E6189 /* Base */; };
@@ -90,6 +93,12 @@
 		721C672B2D3CE60F00843445 /* seaHorseTheater-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seaHorseTheater-PrefixHeader.pch"; sourceTree = "<group>"; };
 		722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoriteViewController.h; sourceTree = "<group>"; };
 		722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoriteViewController.m; sourceTree = "<group>"; };
+		723FEA942DFD537E00D05C5E /* SHTMemberCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMemberCenterViewController.h; sourceTree = "<group>"; };
+		723FEA952DFD537E00D05C5E /* SHTMemberCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMemberCenterViewController.m; sourceTree = "<group>"; };
+		723FEA972DFD56A900D05C5E /* SHTDeviceIDManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTDeviceIDManager.h; sourceTree = "<group>"; };
+		723FEA982DFD56A900D05C5E /* SHTDeviceIDManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTDeviceIDManager.m; sourceTree = "<group>"; };
+		723FEA9A2DFD59CA00D05C5E /* SHTStringFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTStringFormatter.h; sourceTree = "<group>"; };
+		723FEA9B2DFD59CA00D05C5E /* SHTStringFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTStringFormatter.m; sourceTree = "<group>"; };
 		72443C292D2A260B003E6189 /* seaHorseTheater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seaHorseTheater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72443C2C2D2A260B003E6189 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		72443C2D2D2A260B003E6189 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -125,26 +134,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1825940D2D8949E500B0AD44 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */,
-				18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		1825940E2D894A0A00B0AD44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */,
-				182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */,
-				18A8C0302DA6608C003BC3B3 /* SHTEmptyPlaceholderView.h */,
-				18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */,
-				18A8C0362DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.h */,
-				18A8C0372DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m */,
-				1843A1D62DB8C952008116EB /* SHTVerticalButton.h */,
-				1843A1D72DB8C952008116EB /* SHTVerticalButton.m */,
 				1843A1EA2DBB7700008116EB /* SHTSearchBarView.h */,
 				1843A1EB2DBB7700008116EB /* SHTSearchBarView.m */,
 				1843A1ED2DBB8D93008116EB /* SHTSearchCollectionViewCell.h */,
@@ -184,11 +176,15 @@
 		721C671B2D3CC82700843445 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				72C98E712D46039600978694 /* ViewControllers */,
-				1825940E2D894A0A00B0AD44 /* Views */,
-				1825940D2D8949E500B0AD44 /* Models */,
 				721C671D2D3CC87F00843445 /* AppDelegate+DJXDelegate.h */,
 				721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */,
+				72EB88292D6D3CE60024DDBD /* SHTTabBarController.h */,
+				72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */,
+				723FEA9D2DFD739000D05C5E /* Home */,
+				723FEAA02DFD746100D05C5E /* Favorite */,
+				723FEAA42DFD756B00D05C5E /* Search */,
+				723FEAA72DFD75E900D05C5E /* Mine */,
+				723FEAA92DFD760200D05C5E /* MemberCenter */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -220,8 +216,123 @@
 				1843A1E02DB8D7A3008116EB /* SHTMBProgressManager.m */,
 				1843A1E72DBB349A008116EB /* SHTRouteUtil.h */,
 				1843A1E82DBB349A008116EB /* SHTRouteUtil.m */,
+				723FEA972DFD56A900D05C5E /* SHTDeviceIDManager.h */,
+				723FEA982DFD56A900D05C5E /* SHTDeviceIDManager.m */,
+				723FEA9A2DFD59CA00D05C5E /* SHTStringFormatter.h */,
+				723FEA9B2DFD59CA00D05C5E /* SHTStringFormatter.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		723FEA9D2DFD739000D05C5E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				723FEA9E2DFD73B000D05C5E /* Controllers */,
+				723FEA9F2DFD73CF00D05C5E /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		723FEA9E2DFD73B000D05C5E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				72C98E792D460F6400978694 /* SHTHomeViewController.h */,
+				72C98E7A2D460F6400978694 /* SHTHomeViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		723FEA9F2DFD73CF00D05C5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18A8C0362DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.h */,
+				18A8C0372DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m */,
+				1843A1D62DB8C952008116EB /* SHTVerticalButton.h */,
+				1843A1D72DB8C952008116EB /* SHTVerticalButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		723FEAA02DFD746100D05C5E /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				723FEAA32DFD749900D05C5E /* Controllers */,
+				723FEAA22DFD749300D05C5E /* Views */,
+				723FEAA12DFD748400D05C5E /* Models */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		723FEAA12DFD748400D05C5E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */,
+				18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		723FEAA22DFD749300D05C5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */,
+				182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */,
+				18A8C0302DA6608C003BC3B3 /* SHTEmptyPlaceholderView.h */,
+				18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		723FEAA32DFD749900D05C5E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */,
+				722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		723FEAA42DFD756B00D05C5E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				723FEAA52DFD757600D05C5E /* Controllers */,
+				1825940E2D894A0A00B0AD44 /* Views */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		723FEAA52DFD757600D05C5E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1843A1E42DBB3347008116EB /* SHTSearchViewController.h */,
+				1843A1E52DBB3347008116EB /* SHTSearchViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		723FEAA72DFD75E900D05C5E /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				723FEAA82DFD75F100D05C5E /* Controllers */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		723FEAA82DFD75F100D05C5E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				72EB882C2D6D40430024DDBD /* SHTMineViewController.h */,
+				72EB882D2D6D40430024DDBD /* SHTMineViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		723FEAA92DFD760200D05C5E /* MemberCenter */ = {
+			isa = PBXGroup;
+			children = (
+				72C98E712D46039600978694 /* Controllers */,
+			);
+			path = MemberCenter;
 			sourceTree = "<group>";
 		};
 		72443C202D2A260B003E6189 = {
@@ -245,9 +356,9 @@
 		72443C2B2D2A260B003E6189 /* seaHorseTheater */ = {
 			isa = PBXGroup;
 			children = (
-				721C671A2D3CC80700843445 /* Modules */,
 				72443C2C2D2A260B003E6189 /* AppDelegate.h */,
 				72443C2D2D2A260B003E6189 /* AppDelegate.m */,
+				721C671A2D3CC80700843445 /* Modules */,
 				72443C382D2A260D003E6189 /* Assets.xcassets */,
 				72443C3A2D2A260D003E6189 /* LaunchScreen.storyboard */,
 				727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */,
@@ -258,21 +369,13 @@
 			path = seaHorseTheater;
 			sourceTree = "<group>";
 		};
-		72C98E712D46039600978694 /* ViewControllers */ = {
+		72C98E712D46039600978694 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				72C98E792D460F6400978694 /* SHTHomeViewController.h */,
-				72C98E7A2D460F6400978694 /* SHTHomeViewController.m */,
-				72EB88292D6D3CE60024DDBD /* SHTTabBarController.h */,
-				72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */,
-				72EB882C2D6D40430024DDBD /* SHTMineViewController.h */,
-				72EB882D2D6D40430024DDBD /* SHTMineViewController.m */,
-				722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */,
-				722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */,
-				1843A1E42DBB3347008116EB /* SHTSearchViewController.h */,
-				1843A1E52DBB3347008116EB /* SHTSearchViewController.m */,
+				723FEA942DFD537E00D05C5E /* SHTMemberCenterViewController.h */,
+				723FEA952DFD537E00D05C5E /* SHTMemberCenterViewController.m */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		72C98E752D4606CF00978694 /* Ad */ = {
@@ -431,14 +534,17 @@
 				18A8C0322DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m in Sources */,
 				18A8C0382DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m in Sources */,
 				721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */,
+				723FEA992DFD56A900D05C5E /* SHTDeviceIDManager.m in Sources */,
 				72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */,
 				72443C3F2D2A260D003E6189 /* main.m in Sources */,
 				1843A1E92DBB349A008116EB /* SHTRouteUtil.m in Sources */,
 				721C67242D3CD8E400843445 /* SHTMacros.m in Sources */,
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
+				723FEA9C2DFD59CA00D05C5E /* SHTStringFormatter.m in Sources */,
 				1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */,
 				1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */,
 				1843A1EF2DBB8D93008116EB /* SHTSearchCollectionViewCell.m in Sources */,
+				723FEA962DFD537E00D05C5E /* SHTMemberCenterViewController.m in Sources */,
 				722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */,
 				1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */,
 				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
@@ -600,7 +706,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4492U6H476;
+				DEVELOPMENT_TEAM = 396F66BN9F;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/seaHorseTheater/seaHorseTheater-PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -619,7 +725,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheatera;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheaterasa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -639,7 +745,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4492U6H476;
+				DEVELOPMENT_TEAM = 396F66BN9F;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/seaHorseTheater/seaHorseTheater-PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -658,7 +764,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheatera;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheaterasa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

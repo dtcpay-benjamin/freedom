@@ -11,7 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHTRouteUtil : NSObject
 
+// 模态视图弹出
 + (void)presentFrom:(UIViewController *)fromVC to:(UIViewController *)toVC;
+
+// 导航视图弹出
++ (void)pushFrom:(UIViewController *)fromVC to:(UIViewController *)toVC;
 
 @end
 
