@@ -96,7 +96,7 @@
     if (index == 0) { // 首页
         [self changeTabBarColor:SHT_TABBAR_HOME_COLOR];
     } else if (index == 1) { // 我的
-        [self changeTabBarColor:[UIColor whiteColor]];
+        [self changeTabBarColor:SHT_BACK_COLOR];
     }
 }
 
