@@ -1,15 +1,15 @@
 //
-//  SHTVerticalButton.h
+//  SHTMemberTypeView.h
 //  seaHorseTheater
 //
-//  Created by 褚红彪 on 2025/4/23.
+//  Created by 褚红彪 on 6/14/25.
 //
 
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTVerticalButton : UIButton
+@interface SHTMemberTypeView : UIView
 
 @end
 
