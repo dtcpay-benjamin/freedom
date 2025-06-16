@@ -26,6 +26,7 @@
 		18A8C0382DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0372DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m */; };
 		18FAC3D62DFFE92C00B91FE8 /* SHTMemberTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAC3D42DFFE92C00B91FE8 /* SHTMemberTypeView.m */; };
 		18FAC3D72DFFE92C00B91FE8 /* SHTMemberSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAC3D22DFFE92C00B91FE8 /* SHTMemberSelectionCell.m */; };
+		18FAC3DA2DFFF24900B91FE8 /* SHTMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FAC3D92DFFF24900B91FE8 /* SHTMemberModel.m */; };
 		721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */; };
 		721C67242D3CD8E400843445 /* SHTMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67232D3CD8E400843445 /* SHTMacros.m */; };
 		721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67272D3CDCC300843445 /* UIView+SHT.m */; };
@@ -87,6 +88,8 @@
 		18FAC3D22DFFE92C00B91FE8 /* SHTMemberSelectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMemberSelectionCell.m; sourceTree = "<group>"; };
 		18FAC3D32DFFE92C00B91FE8 /* SHTMemberTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMemberTypeView.h; sourceTree = "<group>"; };
 		18FAC3D42DFFE92C00B91FE8 /* SHTMemberTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMemberTypeView.m; sourceTree = "<group>"; };
+		18FAC3D82DFFF24900B91FE8 /* SHTMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMemberModel.h; sourceTree = "<group>"; };
+		18FAC3D92DFFF24900B91FE8 /* SHTMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMemberModel.m; sourceTree = "<group>"; };
 		31EB9005534C5A2276EF08C8 /* libPods-seaHorseTheater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-seaHorseTheater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		721C671D2D3CC87F00843445 /* AppDelegate+DJXDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+DJXDelegate.h"; sourceTree = "<group>"; };
 		721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+DJXDelegate.m"; sourceTree = "<group>"; };
@@ -168,6 +171,15 @@
 				18FAC3D42DFFE92C00B91FE8 /* SHTMemberTypeView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		18FAC3DB2DFFF26000B91FE8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18FAC3D82DFFF24900B91FE8 /* SHTMemberModel.h */,
+				18FAC3D92DFFF24900B91FE8 /* SHTMemberModel.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5659F838BE15B9A534274E6C /* Frameworks */ = {
@@ -349,6 +361,7 @@
 			children = (
 				72C98E712D46039600978694 /* Controllers */,
 				18FAC3D52DFFE92C00B91FE8 /* Views */,
+				18FAC3DB2DFFF26000B91FE8 /* Models */,
 			);
 			path = MemberCenter;
 			sourceTree = "<group>";
@@ -582,6 +595,7 @@
 				18FAC3D62DFFE92C00B91FE8 /* SHTMemberTypeView.m in Sources */,
 				18FAC3D72DFFE92C00B91FE8 /* SHTMemberSelectionCell.m in Sources */,
 				1843A1EC2DBB7700008116EB /* SHTSearchBarView.m in Sources */,
+				18FAC3DA2DFFF24900B91FE8 /* SHTMemberModel.m in Sources */,
 				72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

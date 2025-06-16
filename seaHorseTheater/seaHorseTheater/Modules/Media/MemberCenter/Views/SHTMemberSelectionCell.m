@@ -45,7 +45,6 @@
         scrollView.backgroundColor = [UIColor lightGrayColor];
         // 允许水平滚动
         scrollView.contentSize = CGSizeMake(1080, 500); // 宽度大于 scrollView.frame.size.width
-
         scrollView.showsHorizontalScrollIndicator = NO;
         scrollView.showsVerticalScrollIndicator = NO;
     }
