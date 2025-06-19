@@ -31,6 +31,9 @@ typedef NS_ENUM(NSUInteger, SHTToastType) {
 
 #define SHTUIFontSystem(size) [UIFont systemFontOfSize:(size)]
 #define SHTUIFontBold(size) [UIFont boldSystemFontOfSize:(size)]
+#define SHTUIFontLight(size) [UIFont systemFontOfSize:(size) weight:UIFontWeightLight]
+#define SHTUIFontMedium(size) [UIFont systemFontOfSize:(size) weight:UIFontWeightMedium]
+#define SHTUIFontSemibold(size) [UIFont systemFontOfSize:(size) weight:UIFontWeightSemibold]
 #define SHTUIColorFromRGBA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 \
                                                     green:(g)/255.0 \
                                                      blue:(b)/255.0 \
