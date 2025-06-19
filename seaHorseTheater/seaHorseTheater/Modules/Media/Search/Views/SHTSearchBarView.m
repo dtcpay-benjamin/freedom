@@ -34,7 +34,7 @@
     // 输入框
     self.textField = [[UITextField alloc] init];
     self.textField.placeholder = @"请输入";
-    self.textField.font = [UIFont systemFontOfSize:15];
+    self.textField.font = SHTUIFontSystem(15);
     self.textField.backgroundColor = [UIColor whiteColor];
     self.textField.layer.cornerRadius = 16.0;
     self.textField.layer.masksToBounds = YES;
@@ -55,7 +55,7 @@
     self.searchButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.searchButton setTitle:@"搜索" forState:UIControlStateNormal];
     [self.searchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.searchButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    self.searchButton.titleLabel.font = SHTUIFontSystem(15);
     [self.searchButton addTarget:self action:@selector(searchTapped) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.searchButton];
 }

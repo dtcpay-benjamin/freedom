@@ -9,7 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SHTMemberModel;
+
 @interface SHTMemberTypeView : UIView
+
+@property(nonatomic, strong) SHTMemberModel *model; // 数据模型
 
 @end
 

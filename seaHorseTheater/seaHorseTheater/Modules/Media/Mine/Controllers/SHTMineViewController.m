@@ -34,7 +34,7 @@
     testBtn.frame = CGRectMake(SHTScreenWidth * 0.5 - 100, SHTScreenHeight * 0.5 - 30, 200, 60);
     [testBtn setTitle:@"test-去会员中心" forState:UIControlStateNormal];
     [testBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    testBtn.titleLabel.font = [UIFont boldSystemFontOfSize:25];
+    testBtn.titleLabel.font = SHTUIFontBold(25);
     [testBtn addTarget:self action:@selector(actionTest:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testBtn];
 }

@@ -97,7 +97,7 @@
         [_collectBtn setTitle:_displayText forState:UIControlStateSelected];
         [_collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        _collectBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        _collectBtn.titleLabel.font = SHTUIFontSystem(12);
         [_collectBtn addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
         _collectBtn.frame = CGRectMake(0.0, 0.0, 40.0, 60.0);
         [self addSubview:_collectBtn];

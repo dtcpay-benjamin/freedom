@@ -126,7 +126,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.font = SHTUIFontSystem(16);
         _titleLabel.textColor = [UIColor whiteColor];
     }
     return _titleLabel;
@@ -135,7 +135,7 @@
 - (UILabel *)subtitleLabel {
     if (!_subtitleLabel) {
         _subtitleLabel = [[UILabel alloc] init];
-        _subtitleLabel.font = [UIFont systemFontOfSize:12];
+        _subtitleLabel.font = SHTUIFontSystem(12);
         _subtitleLabel.textColor = [UIColor lightGrayColor];
     }
     return _subtitleLabel;

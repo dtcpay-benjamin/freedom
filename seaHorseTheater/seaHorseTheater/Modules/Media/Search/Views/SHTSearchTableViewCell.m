@@ -87,7 +87,7 @@
 - (SHTTopLeftLabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[SHTTopLeftLabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.font = SHTUIFontSystem(16);
         _titleLabel.textColor = [UIColor blackColor];
     }
     return _titleLabel;
@@ -96,7 +96,7 @@
 - (SHTTopLeftLabel *)descLabel {
     if (!_descLabel) {
         _descLabel = [[SHTTopLeftLabel alloc] init];
-        _descLabel.font = [UIFont systemFontOfSize:12];
+        _descLabel.font = SHTUIFontSystem(12);
         _descLabel.textColor = SHT_SEARCH_TEXT_COLOR;
         _descLabel.textAlignment = NSTextAlignmentLeft;
         _descLabel.numberOfLines = 0;

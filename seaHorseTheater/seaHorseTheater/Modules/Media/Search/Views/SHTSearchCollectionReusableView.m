@@ -95,7 +95,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        _titleLabel.font = SHTUIFontBold(18);
         _titleLabel.textColor = [UIColor blackColor];
         _titleLabel.textAlignment = NSTextAlignmentLeft;
     }
@@ -120,7 +120,7 @@
 - (UILabel *)actionLabel {
     if (!_actionLabel) {
         _actionLabel = [[UILabel alloc] init];
-        _actionLabel.font = [UIFont systemFontOfSize:15];
+        _actionLabel.font = SHTUIFontSystem(15);
         _actionLabel.textColor = [UIColor grayColor];
         _actionLabel.textAlignment = NSTextAlignmentLeft;
     }

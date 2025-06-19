@@ -93,14 +93,14 @@
     // 设置选中的字体颜色为白色
     NSDictionary *selectedAttributes = @{
         NSForegroundColorAttributeName: [UIColor whiteColor],
-        NSFontAttributeName: [UIFont boldSystemFontOfSize:18]
+        NSFontAttributeName: SHTUIFontBold(18)
     };
     [self.segmentedControl setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
     // 设置未选中项的字体颜色，带透明度
     if (@available(iOS 14.0, *)) {
         NSDictionary *unselectedAttributes = @{
             NSForegroundColorAttributeName: [[UIColor whiteColor] colorWithAlphaComponent:0.6],
-            NSFontAttributeName: [UIFont systemFontOfSize:18],
+            NSFontAttributeName: SHTUIFontSystem(18),
             NSTrackingAttributeName: @0.6 // 设置未选中项字体透明度
         };
         [self.segmentedControl setTitleTextAttributes:unselectedAttributes forState:UIControlStateNormal];
@@ -109,7 +109,7 @@
         // 设置未选中项的字体颜色，带透明度
         NSDictionary *unselectedAttributes = @{
             NSForegroundColorAttributeName: [[UIColor whiteColor] colorWithAlphaComponent:0.6],
-            NSFontAttributeName: [UIFont systemFontOfSize:18] // 设置未选中项字体透明度
+            NSFontAttributeName: SHTUIFontSystem(18) // 设置未选中项字体透明度
         };
         [self.segmentedControl setTitleTextAttributes:unselectedAttributes forState:UIControlStateNormal];
     }
@@ -150,7 +150,7 @@
         [_favoriteEditBtn setTitle:@"退出" forState:UIControlStateSelected];
         [_favoriteEditBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_favoriteEditBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        _favoriteEditBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        _favoriteEditBtn.titleLabel.font = SHTUIFontBold(15);
         [_favoriteEditBtn addTarget:self action:@selector(actionEdtit:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _favoriteEditBtn;
@@ -172,7 +172,7 @@
         _editTitleLabel = [[UILabel alloc] init];
         _editTitleLabel.frame = CGRectMake(SHTScreenWidth * 0.5 - 20.0, SHT_STATUS_BAR_HEIGHT, 40.0, 40.0);
         _editTitleLabel.textColor = [UIColor whiteColor];
-        _editTitleLabel.font = [UIFont systemFontOfSize:18];
+        _editTitleLabel.font = SHTUIFontSystem(18);
         _editTitleLabel.text = @"在追";
         _editTitleLabel.hidden = YES;
     }
@@ -332,7 +332,7 @@
         [_favoriteSelectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_favoriteSelectAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [_favoriteSelectAllButton addTarget:self action:@selector(selectAllAction:) forControlEvents:UIControlEventTouchUpInside];
-        _favoriteSelectAllButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        _favoriteSelectAllButton.titleLabel.font = SHTUIFontSystem(16);
     }
     return _favoriteSelectAllButton;
 }
@@ -346,7 +346,7 @@
         [_favoriteDeleteButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [_favoriteDeleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [_favoriteDeleteButton addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
-        _favoriteDeleteButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        _favoriteDeleteButton.titleLabel.font = SHTUIFontSystem(16);
     }
     return _favoriteDeleteButton;
 }

@@ -49,7 +49,7 @@
         UILabel *messageLabel = [[UILabel alloc] init];
         messageLabel.text = message;
         messageLabel.textColor = [UIColor lightGrayColor];
-        messageLabel.font = [UIFont systemFontOfSize:15];
+        messageLabel.font = SHTUIFontSystem(15);
         messageLabel.textAlignment = NSTextAlignmentCenter;
         messageLabel.numberOfLines = 0;
         messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -66,7 +66,7 @@
             UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeSystem];
             [actionButton setTitle:buttonTitle forState:UIControlStateNormal];
             actionButton.backgroundColor = [UIColor colorWithWhite:1 alpha:0.1];
-            actionButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+            actionButton.titleLabel.font = SHTUIFontBold(16);
             actionButton.tintColor = [UIColor whiteColor];
             actionButton.layer.cornerRadius = 18;
             actionButton.clipsToBounds = YES;

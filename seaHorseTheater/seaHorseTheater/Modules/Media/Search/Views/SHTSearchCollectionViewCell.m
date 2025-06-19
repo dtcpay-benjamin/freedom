@@ -46,7 +46,7 @@
 - (void)setText:(NSString *)text {
     _text = text;
     self.titleLabel.text = _text;
-    CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
+    CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: SHTUIFontSystem(14)}];
     _titleLabel.frame = CGRectMake(0.0, 0.0, size.width + 20.0, 30.0);
 }
 
@@ -55,7 +55,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
-        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.font = SHTUIFontSystem(14);
         _titleLabel.textColor = SHT_SEARCH_TEXT_COLOR;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.backgroundColor = SHT_SEARCH_CELL_BACK;

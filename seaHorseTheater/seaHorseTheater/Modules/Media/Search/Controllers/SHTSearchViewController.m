@@ -403,7 +403,7 @@ referenceSizeForHeaderInSection:(NSInteger)section {
         DJXPlayletInfoModel *model = self.popularSearches[indexPath.item];
         text = model.title;
     }
-    CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
+    CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: SHTUIFontSystem(14)}];
     return CGSizeMake(size.width + 20, 30);
 }
 
