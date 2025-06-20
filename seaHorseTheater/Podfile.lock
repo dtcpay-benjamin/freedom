@@ -2,6 +2,7 @@ PODS:
   - Ads-CN (6.4.1.7):
     - Ads-CN/BUAdSDK (= 6.4.1.7)
   - Ads-CN/BUAdSDK (6.4.1.7)
+  - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.6.1)
   - PangrowthDJX (2.6.0.0):
@@ -90,6 +91,7 @@ PODS:
 
 DEPENDENCIES:
   - Ads-CN (= 6.4.1.7)
+  - Masonry
   - MBProgressHUD
   - MJRefresh
   - PangrowthX/shortplay (= 2.6.0.0)
@@ -100,6 +102,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Ads-CN
+    - Masonry
     - MBProgressHUD
     - MJRefresh
     - Reachability
@@ -114,6 +117,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Ads-CN: 1f2fedc902cd63e4d3c7f79ca99e4dafdd8c10fd
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
   PangrowthDJX: 275924169cae77df14191c52f3ec6e2562c400c1
@@ -125,6 +129,6 @@ SPEC CHECKSUMS:
   SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
   TTSDKFramework: 3cba00b346c4a9adaa014e26fd081bb8ad9c5314
 
-PODFILE CHECKSUM: 62f3494172a85e01ea08972501bfaca13cf6a436
+PODFILE CHECKSUM: 3e4033fb5acedcdf05dc42da15209ed1d02e7c4f
 
 COCOAPODS: 1.16.2

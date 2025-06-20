@@ -16,6 +16,7 @@ target 'seaHorseTheater' do
     pod 'SDWebImage'
     pod 'MJRefresh'
     pod 'MBProgressHUD'
+    pod 'Masonry'
 end
 
 post_install do |installer|
