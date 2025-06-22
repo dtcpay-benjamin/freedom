@@ -8,10 +8,10 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class SHTMemberModel;
 @interface SHTMemberSelectionCell : UITableViewCell
 
-@property (nonatomic, copy) NSMutableArray *datas;
+@property (nonatomic, copy) NSMutableArray<SHTMemberModel *> *datas;
 
 @end
 

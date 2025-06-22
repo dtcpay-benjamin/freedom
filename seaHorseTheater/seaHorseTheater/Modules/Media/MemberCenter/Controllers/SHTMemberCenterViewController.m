@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = SHT_BACK_COLOR;
+    self.view.backgroundColor = SHT_BACK_COLOR_DARK;
     self.title = @"会员中心";
     [self setupDatas];
     [self adjustUI];
@@ -46,6 +46,7 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.backgroundColor = SHT_BACK_COLOR_DARK;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
         _tableView.delegate = self;
@@ -69,17 +70,36 @@
     return 4;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 200.0;
+    } else if (indexPath.row == 1) {
+        return 183.0;
+    } else if (indexPath.row == 2) {
+        return 200.0;
+    } else {
+        return 200.0;
+    }
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        return [[UITableViewCell alloc] init];
+        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        return cell;
     } else if (indexPath.row == 1) {
         SHTMemberSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberSelectionCell" forIndexPath:indexPath];
+        cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.datas = [self.memberTypesArray mutableCopy];
         return cell;
     } else if (indexPath.row == 2) {
-        return [[UITableViewCell alloc] init];
+        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        return cell;
     } else {
-        return [[UITableViewCell alloc] init];
+        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        return cell;
     }
 }
 

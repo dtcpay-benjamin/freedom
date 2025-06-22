@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHTViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTMemberCenterViewController : UIViewController
+@interface SHTMemberCenterViewController : SHTViewController
 
 @end
 

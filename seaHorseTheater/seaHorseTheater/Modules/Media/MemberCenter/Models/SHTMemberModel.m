@@ -35,9 +35,9 @@
     model.amount = amount;
     model.originalAmount = originalAmount;
     model.currency = currency;
-    model.showAmount = [NSString stringWithFormat:@"%@%f", currency, amount];
+    model.showAmount = [NSString stringWithFormat:@"%@%ld", currency, (long)amount];
     
-    NSString *fullText = [NSString stringWithFormat:@"%@%f", currency, originalAmount];
+    NSString *fullText = [NSString stringWithFormat:@"%@%ld", currency, (long)originalAmount];
     NSDictionary *attributes = @{
         NSStrikethroughStyleAttributeName: @(NSUnderlineStyleSingle),
         NSForegroundColorAttributeName: [UIColor grayColor],

@@ -40,6 +40,7 @@ typedef NS_ENUM(NSUInteger, SHTToastType) {
                                                     alpha:(a)]
 #define SHTUIColorFromRGB(r, g, b) SHTUIColorFromRGBA(r, g, b, 1.0)
 #define SHT_BACK_COLOR  [UIColor whiteColor]
+#define SHT_BACK_COLOR_DARK  [UIColor blackColor]
 #define SHT_SEARCH_BACK_BORDERCOLOR      [UIColor colorWithWhite:0.95 alpha:1.0]
 #define SHT_SEARCH_CELL_BACK      SHTUIColorFromRGB(247.0, 248.0, 250.0)
 #define SHT_SEARCH_TEXT_COLOR     SHTUIColorFromRGB(102.0, 104.0, 107.0)

@@ -90,14 +90,10 @@
 }
 
 #pragma mark - UITabBarControllerDelegate
-
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    NSUInteger index = [tabBarController.viewControllers indexOfObject:viewController];
-    if (index == 0) { // 首页
-        [self changeTabBarColor:SHT_TABBAR_HOME_COLOR];
-    } else if (index == 1) { // 我的
-        [self changeTabBarColor:SHT_BACK_COLOR];
-    }
-}
+//
+//- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+//    NSUInteger index = [tabBarController.viewControllers indexOfObject:viewController];
+//    [self changeTabBarColor:SHT_TABBAR_HOME_COLOR];
+//}
 
 @end

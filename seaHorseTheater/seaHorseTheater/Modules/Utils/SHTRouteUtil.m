@@ -19,7 +19,7 @@
 
 + (void)pushFrom:(UIViewController *)fromVC to:(UIViewController *)toVC {
     // 设置导航栏返回按钮颜色为黑色
-    fromVC.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    fromVC.navigationController.navigationBar.tintColor = SHT_BACK_COLOR_DARK;
     // 隐藏返回按钮文字
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     fromVC.navigationItem.backBarButtonItem = backItem;

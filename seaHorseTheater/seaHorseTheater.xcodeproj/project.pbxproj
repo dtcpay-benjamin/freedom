@@ -41,6 +41,7 @@
 		727A4E602DC89C500096E550 /* SHTFavoriteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 727A4E5F2DC89C500096E550 /* SHTFavoriteManager.m */; };
 		727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */ = {isa = PBXBuildFile; fileRef = 727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */; };
 		72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72821D1D2D521DD100074647 /* SHTKaiPingADViewController.m */; };
+		728F44362E08134300361C28 /* SHTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 728F44352E08134300361C28 /* SHTViewController.m */; };
 		72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */; };
 		72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E7A2D460F6400978694 /* SHTHomeViewController.m */; };
 		72EB882B2D6D3CE60024DDBD /* SHTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */; };
@@ -120,6 +121,8 @@
 		727DE6F72D3B3EE9000681FD /* SDK_Setting_5603361.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SDK_Setting_5603361.json; sourceTree = "<group>"; };
 		72821D1C2D521DD100074647 /* SHTKaiPingADViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKaiPingADViewController.h; sourceTree = "<group>"; };
 		72821D1D2D521DD100074647 /* SHTKaiPingADViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKaiPingADViewController.m; sourceTree = "<group>"; };
+		728F44342E08134300361C28 /* SHTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTViewController.h; sourceTree = "<group>"; };
+		728F44352E08134300361C28 /* SHTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTViewController.m; sourceTree = "<group>"; };
 		72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ADSDK.h"; sourceTree = "<group>"; };
 		72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ADSDK.m"; sourceTree = "<group>"; };
 		72C98E792D460F6400978694 /* SHTHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTHomeViewController.h; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */,
 				72EB88292D6D3CE60024DDBD /* SHTTabBarController.h */,
 				72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */,
+				728F44342E08134300361C28 /* SHTViewController.h */,
+				728F44352E08134300361C28 /* SHTViewController.m */,
 				723FEA9D2DFD739000D05C5E /* Home */,
 				723FEAA02DFD746100D05C5E /* Favorite */,
 				723FEAA42DFD756B00D05C5E /* Search */,
@@ -574,6 +579,7 @@
 				723FEA9C2DFD59CA00D05C5E /* SHTStringFormatter.m in Sources */,
 				1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */,
 				1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */,
+				728F44362E08134300361C28 /* SHTViewController.m in Sources */,
 				1843A1EF2DBB8D93008116EB /* SHTSearchCollectionViewCell.m in Sources */,
 				723FEA962DFD537E00D05C5E /* SHTMemberCenterViewController.m in Sources */,
 				722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */,
