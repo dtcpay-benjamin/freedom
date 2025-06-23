@@ -55,6 +55,10 @@
     [self addSubview:self.amountLabel];
     [self addSubview:self.originalAmountLabel];
     [self addSubview:self.subtitleLabel];
+    // 添加点击手势
+    UITapGestureRecognizer *tapGes =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [self addGestureRecognizer:tapGes];
 }
 
 - (void)addLayoutSubviews {
@@ -91,6 +95,15 @@
     self.originalAmountLabel.attributedText = _model.showOriginalAmount;
     self.subtitleLabel.text = _model.subtitle;
 }
+
+#pragma mark - actions
+
+- (void)handleTap:(UITapGestureRecognizer *)tapGes {
+    if (self.onTapped) {
+        self.onTapped();
+    }
+}
+
 
 #pragma mark - 懒加载
 

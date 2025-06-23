@@ -40,6 +40,12 @@
         SHTMemberModel *model = self.datas[i];
         x = 10 + 10 * (i + 1) + width * i;
         SHTMemberTypeView *view = [[SHTMemberTypeView alloc] initWithFrame:CGRectMake(x, y, width, height)];
+        view.onTapped = ^{
+            // 会员点击事件
+            if (self.memberSelectionTapped) {
+                self.memberSelectionTapped(model);
+            }
+        };
         view.model = model;
         [self.scrollView addSubview:view];
         [self.memberViewsArray addObject:view];

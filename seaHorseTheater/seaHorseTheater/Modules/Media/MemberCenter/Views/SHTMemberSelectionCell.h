@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class SHTMemberModel;
 @interface SHTMemberSelectionCell : UITableViewCell
 
+@property (nonatomic, strong) void (^memberSelectionTapped)(SHTMemberModel *model); // 点击回调
+
 @property (nonatomic, copy) NSMutableArray<SHTMemberModel *> *datas;
 
 @end

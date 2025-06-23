@@ -91,6 +91,10 @@
         SHTMemberSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberSelectionCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.datas = [self.memberTypesArray mutableCopy];
+        cell.memberSelectionTapped = ^(SHTMemberModel * _Nonnull model) {
+            // 选择会员类型
+            NSLog(@"会员类型:%@", model.title);
+        };
         return cell;
     } else if (indexPath.row == 2) {
         UITableViewCell *cell = [[UITableViewCell alloc] init];
