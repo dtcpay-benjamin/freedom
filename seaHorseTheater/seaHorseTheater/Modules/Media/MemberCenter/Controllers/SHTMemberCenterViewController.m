@@ -8,6 +8,7 @@
 #import "SHTMemberCenterViewController.h"
 #import "SHTMemberSelectionCell.h"
 #import "SHTMemberModel.h"
+#import "SHTMemberImmediatelyCell.h"
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -52,6 +53,7 @@
         _tableView.delegate = self;
         _tableView.estimatedRowHeight = 300.0;
         [_tableView registerClass:[SHTMemberSelectionCell class] forCellReuseIdentifier:@"SHTMemberSelectionCell"];
+        [_tableView registerClass:[SHTMemberImmediatelyCell class] forCellReuseIdentifier:@"SHTMemberImmediatelyCell"];
         [self.view addSubview:_tableView];
     }
     return _tableView;
