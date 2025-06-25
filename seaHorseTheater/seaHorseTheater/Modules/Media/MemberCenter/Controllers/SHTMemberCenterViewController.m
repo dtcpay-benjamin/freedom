@@ -78,7 +78,7 @@
     } else if (indexPath.row == 1) {
         return 183.0;
     } else if (indexPath.row == 2) {
-        return 200.0;
+        return 114.0;
     } else {
         return 200.0;
     }
@@ -88,10 +88,12 @@
     if (indexPath.row == 0) {
         UITableViewCell *cell = [[UITableViewCell alloc] init];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (indexPath.row == 1) {
         SHTMemberSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberSelectionCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.datas = [self.memberTypesArray mutableCopy];
         cell.memberSelectionTapped = ^(SHTMemberModel * _Nonnull model) {
             // 选择会员类型
@@ -99,12 +101,23 @@
         };
         return cell;
     } else if (indexPath.row == 2) {
-        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        SHTMemberImmediatelyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberImmediatelyCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.memberImmediatelyOnTapped = ^{
+            NSLog(@"开通会员点击回调~");
+        };
+        cell.radioOnTapped = ^(BOOL isSelected) {
+            NSLog(@"已阅读会员服务协议点击回调：%d", isSelected);
+        };
+        cell.serviceAgreementOnTapped = ^{
+            NSLog(@"会员服务协议跳转点击回调~");
+        };
         return cell;
     } else {
         UITableViewCell *cell = [[UITableViewCell alloc] init];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }

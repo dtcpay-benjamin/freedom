@@ -42,21 +42,19 @@
         make.top.equalTo(self).offset(10);
         make.leading.equalTo(self).offset(30);
         make.trailing.equalTo(self).offset(-30);
-        make.height.mas_equalTo(80);
+        make.height.mas_equalTo(60);
     }];
     
     [self.radioButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.immediatelyBtn.mas_bottom).offset(10);
-        make.leading.equalTo(self.immediatelyBtn.mas_leading).offset(10);
+        make.leading.equalTo(self.immediatelyBtn.mas_leading).offset(6);
         make.width.mas_equalTo(22);
         make.height.mas_equalTo(22);
     }];
     
-    
     [self.agreementTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.radioButton);
-        make.leading.equalTo(self.radioButton.mas_trailing).offset(10);
-        make.trailing.equalTo(self.immediatelyBtn.mas_trailing).offset(-10);
+        make.leading.equalTo(self.radioButton.mas_trailing).offset(6);
         make.height.mas_equalTo(22);
     }];
 }
@@ -97,7 +95,9 @@
         [_immediatelyBtn setTitleColor:SHTUIColorFromRGB(96, 70, 24) forState:UIControlStateSelected];
         [_immediatelyBtn setBackgroundColor:SHTUIColorFromRGB(245, 224, 178)];
         [_immediatelyBtn addTarget:self action:@selector(immediatelyAction:) forControlEvents:UIControlEventTouchUpInside];
-        _immediatelyBtn.titleLabel.font = SHTUIFontSystem(22);
+        _immediatelyBtn.titleLabel.font = SHTUIFontBold(22);
+        _immediatelyBtn.layer.cornerRadius = 30.0;
+        _immediatelyBtn.layer.masksToBounds = YES;
     }
     return _immediatelyBtn;
 }
@@ -105,8 +105,8 @@
 - (UIButton *)radioButton {
     if (!_radioButton) {
         _radioButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_radioButton setImage:[UIImage imageNamed:@"unselected"] forState:UIControlStateNormal];
-        [_radioButton setImage:[UIImage imageNamed:@"selected"] forState:UIControlStateSelected];
+        [_radioButton setImage:[UIImage imageNamed:@"agreement_unselected"] forState:UIControlStateNormal];
+        [_radioButton setImage:[UIImage imageNamed:@"agreement_selected"] forState:UIControlStateSelected];
         [_radioButton addTarget:self action:@selector(radioAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _radioButton;
@@ -122,12 +122,13 @@
         // 构造富文本
         NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:fullText];
         // 设置整体字体和颜色
-        [attrStr addAttribute:NSFontAttributeName value:SHTUIFontSystem(14) range:NSMakeRange(0, fullText.length)];
+        [attrStr addAttribute:NSFontAttributeName value:SHTUIFontSystem(13) range:NSMakeRange(0, fullText.length)];
         [attrStr addAttribute:NSForegroundColorAttributeName value:SHTUIColorFromRGB(153.0, 147.0, 137.0) range:NSMakeRange(0, fullText.length)];
         // 设置链接部分样式
         NSRange linkRange = [fullText rangeOfString:linkText];
         [attrStr addAttribute:NSForegroundColorAttributeName value:SHTUIColorFromRGB(163.0, 157.0, 148.0) range:linkRange];
         [attrStr addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:linkRange];
+        [attrStr addAttribute:NSBaselineOffsetAttributeName value:@(1.5) range:linkRange];
         _agreementTextLabel.attributedText = attrStr;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(serviceAgreementHandleTapOn:)];
         [_agreementTextLabel addGestureRecognizer:tap];

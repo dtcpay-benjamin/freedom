@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) void (^radioOnTapped)(BOOL isSelected); // 已阅读会员服务协议点击回调
 
-@property (nonatomic, strong) void (^serviceAgreementOnTapped)(void); // 会员服务协议点击回调
+@property (nonatomic, strong) void (^serviceAgreementOnTapped)(void); // 会员服务协议跳转点击回调
 
 @end
 
