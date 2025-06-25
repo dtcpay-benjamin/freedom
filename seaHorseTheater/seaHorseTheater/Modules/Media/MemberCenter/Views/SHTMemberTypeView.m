@@ -49,12 +49,30 @@
 
 #pragma mark - functions
 
-- (void)addSubviews {
+- (void)setupUnselectedColor {
     self.backgroundColor = SHT_BACK_COLOR;
+    self.titleLabel.textColor = SHT_BACK_COLOR_DARK;
+    self.amountLabel.textColor = SHTUIColorFromRGB(98.0, 78.0, 41.0);
+    self.originalAmountLabel.textColor = SHTUIColorFromRGB(146.0, 146.0, 146.0);
+    self.subtitleLabel.textColor = SHTUIColorFromRGB(91.0, 74.0, 41.0);
+    self.subtitleLabel.backgroundColor = SHTUIColorFromRGB(240.0, 236.0, 217.0);
+}
+
+- (void)setupSelectedColor {
+    self.backgroundColor = SHTUIColorFromRGB(248.0, 228.0, 189.0);
+    self.titleLabel.textColor = SHTUIColorFromRGB(101.0, 70.0, 31.0);
+    self.amountLabel.textColor = SHTUIColorFromRGB(102.0, 73.0, 40.0);
+    self.originalAmountLabel.textColor = SHTUIColorFromRGB(127.0, 130.0, 150.0);
+    self.subtitleLabel.textColor = SHT_BACK_COLOR;
+    self.subtitleLabel.backgroundColor = SHTUIColorFromRGB(227.0, 1360.0, 85.0);
+}
+
+- (void)addSubviews {
     [self addSubview:self.titleLabel];
     [self addSubview:self.amountLabel];
     [self addSubview:self.originalAmountLabel];
     [self addSubview:self.subtitleLabel];
+    [self setupUnselectedColor];
     // 添加点击手势
     UITapGestureRecognizer *tapGes =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
@@ -100,6 +118,7 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)tapGes {
     if (self.onTapped) {
+        self.isSelected = !self.isSelected;
         self.onTapped();
     }
 }
@@ -111,7 +130,6 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.textColor = SHT_BACK_COLOR_DARK;
         _titleLabel.font = SHTUIFontSystem(18);
     }
     return _titleLabel;
@@ -121,7 +139,6 @@
     if (!_amountLabel) {
         _amountLabel = [[UILabel alloc] init];
         _amountLabel.textAlignment = NSTextAlignmentCenter;
-        _amountLabel.textColor = SHTUIColorFromRGB(98.0, 78.0, 41.0);
         _amountLabel.font = SHTUIFontBold(20);
     }
     return _amountLabel;
@@ -131,7 +148,6 @@
     if (!_originalAmountLabel) {
         _originalAmountLabel = [[UILabel alloc] init];
         _originalAmountLabel.textAlignment = NSTextAlignmentCenter;
-        _originalAmountLabel.textColor = SHTUIColorFromRGB(146.0, 146.0, 146.0);
         _originalAmountLabel.font = SHTUIFontSystem(16);
     }
     return _originalAmountLabel;
@@ -141,8 +157,6 @@
     if (!_subtitleLabel) {
         _subtitleLabel = [[UILabel alloc] init];
         _subtitleLabel.textAlignment = NSTextAlignmentCenter;
-        _subtitleLabel.textColor = SHTUIColorFromRGB(91.0, 74.0, 41.0);
-        _subtitleLabel.backgroundColor = SHTUIColorFromRGB(240.0, 236.0, 217.0);
         _subtitleLabel.font = SHTUIFontSystem(15);
     }
     return _subtitleLabel;
