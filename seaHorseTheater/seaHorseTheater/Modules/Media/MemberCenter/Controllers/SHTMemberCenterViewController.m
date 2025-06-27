@@ -104,13 +104,17 @@
         SHTMemberImmediatelyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberImmediatelyCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        __weak typeof(self) weakSelf = self;
         cell.memberImmediatelyOnTapped = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             NSLog(@"开通会员点击回调~");
         };
         cell.radioOnTapped = ^(BOOL isSelected) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             NSLog(@"已阅读会员服务协议点击回调：%d", isSelected);
         };
         cell.serviceAgreementOnTapped = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             NSLog(@"会员服务协议跳转点击回调~");
         };
         return cell;

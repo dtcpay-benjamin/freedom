@@ -189,9 +189,11 @@
 }
 
 - (void)slideUnderline:(NSInteger)index {
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
-        CGFloat x = (2 * index + 1) * self.underlineWidth * 2;
-        self.underlineView.center = CGPointMake(x, self.segmentedControl.frame.size.height - 1);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        CGFloat x = (2 * index + 1) * strongSelf.underlineWidth * 2;
+        strongSelf.underlineView.center = CGPointMake(x, strongSelf.segmentedControl.frame.size.height - 1);
     }];
 }
 
@@ -446,15 +448,17 @@
 - (void)deleteAction:(UIButton *)sender {
     // 只有删除按钮是选中状态的时候才可以操作
     if (sender.isSelected) {
+        __weak typeof(self) weakSelf = self;
         [SHTAlertHelper showAlertWithTitle:@"提示"
                                    message:@"确认要删除收藏记录吗？"
                              cancelBtnText:nil
                             confirmBtnText:nil
                              inController:nil
                               cancelAction:nil confirmAction:^{
-            [self.favoriteVC deleteFavoriteData];
-            self.favoriteSelectAllButton.selected = NO;
-            self.favoriteDeleteButton.selected = NO;
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf.favoriteVC deleteFavoriteData];
+            strongSelf.favoriteSelectAllButton.selected = NO;
+            strongSelf.favoriteDeleteButton.selected = NO;
         }];
     }
 }
@@ -477,9 +481,11 @@
         } else {
             self.searchBtn.hidden = YES;
         }
+        __weak typeof(self) weakSelf = self;
         [UIView animateWithDuration:0.25 animations:^{
-            [self slideUnderline:index];
-            [self setUpSegmentedBackColor:index];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf slideUnderline:index];
+            [strongSelf setUpSegmentedBackColor:index];
         }];
     }
 }

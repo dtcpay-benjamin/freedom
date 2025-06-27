@@ -63,8 +63,8 @@
     self.titleLabel.textColor = SHTUIColorFromRGB(101.0, 70.0, 31.0);
     self.amountLabel.textColor = SHTUIColorFromRGB(102.0, 73.0, 40.0);
     self.originalAmountLabel.textColor = SHTUIColorFromRGB(127.0, 130.0, 150.0);
-    self.subtitleLabel.textColor = SHT_BACK_COLOR;
-    self.subtitleLabel.backgroundColor = SHTUIColorFromRGB(227.0, 1360.0, 85.0);
+    self.subtitleLabel.textColor = SHTUIColorFromRGB(253.0, 224.0, 197.0);
+    self.subtitleLabel.backgroundColor = SHTUIColorFromRGB(226.0, 127.0, 81.0);
 }
 
 - (void)addSubviews {
@@ -102,7 +102,7 @@
         make.top.equalTo(self.originalAmountLabel.mas_bottom).offset(15);
         make.leading.equalTo(self);
         make.trailing.equalTo(self);
-        make.height.mas_equalTo(17);
+        make.bottom.equalTo(self.mas_bottom);
     }];
 }
 

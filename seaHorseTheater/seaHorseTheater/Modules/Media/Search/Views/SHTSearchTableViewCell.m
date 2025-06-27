@@ -59,8 +59,10 @@
         if (image) {
             self.imgView.alpha = 0.0;
             self.imgView.image = image;
+            __weak typeof(self) weakSelf = self;
             [UIView animateWithDuration:0.3 animations:^{
-                self.imgView.alpha = 1.0;
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                strongSelf.imgView.alpha = 1.0;
             }];
         } else {
             NSLog(@"收藏短剧封面下载失败error:%@", error);

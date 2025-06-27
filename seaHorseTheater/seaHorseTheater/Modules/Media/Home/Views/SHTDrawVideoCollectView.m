@@ -53,19 +53,22 @@
     if (isSelected) {
         [self collectDynamicAction:isSelected];
     } else {
+        __weak typeof(self) weakSelf = self;
         [SHTAlertHelper showAlertWithTitle:@"确认取消追剧吗？"
                                    message:@"取消后可能找不到本剧哦～"
                              cancelBtnText:@"再想想"
                             confirmBtnText:@"确认"
                               inController:nil
                               cancelAction:nil confirmAction:^{
-            [self collectDynamicAction:isSelected];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [strongSelf collectDynamicAction:isSelected];
         }];
     }
 }
 
 - (void)collectDynamicAction:(BOOL)isSelected {
     self.collectBtn.selected = isSelected;
+    __weak typeof(self) weakSelf = self;
     // 增加图片缩放动画效果
     [UIView animateWithDuration:0.3
                           delay:0
@@ -73,9 +76,11 @@
           initialSpringVelocity:3
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-        self.collectBtn.imageView.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.collectBtn.imageView.transform = CGAffineTransformMakeScale(1.3, 1.3);
     } completion:^(BOOL finished) {
-        self.collectBtn.imageView.transform = CGAffineTransformIdentity;
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.collectBtn.imageView.transform = CGAffineTransformIdentity;
     }];
     // 添加淡入淡出图片切换动画
     CATransition *transition = [CATransition animation];

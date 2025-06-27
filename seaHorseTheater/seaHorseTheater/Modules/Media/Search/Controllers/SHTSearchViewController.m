@@ -237,13 +237,15 @@
         __weak typeof(self) weakSelf = self;
         // 下拉刷新
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            weakSelf.currentPage = 1;
-            [weakSelf requestSearchData];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            strongSelf.currentPage = 1;
+            [strongSelf requestSearchData];
         }];
         // 上拉加载更多
         _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            weakSelf.currentPage++;
-            [weakSelf requestSearchData];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            strongSelf.currentPage++;
+            [strongSelf requestSearchData];
         }];
         [self.view addSubview:_tableView];
     }
@@ -301,7 +303,9 @@
                 header.actionImage = [UIImage imageNamed:@"ico-swap-grey"];
                 header.actionTitle = @"换一换";
             }
+            __weak typeof(self) weakSelf = self;
             header.onTapped = ^{
+                __strong typeof(weakSelf) strongSelf = weakSelf;
                 if (indexPath.section == 0) {
                     [SHTAlertHelper showAlertWithTitle:@"确认清除搜索记录吗？"
                                                message:@"清除后此前搜索记录都会消失哦～"
@@ -310,11 +314,11 @@
                                           inController:nil
                                           cancelAction:nil confirmAction:^{
                         NSLog(@"历史搜索-删除");
-                        [self clearAllHistory];
+                        [strongSelf clearAllHistory];
                     }];
                 } else {
                     NSLog(@"大家都在搜-换一换");
-                    [self changePopular];
+                    [strongSelf changePopular];
                 }
             };
             return header;
@@ -327,9 +331,11 @@
             header.title = @"大家都在搜";
             header.actionImage = [UIImage imageNamed:@"ico-swap-grey"];
             header.actionTitle = @"换一换";
+            __weak typeof(self) weakSelf = self;
             header.onTapped = ^{
+                __strong typeof(weakSelf) strongSelf = weakSelf;
                 NSLog(@"大家都在搜-换一换");
-                [self changePopular];
+                [strongSelf changePopular];
             };
             return header;
         }

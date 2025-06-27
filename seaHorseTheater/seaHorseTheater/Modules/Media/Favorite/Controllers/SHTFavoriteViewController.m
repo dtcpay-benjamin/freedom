@@ -45,13 +45,15 @@
     __weak typeof(self) weakSelf = self;
     // 下拉刷新
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        weakSelf.currentPage = 1;
-        [weakSelf requestCollection];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.currentPage = 1;
+        [strongSelf requestCollection];
     }];
     // 上拉加载更多
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        weakSelf.currentPage++;
-        [weakSelf requestCollection];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.currentPage++;
+        [strongSelf requestCollection];
     }];
 }
 
@@ -187,18 +189,20 @@
             [tempArray1 addObject:model];
         }
     }
+    __weak typeof(self) weakSelf = self;
     [self requestDeleteFavoritesInBatches:tempArray maxConcurrent:6 completion:^{
-        if (self.hasMore) {
-            [self.collectionView.mj_header beginRefreshing];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (strongSelf.hasMore) {
+            [strongSelf.collectionView.mj_header beginRefreshing];
         } else {
-            [self.dataSource removeObjectsInArray:tempArray];
-            [self.favoriteDataSource removeObjectsInArray:tempArray1];
-            [self.collectionView reloadData];
+            [strongSelf.dataSource removeObjectsInArray:tempArray];
+            [strongSelf.favoriteDataSource removeObjectsInArray:tempArray1];
+            [strongSelf.collectionView reloadData];
             // 重置是否全选的状态
-            [self selectAllAssignment];
-            [self checkEmpty];
-            if (self.deleteActionCompletion) {
-                self.deleteActionCompletion(tempArray);
+            [strongSelf selectAllAssignment];
+            [strongSelf checkEmpty];
+            if (strongSelf.deleteActionCompletion) {
+                strongSelf.deleteActionCompletion(tempArray);
             }
         }
     }];

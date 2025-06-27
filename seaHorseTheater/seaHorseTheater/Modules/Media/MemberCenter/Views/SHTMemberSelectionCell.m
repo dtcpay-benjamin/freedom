@@ -40,10 +40,27 @@
         SHTMemberModel *model = self.datas[i];
         x = 10 + 10 * (i + 1) + width * i;
         SHTMemberTypeView *view = [[SHTMemberTypeView alloc] initWithFrame:CGRectMake(x, y, width, height)];
+        view.tag = 100 + i;
+        __weak typeof(self) weakSelf = self;
+        __weak typeof(view) weakView = view;
         view.onTapped = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            __strong typeof(weakView) strongView = weakView;
+            if (strongView.isSelected) {
+                [strongView setupSelectedColor];
+                for (int j = 0; j < self.memberViewsArray.count; j++) {
+                    SHTMemberTypeView *jView = self.memberViewsArray[j];
+                    if (jView.tag != strongView.tag) {
+                        jView.isSelected = NO;
+                        [jView setupUnselectedColor];
+                    }
+                }
+            } else {
+                [strongView setupUnselectedColor];
+            }
             // 会员点击事件
-            if (self.memberSelectionTapped) {
-                self.memberSelectionTapped(model);
+            if (strongSelf.memberSelectionTapped) {
+                strongSelf.memberSelectionTapped(model);
             }
         };
         view.model = model;
@@ -63,6 +80,13 @@
         _scrollView.showsVerticalScrollIndicator = NO;
     }
     return _scrollView;
+}
+
+- (NSMutableArray *)memberViewsArray {
+    if (!_memberViewsArray) {
+        _memberViewsArray = [[NSMutableArray alloc] init];
+    }
+    return _memberViewsArray;
 }
 
 @end
