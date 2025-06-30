@@ -9,12 +9,18 @@
 #import "SHTMemberSelectionCell.h"
 #import "SHTMemberModel.h"
 #import "SHTMemberImmediatelyCell.h"
+#import "SHTBriefIntroductionTableViewCell.h"
+#import "SHTBriefIntroductionModel.h"
+#import "SHTStringFormatter.h"
+#import "SHTDeviceIDManager.h"
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) SHTBriefIntroductionModel *briefIntroductionModel;
 @property (nonatomic, copy) NSMutableArray *memberTypesArray;
-
+@property (nonatomic, strong) SHTMemberModel *selectMemberModel; // 选中的会员类型
+@property (nonatomic, assign) BOOL isServiceAgreementReaded; // 是否已经阅读会员服务协议
 @end
 
 @implementation SHTMemberCenterViewController
@@ -30,6 +36,7 @@
 #pragma mark - functions
 
 - (void)setupDatas {
+    self.briefIntroductionModel = [SHTBriefIntroductionModel modelWithTitle:[NSString stringWithFormat:@"海马剧友 %@", [SHTStringFormatter formatString:[SHTDeviceIDManager getDeviceID] fromStart:NO length:12 caseOption:StringCaseOptionLowercase]] activateVip:NO];
     SHTMemberModel *model = [SHTMemberModel modelWithMemberType:SHTMemberTypeWeeklySubscription amount:1 originalAmount:12 currency:@"¥"];
     [self.memberTypesArray addObject:model];
     SHTMemberModel *model1 = [SHTMemberModel modelWithMemberType:SHTMemberTypeMonthlySubscription amount:9.9 originalAmount:39 currency:@"¥"];
@@ -42,6 +49,16 @@
     [self.tableView reloadData];
 }
 
+// 开通会员
+- (void)subscribeMember {
+    
+}
+
+// 跳转会员服务协议详情
+- (void)jumpMembershipServiceAgreement {
+    
+}
+
 #pragma mark - 懒加载
 
 - (UITableView *)tableView {
@@ -52,6 +69,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.estimatedRowHeight = 300.0;
+        [_tableView registerClass:[SHTBriefIntroductionTableViewCell class] forCellReuseIdentifier:@"SHTBriefIntroductionTableViewCell"];
         [_tableView registerClass:[SHTMemberSelectionCell class] forCellReuseIdentifier:@"SHTMemberSelectionCell"];
         [_tableView registerClass:[SHTMemberImmediatelyCell class] forCellReuseIdentifier:@"SHTMemberImmediatelyCell"];
         [self.view addSubview:_tableView];
@@ -74,30 +92,33 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        return 200.0;
+        return 102.0;
     } else if (indexPath.row == 1) {
         return 183.0;
     } else if (indexPath.row == 2) {
         return 114.0;
     } else {
-        return 200.0;
+        return 200;
     }
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        SHTBriefIntroductionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTBriefIntroductionTableViewCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.model = self.briefIntroductionModel;
         return cell;
     } else if (indexPath.row == 1) {
         SHTMemberSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberSelectionCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.datas = [self.memberTypesArray mutableCopy];
+        __weak typeof(self) weakSelf = self;
         cell.memberSelectionTapped = ^(SHTMemberModel * _Nonnull model) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
             // 选择会员类型
-            NSLog(@"会员类型:%@", model.title);
+            strongSelf.selectMemberModel = model;
         };
         return cell;
     } else if (indexPath.row == 2) {
@@ -107,15 +128,18 @@
         __weak typeof(self) weakSelf = self;
         cell.memberImmediatelyOnTapped = ^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            NSLog(@"开通会员点击回调~");
+            // 开通会员
+            [strongSelf subscribeMember];
         };
         cell.radioOnTapped = ^(BOOL isSelected) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            NSLog(@"已阅读会员服务协议点击回调：%d", isSelected);
+            // 已经阅读会员服务协议
+            strongSelf.isServiceAgreementReaded = isSelected;
         };
         cell.serviceAgreementOnTapped = ^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            NSLog(@"会员服务协议跳转点击回调~");
+            // 跳转会员服务协议详情
+            [strongSelf jumpMembershipServiceAgreement];
         };
         return cell;
     } else {

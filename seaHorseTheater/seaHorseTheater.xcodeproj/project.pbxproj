@@ -20,6 +20,8 @@
 		1843A1F82DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1F72DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m */; };
 		1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */; };
 		1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */; };
+		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
+		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
 		18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */; };
 		18A8C0322DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */; };
@@ -77,6 +79,10 @@
 		1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTSearchTableViewCell.m; sourceTree = "<group>"; };
 		1843A1FC2DC1C826008116EB /* SHTTopLeftLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTTopLeftLabel.h; sourceTree = "<group>"; };
 		1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTTopLeftLabel.m; sourceTree = "<group>"; };
+		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
+		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
+		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
+		187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionModel.m; sourceTree = "<group>"; };
 		18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletModel.h; sourceTree = "<group>"; };
 		18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletModel.m; sourceTree = "<group>"; };
 		18A8C02A2DA6485C003BC3B3 /* SHTAlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTAlertHelper.h; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 				18FAC3D42DFFE92C00B91FE8 /* SHTMemberTypeView.m */,
 				18FAC3DF2E09452F00B91FE8 /* SHTMemberImmediatelyCell.h */,
 				18FAC3E02E09452F00B91FE8 /* SHTMemberImmediatelyCell.m */,
+				1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */,
+				187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +194,8 @@
 			children = (
 				18FAC3D82DFFF24900B91FE8 /* SHTMemberModel.h */,
 				18FAC3D92DFFF24900B91FE8 /* SHTMemberModel.m */,
+				187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */,
+				187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -576,10 +586,12 @@
 				18A8C0382DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m in Sources */,
 				721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */,
 				723FEA992DFD56A900D05C5E /* SHTDeviceIDManager.m in Sources */,
+				187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */,
 				72443C2E2D2A260B003E6189 /* AppDelegate.m in Sources */,
 				72443C3F2D2A260D003E6189 /* main.m in Sources */,
 				1843A1E92DBB349A008116EB /* SHTRouteUtil.m in Sources */,
 				721C67242D3CD8E400843445 /* SHTMacros.m in Sources */,
+				187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */,
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
 				723FEA9C2DFD59CA00D05C5E /* SHTStringFormatter.m in Sources */,
 				1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */,
