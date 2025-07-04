@@ -20,6 +20,7 @@
 		1843A1F82DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1F72DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m */; };
 		1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */; };
 		1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */; };
+		184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
@@ -79,6 +80,8 @@
 		1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTSearchTableViewCell.m; sourceTree = "<group>"; };
 		1843A1FC2DC1C826008116EB /* SHTTopLeftLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTTopLeftLabel.h; sourceTree = "<group>"; };
 		1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTTopLeftLabel.m; sourceTree = "<group>"; };
+		184859B52E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTPremiumFeaturesTableViewCell.h; sourceTree = "<group>"; };
+		184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTPremiumFeaturesTableViewCell.m; sourceTree = "<group>"; };
 		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				18FAC3E02E09452F00B91FE8 /* SHTMemberImmediatelyCell.m */,
 				1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */,
 				187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */,
+				184859B52E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.h */,
+				184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 				1843A1F52DBE314A008116EB /* SHTUserDefaults.m in Sources */,
 				72EB882E2D6D40430024DDBD /* SHTMineViewController.m in Sources */,
 				1843A1F22DBE099A008116EB /* SHTSearchCollectionReusableView.m in Sources */,
+				184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */,
 				1843A1F82DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m in Sources */,
 				1843A1D82DB8C952008116EB /* SHTVerticalButton.m in Sources */,
 				1843A1E62DBB3348008116EB /* SHTSearchViewController.m in Sources */,
