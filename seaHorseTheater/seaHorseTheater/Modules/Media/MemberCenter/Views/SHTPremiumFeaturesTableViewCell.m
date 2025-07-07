@@ -123,4 +123,11 @@
 @implementation SHTPremiumFeaturesTableViewCell
 
 
+- (void)setDatas:(NSArray *)datas {
+    _datas = datas;
+    for (int i = 0; i < _datas.count; i++) {
+        SHTPremiumFeaturesView *featuresView = [[SHTPremiumFeaturesView alloc] init];
+    }
+}
+
 @end

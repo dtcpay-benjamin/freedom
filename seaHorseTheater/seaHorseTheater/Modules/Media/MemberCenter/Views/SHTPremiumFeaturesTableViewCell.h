@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SHTPremiumFeaturesTableViewCell : UITableViewCell
 
+@property (nonatomic, copy) NSArray *datas;
+
 @end
 
 NS_ASSUME_NONNULL_END
