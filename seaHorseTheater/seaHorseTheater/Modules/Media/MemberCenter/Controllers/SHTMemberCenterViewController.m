@@ -10,6 +10,7 @@
 #import "SHTMemberModel.h"
 #import "SHTMemberImmediatelyCell.h"
 #import "SHTBriefIntroductionTableViewCell.h"
+#import "SHTPremiumFeaturesTableViewCell.h"
 #import "SHTBriefIntroductionModel.h"
 #import "SHTStringFormatter.h"
 #import "SHTDeviceIDManager.h"
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SHTBriefIntroductionModel *briefIntroductionModel;
 @property (nonatomic, copy) NSMutableArray *memberTypesArray;
+@property (nonatomic, copy) NSArray *premiumFeaturesArray; // 用户特权数据
 @property (nonatomic, strong) SHTMemberModel *selectMemberModel; // 选中的会员类型
 @property (nonatomic, assign) BOOL isServiceAgreementReaded; // 是否已经阅读会员服务协议
 @end
@@ -43,6 +45,26 @@
     [self.memberTypesArray addObject:model1];
     SHTMemberModel *model2 = [SHTMemberModel modelWithMemberType:SHTMemberTypeAnnualSubscription amount:49 originalAmount:299 currency:@"¥"];
     [self.memberTypesArray addObject:model2];
+    
+    self.premiumFeaturesArray = @[
+      @{
+        @"featuresImage": @"unlimitedStreaming",
+        @"title": @"无限片源",
+        @"subTitle": @"新剧抢先看"
+       },
+      
+      @{
+          @"featuresImage": @"AdFree",
+          @"title": @"免广告",
+          @"subTitle": @"看剧无广告"
+       },
+      
+      @{
+          @"featuresImage": @"moreBenefits",
+          @"title": @"更多特权",
+          @"subTitle": @"敬请期待"
+       }
+    ];
 }
 
 - (void)adjustUI {
@@ -70,6 +92,7 @@
         _tableView.delegate = self;
         _tableView.estimatedRowHeight = 300.0;
         [_tableView registerClass:[SHTBriefIntroductionTableViewCell class] forCellReuseIdentifier:@"SHTBriefIntroductionTableViewCell"];
+        [_tableView registerClass:[SHTPremiumFeaturesTableViewCell class] forCellReuseIdentifier:@"SHTPremiumFeaturesTableViewCell"];
         [_tableView registerClass:[SHTMemberSelectionCell class] forCellReuseIdentifier:@"SHTMemberSelectionCell"];
         [_tableView registerClass:[SHTMemberImmediatelyCell class] forCellReuseIdentifier:@"SHTMemberImmediatelyCell"];
         [self.view addSubview:_tableView];
@@ -87,15 +110,17 @@
 #pragma mark - UITableViewDelegate && UITableViewDataSource
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return 102.0;
     } else if (indexPath.row == 1) {
-        return 183.0;
+        return 135.0;
     } else if (indexPath.row == 2) {
+        return 183.0;
+    } else if (indexPath.row == 3) {
         return 114.0;
     } else {
         return 200;
@@ -110,6 +135,11 @@
         cell.model = self.briefIntroductionModel;
         return cell;
     } else if (indexPath.row == 1) {
+        SHTPremiumFeaturesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTPremiumFeaturesTableViewCell" forIndexPath:indexPath];
+        cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        cell.datas = self.premiumFeaturesArray;
+        return cell;
+    } else if (indexPath.row == 2) {
         SHTMemberSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberSelectionCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -121,7 +151,7 @@
             strongSelf.selectMemberModel = model;
         };
         return cell;
-    } else if (indexPath.row == 2) {
+    } else if (indexPath.row == 3) {
         SHTMemberImmediatelyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMemberImmediatelyCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

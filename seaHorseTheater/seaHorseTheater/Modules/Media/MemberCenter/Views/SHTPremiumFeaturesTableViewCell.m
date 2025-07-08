@@ -49,7 +49,7 @@
 
 - (void)addLayoutSubviews {
     [self.featuresImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self);
+        make.top.equalTo(self).offset(20);
         make.centerX.equalTo(self);
         make.width.mas_equalTo(60);
         make.height.mas_equalTo(60);
@@ -118,6 +118,8 @@
 
 @interface SHTPremiumFeaturesTableViewCell()
 
+@property(nonatomic, strong) UIScrollView *scrollView; //滚动视图
+
 @end
 
 @implementation SHTPremiumFeaturesTableViewCell
@@ -125,9 +127,31 @@
 
 - (void)setDatas:(NSArray *)datas {
     _datas = datas;
+    [self.contentView addSubview:self.scrollView];
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGFloat width = 80;
+    CGFloat height = 135.0;
     for (int i = 0; i < _datas.count; i++) {
-        SHTPremiumFeaturesView *featuresView = [[SHTPremiumFeaturesView alloc] init];
+        NSDictionary *dic = _datas[i];
+        x = 20 * (i + 1) + width * i;
+        SHTPremiumFeaturesView *featuresView = [[SHTPremiumFeaturesView alloc] initWithFrame:CGRectMake(x, y, width, height)];
+        featuresView.data = dic;
+        [self.scrollView addSubview:featuresView];
     }
+}
+
+#pragma mark - 懒加载
+
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SHTScreenWidth, 135)];
+        // 允许水平滚动
+        _scrollView.contentSize = CGSizeMake(SHTScreenWidth + 60, 135); // 宽度大于 scrollView.frame.size.width
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+    }
+    return _scrollView;
 }
 
 @end
