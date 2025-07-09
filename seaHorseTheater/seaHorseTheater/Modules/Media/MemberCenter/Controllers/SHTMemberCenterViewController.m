@@ -127,7 +127,7 @@
     } else if (indexPath.row == 3) {
         return 114.0;
     } else {
-        return 372.0;
+        return 197.0;
     }
 }
 

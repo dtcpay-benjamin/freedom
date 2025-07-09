@@ -23,7 +23,7 @@
     // 隐藏返回按钮文字
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     fromVC.navigationItem.backBarButtonItem = backItem;
-    fromVC.tabBarController.hidesBottomBarWhenPushed = YES;
+    toVC.hidesBottomBarWhenPushed = YES;
     [fromVC.navigationController pushViewController:toVC animated:YES];
 }
 

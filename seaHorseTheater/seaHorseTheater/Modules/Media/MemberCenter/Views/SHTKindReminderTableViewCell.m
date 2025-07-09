@@ -11,7 +11,7 @@
 @interface SHTKindReminderTableViewCell()
 
 @property (nonatomic, strong) UILabel *titleLabel; // 标题
-@property (nonatomic, strong) UITextView *contentTextView; // 内容
+@property (nonatomic, strong) UILabel *contentLabel; // 内容
 
 @end
 
@@ -32,22 +32,22 @@
         make.trailing.equalTo(self.contentView);
         make.height.mas_equalTo(22);
     }];
-    [self.contentTextView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(20);
+    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(10);
         make.leading.equalTo(self.contentView).offset(20);
         make.trailing.equalTo(self.contentView);
-        make.height.mas_equalTo(300);
+        make.height.mas_equalTo(135);
     }];
 }
 
 - (void)addSubviews {
     [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview:self.contentTextView];
+    [self.contentView addSubview:self.contentLabel];
 }
 
 - (void)setContent:(NSString *)content {
     _content = content;
-    self.contentTextView.text = _content;
+    self.contentLabel.text = _content;
 }
 
 #pragma mark - 懒加载
@@ -62,17 +62,16 @@
     return _titleLabel;
 }
 
-- (UITextView *)contentTextView {
-    if (!_contentTextView) {
-        _contentTextView = [[UITextView alloc] init];
-        _contentTextView.translatesAutoresizingMaskIntoConstraints = NO;
-        _contentTextView.font = SHTUIFontSystem(14);
-        _contentTextView.textColor = SHTUIColorFromRGB(98, 93, 82);
-        _contentTextView.backgroundColor = [UIColor clearColor];
-        _contentTextView.editable = NO;
-        _contentTextView.scrollEnabled = NO;
+- (UILabel *)contentLabel {
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc] init];
+        _contentLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _contentLabel.font = SHTUIFontSystem(14);
+        _contentLabel.textColor = SHTUIColorFromRGB(98, 93, 82);
+        _contentLabel.backgroundColor = [UIColor clearColor];
+        _contentLabel.numberOfLines = 0;
     }
-    return _contentTextView;
+    return _contentLabel;
 }
 
 @end
