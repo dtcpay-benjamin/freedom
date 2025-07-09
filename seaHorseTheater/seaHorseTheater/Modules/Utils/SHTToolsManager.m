@@ -51,4 +51,11 @@
     [fromVC presentViewController:vc animated:YES completion:nil];
 }
 
++ (NSDictionary *)serializationFromJson:(NSString *)path {
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *error = nil;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    return json;
+}
+
 @end

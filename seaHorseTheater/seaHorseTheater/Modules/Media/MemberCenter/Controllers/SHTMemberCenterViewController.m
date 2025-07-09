@@ -14,6 +14,8 @@
 #import "SHTBriefIntroductionModel.h"
 #import "SHTStringFormatter.h"
 #import "SHTDeviceIDManager.h"
+#import "SHTKindReminderTableViewCell.h"
+#import "SHTToolsManager.h"
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -90,11 +92,13 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
         _tableView.estimatedRowHeight = UITableViewAutomaticDimension;
         [_tableView registerClass:[SHTBriefIntroductionTableViewCell class] forCellReuseIdentifier:@"SHTBriefIntroductionTableViewCell"];
         [_tableView registerClass:[SHTPremiumFeaturesTableViewCell class] forCellReuseIdentifier:@"SHTPremiumFeaturesTableViewCell"];
         [_tableView registerClass:[SHTMemberSelectionCell class] forCellReuseIdentifier:@"SHTMemberSelectionCell"];
         [_tableView registerClass:[SHTMemberImmediatelyCell class] forCellReuseIdentifier:@"SHTMemberImmediatelyCell"];
+        [_tableView registerClass:[SHTKindReminderTableViewCell class] forCellReuseIdentifier:@"SHTKindReminderTableViewCell"];
         [self.view addSubview:_tableView];
     }
     return _tableView;
@@ -123,7 +127,7 @@
     } else if (indexPath.row == 3) {
         return 114.0;
     } else {
-        return 200;
+        return 372.0;
     }
 }
 
@@ -137,6 +141,7 @@
     } else if (indexPath.row == 1) {
         SHTPremiumFeaturesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTPremiumFeaturesTableViewCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.datas = self.premiumFeaturesArray;
         return cell;
     } else if (indexPath.row == 2) {
@@ -173,9 +178,12 @@
         };
         return cell;
     } else {
-        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        SHTKindReminderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTKindReminderTableViewCell" forIndexPath:indexPath];
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        NSDictionary *dic = [SHTToolsManager serializationFromJson:[[NSBundle mainBundle] pathForResource:@"kindReminder" ofType:@"json"]];
+        NSString *content = dic[@"membership_notice"];
+        cell.content = content;
         return cell;
     }
 }

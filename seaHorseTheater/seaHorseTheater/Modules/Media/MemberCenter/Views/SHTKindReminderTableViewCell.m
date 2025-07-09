@@ -37,13 +37,17 @@
         make.leading.equalTo(self.contentView).offset(20);
         make.trailing.equalTo(self.contentView);
         make.height.mas_equalTo(300);
-        make.bottom.equalTo(self.contentView);
     }];
 }
 
 - (void)addSubviews {
     [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.contentTextView];
+}
+
+- (void)setContent:(NSString *)content {
+    _content = content;
+    self.contentTextView.text = _content;
 }
 
 #pragma mark - 懒加载

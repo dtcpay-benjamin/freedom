@@ -22,6 +22,7 @@
 		1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */; };
 		184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */; };
 		184859BD2E1DF86700012C2E /* SHTKindReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */; };
+		184859C02E1E6FE900012C2E /* kindReminder.json in Resources */ = {isa = PBXBuildFile; fileRef = 184859BF2E1E6FE900012C2E /* kindReminder.json */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
@@ -85,6 +86,7 @@
 		184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTPremiumFeaturesTableViewCell.m; sourceTree = "<group>"; };
 		184859BB2E1DF86700012C2E /* SHTKindReminderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKindReminderTableViewCell.h; sourceTree = "<group>"; };
 		184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKindReminderTableViewCell.m; sourceTree = "<group>"; };
+		184859BF2E1E6FE900012C2E /* kindReminder.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kindReminder.json; sourceTree = "<group>"; };
 		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 				1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		184859BE2E1E6F0B00012C2E /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				184859BF2E1E6FE900012C2E /* kindReminder.json */,
+			);
+			path = sources;
 			sourceTree = "<group>";
 		};
 		18FAC3D52DFFE92C00B91FE8 /* Views */ = {
@@ -389,6 +399,7 @@
 		723FEAA92DFD760200D05C5E /* MemberCenter */ = {
 			isa = PBXGroup;
 			children = (
+				184859BE2E1E6F0B00012C2E /* sources */,
 				72C98E712D46039600978694 /* Controllers */,
 				18FAC3D52DFFE92C00B91FE8 /* Views */,
 				18FAC3DB2DFFF26000B91FE8 /* Models */,
@@ -521,6 +532,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72443C392D2A260D003E6189 /* Assets.xcassets in Resources */,
+				184859C02E1E6FE900012C2E /* kindReminder.json in Resources */,
 				72443C3C2D2A260D003E6189 /* Base in Resources */,
 				727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */,
 			);

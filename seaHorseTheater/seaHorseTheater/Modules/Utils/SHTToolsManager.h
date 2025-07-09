@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)enterPlayer:(DJXPlayletInfoModel *)infoModel fromVC:(UIViewController<DJXPlayletDetailCellDelegate> *)fromVC;
 
+// json格式文件序列化
++ (NSDictionary *)serializationFromJson:(NSString *)path;
+
 @end
 
 NS_ASSUME_NONNULL_END
