@@ -99,7 +99,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = SHTUIColorFromRGB(138, 131, 123);
-        _titleLabel.font = SHTUIFontSystem(16);
+        _titleLabel.font = SHTUIFontBold(16);
     }
     return _titleLabel;
 }
@@ -118,11 +118,33 @@
 
 @interface SHTPremiumFeaturesTableViewCell()
 
-@property(nonatomic, strong) UIScrollView *scrollView; //滚动视图
+@property (nonatomic, strong) UILabel *titleLabel; // 标题
+@property (nonatomic, strong) UIScrollView *scrollView; //滚动视图
 
 @end
 
 @implementation SHTPremiumFeaturesTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self addSubviews];
+    }
+    return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(20);
+        make.centerX.equalTo(self.contentView);
+        make.width.mas_equalTo(SHTScreenWidth);
+        make.height.mas_equalTo(20);
+    }];
+}
+
+- (void)addSubviews {
+    [self.contentView addSubview:self.titleLabel];
+}
 
 
 - (void)setDatas:(NSArray *)datas {
@@ -143,9 +165,21 @@
 
 #pragma mark - 懒加载
 
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.textColor = SHTUIColorFromRGB(112, 103, 94);
+        _titleLabel.font = SHTUIFontBold(15);
+        _titleLabel.text = @"功能特权";
+    }
+    return _titleLabel;
+}
+
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SHTScreenWidth, 135)];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, SHTScreenWidth, 135)];
         // 允许水平滚动
         _scrollView.contentSize = CGSizeMake(SHTScreenWidth + 60, 135); // 宽度大于 scrollView.frame.size.width
         _scrollView.showsHorizontalScrollIndicator = NO;

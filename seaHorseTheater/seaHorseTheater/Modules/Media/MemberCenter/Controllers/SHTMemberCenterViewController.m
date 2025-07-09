@@ -90,7 +90,7 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
         _tableView.delegate = self;
-        _tableView.estimatedRowHeight = 300.0;
+        _tableView.estimatedRowHeight = UITableViewAutomaticDimension;
         [_tableView registerClass:[SHTBriefIntroductionTableViewCell class] forCellReuseIdentifier:@"SHTBriefIntroductionTableViewCell"];
         [_tableView registerClass:[SHTPremiumFeaturesTableViewCell class] forCellReuseIdentifier:@"SHTPremiumFeaturesTableViewCell"];
         [_tableView registerClass:[SHTMemberSelectionCell class] forCellReuseIdentifier:@"SHTMemberSelectionCell"];
@@ -117,7 +117,7 @@
     if (indexPath.row == 0) {
         return 102.0;
     } else if (indexPath.row == 1) {
-        return 135.0;
+        return 175.0;
     } else if (indexPath.row == 2) {
         return 183.0;
     } else if (indexPath.row == 3) {

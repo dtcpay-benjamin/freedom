@@ -21,6 +21,7 @@
 		1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FA2DC0D368008116EB /* SHTSearchTableViewCell.m */; };
 		1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */; };
 		184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */; };
+		184859BD2E1DF86700012C2E /* SHTKindReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
@@ -82,6 +83,8 @@
 		1843A1FD2DC1C826008116EB /* SHTTopLeftLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTTopLeftLabel.m; sourceTree = "<group>"; };
 		184859B52E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTPremiumFeaturesTableViewCell.h; sourceTree = "<group>"; };
 		184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTPremiumFeaturesTableViewCell.m; sourceTree = "<group>"; };
+		184859BB2E1DF86700012C2E /* SHTKindReminderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKindReminderTableViewCell.h; sourceTree = "<group>"; };
+		184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKindReminderTableViewCell.m; sourceTree = "<group>"; };
 		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */,
 				184859B52E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.h */,
 				184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */,
+				184859BB2E1DF86700012C2E /* SHTKindReminderTableViewCell.h */,
+				184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -609,6 +614,7 @@
 				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
 				18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */,
 				727A4E602DC89C500096E550 /* SHTFavoriteManager.m in Sources */,
+				184859BD2E1DF86700012C2E /* SHTKindReminderTableViewCell.m in Sources */,
 				1843A1E12DB8D7A3008116EB /* SHTMBProgressManager.m in Sources */,
 				18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,
