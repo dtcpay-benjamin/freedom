@@ -23,6 +23,7 @@
 		184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */; };
 		184859BD2E1DF86700012C2E /* SHTKindReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */; };
 		184859C02E1E6FE900012C2E /* kindReminder.json in Resources */ = {isa = PBXBuildFile; fileRef = 184859BF2E1E6FE900012C2E /* kindReminder.json */; };
+		184859C42E1FC9F100012C2E /* membershipServiceAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
@@ -87,6 +88,7 @@
 		184859BB2E1DF86700012C2E /* SHTKindReminderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKindReminderTableViewCell.h; sourceTree = "<group>"; };
 		184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKindReminderTableViewCell.m; sourceTree = "<group>"; };
 		184859BF2E1E6FE900012C2E /* kindReminder.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kindReminder.json; sourceTree = "<group>"; };
+		184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = membershipServiceAgreement.html; sourceTree = "<group>"; };
 		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		184859BE2E1E6F0B00012C2E /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */,
 				184859BF2E1E6FE900012C2E /* kindReminder.json */,
 			);
 			path = sources;
@@ -531,6 +534,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184859C42E1FC9F100012C2E /* membershipServiceAgreement.html in Resources */,
 				72443C392D2A260D003E6189 /* Assets.xcassets in Resources */,
 				184859C02E1E6FE900012C2E /* kindReminder.json in Resources */,
 				72443C3C2D2A260D003E6189 /* Base in Resources */,
