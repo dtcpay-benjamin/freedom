@@ -16,6 +16,8 @@
 #import "SHTDeviceIDManager.h"
 #import "SHTKindReminderTableViewCell.h"
 #import "SHTToolsManager.h"
+#import "SHTServiceAgreementViewController.h"
+#import "SHTRouteUtil.h"
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -80,7 +82,9 @@
 
 // 跳转会员服务协议详情
 - (void)jumpMembershipServiceAgreement {
-    
+    SHTServiceAgreementViewController *serviceAgreementVC = [[SHTServiceAgreementViewController alloc] init];
+    [serviceAgreementVC loadMainBundleHtml:@"membershipServiceAgreement"];
+    [self.navigationController pushViewController:serviceAgreementVC animated:YES];
 }
 
 #pragma mark - 懒加载
