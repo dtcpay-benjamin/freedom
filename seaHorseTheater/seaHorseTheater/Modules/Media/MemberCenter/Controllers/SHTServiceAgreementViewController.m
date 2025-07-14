@@ -26,7 +26,8 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.top.trailing.bottom.equalTo(self.view);
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+        make.leading.trailing.bottom.equalTo(self.view);
     }];
 }
 

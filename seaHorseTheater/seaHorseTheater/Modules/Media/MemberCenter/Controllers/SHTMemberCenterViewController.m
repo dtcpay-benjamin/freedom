@@ -84,7 +84,7 @@
 - (void)jumpMembershipServiceAgreement {
     SHTServiceAgreementViewController *serviceAgreementVC = [[SHTServiceAgreementViewController alloc] init];
     [serviceAgreementVC loadMainBundleHtml:@"membershipServiceAgreement"];
-    [self.navigationController pushViewController:serviceAgreementVC animated:YES];
+    [SHTRouteUtil pushFrom:self to:serviceAgreementVC];
 }
 
 #pragma mark - 懒加载

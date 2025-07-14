@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTServiceAgreementViewController : UIViewController
+@interface SHTServiceAgreementViewController : SHTViewController
 
 // 加载网页
 - (void)loadRequest:(NSString *)urlStr;
