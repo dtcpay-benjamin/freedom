@@ -18,8 +18,9 @@
 #import "SHTToolsManager.h"
 #import "SHTServiceAgreementViewController.h"
 #import "SHTRouteUtil.h"
+#import "SHTAlertHelper.h"
 
-@interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SHTBriefIntroductionModel *briefIntroductionModel;
@@ -167,8 +168,15 @@
         __weak typeof(self) weakSelf = self;
         cell.memberImmediatelyOnTapped = ^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            // 开通会员
-            [strongSelf subscribeMember];
+            if (strongSelf.isServiceAgreementReaded) {
+                // 开通会员
+                [strongSelf subscribeMember];
+            } else {
+                [SHTAlertHelper showMembershipConfirmDialogInController:self confirmAction:^{
+                    // 开通会员
+                    [strongSelf subscribeMember];
+                }];
+            }
         };
         cell.radioOnTapped = ^(BOOL isSelected) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -190,6 +198,16 @@
         cell.content = content;
         return cell;
     }
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView
+ shouldInteractWithURL:(NSURL *)URL
+         inRange:(NSRange)characterRange
+     interaction:(UITextItemInteraction)interaction {
+    [self jumpMembershipServiceAgreement];
+    return YES;
 }
 
 @end

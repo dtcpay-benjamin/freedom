@@ -451,8 +451,8 @@
         __weak typeof(self) weakSelf = self;
         [SHTAlertHelper showAlertWithTitle:@"提示"
                                    message:@"确认要删除收藏记录吗？"
-                             cancelBtnText:nil
-                            confirmBtnText:nil
+                             cancelBtnText:@"取消"
+                            confirmBtnText:@"确认"
                              inController:nil
                               cancelAction:nil confirmAction:^{
             __strong typeof(weakSelf) strongSelf = weakSelf;

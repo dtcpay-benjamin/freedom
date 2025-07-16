@@ -21,6 +21,9 @@ typedef void(^SHTAlertActionBlock)(void);
                cancelAction:(nullable SHTAlertActionBlock)cancelAction
               confirmAction:(nullable SHTAlertActionBlock)confirmAction;
 
+/// 展示自定义会员开通弹窗
++ (void)showMembershipConfirmDialogInController:(UIViewController *)controller confirmAction:(void(^)(void))confirmAction;
+
 @end
 
 NS_ASSUME_NONNULL_END
