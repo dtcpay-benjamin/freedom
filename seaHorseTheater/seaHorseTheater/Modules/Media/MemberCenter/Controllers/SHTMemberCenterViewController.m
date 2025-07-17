@@ -28,6 +28,7 @@
 @property (nonatomic, copy) NSArray *premiumFeaturesArray; // 用户特权数据
 @property (nonatomic, strong) SHTMemberModel *selectMemberModel; // 选中的会员类型
 @property (nonatomic, assign) BOOL isServiceAgreementReaded; // 是否已经阅读会员服务协议
+@property (nonatomic, strong) UIView *membershipPopupView;
 @end
 
 @implementation SHTMemberCenterViewController
@@ -40,6 +41,20 @@
     [self adjustUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.membershipPopupView && !self.membershipPopupView.superview) {
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        [keyWindow addSubview:self.membershipPopupView];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.membershipPopupView.superview) {
+        [self.membershipPopupView removeFromSuperview];
+    }
+}
 #pragma mark - functions
 
 - (void)setupDatas {
@@ -172,9 +187,21 @@
                 // 开通会员
                 [strongSelf subscribeMember];
             } else {
-                [SHTAlertHelper showMembershipConfirmDialogInController:self confirmAction:^{
+                NSDictionary *params = @{
+                    @"title": @"确认开通",
+                    @"message": @"请阅读并同意《会员服务协议》（含自动续费条款）",
+                    @"keyWords": @"《会员服务协议》",
+                    @"confirmTitle": @"继续开通",
+                    @"protocolHeader": @"vipAgreement://"
+                };
+                [SHTAlertHelper showMembershipConfirmDialogInController:self params:params confirmAction:^{
+                    strongSelf.membershipPopupView = nil;
                     // 开通会员
                     [strongSelf subscribeMember];
+                } closeAction:^{
+                    strongSelf.membershipPopupView = nil;
+                } storePopup:^(UIView *popupView) {
+                    strongSelf.membershipPopupView = popupView;
                 }];
             }
         };
@@ -206,7 +233,10 @@
  shouldInteractWithURL:(NSURL *)URL
          inRange:(NSRange)characterRange
      interaction:(UITextItemInteraction)interaction {
-    [self jumpMembershipServiceAgreement];
+    if ([URL.absoluteString isEqualToString:@"vipAgreement://"]) {
+        [self jumpMembershipServiceAgreement];
+        return NO;
+    }
     return YES;
 }
 

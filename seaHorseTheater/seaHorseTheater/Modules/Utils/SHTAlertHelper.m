@@ -11,6 +11,15 @@
 
 @implementation SHTAlertHelper
 
++ (instancetype)sharedHelper {
+    static SHTAlertHelper *helper;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        helper = [[self alloc] init];
+    });
+    return helper;
+}
+
 + (void)showAlertWithTitle:(nullable NSString *)title
                    message:(nullable NSString *)message
              cancelBtnText:(nullable NSString *)cancelText
@@ -53,66 +62,95 @@
     }
 }
 
-+ (void)showMembershipConfirmDialogInController:(UIViewController *)controller confirmAction:(void(^)(void))confirmAction {
-
-    UIView *bgView = [[UIView alloc] initWithFrame:controller.view.bounds];
++ (void)showMembershipConfirmDialogInController:(UIViewController *)controller params:(NSDictionary *)params  confirmAction:(void(^)(void))confirmAction closeAction:(void(^)(void))closeAction                                       storePopup:(void(^)(UIView *popupView))popupCallback {
+    NSString *title = params[@"title"];
+    NSString *message = params[@"message"];
+    NSString *keyWords = params[@"keyWords"];
+    NSString *confirmTitle = params[@"confirmTitle"];
+    NSString *protocolHeader = params[@"protocolHeader"];
+    
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    UIView *bgView = [[UIView alloc] initWithFrame:keyWindow.bounds];
     bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
 
-    UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(40, 0, controller.view.bounds.size.width - 80, 180)];
+    CGFloat alertWidth = controller.view.bounds.size.width - 80;
+    UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(40, 0, alertWidth, 150)];
     alertView.center = controller.view.center;
     alertView.backgroundColor = [UIColor whiteColor];
     alertView.layer.cornerRadius = 10;
     alertView.clipsToBounds = YES;
 
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, alertView.bounds.size.width, 25)];
-    titleLabel.text = @"确认开通";
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, alertWidth, 25)];
+//    titleLabel.text = @"确认开通";
+    titleLabel.text = title;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [alertView addSubview:titleLabel];
 
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 50, alertView.bounds.size.width - 40, 60)];
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 50, alertWidth - 40, 30)];
     textView.editable = NO;
     textView.scrollEnabled = NO;
-    textView.dataDetectorTypes = UIDataDetectorTypeNone;
     textView.backgroundColor = [UIColor clearColor];
-
-    NSString *message = @"请阅读并同意《会员服务协议》（含自动续费条款）";
+    textView.dataDetectorTypes = UIDataDetectorTypeNone;
+    textView.textContainerInset = UIEdgeInsetsZero;
+    textView.textContainer.lineFragmentPadding = 0;
+//    NSString *message = @"请阅读并同意《会员服务协议》（含自动续费条款）";
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:message];
-    NSRange linkRange = [message rangeOfString:@"《会员服务协议》"];
+//    NSRange linkRange = [message rangeOfString:@"《会员服务协议》"];
+    NSRange linkRange = [message rangeOfString:keyWords];
     if (linkRange.location != NSNotFound) {
-        [attrStr addAttribute:NSLinkAttributeName
-                        value:@"vipAgreement://"
-                        range:linkRange];
-        [attrStr addAttribute:NSForegroundColorAttributeName
-                        value:[UIColor blackColor]
-                        range:NSMakeRange(0, message.length)];
+        [attrStr addAttribute:NSLinkAttributeName value:protocolHeader range:linkRange];
+        [attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, message.length)];
     }
-
     textView.attributedText = attrStr;
     textView.delegate = (id<UITextViewDelegate>)controller;
     [alertView addSubview:textView];
 
-    UIButton *confirmBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 120, alertView.bounds.size.width - 40, 40)];
+    UIButton *confirmBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 90, alertWidth - 40, 40)];
     confirmBtn.backgroundColor = [UIColor systemRedColor];
-    [confirmBtn setTitle:@"继续开通" forState:UIControlStateNormal];
+//    [confirmBtn setTitle:@"继续开通" forState:UIControlStateNormal];
+    [confirmBtn setTitle:confirmTitle forState:UIControlStateNormal];
     confirmBtn.layer.cornerRadius = 6;
     [confirmBtn addTarget:self action:@selector(confirmButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [alertView addSubview:confirmBtn];
 
+    // 右上角关闭按钮
+    UIButton *closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(alertWidth - 24 - 10, 10, 24, 24)];
+    [closeBtn setImage:[UIImage imageNamed:@"navi_close"] forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(closeAlertButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [alertView addSubview:closeBtn];
+    
     [bgView addSubview:alertView];
-    [controller.view addSubview:bgView];
-
-    // 存 confirmBlock
+    [keyWindow addSubview:bgView]; // 注意是加到window
+    
+    // 绑定数据
     objc_setAssociatedObject(confirmBtn, "confirmBlock", confirmAction, OBJC_ASSOCIATION_COPY_NONATOMIC);
     objc_setAssociatedObject(confirmBtn, "popupView", bgView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(closeBtn, "closeBlock", closeAction, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(closeBtn, "popupView", bgView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    if (popupCallback) {
+        popupCallback(bgView);
+    }
 }
 
 + (void)confirmButtonTapped:(UIButton *)sender {
     void (^confirmBlock)(void) = objc_getAssociatedObject(sender, "confirmBlock");
     UIView *popup = objc_getAssociatedObject(sender, "popupView");
     [popup removeFromSuperview];
+    popup = nil;
     if (confirmBlock) {
         confirmBlock();
+    }
+}
+
++ (void)closeAlertButtonTapped:(UIButton *)sender {
+    void (^closeBlock)(void) = objc_getAssociatedObject(sender, "closeBlock");
+    UIView *popup = objc_getAssociatedObject(sender, "popupView");
+    [popup removeFromSuperview];
+    popup = nil;
+    if (closeBlock) {
+        closeBlock();
     }
 }
 
