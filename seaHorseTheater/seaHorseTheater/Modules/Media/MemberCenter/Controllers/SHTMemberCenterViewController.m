@@ -19,6 +19,7 @@
 #import "SHTServiceAgreementViewController.h"
 #import "SHTRouteUtil.h"
 #import "SHTAlertHelper.h"
+#import "SHTSubscriptionManager.h"
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) SHTMemberModel *selectMemberModel; // 选中的会员类型
 @property (nonatomic, assign) BOOL isServiceAgreementReaded; // 是否已经阅读会员服务协议
 @property (nonatomic, strong) UIView *membershipPopupView;
+
 @end
 
 @implementation SHTMemberCenterViewController
@@ -88,6 +90,10 @@
 }
 
 - (void)adjustUI {
+    for (SKProduct *product in [[SHTSubscriptionManager sharedManager] products]) {
+        // 订阅按钮展示 product.localizedTitle 和 product.price
+        // [product.priceLocale objectForKey:NSLocaleCurrencySymbol] 可取 ¥ 符号
+    }
     [self.tableView reloadData];
 }
 
