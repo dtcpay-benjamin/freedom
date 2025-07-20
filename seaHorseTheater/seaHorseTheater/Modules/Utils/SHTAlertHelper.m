@@ -7,6 +7,7 @@
 
 #import "SHTAlertHelper.h"
 #import "SHTToolsManager.h"
+#import "SHTNonSelectableTextView.h"
 #import <objc/runtime.h>
 
 @implementation SHTAlertHelper
@@ -87,7 +88,7 @@
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [alertView addSubview:titleLabel];
 
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 50, alertWidth - 40, 30)];
+    SHTNonSelectableTextView *textView = [[SHTNonSelectableTextView alloc] initWithFrame:CGRectMake(20, 50, alertWidth - 40, 30)];
     textView.editable = NO;
     textView.scrollEnabled = NO;
     textView.backgroundColor = [UIColor clearColor];
