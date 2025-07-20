@@ -10,7 +10,7 @@
 @implementation SHTDeviceIDManager
 
 + (NSString *)getDeviceID {
-    NSString *service = @"com.hujiaofen.seaHorseTheaterasab";
+    NSString *service = @"com.hujiaofen.seaHorseTheater";
     NSString *account = @"unique_device_id";
 
     NSString *existingID = [self loadFromKeychainWithService:service account:account];

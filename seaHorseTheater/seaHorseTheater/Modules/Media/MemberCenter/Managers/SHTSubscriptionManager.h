@@ -6,17 +6,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <StoreKit/StoreKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SKProduct;
+
 @interface SHTSubscriptionManager : NSObject
 
-+ (instancetype)sharedManager;
-- (void)fetchProducts;
-- (void)purchaseProduct:(SKProduct *)product;
-
 @property (nonatomic, strong) NSArray<SKProduct *> *products;
++ (instancetype)sharedManager;
+- (void)loadProducts;
+- (void)purchaseProduct:(SKProduct *)product;
+- (BOOL)isSubscribed;
+
+@property (nonatomic, strong) void (^productCallBack)(NSArray<SKProduct *> *products); // 商品信息回调
+
 
 @end
 

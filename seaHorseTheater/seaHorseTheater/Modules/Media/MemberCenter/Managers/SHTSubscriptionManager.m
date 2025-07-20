@@ -6,6 +6,7 @@
 //
 
 #import "SHTSubscriptionManager.h"
+#import <StoreKit/StoreKit.h>
 
 @interface SHTSubscriptionManager()<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
@@ -23,22 +24,29 @@
     return manager;
 }
 
-- (void)fetchProducts {
-    NSSet *productIDs = [NSSet setWithArray:@[@"com.app.weekly", @"com.app.monthly", @"com.app.yearly"]];
+- (void)loadProducts {
+    NSSet *productIDs = [NSSet setWithArray:@[@"com.seaHorseTheater.app.subscription.week", @"com.seaHorseTheater.app.subscription.month", @"com.seaHorseTheater.app.subscription.year"]];
     SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:productIDs];
     request.delegate = self;
     [request start];
 }
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    NSLog(@"获取订阅商品信息请求:%@", request);
+    NSLog(@"获取订阅商品信息响应:%@", response);
+    NSLog(@"订阅商品信息:%@", response.products);
     self.products = response.products;
-    // 通知 UI 刷新显示价格
+    if (self.productCallBack) {
+        self.productCallBack(self.products);
+    }
 }
 
 // 发起购买
 - (void)purchaseProduct:(SKProduct *)product {
-    SKPayment *payment = [SKPayment paymentWithProduct:product];
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
+    if ([SKPaymentQueue canMakePayments]) {
+        SKPayment *payment = [SKPayment paymentWithProduct:product];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    }
 }
 
 #pragma mark - SKPaymentTransactionObserver
@@ -51,17 +59,34 @@
                 NSLog(@"购买成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
-            case SKPaymentTransactionStateFailed:
-                NSLog(@"购买失败: %@", transaction.error.localizedDescription);
+            case SKPaymentTransactionStateRestored:
+                [self validateReceipt]; // 本地验证
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
-            case SKPaymentTransactionStateRestored:
+            case SKPaymentTransactionStateFailed:
+                NSLog(@"购买失败: %@", transaction.error.localizedDescription);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             default:
                 break;
         }
     }
+}
+
+- (void)validateReceipt {
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
+    if (!receiptData) return;
+
+    // 使用 Apple 提供的本地验证（可选）
+    // 对于无服务端方案，可用解析 plist 的方式简单判断过期时间
+
+    // 保存订阅状态
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isSubscribed"];
+}
+
+- (BOOL)isSubscribed {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isSubscribed"];
 }
 
 @end

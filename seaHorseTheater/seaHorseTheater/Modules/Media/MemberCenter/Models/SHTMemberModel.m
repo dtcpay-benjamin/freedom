@@ -6,15 +6,23 @@
 //
 
 #import "SHTMemberModel.h"
+#import <StoreKit/StoreKit.h>
 
 @implementation SHTMemberModel
 
-+ (SHTMemberModel *)modelWithMemberType:(SHTMemberType)memberType amount:(double)amount originalAmount:(double)originalAmount currency:(NSString *)currency{
++ (SHTMemberModel *)modelWithId:(NSString *)id  amount:(double)amount originalAmount:(double)originalAmount currency:(NSString *)currency product:(SKProduct *)product {
     SHTMemberModel *model = [[SHTMemberModel alloc] init];
-    model.memberType = memberType;
+    if([id isEqualToString:@"com.seaHorseTheater.app.subscription.week"]) {
+        model.memberType = SHTMemberTypeWeeklySubscription;
+    } else if([id isEqualToString:@"com.seaHorseTheater.app.subscription.month"]) {
+        model.memberType = SHTMemberTypeMonthlySubscription;
+    } else if([id isEqualToString:@"com.seaHorseTheater.app.subscription.year"]) {
+        model.memberType = SHTMemberTypeAnnualSubscription;
+    }
+    model.id = id;
     NSString *title = @"";
     double average = 0.0;
-    switch (memberType) {
+    switch (model.memberType) {
         case SHTMemberTypeWeeklySubscription:
             title = @"连续包周";
             average = amount / 7;
@@ -44,6 +52,7 @@
     };
     NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:fullText attributes:attributes];
     model.showOriginalAmount = attrStr;
+    model.product = product;
     return model;
 }
 

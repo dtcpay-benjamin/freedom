@@ -20,6 +20,7 @@
 #import "SHTRouteUtil.h"
 #import "SHTAlertHelper.h"
 #import "SHTSubscriptionManager.h"
+#import <StoreKit/StoreKit.h>
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
@@ -30,6 +31,7 @@
 @property (nonatomic, strong) SHTMemberModel *selectMemberModel; // 选中的会员类型
 @property (nonatomic, assign) BOOL isServiceAgreementReaded; // 是否已经阅读会员服务协议
 @property (nonatomic, strong) UIView *membershipPopupView;
+@property (nonatomic, strong) SHTSubscriptionManager *subscriptionManager; // 订阅管理
 
 @end
 
@@ -40,7 +42,6 @@
     self.view.backgroundColor = SHT_BACK_COLOR_DARK;
     self.title = @"会员中心";
     [self setupDatas];
-    [self adjustUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,13 +62,6 @@
 
 - (void)setupDatas {
     self.briefIntroductionModel = [SHTBriefIntroductionModel modelWithTitle:[NSString stringWithFormat:@"海马剧友 %@", [SHTStringFormatter formatString:[SHTDeviceIDManager getDeviceID] fromStart:NO length:12 caseOption:StringCaseOptionLowercase]] activateVip:NO];
-    SHTMemberModel *model = [SHTMemberModel modelWithMemberType:SHTMemberTypeWeeklySubscription amount:1 originalAmount:12 currency:@"¥"];
-    [self.memberTypesArray addObject:model];
-    SHTMemberModel *model1 = [SHTMemberModel modelWithMemberType:SHTMemberTypeMonthlySubscription amount:9.9 originalAmount:39 currency:@"¥"];
-    [self.memberTypesArray addObject:model1];
-    SHTMemberModel *model2 = [SHTMemberModel modelWithMemberType:SHTMemberTypeAnnualSubscription amount:49 originalAmount:299 currency:@"¥"];
-    [self.memberTypesArray addObject:model2];
-    
     self.premiumFeaturesArray = @[
       @{
         @"featuresImage": @"unlimitedStreaming",
@@ -87,19 +81,35 @@
           @"subTitle": @"敬请期待"
        }
     ];
+    
+    [self.subscriptionManager loadProducts];
+    __weak typeof(self) weakSelf = self;
+    self.subscriptionManager.productCallBack = ^(NSArray<SKProduct *> * _Nonnull products) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        for (SKProduct *product in products) {
+            SHTMemberModel *model = [SHTMemberModel modelWithId:product.productIdentifier amount:[product.price doubleValue] originalAmount:[product.price doubleValue] currency:@"¥" product:product];
+            [strongSelf.memberTypesArray addObject:model];
+        }
+//        SHTMemberModel *model = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.week" amount:1 originalAmount:12 currency:@"¥" product:[SKProduct new]];
+//        [strongSelf.memberTypesArray addObject:model];
+//        SHTMemberModel *model1 = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.month" amount:9.9 originalAmount:39 currency:@"¥" product:[SKProduct new]];
+//        [strongSelf.memberTypesArray addObject:model1];
+//        SHTMemberModel *model2 = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.year" amount:49 originalAmount:299 currency:@"¥" product:[SKProduct new]];
+//        [strongSelf.memberTypesArray addObject:model2];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [strongSelf adjustUI];
+        });
+    };
+
 }
 
 - (void)adjustUI {
-    for (SKProduct *product in [[SHTSubscriptionManager sharedManager] products]) {
-        // 订阅按钮展示 product.localizedTitle 和 product.price
-        // [product.priceLocale objectForKey:NSLocaleCurrencySymbol] 可取 ¥ 符号
-    }
     [self.tableView reloadData];
 }
 
 // 开通会员
 - (void)subscribeMember {
-    
+    [self.subscriptionManager purchaseProduct:self.selectMemberModel.product];
 }
 
 // 跳转会员服务协议详情
@@ -128,6 +138,13 @@
         [self.view addSubview:_tableView];
     }
     return _tableView;
+}
+
+- (SHTSubscriptionManager *)subscriptionManager {
+    if (!_subscriptionManager) {
+        _subscriptionManager = [[SHTSubscriptionManager alloc] init];
+    }
+    return _subscriptionManager;
 }
 
 - (NSMutableArray *)memberTypesArray {
