@@ -72,12 +72,12 @@
     
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     UIView *bgView = [[UIView alloc] initWithFrame:keyWindow.bounds];
-    bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    bgView.backgroundColor = [SHT_BACK_COLOR_DARK colorWithAlphaComponent:0.5];
 
     CGFloat alertWidth = controller.view.bounds.size.width - 80;
     UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(40, 0, alertWidth, 150)];
     alertView.center = controller.view.center;
-    alertView.backgroundColor = [UIColor whiteColor];
+    alertView.backgroundColor = SHT_BACK_COLOR;
     alertView.layer.cornerRadius = 10;
     alertView.clipsToBounds = YES;
 
@@ -85,7 +85,7 @@
 //    titleLabel.text = @"确认开通";
     titleLabel.text = title;
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    titleLabel.font = SHTUIFontBold(18);
     [alertView addSubview:titleLabel];
 
     SHTNonSelectableTextView *textView = [[SHTNonSelectableTextView alloc] initWithFrame:CGRectMake(20, 50, alertWidth - 40, 30)];
@@ -101,7 +101,7 @@
     NSRange linkRange = [message rangeOfString:keyWords];
     if (linkRange.location != NSNotFound) {
         [attrStr addAttribute:NSLinkAttributeName value:protocolHeader range:linkRange];
-        [attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, message.length)];
+        [attrStr addAttribute:NSForegroundColorAttributeName value:SHT_BACK_COLOR_DARK range:NSMakeRange(0, message.length)];
     }
     textView.attributedText = attrStr;
     textView.delegate = (id<UITextViewDelegate>)controller;
