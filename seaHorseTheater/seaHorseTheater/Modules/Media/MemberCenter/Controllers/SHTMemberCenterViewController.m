@@ -20,6 +20,7 @@
 #import "SHTRouteUtil.h"
 #import "SHTAlertHelper.h"
 #import "SHTSubscriptionManager.h"
+#import "SHTMBProgressManager.h"
 #import <StoreKit/StoreKit.h>
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
@@ -81,7 +82,8 @@
           @"subTitle": @"敬请期待"
        }
     ];
-    
+    // 先加载一次已有数据
+    [self adjustUI];
     [self.subscriptionManager loadProducts];
     __weak typeof(self) weakSelf = self;
     self.subscriptionManager.productCallBack = ^(NSArray<SKProduct *> * _Nonnull products) {
@@ -97,6 +99,7 @@
 //        SHTMemberModel *model2 = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.year" amount:49 originalAmount:299 currency:@"¥" product:[SKProduct new]];
 //        [strongSelf.memberTypesArray addObject:model2];
         dispatch_async(dispatch_get_main_queue(), ^{
+            // 加载会员订阅类型数据
             [strongSelf adjustUI];
         });
     };
@@ -109,7 +112,11 @@
 
 // 开通会员
 - (void)subscribeMember {
-    [self.subscriptionManager purchaseProduct:self.selectMemberModel.product];
+    if (self.selectMemberModel) {
+        [self.subscriptionManager purchaseProduct:self.selectMemberModel.product];
+    } else {
+        [SHTMBProgressManager showText:nil withText:@"请选择会员类型！" andSubText:nil isBottom:NO];
+    }
 }
 
 // 跳转会员服务协议详情
