@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHTTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @class SHTMemberModel;
-@interface SHTMemberSelectionCell : UITableViewCell
+@interface SHTMemberSelectionCell : SHTTableViewCell
 
 @property (nonatomic, strong) void (^memberSelectionTapped)(SHTMemberModel *model); // 点击回调
 

@@ -10,10 +10,12 @@
 #import "SHTStringFormatter.h"
 #import "SHTMemberCenterViewController.h"
 #import "SHTRouteUtil.h"
+#import <Masonry/Masonry.h>
 
-@interface SHTMineViewController ()
+@interface SHTMineViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property(nonatomic, strong)NSString *membershipID;
+@property(nonatomic, strong) NSString *membershipID;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -23,9 +25,14 @@
     [super viewDidLoad];
     self.view.backgroundColor = SHT_BACK_COLOR;
     NSLog(@"Member Ship ID:%@", self.membershipID);
-    
     // TODO:test
-    [self addTestButton];
+    //    [self addTestButton];
+    [self addSubviews];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self addSubViewsLayouts];
 }
 
 // 添加测试按钮
@@ -37,6 +44,16 @@
     testBtn.titleLabel.font = SHTUIFontBold(25);
     [testBtn addTarget:self action:@selector(actionTest:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testBtn];
+}
+
+- (void)addSubviews {
+    [self.view addSubview:self.tableView];
+}
+
+- (void)addSubViewsLayouts {
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.leading.trailing.bottom.equalTo(self.view);
+    }];
 }
 
 #pragma mark - actions
@@ -53,4 +70,23 @@
     }
     return _membershipID;
 }
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.estimatedRowHeight = 90.0;
+        _tableView.backgroundColor = SHT_BACK_COLOR;
+    }
+    return _tableView;
+}
+
+#pragma mark - UITableViewDelegate && UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
 @end

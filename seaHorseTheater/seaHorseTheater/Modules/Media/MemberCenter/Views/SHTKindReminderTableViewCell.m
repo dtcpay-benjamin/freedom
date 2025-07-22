@@ -17,15 +17,12 @@
 
 @implementation SHTKindReminderTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self addSubviews];
-    }
-    return self;
+- (void)addSubviews {
+    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.contentLabel];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)addLayoutSubviews {
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(30);
         make.leading.equalTo(self.contentView).offset(20);
@@ -40,10 +37,6 @@
     }];
 }
 
-- (void)addSubviews {
-    [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview:self.contentLabel];
-}
 
 - (void)setContent:(NSString *)content {
     _content = content;

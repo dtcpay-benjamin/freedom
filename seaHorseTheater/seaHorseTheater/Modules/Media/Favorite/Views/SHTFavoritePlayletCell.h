@@ -7,11 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import <PangrowthDJX/DJXSDK.h>
+#import "SHTCollectionViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @class SHTFavoritePlayletModel;
 
-@interface SHTFavoritePlayletCell : UICollectionViewCell
+@interface SHTFavoritePlayletCell : SHTCollectionViewCell
 @property (nonatomic, copy) void (^longPressHandler)(void); // 长按回调
 @property(nonatomic, strong) DJXPlayletInfoModel *playletinfoModel; // 短剧信息
 @property (nonatomic, assign) bool isEdit;

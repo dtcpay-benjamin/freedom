@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHTTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTMemberImmediatelyCell : UITableViewCell
+@interface SHTMemberImmediatelyCell : SHTTableViewCell
 
 @property (nonatomic, strong) void (^memberImmediatelyOnTapped)(void); // 开通会员点击回调
 

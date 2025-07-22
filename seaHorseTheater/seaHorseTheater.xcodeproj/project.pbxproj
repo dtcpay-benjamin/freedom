@@ -25,6 +25,9 @@
 		184859C02E1E6FE900012C2E /* kindReminder.json in Resources */ = {isa = PBXBuildFile; fileRef = 184859BF2E1E6FE900012C2E /* kindReminder.json */; };
 		184859C42E1FC9F100012C2E /* membershipServiceAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */; };
 		184859C72E2099E700012C2E /* SHTServiceAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859C62E2099E700012C2E /* SHTServiceAgreementViewController.m */; };
+		184D458F2E2F19C50059B501 /* SHTMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D458E2E2F19C50059B501 /* SHTMineHeaderCell.m */; };
+		184D45922E2F24480059B501 /* SHTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45912E2F24480059B501 /* SHTTableViewCell.m */; };
+		184D45952E2F27690059B501 /* SHTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45942E2F27690059B501 /* SHTCollectionViewCell.m */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
@@ -94,6 +97,12 @@
 		184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = membershipServiceAgreement.html; sourceTree = "<group>"; };
 		184859C52E2099E700012C2E /* SHTServiceAgreementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTServiceAgreementViewController.h; sourceTree = "<group>"; };
 		184859C62E2099E700012C2E /* SHTServiceAgreementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTServiceAgreementViewController.m; sourceTree = "<group>"; };
+		184D458D2E2F19C50059B501 /* SHTMineHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMineHeaderCell.h; sourceTree = "<group>"; };
+		184D458E2E2F19C50059B501 /* SHTMineHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMineHeaderCell.m; sourceTree = "<group>"; };
+		184D45902E2F24480059B501 /* SHTTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTTableViewCell.h; sourceTree = "<group>"; };
+		184D45912E2F24480059B501 /* SHTTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTTableViewCell.m; sourceTree = "<group>"; };
+		184D45932E2F27690059B501 /* SHTCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTCollectionViewCell.h; sourceTree = "<group>"; };
+		184D45942E2F27690059B501 /* SHTCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTCollectionViewCell.m; sourceTree = "<group>"; };
 		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
@@ -202,6 +211,15 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		184D458C2E2F19230059B501 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				184D458D2E2F19C50059B501 /* SHTMineHeaderCell.h */,
+				184D458E2E2F19C50059B501 /* SHTMineHeaderCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		18F582032E29E10A002A23A2 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +290,10 @@
 				72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */,
 				728F44342E08134300361C28 /* SHTViewController.h */,
 				728F44352E08134300361C28 /* SHTViewController.m */,
+				184D45902E2F24480059B501 /* SHTTableViewCell.h */,
+				184D45912E2F24480059B501 /* SHTTableViewCell.m */,
+				184D45932E2F27690059B501 /* SHTCollectionViewCell.h */,
+				184D45942E2F27690059B501 /* SHTCollectionViewCell.m */,
 				723FEA9D2DFD739000D05C5E /* Home */,
 				723FEAA02DFD746100D05C5E /* Favorite */,
 				723FEAA42DFD756B00D05C5E /* Search */,
@@ -406,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				723FEAA82DFD75F100D05C5E /* Controllers */,
+				184D458C2E2F19230059B501 /* Views */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -644,6 +667,7 @@
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
 				723FEA9C2DFD59CA00D05C5E /* SHTStringFormatter.m in Sources */,
 				1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */,
+				184D458F2E2F19C50059B501 /* SHTMineHeaderCell.m in Sources */,
 				1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */,
 				728F44362E08134300361C28 /* SHTViewController.m in Sources */,
 				1843A1EF2DBB8D93008116EB /* SHTSearchCollectionViewCell.m in Sources */,
@@ -655,6 +679,7 @@
 				727A4E602DC89C500096E550 /* SHTFavoriteManager.m in Sources */,
 				184859BD2E1DF86700012C2E /* SHTKindReminderTableViewCell.m in Sources */,
 				1843A1E12DB8D7A3008116EB /* SHTMBProgressManager.m in Sources */,
+				184D45922E2F24480059B501 /* SHTTableViewCell.m in Sources */,
 				18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */,
 				721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */,
 				1843A1F52DBE314A008116EB /* SHTUserDefaults.m in Sources */,
@@ -667,6 +692,7 @@
 				1843A1E62DBB3348008116EB /* SHTSearchViewController.m in Sources */,
 				18FAC3E12E09452F00B91FE8 /* SHTMemberImmediatelyCell.m in Sources */,
 				728F44392E2C8E2B00361C28 /* SHTNonSelectableTextView.m in Sources */,
+				184D45952E2F27690059B501 /* SHTCollectionViewCell.m in Sources */,
 				72EB882B2D6D3CE60024DDBD /* SHTTabBarController.m in Sources */,
 				182594152D894B4700B0AD44 /* SHTFavoritePlayletCell.m in Sources */,
 				18F582062E29E14F002A23A2 /* SHTSubscriptionManager.m in Sources */,

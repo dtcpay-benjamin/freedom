@@ -20,15 +20,13 @@
 
 @implementation SHTSearchTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self addSubviews];
-    }
-    return self;
+- (void)addSubviews {
+    [self.contentView addSubview:self.imgView];
+    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.descLabel];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)addLayoutSubviews {
     CGFloat imgViewWidth = 85.0;
     CGFloat imgViewHeight = imgViewWidth * (16.0 / 9.0); // 默认 16:9 比例
     self.imgView.frame = CGRectMake(24.0, 10.0, imgViewWidth, imgViewHeight);
@@ -37,11 +35,6 @@
     self.loadingView.center = self.imgView.center;
 }
 
-- (void)addSubviews {
-    [self.contentView addSubview:self.imgView];
-    [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview:self.descLabel];
-}
 
 - (void)setPlayletinfoModel:(DJXPlayletInfoModel *)playletinfoModel {
     _playletinfoModel = playletinfoModel;

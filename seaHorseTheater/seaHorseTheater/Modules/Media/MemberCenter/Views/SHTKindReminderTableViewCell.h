@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHTTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTKindReminderTableViewCell : UITableViewCell
+@interface SHTKindReminderTableViewCell : SHTTableViewCell
 
 @property (nonatomic, copy) NSString *content;
 

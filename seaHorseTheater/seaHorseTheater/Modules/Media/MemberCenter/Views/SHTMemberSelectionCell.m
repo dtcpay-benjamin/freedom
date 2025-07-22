@@ -17,10 +17,6 @@
 
 @implementation SHTMemberSelectionCell
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-}
-
 - (void)setDatas:(NSMutableArray<SHTMemberModel *> *)datas {
     _datas = datas;
     [self addSubviews];

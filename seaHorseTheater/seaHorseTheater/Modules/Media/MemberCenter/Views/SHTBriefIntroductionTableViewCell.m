@@ -19,17 +19,6 @@
 
 @implementation SHTBriefIntroductionTableViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self addSubviews];
-    }
-    return self;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self addLayoutSubviews];
-}
 
 - (void)addSubviews {
     [self.contentView addSubview:self.backView];

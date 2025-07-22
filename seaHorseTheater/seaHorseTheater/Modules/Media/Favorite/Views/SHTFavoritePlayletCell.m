@@ -21,15 +21,6 @@
 
 @implementation SHTFavoritePlayletCell
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self  addSubviews];
-    }
-    return self;
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -43,22 +34,20 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)addSubviews {
+    [self.contentView addSubview:self.imageView];
+    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.subtitleLabel];
+    [self.contentView addSubview:self.deleteImageView];
+}
+
+- (void)addLayoutSubviews {
     CGFloat defaultHeight = self.contentView.bounds.size.width * (16.0 / 9.0); // 默认 16:9 比例
     self.imageView.frame = CGRectMake(0, 0, self.contentView.bounds.size.width, defaultHeight);
     self.titleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.imageView.frame) + 5, self.contentView.bounds.size.width - 10, 20);
     self.subtitleLabel.frame = CGRectMake(5, CGRectGetMaxY(self.titleLabel.frame) + 2, self.contentView.bounds.size.width - 10, 18);
     self.deleteImageView.frame = CGRectMake(self.contentView.bounds.size.width - 22 - 8, 8, 22, 22);
     self.loadingView.center = self.imageView.center;
-}
-
-
-- (void)addSubviews {
-    [self.contentView addSubview:self.imageView];
-    [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview:self.subtitleLabel];
-    [self.contentView addSubview:self.deleteImageView];
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gesture {

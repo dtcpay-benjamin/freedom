@@ -15,25 +15,6 @@
 
 @implementation SHTSearchCollectionViewCell
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self  addSubviews];
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self  addSubviews];
-        
-    }
-    return self;
-}
-
 - (void)addSubviews {
     [self.contentView addSubview:self.titleLabel];
 }

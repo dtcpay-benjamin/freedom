@@ -7,10 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import <PangrowthDJX/DJXSDK.h>
+#import "SHTTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTSearchTableViewCell : UITableViewCell
+@interface SHTSearchTableViewCell : SHTTableViewCell
 
 @property(nonatomic, strong) DJXPlayletInfoModel *playletinfoModel; // 短剧信息
 
