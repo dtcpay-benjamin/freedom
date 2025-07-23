@@ -43,6 +43,7 @@
 		721C671F2D3CC87F00843445 /* AppDelegate+DJXDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C671E2D3CC87F00843445 /* AppDelegate+DJXDelegate.m */; };
 		721C67242D3CD8E400843445 /* SHTMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67232D3CD8E400843445 /* SHTMacros.m */; };
 		721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */ = {isa = PBXBuildFile; fileRef = 721C67272D3CDCC300843445 /* UIView+SHT.m */; };
+		722BA26A2E31265600F1E9E2 /* SHTOpenMemberAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 722BA2692E31265600F1E9E2 /* SHTOpenMemberAccountCell.m */; };
 		722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */; };
 		723FEA962DFD537E00D05C5E /* SHTMemberCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723FEA952DFD537E00D05C5E /* SHTMemberCenterViewController.m */; };
 		723FEA992DFD56A900D05C5E /* SHTDeviceIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 723FEA982DFD56A900D05C5E /* SHTDeviceIDManager.m */; };
@@ -139,6 +140,8 @@
 		721C67272D3CDCC300843445 /* UIView+SHT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SHT.m"; sourceTree = "<group>"; };
 		721C67292D3CDED500843445 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		721C672B2D3CE60F00843445 /* seaHorseTheater-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seaHorseTheater-PrefixHeader.pch"; sourceTree = "<group>"; };
+		722BA2682E31265600F1E9E2 /* SHTOpenMemberAccountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTOpenMemberAccountCell.h; sourceTree = "<group>"; };
+		722BA2692E31265600F1E9E2 /* SHTOpenMemberAccountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTOpenMemberAccountCell.m; sourceTree = "<group>"; };
 		722C406A2D868A9C00873769 /* SHTFavoriteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoriteViewController.h; sourceTree = "<group>"; };
 		722C406B2D868A9C00873769 /* SHTFavoriteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoriteViewController.m; sourceTree = "<group>"; };
 		723FEA942DFD537E00D05C5E /* SHTMemberCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMemberCenterViewController.h; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 			children = (
 				184D458D2E2F19C50059B501 /* SHTMineHeaderCell.h */,
 				184D458E2E2F19C50059B501 /* SHTMineHeaderCell.m */,
+				722BA2682E31265600F1E9E2 /* SHTOpenMemberAccountCell.h */,
+				722BA2692E31265600F1E9E2 /* SHTOpenMemberAccountCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -688,6 +693,7 @@
 				723FEA962DFD537E00D05C5E /* SHTMemberCenterViewController.m in Sources */,
 				722C406C2D868A9C00873769 /* SHTFavoriteViewController.m in Sources */,
 				1843A1FB2DC0D368008116EB /* SHTSearchTableViewCell.m in Sources */,
+				722BA26A2E31265600F1E9E2 /* SHTOpenMemberAccountCell.m in Sources */,
 				72821D1E2D521DD100074647 /* SHTKaiPingADViewController.m in Sources */,
 				18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */,
 				727A4E602DC89C500096E550 /* SHTFavoriteManager.m in Sources */,

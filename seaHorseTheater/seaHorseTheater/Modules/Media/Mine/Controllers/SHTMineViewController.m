@@ -13,6 +13,7 @@
 #import <Masonry/Masonry.h>
 #import "SHTMineHeaderCell.h"
 #import "SHTMineModel.h"
+#import "SHTOpenMemberAccountCell.h"
 
 @interface SHTMineViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -132,6 +133,7 @@
         _tableView.estimatedRowHeight = 90.0;
         _tableView.backgroundColor = SHTUIColorFromRGB(160.0, 96.0, 95.0);
         [_tableView registerClass:[SHTMineHeaderCell class] forCellReuseIdentifier:@"SHTMineHeaderCell"];
+        [_tableView registerClass:[SHTOpenMemberAccountCell class] forCellReuseIdentifier:@"SHTMineHeaderCell"];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     }
     return _tableView;
