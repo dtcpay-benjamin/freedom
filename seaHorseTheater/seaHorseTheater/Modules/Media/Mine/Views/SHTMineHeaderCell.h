@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SHTMineModel;
+
 @interface SHTMineHeaderCell : SHTTableViewCell
+
+@property(nonatomic, strong) SHTMineModel *model; // 数据模型
 
 @end
 

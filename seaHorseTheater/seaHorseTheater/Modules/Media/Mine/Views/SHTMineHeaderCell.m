@@ -7,6 +7,7 @@
 
 #import "SHTMineHeaderCell.h"
 #import <Masonry/Masonry.h>
+#import "SHTMineModel.h"
 
 @interface SHTMineHeaderCell ()
 
@@ -25,7 +26,7 @@
 
 - (void)addLayoutSubviews {
     [self.headerImgview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(SHT_NAV_BAR_TOTAL_HEIGHT + 20.0);
+        make.top.equalTo(self.contentView).offset(20.0);
         make.centerX.equalTo(self.contentView);
         make.width.mas_equalTo(80.0);
         make.height.mas_equalTo(80.0);
@@ -55,6 +56,14 @@
         _uniqueIdentifierLabel.font = SHTUIFontSystem(16);
     }
     return _uniqueIdentifierLabel;
+}
+
+#pragma mark - actions
+
+- (void)setModel:(SHTMineModel *)model {
+    _model = model;
+    self.uniqueIdentifierLabel.text = [NSString stringWithFormat:@"ID：%@", _model.uniqueIdentifier];
+    self.headerImgview.image = [UIImage imageNamed:@"mine_header"];
 }
 
 @end

@@ -28,6 +28,7 @@
 		184D458F2E2F19C50059B501 /* SHTMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D458E2E2F19C50059B501 /* SHTMineHeaderCell.m */; };
 		184D45922E2F24480059B501 /* SHTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45912E2F24480059B501 /* SHTTableViewCell.m */; };
 		184D45952E2F27690059B501 /* SHTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45942E2F27690059B501 /* SHTCollectionViewCell.m */; };
+		184D45992E30687E0059B501 /* SHTMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45982E30687E0059B501 /* SHTMineModel.m */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
@@ -103,6 +104,8 @@
 		184D45912E2F24480059B501 /* SHTTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTTableViewCell.m; sourceTree = "<group>"; };
 		184D45932E2F27690059B501 /* SHTCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTCollectionViewCell.h; sourceTree = "<group>"; };
 		184D45942E2F27690059B501 /* SHTCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTCollectionViewCell.m; sourceTree = "<group>"; };
+		184D45972E30687E0059B501 /* SHTMineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMineModel.h; sourceTree = "<group>"; };
+		184D45982E30687E0059B501 /* SHTMineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMineModel.m; sourceTree = "<group>"; };
 		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
@@ -218,6 +221,15 @@
 				184D458E2E2F19C50059B501 /* SHTMineHeaderCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		184D45962E3068190059B501 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				184D45972E30687E0059B501 /* SHTMineModel.h */,
+				184D45982E30687E0059B501 /* SHTMineModel.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		18F582032E29E10A002A23A2 /* Managers */ = {
@@ -429,6 +441,7 @@
 			children = (
 				723FEAA82DFD75F100D05C5E /* Controllers */,
 				184D458C2E2F19230059B501 /* Views */,
+				184D45962E3068190059B501 /* Models */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -656,6 +669,7 @@
 			files = (
 				18A8C0322DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m in Sources */,
 				18A8C0382DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m in Sources */,
+				184D45992E30687E0059B501 /* SHTMineModel.m in Sources */,
 				721C67282D3CDCC300843445 /* UIView+SHT.m in Sources */,
 				723FEA992DFD56A900D05C5E /* SHTDeviceIDManager.m in Sources */,
 				187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */,
