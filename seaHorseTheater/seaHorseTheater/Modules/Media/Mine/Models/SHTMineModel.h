@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, SHTMineType) {
 @property (nonatomic, copy) NSString *uniqueIdentifier;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subTitle;
+@property (nonatomic, copy) NSString *otherTitle;
 
 
 - (instancetype)initWithDict:(NSDictionary *)dict;

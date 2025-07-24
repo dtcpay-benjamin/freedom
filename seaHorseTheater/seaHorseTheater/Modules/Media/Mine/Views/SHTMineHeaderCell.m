@@ -6,8 +6,8 @@
 //
 
 #import "SHTMineHeaderCell.h"
-#import <Masonry/Masonry.h>
 #import "SHTMineModel.h"
+#import <Masonry/Masonry.h>
 
 @interface SHTMineHeaderCell ()
 

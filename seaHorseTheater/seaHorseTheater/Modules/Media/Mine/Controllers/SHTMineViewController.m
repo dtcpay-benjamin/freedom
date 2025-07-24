@@ -29,8 +29,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = SHTUIColorFromRGB(160.0, 96.0, 95.0);
     NSLog(@"Member Ship ID:%@", self.membershipID);
-    // TODO:test
-    //    [self addTestButton];
     [self setupDatas];
     [self addSubviews];
 }
@@ -50,17 +48,6 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
-// 添加测试按钮
-- (void)addTestButton {
-    UIButton *testBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    testBtn.frame = CGRectMake(SHTScreenWidth * 0.5 - 100, SHTScreenHeight * 0.5 - 30, 200, 60);
-    [testBtn setTitle:@"test-去会员中心" forState:UIControlStateNormal];
-    [testBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    testBtn.titleLabel.font = SHTUIFontBold(25);
-    [testBtn addTarget:self action:@selector(actionTest:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:testBtn];
-}
-
 - (void)setupDatas {
     SHTMineModel *mineModel = [[SHTMineModel alloc] init];
     mineModel.mineType = SHTMineTypeHeader;
@@ -71,6 +58,7 @@
     mineModel1.mineType = SHTMineTypeMemberGuidance;
     mineModel1.title = @"会员时长";
     mineModel1.subTitle = @"会员解锁全部短剧";
+    mineModel1.otherTitle = @"开通会员";
     [self.configDataArray addObject:mineModel1];
     
     SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
@@ -111,11 +99,6 @@
 
 #pragma mark - actions
 
-// test
-- (void)actionTest:(UIButton *)sender {
-    [SHTRouteUtil pushFrom:self to:[[SHTMemberCenterViewController alloc] init]];
-}
-
 #pragma mark - 懒加载
 - (NSString *)membershipID {
     if (!_membershipID) {
@@ -133,7 +116,7 @@
         _tableView.estimatedRowHeight = 90.0;
         _tableView.backgroundColor = SHTUIColorFromRGB(160.0, 96.0, 95.0);
         [_tableView registerClass:[SHTMineHeaderCell class] forCellReuseIdentifier:@"SHTMineHeaderCell"];
-        [_tableView registerClass:[SHTOpenMemberAccountCell class] forCellReuseIdentifier:@"SHTMineHeaderCell"];
+        [_tableView registerClass:[SHTOpenMemberAccountCell class] forCellReuseIdentifier:@"SHTOpenMemberAccountCell"];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     }
     return _tableView;
@@ -156,7 +139,7 @@
     if (indexPath.row == 0) {
         return 140.0;
     } else if (indexPath.row == 1) {
-        return 200.0;
+        return 202.0;
     } else {
         return 90.0;
     }
@@ -169,6 +152,17 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
         cell.model = model;
+        return cell;
+    } else if (indexPath.row == 1) {
+        SHTOpenMemberAccountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTOpenMemberAccountCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor clearColor];
+        cell.model = model;
+        __weak typeof(self) weakSelf = self;
+        cell.openMemberAccountTapped = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [SHTRouteUtil pushFrom:strongSelf to:[[SHTMemberCenterViewController alloc] init]];
+        };
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
