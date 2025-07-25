@@ -14,6 +14,7 @@
 #import "SHTMineHeaderCell.h"
 #import "SHTMineModel.h"
 #import "SHTOpenMemberAccountCell.h"
+#import "SHTOthersCell.h"
 
 @interface SHTMineViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -61,30 +62,32 @@
     mineModel1.otherTitle = @"开通会员";
     [self.configDataArray addObject:mineModel1];
     
+    NSMutableArray *othersArray = [[NSMutableArray alloc] init];
     SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
     mineModel2.mineType = SHTMineTypeCommon;
     mineModel2.title = @"充值记录";
-    [self.configDataArray addObject:mineModel2];
+    [othersArray addObject:mineModel2];
     
     SHTMineModel *mineModel3 = [[SHTMineModel alloc] init];
     mineModel3.mineType = SHTMineTypeCommon;
     mineModel3.title = @"联系我们";
-    [self.configDataArray addObject:mineModel3];
+    [othersArray addObject:mineModel3];
     
     SHTMineModel *mineModel4 = [[SHTMineModel alloc] init];
     mineModel4.mineType = SHTMineTypeCommon;
     mineModel4.title = @"建议反馈";
-    [self.configDataArray addObject:mineModel4];
+    [othersArray addObject:mineModel4];
     
     SHTMineModel *mineModel5 = [[SHTMineModel alloc] init];
     mineModel5.mineType = SHTMineTypeCommon;
     mineModel5.title = @"用户协议";
-    [self.configDataArray addObject:mineModel5];
+    [othersArray addObject:mineModel5];
     
     SHTMineModel *mineModel6 = [[SHTMineModel alloc] init];
     mineModel6.mineType = SHTMineTypeCommon;
     mineModel6.title = @"隐私政策";
-    [self.configDataArray addObject:mineModel6];
+    [othersArray addObject:mineModel6];
+    [self.configDataArray addObject:othersArray];
 }
 
 - (void)addSubviews {
@@ -117,6 +120,7 @@
         _tableView.backgroundColor = SHTUIColorFromRGB(160.0, 96.0, 95.0);
         [_tableView registerClass:[SHTMineHeaderCell class] forCellReuseIdentifier:@"SHTMineHeaderCell"];
         [_tableView registerClass:[SHTOpenMemberAccountCell class] forCellReuseIdentifier:@"SHTOpenMemberAccountCell"];
+        [_tableView registerClass:[SHTOthersCell class] forCellReuseIdentifier:@"SHTOthersCell"];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     }
     return _tableView;
@@ -141,19 +145,20 @@
     } else if (indexPath.row == 1) {
         return 202.0;
     } else {
-        return 90.0;
+        return 540.0;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SHTMineModel *model = self.configDataArray[indexPath.row];
     if (indexPath.row == 0) {
+        SHTMineModel *model = self.configDataArray[indexPath.row];
         SHTMineHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMineHeaderCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
         cell.model = model;
         return cell;
     } else if (indexPath.row == 1) {
+        SHTMineModel *model = self.configDataArray[indexPath.row];
         SHTOpenMemberAccountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTOpenMemberAccountCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
@@ -165,9 +170,11 @@
         };
         return cell;
     } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+        NSMutableArray *others = self.configDataArray[indexPath.row];
+        SHTOthersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTOthersCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
+        cell.datasArray = others;
         return cell;
     }
 }
