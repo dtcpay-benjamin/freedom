@@ -76,23 +76,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SHTMineModel *model = self.datasArray[indexPath.row];
     NSString *id = model.uniqueIdentifier;
-    if ([id isEqualToString:@"czjl"]) {
-        // 充值记录
-        
-    } else if ([id isEqualToString:@"lxwm"]) {
-        // 联系我们
-
-    } else if ([id isEqualToString:@"jyfk"]) {
-        // 建议反馈
-        
-    } else if ([id isEqualToString:@"yhxy"]) {
-        // 用户协议
-        
-    } else if ([id isEqualToString:@"yszc"]) {
-        // 隐私政策
-        
+    if (self.enterNextTapped) {
+        self.enterNextTapped(id);
     }
 }
 

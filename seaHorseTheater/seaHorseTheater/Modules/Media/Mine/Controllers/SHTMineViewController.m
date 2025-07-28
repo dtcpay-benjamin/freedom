@@ -15,6 +15,7 @@
 #import "SHTMineModel.h"
 #import "SHTOpenMemberAccountCell.h"
 #import "SHTOthersCell.h"
+#import "SHTRechargeRecordsViewController.h"
 
 @interface SHTMineViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -155,6 +156,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    __weak typeof(self) weakSelf = self;
     if (indexPath.row == 0) {
         SHTMineModel *model = self.configDataArray[indexPath.row];
         SHTMineHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTMineHeaderCell" forIndexPath:indexPath];
@@ -168,7 +170,6 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
         cell.model = model;
-        __weak typeof(self) weakSelf = self;
         cell.openMemberAccountTapped = ^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
             [SHTRouteUtil pushFrom:strongSelf to:[[SHTMemberCenterViewController alloc] init]];
@@ -180,6 +181,25 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
         cell.datasArray = others;
+        cell.enterNextTapped = ^(NSString * _Nonnull id) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if ([id isEqualToString:@"czjl"]) {
+                // 充值记录
+                [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
+            } else if ([id isEqualToString:@"lxwm"]) {
+                // 联系我们
+
+            } else if ([id isEqualToString:@"jyfk"]) {
+                // 建议反馈
+                
+            } else if ([id isEqualToString:@"yhxy"]) {
+                // 用户协议
+                
+            } else if ([id isEqualToString:@"yszc"]) {
+                // 隐私政策
+                
+            }
+        };
         return cell;
     }
 }
