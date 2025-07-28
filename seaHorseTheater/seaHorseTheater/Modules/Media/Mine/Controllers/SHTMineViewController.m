@@ -64,26 +64,31 @@
     
     NSMutableArray *othersArray = [[NSMutableArray alloc] init];
     SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
+    mineModel2.uniqueIdentifier = @"czjl";
     mineModel2.mineType = SHTMineTypeCommon;
     mineModel2.title = @"充值记录";
     [othersArray addObject:mineModel2];
     
     SHTMineModel *mineModel3 = [[SHTMineModel alloc] init];
+    mineModel3.uniqueIdentifier = @"lxwm";
     mineModel3.mineType = SHTMineTypeCommon;
     mineModel3.title = @"联系我们";
     [othersArray addObject:mineModel3];
     
     SHTMineModel *mineModel4 = [[SHTMineModel alloc] init];
+    mineModel4.uniqueIdentifier = @"jyfk";
     mineModel4.mineType = SHTMineTypeCommon;
     mineModel4.title = @"建议反馈";
     [othersArray addObject:mineModel4];
     
     SHTMineModel *mineModel5 = [[SHTMineModel alloc] init];
+    mineModel5.uniqueIdentifier = @"yhxy";
     mineModel5.mineType = SHTMineTypeCommon;
     mineModel5.title = @"用户协议";
     [othersArray addObject:mineModel5];
     
     SHTMineModel *mineModel6 = [[SHTMineModel alloc] init];
+    mineModel6.uniqueIdentifier = @"yszc";
     mineModel6.mineType = SHTMineTypeCommon;
     mineModel6.title = @"隐私政策";
     [othersArray addObject:mineModel6];
@@ -145,7 +150,7 @@
     } else if (indexPath.row == 1) {
         return 202.0;
     } else {
-        return 540.0;
+        return 320.0;
     }
 }
 
