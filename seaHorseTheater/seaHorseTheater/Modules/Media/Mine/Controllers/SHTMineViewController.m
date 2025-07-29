@@ -16,6 +16,8 @@
 #import "SHTOpenMemberAccountCell.h"
 #import "SHTOthersCell.h"
 #import "SHTRechargeRecordsViewController.h"
+#import "SHTServiceAgreementViewController.h"
+#import "SHTPrivacyPolicyViewController.h"
 
 @interface SHTMineViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -71,15 +73,15 @@
     [othersArray addObject:mineModel2];
     
     SHTMineModel *mineModel3 = [[SHTMineModel alloc] init];
-    mineModel3.uniqueIdentifier = @"lxwm";
+    mineModel3.uniqueIdentifier = @"fxapp";
     mineModel3.mineType = SHTMineTypeCommon;
-    mineModel3.title = @"联系我们";
+    mineModel3.title = @"分享APP";
     [othersArray addObject:mineModel3];
     
     SHTMineModel *mineModel4 = [[SHTMineModel alloc] init];
-    mineModel4.uniqueIdentifier = @"jyfk";
+    mineModel4.uniqueIdentifier = @"qwpf";
     mineModel4.mineType = SHTMineTypeCommon;
-    mineModel4.title = @"建议反馈";
+    mineModel4.title = @"前往评分";
     [othersArray addObject:mineModel4];
     
     SHTMineModel *mineModel5 = [[SHTMineModel alloc] init];
@@ -182,23 +184,29 @@
         cell.backgroundColor = [UIColor clearColor];
         cell.datasArray = others;
         cell.enterNextTapped = ^(NSString * _Nonnull id) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            if ([id isEqualToString:@"czjl"]) {
-                // 充值记录
-                [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
-            } else if ([id isEqualToString:@"lxwm"]) {
-                // 联系我们
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                if ([id isEqualToString:@"czjl"]) {
+                    // 充值记录
+                    [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
+                } else if ([id isEqualToString:@"fxapp"]) {
+                    // 分享APP
 
-            } else if ([id isEqualToString:@"jyfk"]) {
-                // 建议反馈
-                
-            } else if ([id isEqualToString:@"yhxy"]) {
-                // 用户协议
-                
-            } else if ([id isEqualToString:@"yszc"]) {
-                // 隐私政策
-                
-            }
+                } else if ([id isEqualToString:@"qwpf"]) {
+                    // 前往评分
+                    
+                } else if ([id isEqualToString:@"yhxy"]) {
+                    // 用户协议
+                    SHTServiceAgreementViewController *serviceAgreementVC = [[SHTServiceAgreementViewController alloc] init];
+                    [serviceAgreementVC loadMainBundleHtml:@"membershipServiceAgreement"];
+                    [SHTRouteUtil pushFrom:strongSelf to:serviceAgreementVC];
+                } else if ([id isEqualToString:@"yszc"]) {
+                    // 隐私政策
+                    SHTPrivacyPolicyViewController *privacyPolicyVC = [[SHTPrivacyPolicyViewController alloc] init];
+                    [privacyPolicyVC loadMainBundleHtml:@"privacyPolicy"];
+                    [SHTRouteUtil pushFrom:strongSelf to:privacyPolicyVC];
+                }
+            });
         };
         return cell;
     }

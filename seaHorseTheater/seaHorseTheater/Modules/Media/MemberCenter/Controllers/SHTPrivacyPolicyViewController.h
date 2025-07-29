@@ -1,8 +1,8 @@
 //
-//  SHTServiceAgreementViewController.h
+//  SHTPrivacyPolicyViewController.h
 //  seaHorseTheater
 //
-//  Created by 褚红彪 on 2025/7/11.
+//  Created by 褚红彪 on 2025/7/29.
 //
 
 #import "SHTViewController.h"
@@ -10,8 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTServiceAgreementViewController : SHTWebViewController
-
+@interface SHTPrivacyPolicyViewController : SHTWebViewController
 
 @end
 

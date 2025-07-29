@@ -98,7 +98,7 @@
         _collectBtn = [SHTVerticalButton buttonWithType:UIButtonTypeCustom];
         [_collectBtn setImage:[UIImage imageNamed:@"uncollect"] forState:UIControlStateNormal];
         [_collectBtn setImage:[UIImage imageNamed:@"collect"] forState:UIControlStateSelected];
-        [_collectBtn setTitle:@"收藏" forState:UIControlStateNormal];
+        [_collectBtn setTitle:@"追剧" forState:UIControlStateNormal];
         [_collectBtn setTitle:_displayText forState:UIControlStateSelected];
         [_collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_collectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
