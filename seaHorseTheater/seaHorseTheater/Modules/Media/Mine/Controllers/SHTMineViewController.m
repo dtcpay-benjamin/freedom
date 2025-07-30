@@ -18,6 +18,7 @@
 #import "SHTRechargeRecordsViewController.h"
 #import "SHTServiceAgreementViewController.h"
 #import "SHTPrivacyPolicyViewController.h"
+#import "SHTAppRateTool.h"
 
 @interface SHTMineViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -110,17 +111,6 @@
 
 #pragma mark - actions
 
-- (void)shareAppAction {
-    NSString *appURLString = @"https://apps.apple.com/app/id1234567890"; // 替换为你的 App ID
-    NSURL *appURL = [NSURL URLWithString:appURLString];
-    NSString *title = @"推荐你使用这款 App！";
-    NSArray *itemsToShare = @[title, appURL];
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
-    // 适配 iPad（防止 crash）
-    activityVC.popoverPresentationController.sourceView = self.view;
-    [self presentViewController:activityVC animated:YES completion:nil];
-}
-
 #pragma mark - 懒加载
 - (NSString *)membershipID {
     if (!_membershipID) {
@@ -202,10 +192,10 @@
                     [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
                 } else if ([id isEqualToString:@"fxapp"]) {
                     // 分享APP
-                    [strongSelf shareAppAction];
+                    [SHTAppRateTool shareAppAction:strongSelf];
                 } else if ([id isEqualToString:@"qwpf"]) {
                     // 前往评分
-                    
+                    [SHTAppRateTool jumpToAppStoreReviewPage];
                 } else if ([id isEqualToString:@"yhxy"]) {
                     // 用户协议
                     SHTServiceAgreementViewController *serviceAgreementVC = [[SHTServiceAgreementViewController alloc] init];

@@ -39,6 +39,7 @@
 		18CD2E382E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E372E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m */; };
 		18CD2E3B2E385A1100DD22D4 /* SHTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E3A2E385A1100DD22D4 /* SHTWebViewController.m */; };
 		18CD2E3D2E385DD400DD22D4 /* privacyPolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 18CD2E3C2E385DD400DD22D4 /* privacyPolicy.html */; };
+		18CD2E402E39AAFA00DD22D4 /* SHTAppRateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E3F2E39AAFA00DD22D4 /* SHTAppRateTool.m */; };
 		18E717AA2E33087600C98C2D /* SHTOthersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E717A92E33087600C98C2D /* SHTOthersCell.m */; };
 		18E717AD2E330C3400C98C2D /* SHTOthersCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E717AC2E330C3400C98C2D /* SHTOthersCommonCell.m */; };
 		18F582062E29E14F002A23A2 /* SHTSubscriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F582052E29E14F002A23A2 /* SHTSubscriptionManager.m */; };
@@ -133,6 +134,8 @@
 		18CD2E392E385A1100DD22D4 /* SHTWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTWebViewController.h; sourceTree = "<group>"; };
 		18CD2E3A2E385A1100DD22D4 /* SHTWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTWebViewController.m; sourceTree = "<group>"; };
 		18CD2E3C2E385DD400DD22D4 /* privacyPolicy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacyPolicy.html; sourceTree = "<group>"; };
+		18CD2E3E2E39AAFA00DD22D4 /* SHTAppRateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTAppRateTool.h; sourceTree = "<group>"; };
+		18CD2E3F2E39AAFA00DD22D4 /* SHTAppRateTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTAppRateTool.m; sourceTree = "<group>"; };
 		18E717A82E33087600C98C2D /* SHTOthersCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTOthersCell.h; sourceTree = "<group>"; };
 		18E717A92E33087600C98C2D /* SHTOthersCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTOthersCell.m; sourceTree = "<group>"; };
 		18E717AB2E330C3400C98C2D /* SHTOthersCommonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTOthersCommonCell.h; sourceTree = "<group>"; };
@@ -375,6 +378,8 @@
 				723FEA982DFD56A900D05C5E /* SHTDeviceIDManager.m */,
 				723FEA9A2DFD59CA00D05C5E /* SHTStringFormatter.h */,
 				723FEA9B2DFD59CA00D05C5E /* SHTStringFormatter.m */,
+				18CD2E3E2E39AAFA00DD22D4 /* SHTAppRateTool.h */,
+				18CD2E3F2E39AAFA00DD22D4 /* SHTAppRateTool.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -716,6 +721,7 @@
 				187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */,
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
 				18E717AA2E33087600C98C2D /* SHTOthersCell.m in Sources */,
+				18CD2E402E39AAFA00DD22D4 /* SHTAppRateTool.m in Sources */,
 				723FEA9C2DFD59CA00D05C5E /* SHTStringFormatter.m in Sources */,
 				1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */,
 				184D458F2E2F19C50059B501 /* SHTMineHeaderCell.m in Sources */,

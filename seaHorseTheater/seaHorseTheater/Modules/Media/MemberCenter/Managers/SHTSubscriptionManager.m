@@ -7,6 +7,7 @@
 
 #import "SHTSubscriptionManager.h"
 #import <StoreKit/StoreKit.h>
+#import "SHTAppRateTool.h"
 
 @interface SHTSubscriptionManager()<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
@@ -58,6 +59,8 @@
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"购买成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                // 购买成功之后，App内评分
+                [SHTAppRateTool requestSystemReview];
                 break;
             case SKPaymentTransactionStateRestored:
                 [self validateReceipt]; // 本地验证
