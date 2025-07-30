@@ -15,6 +15,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     // 设置导航栏背景颜色（通常需要设置为深色）
     self.navigationController.navigationBar.barTintColor = SHT_BACK_COLOR_DARK;
     // 设置导航栏标题颜色为白色
