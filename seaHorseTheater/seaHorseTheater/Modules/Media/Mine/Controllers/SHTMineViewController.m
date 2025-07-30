@@ -110,6 +110,17 @@
 
 #pragma mark - actions
 
+- (void)shareAppAction {
+    NSString *appURLString = @"https://apps.apple.com/app/id1234567890"; // 替换为你的 App ID
+    NSURL *appURL = [NSURL URLWithString:appURLString];
+    NSString *title = @"推荐你使用这款 App！";
+    NSArray *itemsToShare = @[title, appURL];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+    // 适配 iPad（防止 crash）
+    activityVC.popoverPresentationController.sourceView = self.view;
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
+
 #pragma mark - 懒加载
 - (NSString *)membershipID {
     if (!_membershipID) {
@@ -191,7 +202,7 @@
                     [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
                 } else if ([id isEqualToString:@"fxapp"]) {
                     // 分享APP
-
+                    [strongSelf shareAppAction];
                 } else if ([id isEqualToString:@"qwpf"]) {
                     // 前往评分
                     
