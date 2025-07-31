@@ -11,7 +11,7 @@
 @implementation SHTAppRateTool
 
 /// ⚠️ 请替换成你自己 App 的 ID
-static NSString * const kAppStoreAppID = @"1234567890";
+static NSString * const kAppStoreAppID = @"6748059198";
 
 + (void)requestSystemReview {
     if (@available(iOS 10.3, *)) {
