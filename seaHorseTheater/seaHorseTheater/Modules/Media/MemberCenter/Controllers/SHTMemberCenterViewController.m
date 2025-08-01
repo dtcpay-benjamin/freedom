@@ -82,28 +82,42 @@
           @"subTitle": @"敬请期待"
        }
     ];
+    
+    // 会员类型占位数据
+    [self setupMemberTypePlaceholderData];
     // 先加载一次已有数据
     [self adjustUI];
+    
+    // 获取会员订阅类型
     [self.subscriptionManager loadProducts];
     __weak typeof(self) weakSelf = self;
     self.subscriptionManager.productCallBack = ^(NSArray<SKProduct *> * _Nonnull products) {
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        for (SKProduct *product in products) {
-            SHTMemberModel *model = [SHTMemberModel modelWithId:product.productIdentifier amount:[product.price doubleValue] originalAmount:[product.price doubleValue] currency:@"¥" product:product];
-            [strongSelf.memberTypesArray addObject:model];
+        if (products.count > 0) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (strongSelf.memberTypesArray.count > 0) {
+                [strongSelf.memberTypesArray removeAllObjects];
+            }
+            for (SKProduct *product in products) {
+                SHTMemberModel *model = [SHTMemberModel modelWithId:product.productIdentifier amount:[product.price doubleValue] originalAmount:[product.price doubleValue] currency:@"¥" product:product];
+                [strongSelf.memberTypesArray addObject:model];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 加载会员订阅类型数据
+                [strongSelf adjustUI];
+            });
         }
-//        SHTMemberModel *model = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.week" amount:1 originalAmount:12 currency:@"¥" product:[SKProduct new]];
-//        [strongSelf.memberTypesArray addObject:model];
-//        SHTMemberModel *model1 = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.month" amount:9.9 originalAmount:39 currency:@"¥" product:[SKProduct new]];
-//        [strongSelf.memberTypesArray addObject:model1];
-//        SHTMemberModel *model2 = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.year" amount:49 originalAmount:299 currency:@"¥" product:[SKProduct new]];
-//        [strongSelf.memberTypesArray addObject:model2];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // 加载会员订阅类型数据
-            [strongSelf adjustUI];
-        });
     };
 
+}
+
+- (void)setupMemberTypePlaceholderData {
+    // 会员类型占位数据
+    SHTMemberModel *model = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.week" amount:1 originalAmount:12 currency:@"¥" product:[SKProduct new]];
+    [self.memberTypesArray addObject:model];
+    SHTMemberModel *model1 = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.month" amount:9.9 originalAmount:39 currency:@"¥" product:[SKProduct new]];
+    [self.memberTypesArray addObject:model1];
+    SHTMemberModel *model2 = [SHTMemberModel modelWithId:@"com.seaHorseTheater.app.subscription.year" amount:49 originalAmount:299 currency:@"¥" product:[SKProduct new]];
+    [self.memberTypesArray addObject:model2];
 }
 
 - (void)adjustUI {
