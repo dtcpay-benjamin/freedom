@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadProducts;
 - (void)purchaseProduct:(SKProduct *)product;
 - (BOOL)isSubscribed;
-
+// 检查当前用户订阅情况
++ (void)checkSubscription;
 @property (nonatomic, strong) void (^productCallBack)(NSArray<SKProduct *> *products); // 商品信息回调
 
 

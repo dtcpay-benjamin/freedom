@@ -8,6 +8,7 @@
 #import "SHTSubscriptionManager.h"
 #import <StoreKit/StoreKit.h>
 #import "SHTAppRateTool.h"
+#import "seaHorseTheater-Bridging-Header.h"
 
 @interface SHTSubscriptionManager()<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
@@ -90,6 +91,13 @@
 
 - (BOOL)isSubscribed {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"isSubscribed"];
+}
+
+
++ (void)checkSubscription {
+//    [[SHTSubscriptionHelper shared] fetchSubscriptionStatusWithCompletion:^(NSString * _Nonnull status) {
+//        NSLog(@"订阅状态: %@", status);
+//    }];
 }
 
 @end
