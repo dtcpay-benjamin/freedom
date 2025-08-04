@@ -9,33 +9,33 @@ import Foundation
 import StoreKit
 
 @objc class SHTSubscriptionHelper: NSObject {
-    @MainActor @objc static let shared = SHTSubscriptionHelper()
+    
+    @objc class func shared() -> SHTSubscriptionHelper {
+        return SHTSubscriptionHelper()
+    }
+    
+    // 查询当前订阅状态
+    @objc func fetchSubscriptionStatus(completion: @escaping @Sendable (String) -> Void) {
+        let safeCompletion = completion
 
-    /// 查询当前订阅状态
-//    @objc func fetchSubscriptionStatus(completion: @escaping (String) -> Void) {
-//        Task {
-//            do {
-//                let entitlements = try await Transaction.currentEntitlements
-//                var activeSubs: [String] = []
-//
-//                for try await transaction in entitlements {
-//                    if case .verified(let verified) = transaction {
-//                        activeSubs.append(verified.productID)
-//                    }
-//                }
-//
-//                DispatchQueue.main.async {
-//                    if activeSubs.isEmpty {
-//                        completion("无订阅")
-//                    } else {
-//                        completion("已订阅：\(activeSubs.joined(separator: ","))")
-//                    }
-//                }
-//            } catch {
-//                DispatchQueue.main.async {
-//                    completion("查询失败：\(error.localizedDescription)")
-//                }
-//            }
-//        }
-//    }
+        Task {
+            var activeSubs: [String] = []
+
+            for await transaction in Transaction.currentEntitlements {
+                if case .verified(let verified) = transaction {
+                    activeSubs.append(verified.productID)
+                }
+            }
+
+            DispatchQueue.main.async {
+                if activeSubs.isEmpty {
+                    // 无订阅返回空字符串
+                    safeCompletion("")
+                } else {
+                    // 有订阅，返回所有订单id的拼接字符串
+                    safeCompletion(activeSubs.joined(separator: ","))
+                }
+            }
+        }
+    }
 }
