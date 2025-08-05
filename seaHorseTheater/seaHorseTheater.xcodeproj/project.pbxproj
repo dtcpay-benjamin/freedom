@@ -76,6 +76,7 @@
 		0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.debug.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.debug.xcconfig"; sourceTree = "<group>"; };
 		182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletCell.h; sourceTree = "<group>"; };
 		182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletCell.m; sourceTree = "<group>"; };
+		183083B82E41857B00DDA88A /* seaHorseTheater-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seaHorseTheater-Swift.h"; sourceTree = "<group>"; };
 		1843A1D62DB8C952008116EB /* SHTVerticalButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVerticalButton.h; sourceTree = "<group>"; };
 		1843A1D72DB8C952008116EB /* SHTVerticalButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVerticalButton.m; sourceTree = "<group>"; };
 		1843A1DD2DB8D765008116EB /* SHTToolsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTToolsManager.m; sourceTree = "<group>"; };
@@ -271,6 +272,7 @@
 				18F582042E29E14F002A23A2 /* SHTSubscriptionManager.h */,
 				18F582052E29E14F002A23A2 /* SHTSubscriptionManager.m */,
 				7293FADD2E3E11ED00CBB64C /* SHTSubscriptionHelper.swift */,
+				183083B82E41857B00DDA88A /* seaHorseTheater-Swift.h */,
 				7293FADC2E3E11ED00CBB64C /* seaHorseTheater-Bridging-Header.h */,
 			);
 			path = Managers;

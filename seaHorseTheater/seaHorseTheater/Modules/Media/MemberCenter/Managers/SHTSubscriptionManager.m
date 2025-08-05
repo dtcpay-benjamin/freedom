@@ -8,7 +8,6 @@
 #import "SHTSubscriptionManager.h"
 #import <StoreKit/StoreKit.h>
 #import "SHTAppRateTool.h"
-#import "seaHorseTheater-Bridging-Header.h"
 
 @interface SHTSubscriptionManager()<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
