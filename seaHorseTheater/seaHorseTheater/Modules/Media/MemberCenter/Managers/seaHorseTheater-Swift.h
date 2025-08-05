@@ -1,13 +1,3 @@
 //
-//  seaHorseTheater-Swift.h
-//  seaHorseTheater
+//  Use this file to import your target's public headers that you would like to expose to Swift.
 //
-//  Created by 褚红彪 on 2025/8/5.
-//
-
-#ifndef seaHorseTheater_Swift_h
-#define seaHorseTheater_Swift_h
-
-
-
-#endif /* seaHorseTheater_Swift_h */

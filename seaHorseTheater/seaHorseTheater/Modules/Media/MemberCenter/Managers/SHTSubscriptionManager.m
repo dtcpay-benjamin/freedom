@@ -92,9 +92,8 @@
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"isSubscribed"];
 }
 
-
 + (void)checkSubscription {
-//    [[SHTSubscriptionHelper shared] fetchSubscriptionStatusWithCompletion:^(NSString * _Nonnull status) {
+//    [SHTSubscriptionHelper fetchSubscriptionStatusWithCompletion:^(NSString * _Nonnull status) {
 //        NSLog(@"订阅状态: %@", status);
 //    }];
 }

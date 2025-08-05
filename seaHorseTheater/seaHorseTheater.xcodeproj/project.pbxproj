@@ -76,7 +76,7 @@
 		0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.debug.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.debug.xcconfig"; sourceTree = "<group>"; };
 		182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletCell.h; sourceTree = "<group>"; };
 		182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletCell.m; sourceTree = "<group>"; };
-		183083B82E41857B00DDA88A /* seaHorseTheater-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seaHorseTheater-Swift.h"; sourceTree = "<group>"; };
+		183083BA2E4197AB00DDA88A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		1843A1D62DB8C952008116EB /* SHTVerticalButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVerticalButton.h; sourceTree = "<group>"; };
 		1843A1D72DB8C952008116EB /* SHTVerticalButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVerticalButton.m; sourceTree = "<group>"; };
 		1843A1DD2DB8D765008116EB /* SHTToolsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTToolsManager.m; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		728F44352E08134300361C28 /* SHTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTViewController.m; sourceTree = "<group>"; };
 		728F44372E2C8E2B00361C28 /* SHTNonSelectableTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTNonSelectableTextView.h; sourceTree = "<group>"; };
 		728F44382E2C8E2B00361C28 /* SHTNonSelectableTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTNonSelectableTextView.m; sourceTree = "<group>"; };
-		7293FADC2E3E11ED00CBB64C /* seaHorseTheater-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seaHorseTheater-Bridging-Header.h"; sourceTree = "<group>"; };
+		7293FADC2E3E11ED00CBB64C /* seaHorseTheater-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "seaHorseTheater-Swift.h"; sourceTree = "<group>"; };
 		7293FADD2E3E11ED00CBB64C /* SHTSubscriptionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTSubscriptionHelper.swift; sourceTree = "<group>"; };
 		72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ADSDK.h"; sourceTree = "<group>"; };
 		72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ADSDK.m"; sourceTree = "<group>"; };
@@ -272,8 +272,7 @@
 				18F582042E29E14F002A23A2 /* SHTSubscriptionManager.h */,
 				18F582052E29E14F002A23A2 /* SHTSubscriptionManager.m */,
 				7293FADD2E3E11ED00CBB64C /* SHTSubscriptionHelper.swift */,
-				183083B82E41857B00DDA88A /* seaHorseTheater-Swift.h */,
-				7293FADC2E3E11ED00CBB64C /* seaHorseTheater-Bridging-Header.h */,
+				7293FADC2E3E11ED00CBB64C /* seaHorseTheater-Swift.h */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -540,6 +539,7 @@
 				72443C3D2D2A260D003E6189 /* Info.plist */,
 				72443C3E2D2A260D003E6189 /* main.m */,
 				721C672B2D3CE60F00843445 /* seaHorseTheater-PrefixHeader.pch */,
+				183083BA2E4197AB00DDA88A /* PrefixHeader.pch */,
 			);
 			path = seaHorseTheater;
 			sourceTree = "<group>";
@@ -936,7 +936,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "seaHorseTheater/Modules/Media/MemberCenter/Managers/seaHorseTheater-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "seaHorseTheater/Modules/Media/MemberCenter/Managers/seaHorseTheater-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -977,7 +977,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "seaHorseTheater/Modules/Media/MemberCenter/Managers/seaHorseTheater-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "seaHorseTheater/Modules/Media/MemberCenter/Managers/seaHorseTheater-Swift.h";
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

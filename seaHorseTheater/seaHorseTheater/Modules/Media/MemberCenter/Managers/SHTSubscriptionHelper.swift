@@ -8,14 +8,11 @@
 import Foundation
 import StoreKit
 
-@objc class SHTSubscriptionHelper: NSObject {
-    
-    @objc class func shared() -> SHTSubscriptionHelper {
-        return SHTSubscriptionHelper()
-    }
+@objcMembers
+@objc public class SHTSubscriptionHelper: NSObject {
     
     // 查询当前订阅状态
-    @objc func fetchSubscriptionStatus(completion: @escaping @Sendable (String) -> Void) {
+    @objc public class func fetchSubscriptionStatus(completion: @escaping @Sendable (String) -> Void) {
         let safeCompletion = completion
 
         Task {
