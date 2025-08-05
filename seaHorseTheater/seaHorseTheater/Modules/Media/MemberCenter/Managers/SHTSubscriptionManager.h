@@ -14,12 +14,21 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SHTSubscriptionManager : NSObject
 
 @property (nonatomic, strong) NSArray<SKProduct *> *products;
+
 + (instancetype)sharedManager;
+
+// 获取商品信息
 - (void)loadProducts;
+
+// 发起购买
 - (void)purchaseProduct:(SKProduct *)product;
+
+// 获取订阅状态
 - (BOOL)isSubscribed;
+
 // 检查当前用户订阅情况
-+ (void)checkSubscription;
+- (void)checkSubscriptionStatus;
+
 @property (nonatomic, strong) void (^productCallBack)(NSArray<SKProduct *> *products); // 商品信息回调
 
 

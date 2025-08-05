@@ -8,6 +8,14 @@
 #import "SHTSubscriptionManager.h"
 #import <StoreKit/StoreKit.h>
 #import "SHTAppRateTool.h"
+#import "SHTKeychainHelper.h"
+#import <objc/runtime.h>
+
+// sandbox地址
+static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyReceipt";
+
+// 生产地址
+//static NSString *const itunesUrlStr = @"https://buy.itunes.apple.com/verifyReceipt";
 
 @interface SHTSubscriptionManager()<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
@@ -59,16 +67,18 @@
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"购买成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
                 // 购买成功之后，App内评分
                 [SHTAppRateTool requestSystemReview];
                 break;
             case SKPaymentTransactionStateRestored:
-                [self validateReceipt]; // 本地验证
+                [self checkSubscriptionStatus]; // 本地验证
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"购买失败: %@", transaction.error.localizedDescription);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
                 break;
             default:
                 break;
@@ -76,26 +86,107 @@
     }
 }
 
-- (void)validateReceipt {
-    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
-    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
-    if (!receiptData) return;
-
-    // 使用 Apple 提供的本地验证（可选）
-    // 对于无服务端方案，可用解析 plist 的方式简单判断过期时间
-
-    // 保存订阅状态
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isSubscribed"];
-}
-
 - (BOOL)isSubscribed {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isSubscribed"];
+    return [SHTKeychainHelper getBoolForKey:@"isSubscribed"];;
 }
 
-+ (void)checkSubscription {
-//    [SHTSubscriptionHelper fetchSubscriptionStatusWithCompletion:^(NSString * _Nonnull status) {
-//        NSLog(@"订阅状态: %@", status);
-//    }];
+- (NSData *)fetchReceiptData {
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData *receipt = [NSData dataWithContentsOfURL:receiptURL];
+    return receipt;
+}
+
+- (void)refreshReceiptWithCompletion:(void (^)(BOOL success))completion {
+    SKReceiptRefreshRequest *request = [[SKReceiptRefreshRequest alloc] init];
+    request.delegate = self;
+    objc_setAssociatedObject(request, @"receiptCompletion", completion, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    [request start];
+}
+
+- (void)validateReceipt:(NSData *)receiptData completion:(void (^)(BOOL isSubscribed))completion {
+    if (!receiptData) {
+        completion(NO);
+        return;
+    }
+
+    NSString *receiptString = [receiptData base64EncodedStringWithOptions:0];
+    NSDictionary *requestContents = @{@"receipt-data": receiptString};
+
+    NSError *error;
+    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestContents options:0 error:&error];
+    if (error) {
+        completion(NO);
+        return;
+    }
+
+    // 注意sandbox和生产地址
+    NSURL *storeURL = [NSURL URLWithString:itunesUrlStr];
+
+    NSMutableURLRequest *storeRequest = [NSMutableURLRequest requestWithURL:storeURL];
+    storeRequest.HTTPMethod = @"POST";
+    storeRequest.HTTPBody = requestData;
+    [storeRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:storeRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error || !data) {
+            completion(NO);
+            return;
+        }
+
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSArray *latestInfo = json[@"latest_receipt_info"];
+        if (latestInfo.count == 0) {
+            completion(NO);
+            return;
+        }
+
+        NSDictionary *latest = latestInfo.lastObject;
+        NSString *expiresDateStr = latest[@"expires_date_ms"];
+        if (expiresDateStr) {
+            NSTimeInterval expiresTime = [expiresDateStr doubleValue] / 1000.0;
+            NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:expiresTime];
+            BOOL isSubscribed = [expiresDate compare:[NSDate date]] == NSOrderedDescending;
+            completion(isSubscribed);
+            return;
+        }
+
+        completion(NO);
+    }];
+    [task resume];
+}
+
+#pragma mark - SKRequestDelegate
+- (void)requestDidFinish:(SKRequest *)request {
+    void (^completion)(BOOL) = objc_getAssociatedObject(request, @"receiptCompletion");
+    if (completion) completion(YES);
+}
+
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+    void (^completion)(BOOL) = objc_getAssociatedObject(request, @"receiptCompletion");
+    if (completion) completion(NO);
+}
+
+- (void)checkSubscriptionStatus {
+    NSData *receipt = [self fetchReceiptData];
+    if (!receipt) {
+        [self refreshReceiptWithCompletion:^(BOOL success) {
+            if (success) {
+                NSData *newReceipt = [self fetchReceiptData];
+                [self validateReceipt:newReceipt completion:^(BOOL isSubscribed) {
+                    NSLog(@"是否订阅: %@", isSubscribed ? @"是" : @"否");
+                    [SHTKeychainHelper saveBool:isSubscribed forKey:@"isSubscribed"];
+                }];
+            } else {
+                NSLog(@"刷新收据失败");
+                [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
+            }
+        }];
+    } else {
+        [self validateReceipt:receipt completion:^(BOOL isSubscribed) {
+            NSLog(@"是否订阅: %@", isSubscribed ? @"是" : @"否");
+            [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
+        }];
+    }
 }
 
 @end

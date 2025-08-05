@@ -11,6 +11,8 @@
 #import <Reachability/Reachability.h>
 #import "SHTKaiPingADViewController.h"
 #import "SHTTabBarController.h"
+#import "SHTKeychainHelper.h"
+#import "SHTSubscriptionManager.h"
 
 @interface AppDelegate()<UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -25,6 +27,7 @@
     // 短剧SDK初始化
     [self initDJX];
     [self setUpHome];
+    [self fetchSubscriptionStatus];
     return YES;
 }
 
@@ -87,6 +90,14 @@
     } else {
         self.tabBarController.tabBar.barTintColor = color;
     }
+}
+
+// 获取当前用户的订阅状态
+- (void)fetchSubscriptionStatus {
+//    if (![SHTKeychainHelper hasKey:@"isSubscribed"]) {
+//        [[SHTSubscriptionManager sharedManager] checkSubscriptionStatus];
+//    }
+    [[SHTSubscriptionManager sharedManager] checkSubscriptionStatus];
 }
 
 #pragma mark - UITabBarControllerDelegate
