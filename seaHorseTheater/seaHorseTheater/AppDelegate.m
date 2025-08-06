@@ -27,8 +27,12 @@
     // 短剧SDK初始化
     [self initDJX];
     [self setUpHome];
-    [self fetchSubscriptionStatus];
     return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // 获取订阅状态
+    [self fetchSubscriptionStatus];
 }
 
 // 初始化短剧SDK

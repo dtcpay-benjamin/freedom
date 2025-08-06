@@ -135,21 +135,25 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
 
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         NSArray *latestInfo = json[@"latest_receipt_info"];
+        
         if (latestInfo.count == 0) {
             completion(NO);
             return;
         }
-
-        NSDictionary *latest = latestInfo.lastObject;
-        NSString *expiresDateStr = latest[@"expires_date_ms"];
-        if (expiresDateStr) {
-            NSTimeInterval expiresTime = [expiresDateStr doubleValue] / 1000.0;
-            NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:expiresTime];
-            BOOL isSubscribed = [expiresDate compare:[NSDate date]] == NSOrderedDescending;
-            completion(isSubscribed);
-            return;
+        
+        for (NSDictionary *receipt in latestInfo) {
+            NSString *productId = receipt[@"product_id"];
+            NSString *expiresDateMs = receipt[@"expires_date_ms"];
+            if (expiresDateMs) {
+                NSDate *expiresDate = [NSDate dateWithTimeIntervalSince1970:expiresDateMs.doubleValue / 1000.0];
+                if ([productId isEqualToString:@"com.seaHorseTheater.app.subscription.week"] || [productId isEqualToString:@"com.seaHorseTheater.app.subscription.month"] || [productId isEqualToString:@"com.seaHorseTheater.app.subscription.year"]) {
+                    BOOL isSubscribed = [expiresDate compare:[NSDate date]] == NSOrderedDescending;
+                    completion(isSubscribed);
+                    return;
+                }
+            }
         }
-
+        
         completion(NO);
     }];
     [task resume];
