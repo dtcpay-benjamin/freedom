@@ -31,6 +31,7 @@
 		184D45992E30687E0059B501 /* SHTMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45982E30687E0059B501 /* SHTMineModel.m */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
+		18A7E5B72E442CF2002D8E4D /* SHTRestoreRightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7E5B62E442CF2002D8E4D /* SHTRestoreRightsViewController.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
 		18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */; };
 		18A8C0322DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */; };
@@ -76,7 +77,6 @@
 		0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.debug.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.debug.xcconfig"; sourceTree = "<group>"; };
 		182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletCell.h; sourceTree = "<group>"; };
 		182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletCell.m; sourceTree = "<group>"; };
-		183083BA2E4197AB00DDA88A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		1843A1D62DB8C952008116EB /* SHTVerticalButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVerticalButton.h; sourceTree = "<group>"; };
 		1843A1D72DB8C952008116EB /* SHTVerticalButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTVerticalButton.m; sourceTree = "<group>"; };
 		1843A1DD2DB8D765008116EB /* SHTToolsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTToolsManager.m; sourceTree = "<group>"; };
@@ -120,6 +120,8 @@
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
 		187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionModel.m; sourceTree = "<group>"; };
+		18A7E5B52E442CF2002D8E4D /* SHTRestoreRightsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTRestoreRightsViewController.h; sourceTree = "<group>"; };
+		18A7E5B62E442CF2002D8E4D /* SHTRestoreRightsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTRestoreRightsViewController.m; sourceTree = "<group>"; };
 		18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletModel.h; sourceTree = "<group>"; };
 		18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletModel.m; sourceTree = "<group>"; };
 		18A8C02A2DA6485C003BC3B3 /* SHTAlertHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTAlertHelper.h; sourceTree = "<group>"; };
@@ -539,7 +541,6 @@
 				72443C3D2D2A260D003E6189 /* Info.plist */,
 				72443C3E2D2A260D003E6189 /* main.m */,
 				721C672B2D3CE60F00843445 /* seaHorseTheater-PrefixHeader.pch */,
-				183083BA2E4197AB00DDA88A /* PrefixHeader.pch */,
 			);
 			path = seaHorseTheater;
 			sourceTree = "<group>";
@@ -553,6 +554,8 @@
 				184859C62E2099E700012C2E /* SHTServiceAgreementViewController.m */,
 				18CD2E362E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.h */,
 				18CD2E372E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m */,
+				18A7E5B52E442CF2002D8E4D /* SHTRestoreRightsViewController.h */,
+				18A7E5B62E442CF2002D8E4D /* SHTRestoreRightsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A7E5B72E442CF2002D8E4D /* SHTRestoreRightsViewController.m in Sources */,
 				18A8C0322DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m in Sources */,
 				18A8C0382DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m in Sources */,
 				184D45992E30687E0059B501 /* SHTMineModel.m in Sources */,

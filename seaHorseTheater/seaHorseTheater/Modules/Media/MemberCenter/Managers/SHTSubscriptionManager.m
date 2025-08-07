@@ -58,34 +58,6 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
     }
 }
 
-#pragma mark - SKPaymentTransactionObserver
-
-// 处理交易
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions {
-    for (SKPaymentTransaction *transaction in transactions) {
-        switch (transaction.transactionState) {
-            case SKPaymentTransactionStatePurchased:
-                NSLog(@"购买成功: %@", transaction.payment.productIdentifier);
-                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
-                // 购买成功之后，App内评分
-                [SHTAppRateTool requestSystemReview];
-                break;
-            case SKPaymentTransactionStateRestored:
-                [self checkSubscriptionStatus]; // 本地验证
-                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateFailed:
-                NSLog(@"购买失败: %@", transaction.error.localizedDescription);
-                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
-                break;
-            default:
-                break;
-        }
-    }
-}
-
 - (BOOL)isSubscribed {
     return [SHTKeychainHelper getBoolForKey:@"isSubscribed"];;
 }
@@ -159,17 +131,6 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
     [task resume];
 }
 
-#pragma mark - SKRequestDelegate
-- (void)requestDidFinish:(SKRequest *)request {
-    void (^completion)(BOOL) = objc_getAssociatedObject(request, @"receiptCompletion");
-    if (completion) completion(YES);
-}
-
-- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-    void (^completion)(BOOL) = objc_getAssociatedObject(request, @"receiptCompletion");
-    if (completion) completion(NO);
-}
-
 - (void)checkSubscriptionStatus {
     NSData *receipt = [self fetchReceiptData];
     if (!receipt) {
@@ -191,6 +152,51 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
             [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
         }];
     }
+}
+
+- (void)restorePurchases {
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
+
+#pragma mark - SKPaymentTransactionObserver
+
+// 处理交易
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions {
+    for (SKPaymentTransaction *transaction in transactions) {
+        switch (transaction.transactionState) {
+            case SKPaymentTransactionStatePurchased:
+                NSLog(@"购买成功: %@", transaction.payment.productIdentifier);
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
+                // 购买成功之后，App内评分
+                [SHTAppRateTool requestSystemReview];
+                break;
+            case SKPaymentTransactionStateRestored:
+                NSLog(@"恢复权益成功: %@", transaction.payment.productIdentifier);
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                [self checkSubscriptionStatus]; // 本地验证
+                break;
+            case SKPaymentTransactionStateFailed:
+                NSLog(@"购买失败: %@", transaction.error.localizedDescription);
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - SKRequestDelegate
+- (void)requestDidFinish:(SKRequest *)request {
+    void (^completion)(BOOL) = objc_getAssociatedObject(request, @"receiptCompletion");
+    if (completion) completion(YES);
+}
+
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+    void (^completion)(BOOL) = objc_getAssociatedObject(request, @"receiptCompletion");
+    if (completion) completion(NO);
 }
 
 @end

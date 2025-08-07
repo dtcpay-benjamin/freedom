@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray<SKProduct *> *products;
 
+@property (nonatomic, strong) void (^productCallBack)(NSArray<SKProduct *> *products); // 商品信息回调
+
 + (instancetype)sharedManager;
 
 // 获取商品信息
@@ -29,8 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 检查当前用户订阅情况
 - (void)checkSubscriptionStatus;
 
-@property (nonatomic, strong) void (^productCallBack)(NSArray<SKProduct *> *products); // 商品信息回调
-
+// 恢复权益(会员等)
+- (void)restorePurchases;
 
 @end
 

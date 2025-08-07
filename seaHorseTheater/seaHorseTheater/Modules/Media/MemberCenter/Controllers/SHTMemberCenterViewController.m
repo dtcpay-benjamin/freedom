@@ -17,6 +17,7 @@
 #import "SHTKindReminderTableViewCell.h"
 #import "SHTToolsManager.h"
 #import "SHTServiceAgreementViewController.h"
+#import "SHTRestoreRightsViewController.h"
 #import "SHTRouteUtil.h"
 #import "SHTAlertHelper.h"
 #import "SHTSubscriptionManager.h"
@@ -267,6 +268,13 @@
         NSDictionary *dic = [SHTToolsManager serializationFromJson:[[NSBundle mainBundle] pathForResource:@"kindReminder" ofType:@"json"]];
         NSString *content = dic[@"membership_notice"];
         cell.content = content;
+        __weak typeof(self) weakSelf = self;
+        cell.restoreAction = ^{
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            // 跳转恢复权益页面
+            SHTRestoreRightsViewController *restoreRightsVC = [[SHTRestoreRightsViewController alloc] init];
+            [SHTRouteUtil pushFrom:self to:restoreRightsVC];
+        };
         return cell;
     }
 }

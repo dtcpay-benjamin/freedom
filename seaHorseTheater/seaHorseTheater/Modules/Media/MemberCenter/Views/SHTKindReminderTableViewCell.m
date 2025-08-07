@@ -8,10 +8,11 @@
 #import "SHTKindReminderTableViewCell.h"
 #import <Masonry/Masonry.h>
 
-@interface SHTKindReminderTableViewCell()
+@interface SHTKindReminderTableViewCell()<UITextViewDelegate>
 
 @property (nonatomic, strong) UILabel *titleLabel; // 标题
-@property (nonatomic, strong) UILabel *contentLabel; // 内容
+
+@property (nonatomic, strong) UITextView *reminderTextView;  // 内容
 
 @end
 
@@ -19,7 +20,7 @@
 
 - (void)addSubviews {
     [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview:self.contentLabel];
+    [self.contentView addSubview:self.reminderTextView];
 }
 
 - (void)addLayoutSubviews {
@@ -29,7 +30,7 @@
         make.trailing.equalTo(self.contentView);
         make.height.mas_equalTo(22);
     }];
-    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.reminderTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).offset(10);
         make.leading.equalTo(self.contentView).offset(20);
         make.trailing.equalTo(self.contentView);
@@ -40,7 +41,36 @@
 
 - (void)setContent:(NSString *)content {
     _content = content;
-    self.contentLabel.text = _content;
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:_content];
+
+    UIFont *font = SHTUIFontSystem(14);
+    [attrString addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, _content.length)];
+    [attrString addAttribute:NSForegroundColorAttributeName value:SHTUIColorFromRGB(98, 93, 82) range:NSMakeRange(0, _content.length)];
+
+    // 设置可点击的“恢复权益”部分
+    NSRange restoreRange = [_content rangeOfString:@"【恢复权益】"];
+    if (restoreRange.location != NSNotFound) {
+        NSURL *url = [NSURL URLWithString:@"action://restore"];
+        [attrString addAttribute:NSLinkAttributeName value:url range:restoreRange];
+    }
+
+    self.reminderTextView.attributedText = attrString;
+}
+
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView
+shouldInteractWithURL:(NSURL *)URL
+        inRange:(NSRange)characterRange
+    interaction:(UITextItemInteraction)interaction {
+    if ([URL.scheme isEqualToString:@"action"] && [URL.host isEqualToString:@"restore"]) {
+        // 点击恢复权益，执行跳转操作
+        if (self.restoreAction) {
+            self.restoreAction();
+        }
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - 懒加载
@@ -55,16 +85,23 @@
     return _titleLabel;
 }
 
-- (UILabel *)contentLabel {
-    if (!_contentLabel) {
-        _contentLabel = [[UILabel alloc] init];
-        _contentLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _contentLabel.font = SHTUIFontSystem(14);
-        _contentLabel.textColor = SHTUIColorFromRGB(98, 93, 82);
-        _contentLabel.backgroundColor = [UIColor clearColor];
-        _contentLabel.numberOfLines = 0;
+- (UITextView *)reminderTextView {
+    if (!_reminderTextView) {
+        _reminderTextView = [[UITextView alloc] init];
+        _reminderTextView.font = SHTUIFontSystem(14);
+        _reminderTextView.textColor = SHTUIColorFromRGB(98, 93, 82);
+        _reminderTextView.editable = NO;
+        _reminderTextView.scrollEnabled = NO;
+        _reminderTextView.backgroundColor = [UIColor clearColor];
+        _reminderTextView.textContainerInset = UIEdgeInsetsZero;
+        _reminderTextView.textContainer.lineFragmentPadding = 0;
+        _reminderTextView.delegate = self;
+        _reminderTextView.linkTextAttributes = @{
+            NSForegroundColorAttributeName: [UIColor systemBlueColor],
+            NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)
+        };
     }
-    return _contentLabel;
+    return _reminderTextView;
 }
 
 @end
