@@ -53,7 +53,7 @@
         make.top.equalTo(_descLabel.mas_bottom).offset(30);
         make.left.equalTo(self.view).offset(20);
         make.right.equalTo(self.view).offset(-20);
-        make.height.equalTo(@44);
+        make.height.equalTo(@48);
     }];
 }
 
@@ -94,7 +94,7 @@
         [_recoverButton setTitle:@"恢复权益" forState:UIControlStateNormal];
         [_recoverButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _recoverButton.backgroundColor = SHTUIColorFromRGB(232.0, 78.0, 58.0);
-        _recoverButton.layer.cornerRadius = 22;
+        _recoverButton.layer.cornerRadius = 24;
         _recoverButton.clipsToBounds = YES;
         [_recoverButton addTarget:self action:@selector(recoverAction) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -10,6 +10,7 @@
 #import "SHTAppRateTool.h"
 #import "SHTKeychainHelper.h"
 #import <objc/runtime.h>
+#import "SHTMBProgressManager.h"
 
 // sandbox地址
 static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyReceipt";
@@ -155,9 +156,9 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
 }
 
 - (void)restorePurchases {
+    [SHTMBProgressManager showText:nil withText:@"恢复中，请稍后" andSubText:nil isBottom:NO];
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
-
 
 #pragma mark - SKPaymentTransactionObserver
 
@@ -169,23 +170,38 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
                 NSLog(@"购买成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
+                [SHTMBProgressManager showText:nil withText:@"购买成功" andSubText:nil isBottom:NO];
                 // 购买成功之后，App内评分
                 [SHTAppRateTool requestSystemReview];
                 break;
             case SKPaymentTransactionStateRestored:
                 NSLog(@"恢复权益成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-                [self checkSubscriptionStatus]; // 本地验证
+                [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
+                [SHTMBProgressManager showText:nil withText:@"权益恢复成功" andSubText:nil isBottom:NO];
                 break;
             case SKPaymentTransactionStateFailed:
-                NSLog(@"购买失败: %@", transaction.error.localizedDescription);
+                NSLog(@"交易失败: %@", transaction.error.localizedDescription);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
+                [SHTMBProgressManager showText:nil withText:@"交易失败" andSubText:nil isBottom:NO];
                 break;
             default:
                 break;
         }
     }
+}
+
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue {
+    NSLog(@"恢复权益完成");
+    [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
+    [SHTMBProgressManager showText:nil withText:@"权益恢复成功" andSubText:nil isBottom:NO];
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
+    NSLog(@"恢复权益失败");
+    [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
+    [SHTMBProgressManager showText:nil withText:@"恢复权益失败" andSubText:nil isBottom:NO];
 }
 
 #pragma mark - SKRequestDelegate
