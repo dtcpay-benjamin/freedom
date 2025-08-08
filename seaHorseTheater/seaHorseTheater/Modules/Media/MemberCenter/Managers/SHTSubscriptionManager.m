@@ -175,7 +175,7 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
                 [SHTAppRateTool requestSystemReview];
                 break;
             case SKPaymentTransactionStateRestored:
-                NSLog(@"恢复权益成功: %@", transaction.payment.productIdentifier);
+                NSLog(@"权益恢复成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
                 [SHTMBProgressManager showText:nil withText:@"权益恢复成功" andSubText:nil isBottom:NO];
@@ -193,15 +193,13 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
 }
 
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue {
-    NSLog(@"恢复权益完成");
-    [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
-    [SHTMBProgressManager showText:nil withText:@"权益恢复成功" andSubText:nil isBottom:NO];
+    NSLog(@"权益恢复完成");
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
-    NSLog(@"恢复权益失败");
+    NSLog(@"权益恢复失败");
     [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
-    [SHTMBProgressManager showText:nil withText:@"恢复权益失败" andSubText:nil isBottom:NO];
+    [SHTMBProgressManager showText:nil withText:@"权益恢复失败" andSubText:nil isBottom:NO];
 }
 
 #pragma mark - SKRequestDelegate
