@@ -68,13 +68,13 @@
       @{
         @"featuresImage": @"unlimitedStreaming",
         @"title": @"无限片源",
-        @"subTitle": @"新剧抢先看"
+        @"subTitle": @"更多好剧，先人一步"
        },
       
       @{
           @"featuresImage": @"AdFree",
-          @"title": @"免广告",
-          @"subTitle": @"看剧无广告"
+          @"title": @"解锁剧集",
+          @"subTitle": @"看剧更畅快，专注精彩内容"
        },
       
       @{

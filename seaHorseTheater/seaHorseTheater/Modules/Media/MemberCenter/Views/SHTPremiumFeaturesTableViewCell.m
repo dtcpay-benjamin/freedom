@@ -7,6 +7,7 @@
 
 #import "SHTPremiumFeaturesTableViewCell.h"
 #import <Masonry/Masonry.h>
+#import "UILabel+SHTSizeCalculation.h"
 
 @interface SHTPremiumFeaturesView()
 
@@ -152,15 +153,25 @@
     [self.contentView addSubview:self.scrollView];
     CGFloat x = 0;
     CGFloat y = 0;
-    CGFloat width = 80;
     CGFloat height = 135.0;
+    SHTPremiumFeaturesView *previousView = nil;
+    CGFloat width = 80;
     for (int i = 0; i < _datas.count; i++) {
         NSDictionary *dic = _datas[i];
-        x = 20 * (i + 1) + width * i;
-        SHTPremiumFeaturesView *featuresView = [[SHTPremiumFeaturesView alloc] initWithFrame:CGRectMake(x, y, width, height)];
+        SHTPremiumFeaturesView *featuresView = [[SHTPremiumFeaturesView alloc] init];
         featuresView.data = dic;
+        width = MAX([featuresView.subTitleLabel upc_widthForHeight:18.0], 80.0);
+        if (i == 0) {
+            x = 20;
+        } else {
+            x = CGRectGetMaxX(previousView.frame) + 10;
+        }
+        featuresView.frame = CGRectMake(x, y, width, height);
         [self.scrollView addSubview:featuresView];
+        previousView = featuresView;
     }
+    CGFloat contentSizeWidth = CGRectGetMaxX(previousView.frame) + 20;
+    self.scrollView.contentSize = CGSizeMake(contentSizeWidth, height);
 }
 
 #pragma mark - 懒加载
@@ -180,8 +191,6 @@
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, SHTScreenWidth, 135)];
-        // 允许水平滚动
-        _scrollView.contentSize = CGSizeMake(SHTScreenWidth + 60, 135); // 宽度大于 scrollView.frame.size.width
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
     }

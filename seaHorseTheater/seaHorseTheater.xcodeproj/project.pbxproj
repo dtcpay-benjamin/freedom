@@ -66,6 +66,7 @@
 		728F44362E08134300361C28 /* SHTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 728F44352E08134300361C28 /* SHTViewController.m */; };
 		728F44392E2C8E2B00361C28 /* SHTNonSelectableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 728F44382E2C8E2B00361C28 /* SHTNonSelectableTextView.m */; };
 		7293FAE12E42452100CBB64C /* SHTKeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7293FAE02E42452100CBB64C /* SHTKeychainHelper.m */; };
+		72A804BF2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A804BE2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m */; };
 		72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */; };
 		72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E7A2D460F6400978694 /* SHTHomeViewController.m */; };
 		72EB882B2D6D3CE60024DDBD /* SHTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */; };
@@ -192,6 +193,8 @@
 		728F44382E2C8E2B00361C28 /* SHTNonSelectableTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTNonSelectableTextView.m; sourceTree = "<group>"; };
 		7293FADF2E42452100CBB64C /* SHTKeychainHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKeychainHelper.h; sourceTree = "<group>"; };
 		7293FAE02E42452100CBB64C /* SHTKeychainHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKeychainHelper.m; sourceTree = "<group>"; };
+		72A804BD2E46E28E005EF92E /* UILabel+SHTSizeCalculation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+SHTSizeCalculation.h"; sourceTree = "<group>"; };
+		72A804BE2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SHTSizeCalculation.m"; sourceTree = "<group>"; };
 		72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ADSDK.h"; sourceTree = "<group>"; };
 		72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ADSDK.m"; sourceTree = "<group>"; };
 		72C98E792D460F6400978694 /* SHTHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTHomeViewController.h; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 				18CD2E3F2E39AAFA00DD22D4 /* SHTAppRateTool.m */,
 				7293FADF2E42452100CBB64C /* SHTKeychainHelper.h */,
 				7293FAE02E42452100CBB64C /* SHTKeychainHelper.m */,
+				72A804BD2E46E28E005EF92E /* UILabel+SHTSizeCalculation.h */,
+				72A804BE2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */,
 				7293FAE12E42452100CBB64C /* SHTKeychainHelper.m in Sources */,
 				184D458F2E2F19C50059B501 /* SHTMineHeaderCell.m in Sources */,
+				72A804BF2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m in Sources */,
 				1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */,
 				18CD2E352E37791200DD22D4 /* SHTRechargeRecordsViewController.m in Sources */,
 				728F44362E08134300361C28 /* SHTViewController.m in Sources */,
@@ -917,7 +923,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 396F66BN9F;
+				DEVELOPMENT_TEAM = 4492U6H476;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/seaHorseTheater/seaHorseTheater-PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -936,7 +942,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheaterasabc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheaterb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -957,7 +963,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 396F66BN9F;
+				DEVELOPMENT_TEAM = 4492U6H476;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/seaHorseTheater/seaHorseTheater-PrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -976,7 +982,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheaterasabc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hujiaofen.seaHorseTheaterb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
