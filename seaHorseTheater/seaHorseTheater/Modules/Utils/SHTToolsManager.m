@@ -7,6 +7,7 @@
 
 #import "SHTToolsManager.h"
 #import "SHTDrawVideoCollectView.h"
+#import "SHTSubscriptionManager.h"
 
 @implementation SHTToolsManager
 
@@ -34,8 +35,8 @@
         playletConfig.episode = infoModel.current_episode;
         playletConfig.playStartTime = (CGFloat)infoModel.action_time;
         playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-        playletConfig.freeEpisodesCount = 10;
-        playletConfig.unlockEpisodesCountUsingAD = 1;
+        playletConfig.freeEpisodesCount = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 20 : 5; // 如果已经开通订阅则可以免费观看20集，反之只能免费观看5集
+        playletConfig.unlockEpisodesCountUsingAD = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 10 : 1; // 如果已经开通订阅则观看一次激励视频解锁10集，反之只能解锁1集
         playletConfig.hideLikeIcon = YES; // 隐藏点赞按钮
         playletConfig.disableDoubleClickLike = YES;
         playletConfig.hideCollectIcon = YES; // 隐藏收藏按钮，用自定义

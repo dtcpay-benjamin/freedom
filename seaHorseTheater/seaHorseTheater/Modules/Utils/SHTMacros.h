@@ -19,7 +19,15 @@ typedef NS_ENUM(NSUInteger, SHTToastType) {
 #define SHTScreenHeight           [[UIScreen mainScreen] bounds].size.height
 #define SHTMAXScreenSide          MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)
 // 宏定义 - 状态栏高度
-#define SHT_STATUS_BAR_HEIGHT    ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define SHT_STATUS_BAR_HEIGHT \
+^CGFloat{ \
+    if (@available(iOS 13.0, *)) { \
+        UIWindow *window = UIApplication.sharedApplication.windows.firstObject; \
+        return window.windowScene.statusBarManager.statusBarFrame.size.height; \
+    } else { \
+        return UIApplication.sharedApplication.statusBarFrame.size.height; \
+    } \
+}()
 // 宏定义 - 导航栏高度
 #define SHT_NAV_BAR_HEIGHT       44.0
 // 宏定义 - 状态栏 + 导航栏总高度

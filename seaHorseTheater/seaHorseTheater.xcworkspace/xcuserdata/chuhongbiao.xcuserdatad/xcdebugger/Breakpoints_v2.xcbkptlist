@@ -7,80 +7,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DE9F3B6D-C62D-4464-99D9-BD86B2F8A04D"
+            uuid = "4BB085B8-E042-4A4B-A018-181B83A34DE2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "seaHorseTheater/Modules/Media/MemberCenter/Managers/SHTSubscriptionManager.m"
+            filePath = "seaHorseTheater/Modules/Utils/SHTToolsManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-checkSubscriptionStatus"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "+enterPlayer:fromVC:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "63EA9FA7-1AD5-4F3D-8353-8563B532A0C6"
+            uuid = "DCFCF664-6721-467C-A63B-ED15BF04022C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "seaHorseTheater/Modules/Media/MemberCenter/Managers/SHTSubscriptionManager.m"
+            filePath = "seaHorseTheater/Modules/Utils/SHTToolsManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-checkSubscriptionStatus"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "+enterPlayer:fromVC:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1AF6D13B-CA20-4D73-B146-568973C1707A"
+            uuid = "89FCB72C-FA8A-49A8-85A8-FD9DD54E10AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "seaHorseTheater/Modules/Media/MemberCenter/Managers/SHTSubscriptionManager.m"
+            filePath = "seaHorseTheater/Modules/Media/Home/Controllers/SHTHomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "-checkSubscriptionStatus"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "-playletTheater"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "21ED7297-4921-477D-B7C3-F38FA085F04B"
+            uuid = "16808600-FDBC-4768-BC0A-47A4EC4EBB5D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "seaHorseTheater/AppDelegate.m"
+            filePath = "seaHorseTheater/Modules/Media/Home/Controllers/SHTHomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "-playletTheater"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "76619838-CAAD-4D61-A6C4-824114520FA6"
+            uuid = "F29EFFC0-4781-4150-9254-622FB801C2B6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "seaHorseTheater/AppDelegate.m"
+            filePath = "seaHorseTheater/Modules/Media/Home/Controllers/SHTHomeViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-fetchSubscriptionStatus"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "-playletVC"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D9A6127-8CCF-4541-9CA6-CDA88EB9FCB8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "seaHorseTheater/Modules/Media/Home/Controllers/SHTHomeViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "-playletVC"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
