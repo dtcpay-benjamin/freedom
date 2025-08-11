@@ -13,8 +13,10 @@
 #import "SHTTabBarController.h"
 #import "SHTKeychainHelper.h"
 #import "SHTSubscriptionManager.h"
+#import "SHTAlertHelper.h"
 
 @interface AppDelegate()<UIApplicationDelegate, UITabBarControllerDelegate>
+
 
 @property(nonatomic, strong) SHTTabBarController *tabBarController;
 
@@ -23,6 +25,12 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(networkChanged:)
+                                                 name:kReachabilityChangedNotification
+                                               object:nil];
+    [reachability startNotifier];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 短剧SDK初始化
     [self initDJX];
@@ -41,9 +49,6 @@
 }
 // 创建主页
 - (void)setUpHome {
-    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
-        return;
-    }
     [self requestIDFAIfNeeded];
     [self setupADSDK:^(BOOL success) {
         if (success) {
@@ -54,6 +59,17 @@
             });
         }
     }];
+}
+
+- (void)networkChanged:(NSNotification *)note {
+    Reachability *reach = [note object];
+    if ([reach currentReachabilityStatus] != NotReachable) {
+        // 网络恢复 → 加载初始页面
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NetworkRestored" object:nil];
+    } else {
+        NSLog(@"无网络");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotNetwork" object:nil];
+    }
 }
 
 // 创建短剧SDK

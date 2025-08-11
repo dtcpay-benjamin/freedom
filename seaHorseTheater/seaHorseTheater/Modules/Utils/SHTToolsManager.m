@@ -59,4 +59,28 @@
     return json;
 }
 
++ (UIViewController *)getTopViewController {
+    // 获取 keyWindow（兼容 iOS 13+ Scene）
+    UIWindow *keyWindow = nil;
+    if (@available(iOS 13.0, *)) {
+        for (UIWindowScene* windowScene in [UIApplication sharedApplication].connectedScenes) {
+            if (windowScene.activationState == UISceneActivationStateForegroundActive) {
+                keyWindow = windowScene.windows.firstObject;
+                break;
+            }
+        }
+    } else {
+        keyWindow = [UIApplication sharedApplication].keyWindow;
+    }
+
+    UIViewController *rootVC = keyWindow.rootViewController;
+    UIViewController *presentingVC = rootVC;
+
+    // 递归查找最顶层的 presentedViewController
+    while (presentingVC.presentedViewController) {
+        presentingVC = presentingVC.presentedViewController;
+    }
+    return presentingVC;
+}
+
 @end

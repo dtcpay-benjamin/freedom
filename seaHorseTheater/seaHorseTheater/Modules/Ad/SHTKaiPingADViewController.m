@@ -8,6 +8,7 @@
 #import "SHTKaiPingADViewController.h"
 #import "AppDelegate.h"
 #import <BUAdSDK/BUAdSDK.h>
+#import "SHTAlertHelper.h"
 
 @interface SHTKaiPingADViewController () <BUSplashAdDelegate>
 @property (strong, nonatomic) BUSplashAd *shtSplashAd;
@@ -18,8 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadInitialPage)
+                                                 name:@"NetworkRestored"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setupNetwork)
+                                                 name:@"NotNetwork"
+                                               object:nil];
     [self buildAd];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self loadAdData];
 }
 
@@ -34,6 +46,21 @@
 // 触发广告加载
 - (void)loadAdData {
     [self.shtSplashAd loadAdData];
+}
+
+- (void)loadInitialPage {
+    // 重载开屏广告
+    [self loadAdData];
+}
+
+- (void)setupNetwork {
+    [self loadAdData];
+//    [SHTAlertHelper showAlertWithTitle:@"提示" message:@"当前网络不可用，请检查设置" cancelBtnText:nil confirmBtnText:@"去设置" inController:self cancelAction:nil confirmAction:^{
+//        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+//        if ([[UIApplication sharedApplication] canOpenURL:settingsURL]) {
+//            [[UIApplication sharedApplication] openURL:settingsURL options:@{} completionHandler:nil];
+//        }
+//    }];
 }
 
 #pragma mark - BUSplashAdDelegate

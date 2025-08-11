@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 // json格式文件序列化
 + (NSDictionary *)serializationFromJson:(NSString *)path;
 
++ (UIViewController *)getTopViewController;
+
 @end
 
 NS_ASSUME_NONNULL_END

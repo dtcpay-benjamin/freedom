@@ -60,6 +60,8 @@
     
     if (controller) {
         [controller presentViewController:alert animated:YES completion:nil];
+    } else {
+        [[SHTToolsManager getTopViewController] presentViewController:alert animated:YES completion:nil];
     }
 }
 
