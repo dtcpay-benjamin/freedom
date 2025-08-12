@@ -8,7 +8,6 @@
 #import "AppDelegate.h"
 #import "AppDelegate+DJXDelegate.h"
 #import "AppDelegate+ADSDK.h"
-#import <Reachability/Reachability.h>
 #import "SHTKaiPingADViewController.h"
 #import "SHTTabBarController.h"
 #import "SHTKeychainHelper.h"
@@ -17,7 +16,6 @@
 
 @interface AppDelegate()<UIApplicationDelegate, UITabBarControllerDelegate>
 
-
 @property(nonatomic, strong) SHTTabBarController *tabBarController;
 
 @end
@@ -25,12 +23,6 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(networkChanged:)
-                                                 name:kReachabilityChangedNotification
-                                               object:nil];
-    [reachability startNotifier];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 短剧SDK初始化
     [self initDJX];
@@ -59,17 +51,6 @@
             });
         }
     }];
-}
-
-- (void)networkChanged:(NSNotification *)note {
-    Reachability *reach = [note object];
-    if ([reach currentReachabilityStatus] != NotReachable) {
-        // 网络恢复 → 加载初始页面
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NetworkRestored" object:nil];
-    } else {
-        NSLog(@"无网络");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotNetwork" object:nil];
-    }
 }
 
 // 创建短剧SDK

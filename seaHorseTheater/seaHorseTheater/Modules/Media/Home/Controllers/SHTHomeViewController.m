@@ -15,25 +15,44 @@
 #import "SHTRouteUtil.h"
 #import "SHTDrawVideoCollectView.h"
 #import "SHTSubscriptionManager.h"
+#import <Reachability/Reachability.h>
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,DJXDrawVideoCellAddSubviewDelegate,DJXPlayletDetailCellDelegate,DJXDrawVideoViewControllerDelegate>
+
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+
 @property (nonatomic, strong) UIViewController *favoriteBgdVC;
+
 @property (nonatomic, strong) SHTFavoriteViewController *favoriteVC; //短剧收藏页
+
 @property (nonatomic, strong) UIViewController *playletTheaterBgdVC;
+
 @property (nonatomic, strong) DJXPlayletAggregatePageViewController *playletTheater; //短剧剧场
+
 @property (nonatomic, strong) DJXDrawVideoViewController *playletVC; //短剧滑滑页
+
 @property (nonatomic, strong) NSArray *pages;
+
 @property (nonatomic, strong) UIView *underlineView; //下划线
+
 @property (nonatomic, strong) UIView *segmentedBackView; //标题栏背景
+
 @property (nonatomic, strong) UISegmentedControl *segmentedControl; //标题栏
+
 @property (nonatomic, strong) UILabel *editTitleLabel; //收藏编辑时候的标题栏
+
 @property (nonatomic, strong) UIButton *favoriteEditBtn; //收藏标题栏编辑按钮
+
 @property (nonatomic, strong) UIButton *searchBtn; //搜索按钮
+
 @property (nonatomic, assign) NSUInteger currentIndex; //当前位置
+
 @property (nonatomic, assign) NSUInteger preIndex; //当前位置
+
 @property (nonatomic, strong) UIView *favoriteEditBar; //收藏底部编辑栏
+
 @property (nonatomic, strong) UIButton *favoriteSelectAllButton; //收藏底部是否“全选”按钮
+
 @property (nonatomic, strong) UIButton *favoriteDeleteButton; //收藏底部删除按钮
 
 @end
@@ -44,7 +63,6 @@
     [super viewDidLoad];
     [self initConfig];
 }
-
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
