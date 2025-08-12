@@ -15,7 +15,6 @@
 #import "SHTRouteUtil.h"
 #import "SHTDrawVideoCollectView.h"
 #import "SHTSubscriptionManager.h"
-#import <Reachability/Reachability.h>
 
 @interface SHTHomeViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,DJXDrawVideoCellAddSubviewDelegate,DJXPlayletDetailCellDelegate,DJXDrawVideoViewControllerDelegate>
 
