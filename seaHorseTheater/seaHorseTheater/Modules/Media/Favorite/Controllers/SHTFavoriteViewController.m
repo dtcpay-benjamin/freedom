@@ -25,20 +25,28 @@
 @property (nonatomic, strong) NSMutableArray *favoriteDataSource; // 选中短剧记录数据组
 @property (nonatomic, assign) bool isEdit; // 是否在编辑
 @property (nonatomic, assign) bool isAllSelect; // 编辑-全选
-
+@property (nonatomic, assign) bool isFirstLoad; // 是否第一次加载
 @end
 
 @implementation SHTFavoriteViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadData:)
+                                                 name:@"CollectionDataRefresh"
+                                               object:nil];
     [self configCollectionView];
+    self.isFirstLoad = YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.collectionView.mj_header beginRefreshing];
+    if (self.isFirstLoad == YES) {
+        self.currentPage = 1;
+        [self requestCollection:YES];
+        self.isFirstLoad = NO;
+    }
 }
 
 - (void)setupRefresh {
@@ -47,18 +55,30 @@
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.currentPage = 1;
-        [strongSelf requestCollection];
+        [strongSelf requestCollection:YES];
     }];
     // 上拉加载更多
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.currentPage++;
-        [strongSelf requestCollection];
+        [strongSelf requestCollection:YES];
     }];
 }
 
+// 重新加载数据
+- (void)reloadData:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    self.currentPage = 1;
+    if (userInfo) {
+        BOOL isCheckEmpty = [userInfo[@"isCheckEmpty"] boolValue];
+        [self requestCollection:isCheckEmpty];
+    } else {
+        [self requestCollection:YES];
+    }
+}
+
 // 获取收藏的短剧数据
-- (void)requestCollection {
+- (void)requestCollection:(BOOL)isCheckEmpty {
     NSInteger pageSize = 6;
     [[DJXPlayletManager shareInstance] requestCollectionList:self.currentPage pageSize:pageSize success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
         NSLog(@"获取收藏短剧列表:%@, 是否还有更多:%d", playletList, hasMore);
@@ -81,7 +101,6 @@
         }
         self.hasMore = hasMore;
         [self.collectionView reloadData];
-        
         // 结束刷新状态
         [self.collectionView.mj_header endRefreshing];
         [self.collectionView.mj_footer endRefreshing];
@@ -92,7 +111,9 @@
             // 如果没有更多了，显示“已经全部加载完毕”
             [self.collectionView.mj_footer endRefreshingWithNoMoreData];
         }
-        [self checkEmpty];
+        if (isCheckEmpty) {
+            [self checkEmpty];
+        }
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"获取收藏短剧列表报错error:%@", error);
         [self.collectionView.mj_header endRefreshing];
@@ -136,10 +157,10 @@
         _emptyView = [[SHTEmptyPlaceholderView alloc] initWithFrame:self.view.bounds
                                                           imageName:@"noData"
                                                                                      message:@"暂无内容"
-                                                                                 buttonTitle:@"去剧场"
+                                                                                 buttonTitle:@"去看剧"
                                                                                  actionBlock:^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            // 去剧场
+            // 去看剧
             if (strongSelf.goToDramaMarketCallBack) {
                 strongSelf.goToDramaMarketCallBack();
             }
@@ -193,7 +214,7 @@
     [self requestDeleteFavoritesInBatches:tempArray maxConcurrent:6 completion:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf.hasMore) {
-            [strongSelf.collectionView.mj_header beginRefreshing];
+            [strongSelf reloadData:nil];
         } else {
             [strongSelf.dataSource removeObjectsInArray:tempArray];
             [strongSelf.favoriteDataSource removeObjectsInArray:tempArray1];

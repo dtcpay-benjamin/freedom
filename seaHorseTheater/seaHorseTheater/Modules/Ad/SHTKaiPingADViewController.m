@@ -35,6 +35,11 @@
     [self checkInitialNetworkStatus];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+}
+
 - (void)checkInitialNetworkStatus {
     NetworkStatus status = [self.reachability currentReachabilityStatus];
     self.networkStatus = status;

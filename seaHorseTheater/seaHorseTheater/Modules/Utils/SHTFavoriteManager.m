@@ -136,7 +136,7 @@
 }
 
 // 自定义收藏按钮数据更新
-- (void) collectViewUpdateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel andIsDraw:(BOOL)IsDraw {
+- (void)collectViewUpdateSubview:(UIView *)subview withData:(DJXPlayletInfoModel *)playletInfoModel andIsDraw:(BOOL)IsDraw {
     __block SHTDrawVideoCollectView *collectView = (SHTDrawVideoCollectView *)subview;
     collectView.playletInfoModel = playletInfoModel;
     NSInteger favoriteState = playletInfoModel.favorite_state;
@@ -174,6 +174,7 @@
                     [self.currentCollectView setStatus:1];
                 }
                 [SHTMBProgressManager showText:nil withText:@"已追剧，可在【追剧】查看" andSubText:nil isBottom:NO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionDataRefresh" object:nil userInfo:@{@"isCheckEmpty": @(NO)}];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
@@ -186,7 +187,7 @@
                 if (!IsDraw && (self.currentCollectView.playletInfoModel.shortplay_id == playletInfoModel.shortplay_id)) {
                     [self.currentCollectView setStatus:0];
                 }
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionDataRefresh" object:nil userInfo:@{@"isCheckEmpty": @(NO)}];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)取消收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy) void (^deleteActionCompletion)(NSArray *deleteArray); // 删除完成回调
 @property (nonatomic, copy) void (^selectActionCallBack)(bool isAllSelect, bool isSomeSelect); // cell点击操作回调，是否全选
 @property (nonatomic, copy) void (^contentDetectionCallBack)(bool isEmpty); // 收藏剧场是否为空回调
-@property (nonatomic, copy) void (^goToDramaMarketCallBack)(void); // 去剧场回调
+@property (nonatomic, copy) void (^goToDramaMarketCallBack)(void); // 去看剧(滑滑流)回调
 @property (nonatomic, copy) void (^cellLongPressHandler)(void); // cell长按回调
 // 编辑收藏
 - (void)editFavorites:(BOOL)isEdit;
