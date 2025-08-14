@@ -8,6 +8,7 @@
 #import "SHTFavoritePlayletCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "SHTFavoritePlayletModel.h"
+#import "DJXPlayletInfoModel+Favorite.h"
 
 @interface SHTFavoritePlayletCell()
 
@@ -60,27 +61,31 @@
 
 - (void)setPlayletinfoModel:(DJXPlayletInfoModel *)playletinfoModel {
     _playletinfoModel = playletinfoModel;
-    NSURL *url = [NSURL URLWithString:_playletinfoModel.cover_image];
-    // 开始加载时展示 loadingView
-    [self.loadingView startAnimating];
-    self.loadingView.hidden = NO;
-    [self.imageView sd_setImageWithURL:url
-                      placeholderImage:nil
-                               options:SDWebImageAvoidAutoSetImage
-                             completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        // 下载完成，隐藏 loading
-        [self.loadingView stopAnimating];
-        self.loadingView.hidden = YES;
-        if (image) {
-            self.imageView.alpha = 0.0;
-            self.imageView.image = image;
-            [UIView animateWithDuration:0.3 animations:^{
-                self.imageView.alpha = 1.0;
-            }];
-        } else {
-            NSLog(@"收藏短剧封面下载失败error:%@", error);
-        }
-    }];
+    if (_playletinfoModel.coverImage) {
+        self.imageView.image = _playletinfoModel.coverImage;
+    } else {
+        NSURL *url = [NSURL URLWithString:_playletinfoModel.cover_image];
+        // 开始加载时展示 loadingView
+        [self.loadingView startAnimating];
+        self.loadingView.hidden = NO;
+        [self.imageView sd_setImageWithURL:url
+                          placeholderImage:nil
+                                   options:SDWebImageAvoidAutoSetImage
+                                 completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            // 下载完成，隐藏 loading
+            [self.loadingView stopAnimating];
+            self.loadingView.hidden = YES;
+            if (image) {
+                self.imageView.alpha = 0.0;
+                self.imageView.image = image;
+                [UIView animateWithDuration:0.3 animations:^{
+                    self.imageView.alpha = 1.0;
+                }];
+            } else {
+                NSLog(@"收藏短剧封面下载失败error:%@", error);
+            }
+        }];
+    }
     self.titleLabel.text = _playletinfoModel.title;
     self.subtitleLabel.text = [NSString stringWithFormat:@"观看至%ld集",(long)_playletinfoModel.current_episode];
 }
