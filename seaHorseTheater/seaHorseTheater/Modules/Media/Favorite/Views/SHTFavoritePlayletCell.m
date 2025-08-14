@@ -8,7 +8,7 @@
 #import "SHTFavoritePlayletCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "SHTFavoritePlayletModel.h"
-#import "DJXPlayletInfoModel+Favorite.h"
+#import "DJXPlayletInfoModel+SHTFavorite.h"
 
 @interface SHTFavoritePlayletCell()
 

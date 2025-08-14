@@ -31,7 +31,7 @@
 		184D45992E30687E0059B501 /* SHTMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45982E30687E0059B501 /* SHTMineModel.m */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
-		1897DE092E4D6843002EABA0 /* DJXPlayletInfoModel+Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897DE082E4D6843002EABA0 /* DJXPlayletInfoModel+Favorite.m */; };
+		1897DE092E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897DE082E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m */; };
 		18A7E5B72E442CF2002D8E4D /* SHTRestoreRightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7E5B62E442CF2002D8E4D /* SHTRestoreRightsViewController.m */; };
 		18A8C0292D9BC978003BC3B3 /* SHTFavoritePlayletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */; };
 		18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */; };
@@ -122,8 +122,8 @@
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
 		187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionModel.m; sourceTree = "<group>"; };
-		1897DE072E4D6843002EABA0 /* DJXPlayletInfoModel+Favorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DJXPlayletInfoModel+Favorite.h"; sourceTree = "<group>"; };
-		1897DE082E4D6843002EABA0 /* DJXPlayletInfoModel+Favorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DJXPlayletInfoModel+Favorite.m"; sourceTree = "<group>"; };
+		1897DE072E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DJXPlayletInfoModel+SHTFavorite.h"; sourceTree = "<group>"; };
+		1897DE082E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DJXPlayletInfoModel+SHTFavorite.m"; sourceTree = "<group>"; };
 		18A7E5B52E442CF2002D8E4D /* SHTRestoreRightsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTRestoreRightsViewController.h; sourceTree = "<group>"; };
 		18A7E5B62E442CF2002D8E4D /* SHTRestoreRightsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTRestoreRightsViewController.m; sourceTree = "<group>"; };
 		18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletModel.h; sourceTree = "<group>"; };
@@ -444,8 +444,8 @@
 			children = (
 				18A8C0272D9BC978003BC3B3 /* SHTFavoritePlayletModel.h */,
 				18A8C0282D9BC978003BC3B3 /* SHTFavoritePlayletModel.m */,
-				1897DE072E4D6843002EABA0 /* DJXPlayletInfoModel+Favorite.h */,
-				1897DE082E4D6843002EABA0 /* DJXPlayletInfoModel+Favorite.m */,
+				1897DE072E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.h */,
+				1897DE082E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -772,7 +772,7 @@
 				184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */,
 				1843A1F82DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m in Sources */,
 				1843A1D82DB8C952008116EB /* SHTVerticalButton.m in Sources */,
-				1897DE092E4D6843002EABA0 /* DJXPlayletInfoModel+Favorite.m in Sources */,
+				1897DE092E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m in Sources */,
 				1843A1E62DBB3348008116EB /* SHTSearchViewController.m in Sources */,
 				18FAC3E12E09452F00B91FE8 /* SHTMemberImmediatelyCell.m in Sources */,
 				728F44392E2C8E2B00361C28 /* SHTNonSelectableTextView.m in Sources */,

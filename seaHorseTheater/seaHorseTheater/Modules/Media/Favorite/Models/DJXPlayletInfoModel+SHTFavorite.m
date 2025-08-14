@@ -1,11 +1,11 @@
 //
-//  DJXPlayletInfoModel+Favorite.m
+//  DJXPlayletInfoModel+SHTFavorite.m
 //  seaHorseTheater
 //
 //  Created by 褚红彪 on 2025/8/14.
 //
 
-#import "DJXPlayletInfoModel+Favorite.h"
+#import "DJXPlayletInfoModel+SHTFavorite.h"
 #import <objc/runtime.h>
 
 @implementation DJXPlayletInfoModel (Favorite)

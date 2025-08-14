@@ -1,5 +1,5 @@
 //
-//  DJXPlayletInfoModel+Favorite.h
+//  DJXPlayletInfoModel+SHTFavorite.h
 //  seaHorseTheater
 //
 //  Created by 褚红彪 on 2025/8/14.

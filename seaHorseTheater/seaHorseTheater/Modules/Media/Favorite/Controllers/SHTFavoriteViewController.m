@@ -14,7 +14,7 @@
 #import "SHTEmptyPlaceholderView.h"
 #import "SHTToolsManager.h"
 #import "SHTFavoriteManager.h"
-#import "DJXPlayletInfoModel+Favorite.h"
+#import "DJXPlayletInfoModel+SHTFavorite.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SHTFavoriteViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, DJXPlayletDetailCellDelegate>
