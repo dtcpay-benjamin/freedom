@@ -8,6 +8,7 @@
 #import "SHTFavoriteManager.h"
 #import "SHTDrawVideoCollectView.h"
 #import "SHTMBProgressManager.h"
+#import "DJXPlayletInfoModel+SHTFavorite.h"
 
 @interface SHTFavoriteManager()
 
@@ -174,7 +175,7 @@
                     [self.currentCollectView setStatus:1];
                 }
                 [SHTMBProgressManager showText:nil withText:@"已追剧，可在【追剧】查看" andSubText:nil isBottom:NO];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionDataRefresh" object:nil userInfo:@{@"isCheckEmpty": @(NO)}];
+                [self postFavoriteNotification:YES playletInfo:playletInfoModel];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
@@ -187,12 +188,20 @@
                 if (!IsDraw && (self.currentCollectView.playletInfoModel.shortplay_id == playletInfoModel.shortplay_id)) {
                     [self.currentCollectView setStatus:0];
                 }
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionDataRefresh" object:nil userInfo:@{@"isCheckEmpty": @(NO)}];
+                [self postFavoriteNotification:NO playletInfo:playletInfoModel];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)取消收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
             }];
         }
     };
+}
+
+- (void)postFavoriteNotification:(BOOL)isFavorite  playletInfo:(DJXPlayletInfoModel *)playletInfoModel {
+    NSMutableDictionary *userInfo = [@{@"isCheckEmpty": @(NO), @"isFavorite": @(isFavorite)} mutableCopy];
+    if (playletInfoModel.isFromFavorite) {
+        [userInfo setObject:playletInfoModel forKey:@"playletInfo"];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionDataRefresh" object:nil userInfo:userInfo];
 }
 
 @end

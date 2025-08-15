@@ -9,7 +9,6 @@
 #import <PangrowthDJX/DJXSDK.h>
 #import "SHTFavoritePlayletCell.h"
 #import <MJRefresh/MJRefresh.h>
-#import "SHTFavoritePlayletModel.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "SHTEmptyPlaceholderView.h"
 #import "SHTToolsManager.h"
@@ -24,10 +23,10 @@
 @property (nonatomic, strong) UICollectionView *collectionView; // 收藏列表
 @property (nonatomic, strong) SHTEmptyPlaceholderView *emptyView; // 暂无内容
 @property (nonatomic, strong) NSMutableArray *dataSource; // 短剧数据组
-@property (nonatomic, strong) NSMutableArray *favoriteDataSource; // 选中短剧记录数据组
 @property (nonatomic, assign) bool isEdit; // 是否在编辑
 @property (nonatomic, assign) bool isAllSelect; // 编辑-全选
 @property (nonatomic, assign) bool isFirstLoad; // 是否第一次加载
+
 @end
 
 @implementation SHTFavoriteViewController
@@ -46,9 +45,15 @@
     [super viewWillAppear:animated];
     if (self.isFirstLoad == YES) {
         self.currentPage = 1;
-        [self requestCollection:YES];
+        [self requestCollection:nil];
         self.isFirstLoad = NO;
     }
+    [self checkEmpty];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"CollectionDataRefresh" object:nil];
 }
 
 - (void)setupRefresh {
@@ -57,13 +62,13 @@
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.currentPage = 1;
-        [strongSelf requestCollection:YES];
+        [strongSelf requestCollection:nil];
     }];
     // 上拉加载更多
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.currentPage++;
-        [strongSelf requestCollection:YES];
+        [strongSelf requestCollection:nil];
     }];
 }
 
@@ -71,56 +76,100 @@
 - (void)reloadData:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
     self.currentPage = 1;
-    if (userInfo) {
-        BOOL isCheckEmpty = [userInfo[@"isCheckEmpty"] boolValue];
-        [self requestCollection:isCheckEmpty];
-    } else {
-        [self requestCollection:YES];
-    }
+    [self requestCollection:userInfo];
 }
 
 // 获取收藏的短剧数据
-- (void)requestCollection:(BOOL)isCheckEmpty {
-    NSInteger pageSize = 6;
-    [[DJXPlayletManager shareInstance] requestCollectionList:self.currentPage pageSize:pageSize success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
-        NSLog(@"获取收藏短剧列表:%@, 是否还有更多:%d", playletList, hasMore);
-        // 刷新 or 加载更多
-        if (self.currentPage == 1) {
-            [self.dataSource removeAllObjects];
-            [self.favoriteDataSource removeAllObjects];
-            [self selectAllAssignment];
-        }
-        [self downloadCoverImagesForPlayletList:playletList];
-        [self.dataSource addObjectsFromArray:playletList];
-        for (DJXPlayletInfoModel *model in playletList) {
-            if ([[SHTFavoriteManager sharedInstance] isAddToFavorites:model]) {
-                [[SHTFavoriteManager sharedInstance].drawFavoriteArrays addObject:model];
+- (void)requestCollection:(NSDictionary *)userInfo {
+    BOOL isCheckEmpty = YES;
+    BOOL isFavorite = NO;
+    __block DJXPlayletInfoModel *playletInfo = nil;
+    if (userInfo) {
+        isCheckEmpty = [userInfo[@"isCheckEmpty"] boolValue];
+        isFavorite = [userInfo[@"isFavorite"] boolValue];
+        playletInfo = userInfo[@"playletInfo"];
+    }
+    if (playletInfo) {
+        if (isFavorite) {
+            if (self.selectActionCallBack) {
+                self.selectActionCallBack(NO, NO);
             }
-        }
-        for (int i = 0; i < playletList.count; i++) {
-            SHTFavoritePlayletModel *favoritePlayletModel = [[SHTFavoritePlayletModel alloc] init];
-            favoritePlayletModel.isSelected = self.isAllSelect;
-            [self.favoriteDataSource addObject:favoritePlayletModel];
-        }
-        self.hasMore = hasMore;
-        [self.collectionView reloadData];
-        // 结束刷新状态
-        [self.collectionView.mj_header endRefreshing];
-        [self.collectionView.mj_footer endRefreshing];
-        
-        if (hasMore) {
-            [self.collectionView.mj_footer resetNoMoreData];
+            [self downloadCoverImageForPlayletInfo:playletInfo];
+            playletInfo.isSelected = self.isAllSelect;
+            [self.dataSource insertObject:playletInfo atIndex:0];
+            if ([[SHTFavoriteManager sharedInstance] isAddToFavorites:playletInfo]) {
+                [[SHTFavoriteManager sharedInstance].drawFavoriteArrays addObject:playletInfo];
+            }
         } else {
-            // 如果没有更多了，显示“已经全部加载完毕”
-            [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+            DJXPlayletInfoModel *tempModel = nil;
+            for (int i = 0; i < self.dataSource.count; i++) {
+                DJXPlayletInfoModel *model = self.dataSource[i];
+                if (playletInfo.shortplay_id == model.shortplay_id) {
+                    tempModel = model;
+                    break;;
+                }
+            }
+            [self.dataSource removeObject:tempModel];
         }
-        if (isCheckEmpty) {
-            [self checkEmpty];
+        [self.collectionView reloadData];
+    } else {
+        NSInteger pageSize = 6;
+        [[DJXPlayletManager shareInstance] requestCollectionList:self.currentPage pageSize:pageSize success:^(NSArray<DJXPlayletInfoModel *> * _Nonnull playletList, BOOL hasMore) {
+            NSLog(@"获取收藏短剧列表:%@, 是否还有更多:%d", playletList, hasMore);
+            // 刷新 or 加载更多
+            if (self.currentPage == 1) {
+                [self.dataSource removeAllObjects];
+                [self selectAllAssignment];
+            }
+            [self downloadCoverImagesForPlayletList:playletList];
+            [self.dataSource addObjectsFromArray:playletList];
+            for (DJXPlayletInfoModel *model in playletList) {
+                model.isFromFavorite = YES;
+                model.isSelected = self.isAllSelect;
+                if ([[SHTFavoriteManager sharedInstance] isAddToFavorites:model]) {
+                    [[SHTFavoriteManager sharedInstance].drawFavoriteArrays addObject:model];
+                }
+            }
+            self.hasMore = hasMore;
+            [self.collectionView reloadData];
+            // 结束刷新状态
+            [self.collectionView.mj_header endRefreshing];
+            [self.collectionView.mj_footer endRefreshing];
+            
+            if (hasMore) {
+                [self.collectionView.mj_footer resetNoMoreData];
+            } else {
+                // 如果没有更多了，显示“已经全部加载完毕”
+                [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+            }
+            if (isCheckEmpty) {
+                [self checkEmpty];
+            }
+        } failure:^(NSError * _Nonnull error) {
+            NSLog(@"获取收藏短剧列表报错error:%@", error);
+            [self.collectionView.mj_header endRefreshing];
+            [self.collectionView.mj_footer endRefreshing];
+        }];
+    }
+}
+
+- (void)downloadCoverImageForPlayletInfo:(DJXPlayletInfoModel *)playletInfo {
+    NSURL *url = [NSURL URLWithString:playletInfo.cover_image];
+    [[SDWebImageManager sharedManager] loadImageWithURL:url
+                                                options:0
+                                               progress:nil
+                                              completed:^(UIImage * _Nullable image,
+                                                          NSData * _Nullable data,
+                                                          NSError * _Nullable error,
+                                                          SDImageCacheType cacheType,
+                                                          BOOL finished,
+                                                          NSURL * _Nullable imageURL) {
+        if (image) {
+            playletInfo.coverImage = image; // 存到分类属性
+            NSLog(@"封面下载成功: %@", imageURL);
+        } else {
+            NSLog(@"封面下载失败: %@, error: %@", imageURL, error);
         }
-    } failure:^(NSError * _Nonnull error) {
-        NSLog(@"获取收藏短剧列表报错error:%@", error);
-        [self.collectionView.mj_header endRefreshing];
-        [self.collectionView.mj_footer endRefreshing];
     }];
 }
 
@@ -203,7 +252,7 @@
 - (void)editFavorites:(BOOL)isEdit {
     self.isEdit = isEdit;
     if (!isEdit) {
-        for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
+        for (DJXPlayletInfoModel *model in self.dataSource) {
             model.isSelected = NO;
         }
         [self.tabBarController.tabBar setHidden:NO];
@@ -214,7 +263,7 @@
 }
 
 - (void)selectAllFavoriteData {
-    for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
+    for (DJXPlayletInfoModel *model in self.dataSource) {
         model.isSelected = YES;
     }
     self.isAllSelect = YES;
@@ -222,7 +271,7 @@
 }
 
 - (void)cancelSelectAllFavoriteData {
-    for (SHTFavoritePlayletModel *model in self.favoriteDataSource) {
+    for (DJXPlayletInfoModel *model in self.dataSource) {
         model.isSelected = NO;
     }
     self.isAllSelect = NO;
@@ -231,13 +280,10 @@
 
 - (void)deleteFavoriteData {
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    NSMutableArray *tempArray1 = [[NSMutableArray alloc] init];
-    for (int i = 0; i < self.favoriteDataSource.count; i++) {
-        SHTFavoritePlayletModel *model = self.favoriteDataSource[i];
-        if (model.isSelected == YES) {
-            DJXPlayletInfoModel *infoModel = self.dataSource[i];
+    for (int i = 0; i < self.dataSource.count; i++) {
+        DJXPlayletInfoModel *infoModel = self.dataSource[i];
+        if (infoModel.isSelected == YES) {
             [tempArray addObject:infoModel];
-            [tempArray1 addObject:model];
         }
     }
     __weak typeof(self) weakSelf = self;
@@ -247,14 +293,13 @@
             [strongSelf reloadData:nil];
         } else {
             [strongSelf.dataSource removeObjectsInArray:tempArray];
-            [strongSelf.favoriteDataSource removeObjectsInArray:tempArray1];
             [strongSelf.collectionView reloadData];
             // 重置是否全选的状态
             [strongSelf selectAllAssignment];
             [strongSelf checkEmpty];
-            if (strongSelf.deleteActionCompletion) {
-                strongSelf.deleteActionCompletion(tempArray);
-            }
+        }
+        if (strongSelf.deleteActionCompletion) {
+            strongSelf.deleteActionCompletion(tempArray);
         }
     }];
 
@@ -322,9 +367,9 @@
 - (void)selectAllAssignment {
     bool isAllSelect = YES;
     bool isSomeSelect = NO;
-    if (self.favoriteDataSource.count > 0) {
-        for (int i = 0; i < self.favoriteDataSource.count; i++) {
-            SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[i];
+    if (self.dataSource.count > 0) {
+        for (int i = 0; i < self.dataSource.count; i++) {
+            DJXPlayletInfoModel *favoritePlayletModel = self.dataSource[i];
             if (!favoritePlayletModel.isSelected) {
                 isAllSelect = NO;
             }
@@ -348,14 +393,6 @@
     return _dataSource;
 }
 
-- (NSMutableArray *)favoriteDataSource {
-    if (!_favoriteDataSource) {
-        _favoriteDataSource = [[NSMutableArray alloc] init];
-    }
-    return _favoriteDataSource;
-}
-
-
 #pragma mark - UICollectionView DataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -372,17 +409,15 @@
         }
     };
     DJXPlayletInfoModel *model = self.dataSource[indexPath.item];
-    SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[indexPath.item];
     cell.playletinfoModel = model;
     cell.isEdit = self.isEdit;
-    cell.favoriteModel = favoritePlayletModel;
     return cell;
 }
 
 #pragma mark - UICollectionView Delegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.isEdit) {
-        SHTFavoritePlayletModel *favoritePlayletModel = self.favoriteDataSource[indexPath.item];
+        DJXPlayletInfoModel *favoritePlayletModel = self.dataSource[indexPath.item];
         favoritePlayletModel.isSelected = !favoritePlayletModel.isSelected;
         [self selectAllAssignment];
         [collectionView reloadItemsAtIndexPaths:@[indexPath]];
@@ -412,6 +447,9 @@
 }
 
 - (void)djx_playletDetailCell:(UITableViewCell *)cell updateCustomView:(UIView *)customView withPlayletData:(DJXPlayletInfoModel *)playletInfo {
+    if (!playletInfo.isFromFavorite) {
+        playletInfo.isFromFavorite = YES;
+    }
     [[SHTFavoriteManager sharedInstance] collectViewUpdateSubview:customView withData:playletInfo andIsDraw:NO];
 }
 

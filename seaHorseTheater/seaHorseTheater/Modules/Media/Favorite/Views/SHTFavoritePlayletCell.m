@@ -7,7 +7,6 @@
 
 #import "SHTFavoritePlayletCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "SHTFavoritePlayletModel.h"
 #import "DJXPlayletInfoModel+SHTFavorite.h"
 
 @interface SHTFavoritePlayletCell()
@@ -88,20 +87,16 @@
     }
     self.titleLabel.text = _playletinfoModel.title;
     self.subtitleLabel.text = [NSString stringWithFormat:@"观看至%ld集",(long)_playletinfoModel.current_episode];
+    if (playletinfoModel.isSelected) {
+        self.deleteImageView.image = [UIImage imageNamed:@"selected"];
+    } else {
+        self.deleteImageView.image = [UIImage imageNamed:@"unselected"];
+    }
 }
 
 - (void)setIsEdit:(bool)isEdit {
     _isEdit = isEdit;
     self.deleteImageView.hidden = !_isEdit;
-}
-
-- (void)setFavoriteModel:(SHTFavoritePlayletModel *)favoriteModel{
-    _favoriteModel = favoriteModel;
-    if (favoriteModel.isSelected) {
-        self.deleteImageView.image = [UIImage imageNamed:@"selected"];
-    } else {
-        self.deleteImageView.image = [UIImage imageNamed:@"unselected"];
-    }
 }
 
 #pragma mark - 懒加载
