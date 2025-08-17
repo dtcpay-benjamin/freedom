@@ -38,3 +38,16 @@
 "privileges_restored" = "Privileges Restored";
 "transaction_failed" = "Transaction Failed";
 "failed_restore_benefits" = "Failed to Restore Benefits";
+"membership_center" = "Membership Center";
+"seahorse_drama_friends" = "Seahorse Drama Friends %@";
+"unlimited_content" = "Unlimited Content";
+"more_great_shows" = "More Great Shows, Get Ahead of the Crowd";
+"unlock_episodes" = "Unlock Episodes";
+"enjoy_shows" = "Enjoy Shows More Smoothly, Focus on Exciting Content";
+"more_privileges" = "More Privileges";
+"coming_soon" = "Coming Soon";
+"select_membership" = "Please select a membership type!";
+"confirm_subscription" = "Confirm Subscription";
+"confirm_subscription_message" = "Please read and agree to the “Membership Service Agreement” (including auto-renewal terms)";
+"confirm_subscription_keyWords" = "《Membership Service Agreement》";
+"continue_subscribe" = "Continue to Subscribe";

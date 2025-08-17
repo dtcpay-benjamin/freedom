@@ -36,3 +36,16 @@
 "privileges_restored" = "권리 복구 성공";
 "transaction_failed" = "거래 실패";
 "failed_restore_benefits" = "권리 복구 실패";
+"membership_center" = "회원 센터";
+"seahorse_drama_friends" = "해마 드라마 친구 %@";
+"unlimited_content" = "무한 콘텐츠";
+"more_great_shows" = "더 많은 좋은 드라마, 남보다 먼저 즐기세요";
+"unlock_episodes" = "에피소드 잠금 해제";
+"enjoy_shows" = "드라마를 더 쾌적하게 감상하고, 흥미로운 콘텐츠에 집중하세요";
+"more_privileges" = "더 많은 혜택";
+"coming_soon" = "많이 기대해주세요";
+"select_membership" = "회원 유형을 선택해주세요!";
+"confirm_subscription" = "개통 확인";
+"confirm_subscription_message" = "“회원 서비스 이용약관(자동 갱신 조항 포함)”을 읽고 동의해 주세요";
+"confirm_subscription_keyWords" = "《회원 서비스 이용약관》";
+"continue_subscribe" = "계속 개통";

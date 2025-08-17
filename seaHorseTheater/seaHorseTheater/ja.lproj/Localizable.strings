@@ -36,3 +36,16 @@
 "privileges_restored" = "権利の復元に成功しました";
 "transaction_failed" = "取引に失敗しました";
 "failed_restore_benefits" = "権利の復元に失敗しました";
+"membership_center" = "会員センター";
+"seahorse_drama_friends" = "シーホースドラマ友達 %@";
+"unlimited_content" = "無限コンテンツ";
+"more_great_shows" = "もっと良いドラマ、いち早く楽しもう";
+"unlock_episodes" = "エピソードをアンロック";
+"enjoy_shows" = "ドラマをより快適に視聴、素晴らしいコンテンツに集中";
+"more_privileges" = "さらに特典";
+"coming_soon" = "ご期待ください";
+"select_membership" = "请选择会员类型！";
+"confirm_subscription" = "開通を確認";
+"confirm_subscription_message" = "「会員サービス利用規約（自動更新条項を含む）」をお読みの上、同意してください";
+"confirm_subscription_keyWords" = "《会員サービス利用規約》";
+"continue_subscribe" = "開通を続ける";

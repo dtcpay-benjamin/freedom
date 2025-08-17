@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = SHT_BACK_COLOR_DARK;
-    self.title = @"会员中心";
+    self.title = NSLocalizedString(@"membership_center", nil);
     [self setupDatas];
 }
 
@@ -63,24 +63,24 @@
 #pragma mark - functions
 
 - (void)setupDatas {
-    self.briefIntroductionModel = [SHTBriefIntroductionModel modelWithTitle:[NSString stringWithFormat:@"海马剧友 %@", [SHTStringFormatter formatString:[SHTDeviceIDManager getDeviceID] fromStart:NO length:12 caseOption:StringCaseOptionLowercase]] activateVip:NO];
+    self.briefIntroductionModel = [SHTBriefIntroductionModel modelWithTitle:[NSString stringWithFormat:NSLocalizedString(@"seahorse_drama_friends", nil), [SHTStringFormatter formatString:[SHTDeviceIDManager getDeviceID] fromStart:NO length:12 caseOption:StringCaseOptionLowercase]] activateVip:NO];
     self.premiumFeaturesArray = @[
       @{
         @"featuresImage": @"unlimitedStreaming",
-        @"title": @"无限片源",
-        @"subTitle": @"更多好剧，先人一步"
+        @"title": NSLocalizedString(@"unlimited_content", nil),
+        @"subTitle": NSLocalizedString(@"more_great_shows", nil)
        },
       
       @{
           @"featuresImage": @"AdFree",
-          @"title": @"解锁剧集",
-          @"subTitle": @"看剧更畅快，专注精彩内容"
+          @"title": NSLocalizedString(@"unlock_episodes", nil),
+          @"subTitle": NSLocalizedString(@"enjoy_shows", nil)
        },
       
       @{
           @"featuresImage": @"moreBenefits",
-          @"title": @"更多特权",
-          @"subTitle": @"敬请期待"
+          @"title": NSLocalizedString(@"more_privileges", nil),
+          @"subTitle": NSLocalizedString(@"coming_soon", nil)
        }
     ];
     
@@ -130,7 +130,7 @@
     if (self.selectMemberModel) {
         [self.subscriptionManager purchaseProduct:self.selectMemberModel.product];
     } else {
-        [SHTMBProgressManager showText:nil withText:@"请选择会员类型！" andSubText:nil isBottom:NO];
+        [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"select_membership", nil) andSubText:nil isBottom:NO];
     }
 }
 
@@ -233,10 +233,10 @@
                 [strongSelf subscribeMember];
             } else {
                 NSDictionary *params = @{
-                    @"title": @"确认开通",
-                    @"message": @"请阅读并同意《会员服务协议》（含自动续费条款）",
-                    @"keyWords": @"《会员服务协议》",
-                    @"confirmTitle": @"继续开通",
+                    @"title": NSLocalizedString(@"confirm_subscription", nil),
+                    @"message": NSLocalizedString(@"confirm_subscription_message", nil),
+                    @"keyWords": NSLocalizedString(@"confirm_subscription_keyWords", nil),
+                    @"confirmTitle": NSLocalizedString(@"continue_subscribe", nil),
                     @"protocolHeader": @"vipAgreement://"
                 };
                 [SHTAlertHelper showMembershipConfirmDialogInController:self params:params confirmAction:^{

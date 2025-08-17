@@ -36,3 +36,16 @@
 "privileges_restored" = "权益恢复成功";
 "transaction_failed" = "交易失败";
 "failed_restore_benefits" = "权益恢复失败";
+"membership_center" = "会员中心";
+"seahorse_drama_friends" = "海马剧友 %@";
+"unlimited_content" = "无限片源";
+"more_great_shows" = "更多好剧，先人一步";
+"unlock_episodes" = "解锁剧集";
+"enjoy_shows" = "看剧更畅快，专注精彩内容";
+"more_privileges" = "更多特权";
+"coming_soon" = "敬请期待";
+"select_membership" = "请选择会员类型！";
+"confirm_subscription" = "确认开通";
+"confirm_subscription_message" = "请阅读并同意《会员服务协议》（含自动续费条款）";
+"confirm_subscription_keyWords" = "《会员服务协议》";
+"continue_subscribe" = "继续开通";
