@@ -156,7 +156,7 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
 }
 
 - (void)restorePurchases {
-    [SHTMBProgressManager showText:nil withText:@"恢复中，请稍后" andSubText:nil isBottom:NO];
+    [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"restoring", nil) andSubText:nil isBottom:NO];
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
@@ -170,7 +170,7 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
                 NSLog(@"购买成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
-                [SHTMBProgressManager showText:nil withText:@"购买成功" andSubText:nil isBottom:NO];
+                [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"purchase_successful", nil) andSubText:nil isBottom:NO];
                 // 购买成功之后，App内评分
                 [SHTAppRateTool requestSystemReview];
                 break;
@@ -178,13 +178,13 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
                 NSLog(@"权益恢复成功: %@", transaction.payment.productIdentifier);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [SHTKeychainHelper saveBool:YES forKey:@"isSubscribed"];
-                [SHTMBProgressManager showText:nil withText:@"权益恢复成功" andSubText:nil isBottom:NO];
+                [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"privileges_restored", nil) andSubText:nil isBottom:NO];
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"交易失败: %@", transaction.error.localizedDescription);
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
-                [SHTMBProgressManager showText:nil withText:@"交易失败" andSubText:nil isBottom:NO];
+                [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"transaction_failed", nil) andSubText:nil isBottom:NO];
                 break;
             default:
                 break;
@@ -199,7 +199,7 @@ static NSString *const itunesUrlStr = @"https://sandbox.itunes.apple.com/verifyR
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
     NSLog(@"权益恢复失败");
     [SHTKeychainHelper saveBool:NO forKey:@"isSubscribed"];
-    [SHTMBProgressManager showText:nil withText:@"权益恢复失败" andSubText:nil isBottom:NO];
+    [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"failed_restore_benefits", nil) andSubText:nil isBottom:NO];
 }
 
 #pragma mark - SKRequestDelegate

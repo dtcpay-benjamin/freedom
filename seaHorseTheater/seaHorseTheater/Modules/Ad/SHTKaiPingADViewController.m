@@ -56,9 +56,9 @@
 
 - (void)setupNetwork {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [SHTAlertHelper showAlertWithTitle:@"提示" message:@"当前网络不可用，请检查设置" cancelBtnText:nil confirmBtnText:@"去设置" inController:self cancelAction:nil confirmAction:^{
+        [SHTAlertHelper showAlertWithTitle:NSLocalizedString(@"tip", nil) message:NSLocalizedString(@"networkSettingsTip", nil) cancelBtnText:nil confirmBtnText:NSLocalizedString(@"goToSettings", nil) inController:self cancelAction:nil confirmAction:^{
             if (self.networkStatus != NotReachable) {
-                [SHTMBProgressManager showText:self.view withText:@"刚才已通过系统弹窗设置" andSubText:nil isBottom:NO];
+                [SHTMBProgressManager showText:self.view withText:NSLocalizedString(@"settingCompletionReminder", nil) andSubText:nil isBottom:NO];
             } else {
                 NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                 if ([[UIApplication sharedApplication] canOpenURL:settingsURL]) {

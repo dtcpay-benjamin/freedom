@@ -61,40 +61,40 @@
     
     SHTMineModel *mineModel1 = [[SHTMineModel alloc] init];
     mineModel1.mineType = SHTMineTypeMemberGuidance;
-    mineModel1.title = @"会员时长";
-    mineModel1.subTitle = @"会员解锁全部短剧";
-    mineModel1.otherTitle = @"开通会员";
+    mineModel1.title = NSLocalizedString(@"membership_period", nil);
+    mineModel1.subTitle = NSLocalizedString(@"unlock_membership", nil);
+    mineModel1.otherTitle = NSLocalizedString(@"subscribe", nil);
     [self.configDataArray addObject:mineModel1];
     
     NSMutableArray *othersArray = [[NSMutableArray alloc] init];
     SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
     mineModel2.uniqueIdentifier = @"czjl";
     mineModel2.mineType = SHTMineTypeCommon;
-    mineModel2.title = @"充值记录";
+    mineModel2.title = NSLocalizedString(@"recharge_history", nil);
     [othersArray addObject:mineModel2];
     
     SHTMineModel *mineModel3 = [[SHTMineModel alloc] init];
     mineModel3.uniqueIdentifier = @"fxapp";
     mineModel3.mineType = SHTMineTypeCommon;
-    mineModel3.title = @"分享APP";
+    mineModel3.title = NSLocalizedString(@"share_app", nil);
     [othersArray addObject:mineModel3];
     
     SHTMineModel *mineModel4 = [[SHTMineModel alloc] init];
     mineModel4.uniqueIdentifier = @"qwpf";
     mineModel4.mineType = SHTMineTypeCommon;
-    mineModel4.title = @"前往评分";
+    mineModel4.title = NSLocalizedString(@"rate_now", nil);
     [othersArray addObject:mineModel4];
     
     SHTMineModel *mineModel5 = [[SHTMineModel alloc] init];
     mineModel5.uniqueIdentifier = @"yhxy";
     mineModel5.mineType = SHTMineTypeCommon;
-    mineModel5.title = @"用户协议";
+    mineModel5.title = NSLocalizedString(@"user_agreement", nil);
     [othersArray addObject:mineModel5];
     
     SHTMineModel *mineModel6 = [[SHTMineModel alloc] init];
     mineModel6.uniqueIdentifier = @"yszc";
     mineModel6.mineType = SHTMineTypeCommon;
-    mineModel6.title = @"隐私政策";
+    mineModel6.title = NSLocalizedString(@"privacy_policy", nil);
     [othersArray addObject:mineModel6];
     [self.configDataArray addObject:othersArray];
 }

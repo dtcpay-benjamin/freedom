@@ -8,6 +8,7 @@
 #import "SHTDrawVideoCollectView.h"
 #import "SHTVerticalButton.h"
 #import "SHTAlertHelper.h"
+#import "SHTLanguageUtil.h"
 
 @interface SHTDrawVideoCollectView()
 
@@ -33,19 +34,62 @@
     }
 }
 
-- (void)updateFavoriteCount {
-    if (_playletInfoModel.favorite_count >= 100000000) {
-        // 超过一亿，保留1位小数，单位“亿”
-        CGFloat billion = _playletInfoModel.favorite_count / 100000000.0;
-        _displayText = [NSString stringWithFormat:@"%.1f亿", billion];
-    } else if (_playletInfoModel.favorite_count >= 10000) {
-        // 超过一万，保留1位小数，单位“万”
-        CGFloat tenThousand = _playletInfoModel.favorite_count / 10000.0;
-        _displayText = [NSString stringWithFormat:@"%.1f万", tenThousand];
+- (NSString *)displayCountText:(NSInteger)count {
+    LanguageType language = [SHTLanguageUtil fetchCurrentLanguageType];
+    
+    NSString *unitText = @"";
+    CGFloat displayNumber = 0.0;
+    
+    if (language == LanguageEN) {
+        // 英文逻辑，使用 K / M 单位，更自然
+        if (count >= 1000000) {
+            displayNumber = count / 1000000.0;
+            unitText = @"M";
+        } else if (count >= 1000) {
+            displayNumber = count / 1000.0;
+            unitText = @"K";
+        }
     } else {
-        // 不足一万，直接显示整数
-        _displayText = [NSString stringWithFormat:@"%ld", (long)_playletInfoModel.favorite_count];
+        // 中文/日文/韩文逻辑，保留万/亿单位
+        if (count >= 100000000) {
+            displayNumber = count / 100000000.0;
+            switch (language) {
+                case LanguageZH_CN: unitText = @"亿"; break;
+                case LanguageZH_TW: unitText = @"億"; break;
+                case LanguageJA:   unitText = @"億"; break;
+                case LanguageKO:   unitText = @"억"; break;
+                default: break;
+            }
+        } else if (count >= 10000) {
+            displayNumber = count / 10000.0;
+            switch (language) {
+                case LanguageZH_CN:
+                case LanguageZH_TW: unitText = @"万"; break;
+                case LanguageJA:   unitText = @"万"; break;
+                case LanguageKO:   unitText = @"만"; break;
+                default: break;
+            }
+        }
     }
+    
+    NSString *displayText = nil;
+    if ((language == LanguageEN && count < 1000) ||
+        (language != LanguageEN && count < 10000)) {
+        displayText = [NSString stringWithFormat:@"%ld", (long)count];
+    } else {
+        // 去掉小数点末尾 .0，更干净
+        NSString *numberString = [NSString stringWithFormat:@"%.1f", displayNumber];
+        if ([numberString hasSuffix:@".0"]) {
+            numberString = [numberString substringToIndex:numberString.length - 2];
+        }
+        displayText = [NSString stringWithFormat:@"%@%@", numberString, unitText];
+    }
+    
+    return displayText;
+}
+
+- (void)updateFavoriteCount {
+    _displayText = [self displayCountText:_playletInfoModel.favorite_count];
 }
 
 - (void)collectAction:(UIButton *)sender {

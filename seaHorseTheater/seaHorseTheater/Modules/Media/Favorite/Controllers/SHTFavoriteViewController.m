@@ -235,8 +235,8 @@
         __weak typeof(self) weakSelf = self;
         _emptyView = [[SHTEmptyPlaceholderView alloc] initWithFrame:self.view.bounds
                                                           imageName:@"noData"
-                                                                                     message:@"暂无内容"
-                                                                                 buttonTitle:@"去看剧"
+                                                                                     message:NSLocalizedString(@"noData", nil)
+                                                                                 buttonTitle:NSLocalizedString(@"watchShow", nil)
                                                                                  actionBlock:^{
             __strong typeof(weakSelf) strongSelf = weakSelf;
             // 去看剧

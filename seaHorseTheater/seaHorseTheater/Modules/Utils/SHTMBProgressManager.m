@@ -60,10 +60,10 @@
     hud.mode = MBProgressHUDModeCustomView;
     if (isSuccess) {
         hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"success"]];
-        hud.label.text = @"成功";
+        hud.label.text = NSLocalizedString(@"success", nil);
     } else {
         hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];
-        hud.label.text = @"失败";
+        hud.label.text = NSLocalizedString(@"failure", nil);
     }
     // 设置背景色为黑色
 //    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;

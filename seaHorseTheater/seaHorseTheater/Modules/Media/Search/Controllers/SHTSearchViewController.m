@@ -295,22 +295,22 @@
                                                                                          withReuseIdentifier:@"SHTSearchCollectionReusableView"
                                                                                                 forIndexPath:indexPath];
             if (indexPath.section == 0) {
-                header.title = @"历史搜索";
+                header.title = NSLocalizedString(@"search_history", nil);
                 header.actionImage = [UIImage imageNamed:@"ico-del-grey"];
                 header.actionTitle = @"";
             } else {
-                header.title = @"大家都在搜";
+                header.title = NSLocalizedString(@"trending_searches", nil);
                 header.actionImage = [UIImage imageNamed:@"ico-swap-grey"];
-                header.actionTitle = @"换一换";
+                header.actionTitle = NSLocalizedString(@"swap", nil);
             }
             __weak typeof(self) weakSelf = self;
             header.onTapped = ^{
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 if (indexPath.section == 0) {
-                    [SHTAlertHelper showAlertWithTitle:@"确认清除搜索记录吗？"
-                                               message:@"清除后此前搜索记录都会消失哦～"
-                                         cancelBtnText:@"再想想"
-                                        confirmBtnText:@"确认"
+                    [SHTAlertHelper showAlertWithTitle:NSLocalizedString(@"search_delete_title", nil)
+                                               message:NSLocalizedString(@"search_delete_message", nil)
+                                         cancelBtnText:NSLocalizedString(@"maybe_later", nil)
+                                        confirmBtnText:NSLocalizedString(@"confirm", nil)
                                           inController:nil
                                           cancelAction:nil confirmAction:^{
                         NSLog(@"历史搜索-删除");
@@ -328,9 +328,9 @@
             SHTSearchCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                                          withReuseIdentifier:@"SHTSearchCollectionReusableView"
                                                                                                 forIndexPath:indexPath];
-            header.title = @"大家都在搜";
+            header.title = NSLocalizedString(@"trending_searches", nil);
             header.actionImage = [UIImage imageNamed:@"ico-swap-grey"];
-            header.actionTitle = @"换一换";
+            header.actionTitle = NSLocalizedString(@"swap", nil);
             __weak typeof(self) weakSelf = self;
             header.onTapped = ^{
                 __strong typeof(weakSelf) strongSelf = weakSelf;

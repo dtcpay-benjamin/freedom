@@ -48,7 +48,7 @@ static NSString *const kAppStoreAppID = @"6748059198";
     NSString *appURLString = [NSString stringWithFormat:
                               @"https://apps.apple.com/app/id%@", kAppStoreAppID]; // 替换为你的 App ID
     NSURL *appURL = [NSURL URLWithString:appURLString];
-    NSString *title = @"推荐你使用这款 App！";
+    NSString *title = NSLocalizedString(@"shareAppTips", nil);
     NSArray *itemsToShare = @[title, appURL];
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
     // 适配 iPad（防止 crash）

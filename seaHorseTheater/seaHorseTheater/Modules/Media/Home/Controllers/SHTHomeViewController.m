@@ -105,7 +105,7 @@
     self.segmentedBackView = [[UIView alloc] init];
     self.segmentedBackView.backgroundColor = [UIColor clearColor];
     self.segmentedBackView.frame = CGRectMake(0, 0, SHTScreenWidth, SHT_STATUS_BAR_HEIGHT + 40);
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"在追", @"剧场", @"精选"]];
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"following", nil), NSLocalizedString(@"theater", nil), NSLocalizedString(@"featured", nil)]];
     self.segmentedControl.frame = CGRectMake(80, SHT_STATUS_BAR_HEIGHT, SHTScreenWidth - 160, 40);
     self.segmentedControl.backgroundColor = [UIColor clearColor];
     // 设置选中的字体颜色为白色
@@ -164,8 +164,8 @@
     if (!_favoriteEditBtn) {
         _favoriteEditBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _favoriteEditBtn.frame = CGRectMake(SHTScreenWidth - 60, SHT_STATUS_BAR_HEIGHT, 40, 40);
-        [_favoriteEditBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        [_favoriteEditBtn setTitle:@"退出" forState:UIControlStateSelected];
+        [_favoriteEditBtn setTitle:NSLocalizedString(@"edit", nil) forState:UIControlStateNormal];
+        [_favoriteEditBtn setTitle:NSLocalizedString(@"exit", nil) forState:UIControlStateSelected];
         [_favoriteEditBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_favoriteEditBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         _favoriteEditBtn.titleLabel.font = SHTUIFontBold(15);
@@ -191,7 +191,7 @@
         _editTitleLabel.frame = CGRectMake(SHTScreenWidth * 0.5 - 20.0, SHT_STATUS_BAR_HEIGHT, 40.0, 40.0);
         _editTitleLabel.textColor = [UIColor whiteColor];
         _editTitleLabel.font = SHTUIFontSystem(18);
-        _editTitleLabel.text = @"在追";
+        _editTitleLabel.text = NSLocalizedString(@"following", nil);
         _editTitleLabel.hidden = YES;
     }
     return _editTitleLabel;

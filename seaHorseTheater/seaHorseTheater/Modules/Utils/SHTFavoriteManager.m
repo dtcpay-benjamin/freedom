@@ -174,7 +174,7 @@
                 if (!IsDraw) {
                     [self.currentCollectView setStatus:1];
                 }
-                [SHTMBProgressManager showText:nil withText:@"已追剧，可在【追剧】查看" andSubText:nil isBottom:NO];
+                [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"collectionReminderSuccessful", nil) andSubText:nil isBottom:NO];
                 [self postFavoriteNotification:YES playletInfo:playletInfoModel];
             } failure:^(NSError * _Nonnull error) {
                 NSLog(@"短剧:(%@)收藏失败-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);

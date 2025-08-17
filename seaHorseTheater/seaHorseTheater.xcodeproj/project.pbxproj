@@ -67,6 +67,8 @@
 		728F44392E2C8E2B00361C28 /* SHTNonSelectableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 728F44382E2C8E2B00361C28 /* SHTNonSelectableTextView.m */; };
 		7293FAE12E42452100CBB64C /* SHTKeychainHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7293FAE02E42452100CBB64C /* SHTKeychainHelper.m */; };
 		72A804BF2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A804BE2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m */; };
+		72A804C92E517419005EF92E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72A804C72E517419005EF92E /* Localizable.strings */; };
+		72A804D02E51D1C2005EF92E /* SHTLanguageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A804CF2E51D1C2005EF92E /* SHTLanguageUtil.m */; };
 		72C98E782D4607BB00978694 /* AppDelegate+ADSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */; };
 		72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C98E7A2D460F6400978694 /* SHTHomeViewController.m */; };
 		72EB882B2D6D3CE60024DDBD /* SHTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EB882A2D6D3CE60024DDBD /* SHTTabBarController.m */; };
@@ -195,6 +197,17 @@
 		7293FAE02E42452100CBB64C /* SHTKeychainHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKeychainHelper.m; sourceTree = "<group>"; };
 		72A804BD2E46E28E005EF92E /* UILabel+SHTSizeCalculation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+SHTSizeCalculation.h"; sourceTree = "<group>"; };
 		72A804BE2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SHTSizeCalculation.m"; sourceTree = "<group>"; };
+		72A804C02E5171A0005EF92E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		72A804C12E5171A9005EF92E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		72A804C22E5171B4005EF92E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		72A804C32E5171C1005EF92E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		72A804C82E517419005EF92E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		72A804CA2E51742D005EF92E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		72A804CB2E517442005EF92E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		72A804CC2E517456005EF92E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		72A804CD2E517460005EF92E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		72A804CE2E51D1C2005EF92E /* SHTLanguageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTLanguageUtil.h; sourceTree = "<group>"; };
+		72A804CF2E51D1C2005EF92E /* SHTLanguageUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTLanguageUtil.m; sourceTree = "<group>"; };
 		72C98E762D4607BB00978694 /* AppDelegate+ADSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ADSDK.h"; sourceTree = "<group>"; };
 		72C98E772D4607BB00978694 /* AppDelegate+ADSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ADSDK.m"; sourceTree = "<group>"; };
 		72C98E792D460F6400978694 /* SHTHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTHomeViewController.h; sourceTree = "<group>"; };
@@ -393,6 +406,8 @@
 				7293FAE02E42452100CBB64C /* SHTKeychainHelper.m */,
 				72A804BD2E46E28E005EF92E /* UILabel+SHTSizeCalculation.h */,
 				72A804BE2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m */,
+				72A804CE2E51D1C2005EF92E /* SHTLanguageUtil.h */,
+				72A804CF2E51D1C2005EF92E /* SHTLanguageUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -546,6 +561,7 @@
 				72443C3D2D2A260D003E6189 /* Info.plist */,
 				72443C3E2D2A260D003E6189 /* main.m */,
 				721C672B2D3CE60F00843445 /* seaHorseTheater-PrefixHeader.pch */,
+				72A804C72E517419005EF92E /* Localizable.strings */,
 			);
 			path = seaHorseTheater;
 			sourceTree = "<group>";
@@ -630,6 +646,10 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
+				ja,
+				ko,
 			);
 			mainGroup = 72443C202D2A260B003E6189;
 			productRefGroup = 72443C2A2D2A260B003E6189 /* Products */;
@@ -649,6 +669,7 @@
 				184859C42E1FC9F100012C2E /* membershipServiceAgreement.html in Resources */,
 				72443C392D2A260D003E6189 /* Assets.xcassets in Resources */,
 				184859C02E1E6FE900012C2E /* kindReminder.json in Resources */,
+				72A804C92E517419005EF92E /* Localizable.strings in Resources */,
 				72443C3C2D2A260D003E6189 /* Base in Resources */,
 				727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */,
 				18CD2E3D2E385DD400DD22D4 /* privacyPolicy.html in Resources */,
@@ -735,6 +756,7 @@
 				18E717AD2E330C3400C98C2D /* SHTOthersCommonCell.m in Sources */,
 				18CD2E382E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m in Sources */,
 				187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */,
+				72A804D02E51D1C2005EF92E /* SHTLanguageUtil.m in Sources */,
 				72C98E7B2D460F6400978694 /* SHTHomeViewController.m in Sources */,
 				18E717AA2E33087600C98C2D /* SHTOthersCell.m in Sources */,
 				18CD2E402E39AAFA00DD22D4 /* SHTAppRateTool.m in Sources */,
@@ -789,8 +811,24 @@
 			isa = PBXVariantGroup;
 			children = (
 				72443C3B2D2A260D003E6189 /* Base */,
+				72A804C02E5171A0005EF92E /* zh-Hans */,
+				72A804C12E5171A9005EF92E /* zh-Hant */,
+				72A804C22E5171B4005EF92E /* ja */,
+				72A804C32E5171C1005EF92E /* ko */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		72A804C72E517419005EF92E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72A804C82E517419005EF92E /* en */,
+				72A804CA2E51742D005EF92E /* ja */,
+				72A804CB2E517442005EF92E /* ko */,
+				72A804CC2E517456005EF92E /* zh-Hans */,
+				72A804CD2E517460005EF92E /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -801,6 +839,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -862,6 +901,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

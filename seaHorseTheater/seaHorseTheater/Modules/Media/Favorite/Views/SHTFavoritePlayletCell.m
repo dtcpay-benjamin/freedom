@@ -86,7 +86,7 @@
         }];
     }
     self.titleLabel.text = _playletinfoModel.title;
-    self.subtitleLabel.text = [NSString stringWithFormat:@"观看至%ld集",(long)_playletinfoModel.current_episode];
+    self.subtitleLabel.text = [NSString stringWithFormat:NSLocalizedString(@"watch_episode", nil),(long)_playletinfoModel.current_episode];
     if (playletinfoModel.isSelected) {
         self.deleteImageView.image = [UIImage imageNamed:@"selected"];
     } else {
