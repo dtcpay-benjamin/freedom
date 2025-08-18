@@ -15,7 +15,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"隐私政策";
+    self.title = NSLocalizedString(@"privacy_policy", nil);
 }
 
 @end

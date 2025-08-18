@@ -15,7 +15,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"会员服务协议";
+    self.title = NSLocalizedString(@"confirm_subscription_keyWords", nil);
 }
 
 @end

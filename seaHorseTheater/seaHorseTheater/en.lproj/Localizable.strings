@@ -49,5 +49,14 @@
 "select_membership" = "Please select a membership type!";
 "confirm_subscription" = "Confirm Subscription";
 "confirm_subscription_message" = "Please read and agree to the “Membership Service Agreement” (including auto-renewal terms)";
-"confirm_subscription_keyWords" = "《Membership Service Agreement》";
+"confirm_subscription_keyWords" = "Membership Service Agreement";
 "continue_subscribe" = "Continue to Subscribe";
+"membership_not_activated" = "Membership not yet activated";
+"restore_benefits_notice" = "Restore Benefits Notice";
+"restore_benefits_tips" = "1. If you have successfully paid for a membership plan but the benefits have not been activated, you can restore your benefits.\n\n2. Restoring benefits simply refreshes the process, and Apple will not charge you again.\n\n3. Restoring benefits may take some time. If it does not take effect immediately, please check the “My VIP” page later.\n\nTap the button below to try restoring your benefits.";
+"restore_benefits" = "Restore Benefits";
+"open_now" = "Activate Now";
+"read_agreement_before_open" = "Please read the 'Membership Service Agreement' (including auto-renewal terms) before activation.";
+"feature_privilege" = "Features & Privileges";
+"restore_privilege" = "Restore Benefits";
+"friendly_reminder" = "Friendly Reminder";

@@ -183,7 +183,7 @@
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = SHTUIColorFromRGB(112, 103, 94);
         _titleLabel.font = SHTUIFontBold(15);
-        _titleLabel.text = @"功能特权";
+        _titleLabel.text = NSLocalizedString(@"feature_privilege", nil);
     }
     return _titleLabel;
 }

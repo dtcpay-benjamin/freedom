@@ -47,5 +47,14 @@
 "select_membership" = "請選擇會員類型！";
 "confirm_subscription" = "確認開通";
 "confirm_subscription_message" = "請閱讀並同意《會員服務協議》（含自動續費條款）";
-"confirm_subscription_keyWords" = "《會員服務協議》";
+"confirm_subscription_keyWords" = "會員服務協議";
 "continue_subscribe" = "繼續開通";
+"membership_not_activated" = "會員未到帳";
+"restore_benefits_notice" = "恢復權益聲明";
+"restore_benefits_tips" = "1. 成功支付了會員套餐但權益未及時到賬，可以選擇恢復權益\n\n2. 恢復權益操作為刷新流程，Apple 不會重新扣費\n\n3. 恢復權益操作通常需要一定的處理時間，若在點擊恢復權益後未及時生效，請稍後進入我的 VIP 頁面查看\n\n點擊下方按鈕嘗試恢復權益";
+"restore_benefits" = "恢復權益";
+"open_now" = "立即開通";
+"read_agreement_before_open" = "開通前請閱讀《會員服務協議》（含自動續費條款）";
+"feature_privilege" = "功能特權";
+"restore_privilege" = "恢復權益";
+"friendly_reminder" = "溫馨提示";

@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = SHT_BACK_COLOR_DARK;
-    self.title = @"会员未到账";
+    self.title = NSLocalizedString(@"membership_not_activated", nil);
     [self setupUI];
 }
 
@@ -70,7 +70,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.text = @"恢复权益声明";
+        _titleLabel.text = NSLocalizedString(@"restore_benefits_notice", nil);
         _titleLabel.font = [UIFont boldSystemFontOfSize:16];
         _titleLabel.textColor = SHT_BACK_COLOR_DARK;
     }
@@ -80,7 +80,7 @@
 - (UILabel *)descLabel {
     if (!_descLabel) {
         _descLabel = [[UILabel alloc] init];
-        _descLabel.text = @"1. 成功支付了会员套餐但权益未及时到账，可以选择恢复权益\n\n2. 恢复权益操作为刷新流程，苹果不会重新扣费\n\n3. 恢复权益操作通常需要一定的处理时间，若在点击恢复权益后未及时生效，请稍后进入我的 VIP 页面查看\n\n点击下方按钮尝试恢复权益";
+        _descLabel.text = NSLocalizedString(@"restore_benefits_tips", nil);
         _descLabel.font = [UIFont systemFontOfSize:14];
         _descLabel.textColor = [UIColor darkGrayColor];
         _descLabel.numberOfLines = 0;
@@ -91,7 +91,7 @@
 - (UIButton *)recoverButton {
     if (!_recoverButton) {
         _recoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_recoverButton setTitle:@"恢复权益" forState:UIControlStateNormal];
+        [_recoverButton setTitle:NSLocalizedString(@"restore_benefits", nil) forState:UIControlStateNormal];
         [_recoverButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _recoverButton.backgroundColor = SHTUIColorFromRGB(232.0, 78.0, 58.0);
         _recoverButton.layer.cornerRadius = 24;

@@ -47,5 +47,14 @@
 "select_membership" = "请选择会员类型！";
 "confirm_subscription" = "确认开通";
 "confirm_subscription_message" = "请阅读并同意《会员服务协议》（含自动续费条款）";
-"confirm_subscription_keyWords" = "《会员服务协议》";
+"confirm_subscription_keyWords" = "会员服务协议";
 "continue_subscribe" = "继续开通";
+"membership_not_activated" = "会员未到账";
+"restore_benefits_notice" = "恢复权益声明";
+"restore_benefits_tips" = "1. 成功支付了会员套餐但权益未及时到账，可以选择恢复权益\n\n2. 恢复权益操作为刷新流程，苹果不会重新扣费\n\n3. 恢复权益操作通常需要一定的处理时间，若在点击恢复权益后未及时生效，请稍后进入我的 VIP 页面查看\n\n点击下方按钮尝试恢复权益";
+"restore_benefits" = "恢复权益";
+"open_now" = "立即开通";
+"read_agreement_before_open" = "开通前请阅读《会员服务协议》（含自动续费条款）";
+"feature_privilege" = "功能特權";
+"restore_privilege" = "恢复权益";
+"friendly_reminder" = "温馨提示";

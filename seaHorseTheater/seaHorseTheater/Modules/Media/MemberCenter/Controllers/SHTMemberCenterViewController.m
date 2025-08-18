@@ -235,7 +235,7 @@
                 NSDictionary *params = @{
                     @"title": NSLocalizedString(@"confirm_subscription", nil),
                     @"message": NSLocalizedString(@"confirm_subscription_message", nil),
-                    @"keyWords": NSLocalizedString(@"confirm_subscription_keyWords", nil),
+                    @"keyWords":[NSString stringWithFormat:@"《%@》", NSLocalizedString(@"confirm_subscription_keyWords", nil)],
                     @"confirmTitle": NSLocalizedString(@"continue_subscribe", nil),
                     @"protocolHeader": @"vipAgreement://"
                 };

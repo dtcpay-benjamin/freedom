@@ -47,5 +47,14 @@
 "select_membership" = "请选择会员类型！";
 "confirm_subscription" = "開通を確認";
 "confirm_subscription_message" = "「会員サービス利用規約（自動更新条項を含む）」をお読みの上、同意してください";
-"confirm_subscription_keyWords" = "《会員サービス利用規約》";
+"confirm_subscription_keyWords" = "会員サービス利用規約";
 "continue_subscribe" = "開通を続ける";
+"membership_not_activated" = "会員が反映されていません";
+"restore_benefits_notice" = "権益回復に関する声明";
+"restore_benefits_tips" = "1. 会員プランを正常に購入したにもかかわらず特典が反映されない場合、「権益の復元」を選択できます。\n\n2. 権益の復元は更新処理であり、Apple が再度請求することはありません。\n\n3. 権益の復元には処理時間がかかる場合があります。操作後すぐに反映されない場合は、しばらくしてから「マイ VIP」ページをご確認ください。\n\n下のボタンをタップして権益を復元してください。";
+"restore_benefits" = "権益を復元";
+"open_now" = "今すぐ開通";
+"read_agreement_before_open" = "開通前に「会員サービス契約」（自動更新条項を含む）をお読みください。";
+"feature_privilege" = "機能特典";
+"restore_privilege" = "特典を復元";
+"friendly_reminder" = "ご注意";

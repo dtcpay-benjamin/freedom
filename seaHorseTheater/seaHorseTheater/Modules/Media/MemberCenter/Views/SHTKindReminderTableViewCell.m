@@ -49,7 +49,7 @@
     [attrString addAttribute:NSForegroundColorAttributeName value:SHTUIColorFromRGB(98, 93, 82) range:NSMakeRange(0, _content.length)];
 
     // 设置可点击的“恢复权益”部分
-    NSRange restoreRange = [_content rangeOfString:@"【恢复权益】"];
+    NSRange restoreRange = [_content rangeOfString:[NSString stringWithFormat:@"【%@】", NSLocalizedString(@"restore_privilege", nil)]];
     if (restoreRange.location != NSNotFound) {
         NSURL *url = [NSURL URLWithString:@"action://restore"];
         [attrString addAttribute:NSLinkAttributeName value:url range:restoreRange];
@@ -80,7 +80,7 @@ shouldInteractWithURL:(NSURL *)URL
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = SHTUIColorFromRGB(150, 146, 128);
         _titleLabel.font = SHTUIFontBold(20);
-        _titleLabel.text = @"温馨提示";
+        _titleLabel.text = NSLocalizedString(@"friendly_reminder", nil);
     }
     return _titleLabel;
 }

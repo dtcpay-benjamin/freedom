@@ -77,8 +77,8 @@
     if (!_immediatelyBtn) {
         _immediatelyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _immediatelyBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_immediatelyBtn setTitle:@"立即开通" forState:UIControlStateNormal];
-        [_immediatelyBtn setTitle:@"立即开通" forState:UIControlStateSelected];
+        [_immediatelyBtn setTitle:NSLocalizedString(@"open_now", nil) forState:UIControlStateNormal];
+        [_immediatelyBtn setTitle:NSLocalizedString(@"open_now", nil) forState:UIControlStateSelected];
         [_immediatelyBtn setTitleColor:SHTUIColorFromRGB(96, 70, 24) forState:UIControlStateNormal];
         [_immediatelyBtn setTitleColor:SHTUIColorFromRGB(96, 70, 24) forState:UIControlStateSelected];
         [_immediatelyBtn setBackgroundColor:SHTUIColorFromRGB(245, 224, 178)];
@@ -105,8 +105,8 @@
         _agreementTextLabel = [[UILabel alloc] init];
         _agreementTextLabel.userInteractionEnabled = YES;
         // 文字内容
-        NSString *fullText = @"开通前请阅读《会员服务协议》（含自动续费条款）";
-        NSString *linkText = @"《会员服务协议》";
+        NSString *fullText = NSLocalizedString(@"read_agreement_before_open", nil);
+        NSString *linkText = [NSString stringWithFormat:@"《%@》", NSLocalizedString(@"confirm_subscription_keyWords", nil)];
         // 构造富文本
         NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:fullText];
         // 设置整体字体和颜色
