@@ -19,6 +19,7 @@
 #import "SHTServiceAgreementViewController.h"
 #import "SHTPrivacyPolicyViewController.h"
 #import "SHTAppRateTool.h"
+#import "SHTLanguageUtil.h"
 
 @interface SHTMineViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -199,12 +200,13 @@
                 } else if ([id isEqualToString:@"yhxy"]) {
                     // 用户协议
                     SHTServiceAgreementViewController *serviceAgreementVC = [[SHTServiceAgreementViewController alloc] init];
-                    [serviceAgreementVC loadMainBundleHtml:@"membershipServiceAgreement"];
+                    NSString *urlStr = [SHTLanguageUtil fetchMembershipServiceAgreementUrl];
+                    [serviceAgreementVC loadMainBundleHtml:urlStr];
                     [SHTRouteUtil pushFrom:strongSelf to:serviceAgreementVC];
                 } else if ([id isEqualToString:@"yszc"]) {
                     // 隐私政策
                     SHTPrivacyPolicyViewController *privacyPolicyVC = [[SHTPrivacyPolicyViewController alloc] init];
-                    [privacyPolicyVC loadMainBundleHtml:@"privacyPolicy"];
+                    [privacyPolicyVC loadMainBundleHtml:[SHTLanguageUtil fetchPrivacyPolicyUrl]];
                     [SHTRouteUtil pushFrom:strongSelf to:privacyPolicyVC];
                 }
             });

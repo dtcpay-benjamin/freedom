@@ -22,6 +22,7 @@
 #import "SHTAlertHelper.h"
 #import "SHTSubscriptionManager.h"
 #import "SHTMBProgressManager.h"
+#import "SHTLanguageUtil.h"
 #import <StoreKit/StoreKit.h>
 
 @interface SHTMemberCenterViewController ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
@@ -137,7 +138,8 @@
 // 跳转会员服务协议详情
 - (void)jumpMembershipServiceAgreement {
     SHTServiceAgreementViewController *serviceAgreementVC = [[SHTServiceAgreementViewController alloc] init];
-    [serviceAgreementVC loadMainBundleHtml:@"membershipServiceAgreement"];
+    NSString *urlStr = [SHTLanguageUtil fetchMembershipServiceAgreementUrl];
+    [serviceAgreementVC loadMainBundleHtml:urlStr];
     [SHTRouteUtil pushFrom:self to:serviceAgreementVC];
 }
 

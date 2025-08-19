@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181F81B72E53FF5400E57592 /* membershipServiceAgreement_ko.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81B42E53FF5400E57592 /* membershipServiceAgreement_ko.html */; };
+		181F81B82E53FF5400E57592 /* membershipServiceAgreement_ja.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81B32E53FF5400E57592 /* membershipServiceAgreement_ja.html */; };
+		181F81B92E53FF5400E57592 /* membershipServiceAgreement_zh.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81B52E53FF5400E57592 /* membershipServiceAgreement_zh.html */; };
+		181F81BA2E53FF5400E57592 /* membershipServiceAgreement_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81B22E53FF5400E57592 /* membershipServiceAgreement_en.html */; };
+		181F81BB2E53FF5400E57592 /* membershipServiceAgreement_zh-Hant.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81B62E53FF5400E57592 /* membershipServiceAgreement_zh-Hant.html */; };
+		181F81C22E54089F00E57592 /* privacyPolicy_ja.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81BD2E54089F00E57592 /* privacyPolicy_ja.html */; };
+		181F81C32E54089F00E57592 /* privacyPolicy_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81BC2E54089F00E57592 /* privacyPolicy_en.html */; };
+		181F81C42E54089F00E57592 /* privacyPolicy_zh-Hant.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81C02E54089F00E57592 /* privacyPolicy_zh-Hant.html */; };
+		181F81C52E54089F00E57592 /* privacyPolicy_ko.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81BE2E54089F00E57592 /* privacyPolicy_ko.html */; };
+		181F81C62E54089F00E57592 /* privacyPolicy_zh.html in Resources */ = {isa = PBXBuildFile; fileRef = 181F81BF2E54089F00E57592 /* privacyPolicy_zh.html */; };
 		182594152D894B4700B0AD44 /* SHTFavoritePlayletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */; };
 		1843A1D82DB8C952008116EB /* SHTVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1D72DB8C952008116EB /* SHTVerticalButton.m */; };
 		1843A1DE2DB8D765008116EB /* SHTToolsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843A1DD2DB8D765008116EB /* SHTToolsManager.m */; };
@@ -23,7 +33,6 @@
 		184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859B62E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m */; };
 		184859BD2E1DF86700012C2E /* SHTKindReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */; };
 		184859C02E1E6FE900012C2E /* kindReminder.json in Resources */ = {isa = PBXBuildFile; fileRef = 184859BF2E1E6FE900012C2E /* kindReminder.json */; };
-		184859C42E1FC9F100012C2E /* membershipServiceAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */; };
 		184859C72E2099E700012C2E /* SHTServiceAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184859C62E2099E700012C2E /* SHTServiceAgreementViewController.m */; };
 		184D458F2E2F19C50059B501 /* SHTMineHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D458E2E2F19C50059B501 /* SHTMineHeaderCell.m */; };
 		184D45922E2F24480059B501 /* SHTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45912E2F24480059B501 /* SHTTableViewCell.m */; };
@@ -39,7 +48,6 @@
 		18CD2E352E37791200DD22D4 /* SHTRechargeRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E342E37791200DD22D4 /* SHTRechargeRecordsViewController.m */; };
 		18CD2E382E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E372E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m */; };
 		18CD2E3B2E385A1100DD22D4 /* SHTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E3A2E385A1100DD22D4 /* SHTWebViewController.m */; };
-		18CD2E3D2E385DD400DD22D4 /* privacyPolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 18CD2E3C2E385DD400DD22D4 /* privacyPolicy.html */; };
 		18CD2E402E39AAFA00DD22D4 /* SHTAppRateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E3F2E39AAFA00DD22D4 /* SHTAppRateTool.m */; };
 		18E717AA2E33087600C98C2D /* SHTOthersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E717A92E33087600C98C2D /* SHTOthersCell.m */; };
 		18E717AD2E330C3400C98C2D /* SHTOthersCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E717AC2E330C3400C98C2D /* SHTOthersCommonCell.m */; };
@@ -78,6 +86,16 @@
 
 /* Begin PBXFileReference section */
 		0FE71F876FF70A76297AAC06 /* Pods-seaHorseTheater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-seaHorseTheater.debug.xcconfig"; path = "Target Support Files/Pods-seaHorseTheater/Pods-seaHorseTheater.debug.xcconfig"; sourceTree = "<group>"; };
+		181F81B22E53FF5400E57592 /* membershipServiceAgreement_en.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = membershipServiceAgreement_en.html; sourceTree = "<group>"; };
+		181F81B32E53FF5400E57592 /* membershipServiceAgreement_ja.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = membershipServiceAgreement_ja.html; sourceTree = "<group>"; };
+		181F81B42E53FF5400E57592 /* membershipServiceAgreement_ko.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = membershipServiceAgreement_ko.html; sourceTree = "<group>"; };
+		181F81B52E53FF5400E57592 /* membershipServiceAgreement_zh.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = membershipServiceAgreement_zh.html; sourceTree = "<group>"; };
+		181F81B62E53FF5400E57592 /* membershipServiceAgreement_zh-Hant.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "membershipServiceAgreement_zh-Hant.html"; sourceTree = "<group>"; };
+		181F81BC2E54089F00E57592 /* privacyPolicy_en.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacyPolicy_en.html; sourceTree = "<group>"; };
+		181F81BD2E54089F00E57592 /* privacyPolicy_ja.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacyPolicy_ja.html; sourceTree = "<group>"; };
+		181F81BE2E54089F00E57592 /* privacyPolicy_ko.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacyPolicy_ko.html; sourceTree = "<group>"; };
+		181F81BF2E54089F00E57592 /* privacyPolicy_zh.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacyPolicy_zh.html; sourceTree = "<group>"; };
+		181F81C02E54089F00E57592 /* privacyPolicy_zh-Hant.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "privacyPolicy_zh-Hant.html"; sourceTree = "<group>"; };
 		182594132D894B4700B0AD44 /* SHTFavoritePlayletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTFavoritePlayletCell.h; sourceTree = "<group>"; };
 		182594142D894B4700B0AD44 /* SHTFavoritePlayletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTFavoritePlayletCell.m; sourceTree = "<group>"; };
 		1843A1D62DB8C952008116EB /* SHTVerticalButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTVerticalButton.h; sourceTree = "<group>"; };
@@ -108,7 +126,6 @@
 		184859BB2E1DF86700012C2E /* SHTKindReminderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTKindReminderTableViewCell.h; sourceTree = "<group>"; };
 		184859BC2E1DF86700012C2E /* SHTKindReminderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTKindReminderTableViewCell.m; sourceTree = "<group>"; };
 		184859BF2E1E6FE900012C2E /* kindReminder.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kindReminder.json; sourceTree = "<group>"; };
-		184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = membershipServiceAgreement.html; sourceTree = "<group>"; };
 		184859C52E2099E700012C2E /* SHTServiceAgreementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTServiceAgreementViewController.h; sourceTree = "<group>"; };
 		184859C62E2099E700012C2E /* SHTServiceAgreementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTServiceAgreementViewController.m; sourceTree = "<group>"; };
 		184D458D2E2F19C50059B501 /* SHTMineHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMineHeaderCell.h; sourceTree = "<group>"; };
@@ -140,7 +157,6 @@
 		18CD2E372E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTPrivacyPolicyViewController.m; sourceTree = "<group>"; };
 		18CD2E392E385A1100DD22D4 /* SHTWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTWebViewController.h; sourceTree = "<group>"; };
 		18CD2E3A2E385A1100DD22D4 /* SHTWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTWebViewController.m; sourceTree = "<group>"; };
-		18CD2E3C2E385DD400DD22D4 /* privacyPolicy.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = privacyPolicy.html; sourceTree = "<group>"; };
 		18CD2E3E2E39AAFA00DD22D4 /* SHTAppRateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTAppRateTool.h; sourceTree = "<group>"; };
 		18CD2E3F2E39AAFA00DD22D4 /* SHTAppRateTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTAppRateTool.m; sourceTree = "<group>"; };
 		18E717A82E33087600C98C2D /* SHTOthersCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTOthersCell.h; sourceTree = "<group>"; };
@@ -231,6 +247,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		181F81B12E53FF3E00E57592 /* membershipServiceAgreement */ = {
+			isa = PBXGroup;
+			children = (
+				181F81B22E53FF5400E57592 /* membershipServiceAgreement_en.html */,
+				181F81B32E53FF5400E57592 /* membershipServiceAgreement_ja.html */,
+				181F81B42E53FF5400E57592 /* membershipServiceAgreement_ko.html */,
+				181F81B52E53FF5400E57592 /* membershipServiceAgreement_zh.html */,
+				181F81B62E53FF5400E57592 /* membershipServiceAgreement_zh-Hant.html */,
+			);
+			path = membershipServiceAgreement;
+			sourceTree = "<group>";
+		};
+		181F81C12E54089F00E57592 /* privacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				181F81BC2E54089F00E57592 /* privacyPolicy_en.html */,
+				181F81BD2E54089F00E57592 /* privacyPolicy_ja.html */,
+				181F81BE2E54089F00E57592 /* privacyPolicy_ko.html */,
+				181F81BF2E54089F00E57592 /* privacyPolicy_zh.html */,
+				181F81C02E54089F00E57592 /* privacyPolicy_zh-Hant.html */,
+			);
+			path = privacyPolicy;
+			sourceTree = "<group>";
+		};
 		1825940E2D894A0A00B0AD44 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,8 +293,8 @@
 		184859BE2E1E6F0B00012C2E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				184859C32E1FC9F100012C2E /* membershipServiceAgreement.html */,
-				18CD2E3C2E385DD400DD22D4 /* privacyPolicy.html */,
+				181F81C12E54089F00E57592 /* privacyPolicy */,
+				181F81B12E53FF3E00E57592 /* membershipServiceAgreement */,
 				184859BF2E1E6FE900012C2E /* kindReminder.json */,
 			);
 			path = Sources;
@@ -666,13 +706,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				184859C42E1FC9F100012C2E /* membershipServiceAgreement.html in Resources */,
 				72443C392D2A260D003E6189 /* Assets.xcassets in Resources */,
 				184859C02E1E6FE900012C2E /* kindReminder.json in Resources */,
+				181F81C22E54089F00E57592 /* privacyPolicy_ja.html in Resources */,
+				181F81C32E54089F00E57592 /* privacyPolicy_en.html in Resources */,
+				181F81C42E54089F00E57592 /* privacyPolicy_zh-Hant.html in Resources */,
+				181F81C52E54089F00E57592 /* privacyPolicy_ko.html in Resources */,
+				181F81C62E54089F00E57592 /* privacyPolicy_zh.html in Resources */,
 				72A804C92E517419005EF92E /* Localizable.strings in Resources */,
 				72443C3C2D2A260D003E6189 /* Base in Resources */,
 				727DE6F82D3B3EE9000681FD /* SDK_Setting_5603361.json in Resources */,
-				18CD2E3D2E385DD400DD22D4 /* privacyPolicy.html in Resources */,
+				181F81B72E53FF5400E57592 /* membershipServiceAgreement_ko.html in Resources */,
+				181F81B82E53FF5400E57592 /* membershipServiceAgreement_ja.html in Resources */,
+				181F81B92E53FF5400E57592 /* membershipServiceAgreement_zh.html in Resources */,
+				181F81BA2E53FF5400E57592 /* membershipServiceAgreement_en.html in Resources */,
+				181F81BB2E53FF5400E57592 /* membershipServiceAgreement_zh-Hant.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

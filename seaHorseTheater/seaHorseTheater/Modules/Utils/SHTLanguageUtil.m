@@ -28,4 +28,50 @@
     return language;
 }
 
++ (NSString *)fetchMembershipServiceAgreementUrl {
+    LanguageType languageType = [SHTLanguageUtil fetchCurrentLanguageType];
+    NSString *urlStr = @"membershipServiceAgreement_en";
+    switch (languageType) {
+        case LanguageZH_CN:
+            urlStr = @"membershipServiceAgreement_zh";
+            break;
+        case LanguageZH_TW:
+            urlStr = @"membershipServiceAgreement_zh-Hant";
+            break;
+        case LanguageJA:
+            urlStr = @"membershipServiceAgreement_ja";
+            break;
+        case LanguageKO:
+            urlStr = @"membershipServiceAgreement_ko";
+            break;
+        case LanguageEN:
+        default:
+            break;
+    }
+    return urlStr;
+}
+
++ (NSString *)fetchPrivacyPolicyUrl {
+    LanguageType languageType = [SHTLanguageUtil fetchCurrentLanguageType];
+    NSString *urlStr = @"privacyPolicy_en";
+    switch (languageType) {
+        case LanguageZH_CN:
+            urlStr = @"privacyPolicy_zh";
+            break;
+        case LanguageZH_TW:
+            urlStr = @"privacyPolicy_zh-Hant";
+            break;
+        case LanguageJA:
+            urlStr = @"privacyPolicy_ja";
+            break;
+        case LanguageKO:
+            urlStr = @"privacyPolicy_ko";
+            break;
+        case LanguageEN:
+        default:
+            break;
+    }
+    return urlStr;
+}
+
 @end

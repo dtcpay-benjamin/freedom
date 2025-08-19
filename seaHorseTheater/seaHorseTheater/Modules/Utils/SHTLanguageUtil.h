@@ -21,6 +21,10 @@ typedef NS_ENUM(NSInteger, LanguageType) {
 
 + (LanguageType)fetchCurrentLanguageType;
 
++ (NSString *)fetchMembershipServiceAgreementUrl;
+
++ (NSString *)fetchPrivacyPolicyUrl;
+
 @end
 
 NS_ASSUME_NONNULL_END
