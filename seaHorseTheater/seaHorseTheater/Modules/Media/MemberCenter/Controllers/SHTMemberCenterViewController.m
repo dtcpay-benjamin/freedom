@@ -268,11 +268,27 @@
         cell.backgroundColor = SHT_BACK_COLOR_DARK;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         NSDictionary *dic = [SHTToolsManager serializationFromJson:[[NSBundle mainBundle] pathForResource:@"kindReminder" ofType:@"json"]];
-        NSString *content = dic[@"membership_notice"];
+        NSString *content = dic[@"membership_notice_en"];
+        LanguageType languageType = [SHTLanguageUtil fetchCurrentLanguageType];
+        switch (languageType) {
+            case LanguageZH_CN:
+                content = dic[@"membership_notice_zh-Hans"];
+                break;
+            case LanguageZH_TW:
+                content = dic[@"membership_notice_zh-Hant"];
+                break;
+            case LanguageJA:
+                content = dic[@"membership_notice_ja"];
+                break;
+            case LanguageKO:
+                content = dic[@"membership_notice_ko"];
+                break;
+            case LanguageEN:
+            default:
+                break;
+        }
         cell.content = content;
-        __weak typeof(self) weakSelf = self;
         cell.restoreAction = ^{
-            __strong typeof(weakSelf) strongSelf = weakSelf;
             // 跳转恢复权益页面
             SHTRestoreRightsViewController *restoreRightsVC = [[SHTRestoreRightsViewController alloc] init];
             [SHTRouteUtil pushFrom:self to:restoreRightsVC];

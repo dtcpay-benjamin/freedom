@@ -1,3 +1,11 @@
 {
-  "membership_notice": "1. 付款：用户确认购买并付款后记入iTunes账户；\n2. 取消续订：自动续费服务，如需取消续订，用户可在当前订阅周期到期前24小时以前随时手动在iTunes/AppleID设置管理中关闭自动续费功能，取消后不再扣费；\n3. 自动续费：苹果iTunes账户会在到期前24小时内扣费，扣费成功后订阅周期顺延一个订阅周期。\n4. 会员到账如有延迟，请5～10分钟后再次查看。会员未到账？点击此处【恢复权益】"
+  "membership_notice_zh-Hans": "1. 付款：用户确认购买并付款后记入iTunes账户；\n2. 取消续订：自动续费服务，如需取消续订，用户可在当前订阅周期到期前24小时以前随时手动在iTunes/AppleID设置管理中关闭自动续费功能，取消后不再扣费；\n3. 自动续费：苹果iTunes账户会在到期前24小时内扣费，扣费成功后订阅周期顺延一个订阅周期。\n4. 会员到账如有延迟，请5～10分钟后再次查看。会员未到账？点击此处【恢复权益】",
+
+  "membership_notice_zh-Hant": "1. 付款：用戶確認購買並付款後記入 iTunes 帳戶；\n2. 取消續訂：自動續費服務，如需取消續訂，用戶可在當前訂閱週期到期前 24 小時以前隨時手動在 iTunes/Apple ID 設定管理中關閉自動續費功能，取消後不再扣費；\n3. 自動續費：蘋果 iTunes 帳戶會在到期前 24 小時內扣費，扣費成功後訂閱週期順延一個訂閱週期。\n4. 會員到帳如有延遲，請 5～10 分鐘後再次查看。會員未到帳？點擊此處【恢復權益】",
+
+  "membership_notice_en": "1. Payment: Once the user confirms the purchase and payment, it will be charged to the iTunes account;\n2. Cancel Subscription: For the auto-renewal service, if you wish to cancel, you can manually turn off the auto-renewal function in iTunes/Apple ID settings at least 24 hours before the current subscription period ends. After cancellation, no further charges will be made;\n3. Auto-Renewal: The Apple iTunes account will be charged within 24 hours before expiration. Once the payment is successful, the subscription will be extended for one more billing cycle.\n4. If there is a delay in membership activation, please check again in 5–10 minutes. Membership not activated? Click here to 【Restore Purchases】",
+
+  "membership_notice_ja": "1. 支払い：ユーザーが購入を確認し支払いを完了すると、iTunes アカウントに記録されます；\n2. 定期購読のキャンセル：自動更新サービスをご利用の場合、解約したい場合は現在の購読期間が終了する 24 時間前までに、iTunes/Apple ID 設定で自動更新を手動でオフにしてください。キャンセル後は料金は発生しません；\n3. 自動更新：Apple iTunes アカウントは有効期限の 24 時間以内に課金され、課金成功後、購読期間がさらに 1 期間延長されます。\n4. 会員資格が反映されるのに遅延がある場合は、5～10 分後に再度ご確認ください。会員資格が反映されていませんか？こちらをクリックして【購入を復元】",
+
+  "membership_notice_ko": "1. 결제: 사용자가 구매를 확인하고 결제를 완료하면 iTunes 계정에 기록됩니다;\n2. 구독 취소: 자동 갱신 서비스의 경우, 구독을 취소하려면 현재 구독 기간이 끝나기 최소 24시간 전에 iTunes/Apple ID 설정에서 자동 갱신 기능을 수동으로 해제할 수 있습니다. 취소 후에는 추가 요금이 부과되지 않습니다;\n3. 자동 갱신: Apple iTunes 계정은 만료 24시간 이내에 요금이 청구되며, 결제가 성공하면 구독 기간이 한 주기 더 연장됩니다.\n4. 멤버십 반영이 지연될 경우 5~10분 후 다시 확인해 주세요. 멤버십이 반영되지 않았나요? 여기를 클릭하여 【권한 복원】"
 }
