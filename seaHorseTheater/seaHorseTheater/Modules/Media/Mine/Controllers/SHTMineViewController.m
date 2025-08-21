@@ -13,7 +13,7 @@
 #import <Masonry/Masonry.h>
 #import "SHTMineHeaderCell.h"
 #import "SHTMineModel.h"
-#import "SHTOpenMemberAccountCell.h"
+//#import "SHTOpenMemberAccountCell.h"
 #import "SHTOthersCell.h"
 #import "SHTRechargeRecordsViewController.h"
 #import "SHTServiceAgreementViewController.h"
@@ -60,19 +60,19 @@
     mineModel.uniqueIdentifier = self.membershipID;
     [self.configDataArray addObject:mineModel];
     
-    SHTMineModel *mineModel1 = [[SHTMineModel alloc] init];
-    mineModel1.mineType = SHTMineTypeMemberGuidance;
-    mineModel1.title = NSLocalizedString(@"membership_period", nil);
-    mineModel1.subTitle = NSLocalizedString(@"unlock_membership", nil);
-    mineModel1.otherTitle = NSLocalizedString(@"subscribe", nil);
-    [self.configDataArray addObject:mineModel1];
+//    SHTMineModel *mineModel1 = [[SHTMineModel alloc] init];
+//    mineModel1.mineType = SHTMineTypeMemberGuidance;
+//    mineModel1.title = NSLocalizedString(@"membership_period", nil);
+//    mineModel1.subTitle = NSLocalizedString(@"unlock_membership", nil);
+//    mineModel1.otherTitle = NSLocalizedString(@"subscribe", nil);
+//    [self.configDataArray addObject:mineModel1];
     
     NSMutableArray *othersArray = [[NSMutableArray alloc] init];
-    SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
-    mineModel2.uniqueIdentifier = @"czjl";
-    mineModel2.mineType = SHTMineTypeCommon;
-    mineModel2.title = NSLocalizedString(@"recharge_history", nil);
-    [othersArray addObject:mineModel2];
+//    SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
+//    mineModel2.uniqueIdentifier = @"czjl";
+//    mineModel2.mineType = SHTMineTypeCommon;
+//    mineModel2.title = NSLocalizedString(@"recharge_history", nil);
+//    [othersArray addObject:mineModel2];
     
     SHTMineModel *mineModel3 = [[SHTMineModel alloc] init];
     mineModel3.uniqueIdentifier = @"fxapp";
@@ -129,7 +129,7 @@
         _tableView.estimatedRowHeight = 90.0;
         _tableView.backgroundColor = SHTUIColorFromRGB(160.0, 96.0, 95.0);
         [_tableView registerClass:[SHTMineHeaderCell class] forCellReuseIdentifier:@"SHTMineHeaderCell"];
-        [_tableView registerClass:[SHTOpenMemberAccountCell class] forCellReuseIdentifier:@"SHTOpenMemberAccountCell"];
+//        [_tableView registerClass:[SHTOpenMemberAccountCell class] forCellReuseIdentifier:@"SHTOpenMemberAccountCell"];
         [_tableView registerClass:[SHTOthersCell class] forCellReuseIdentifier:@"SHTOthersCell"];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     }
@@ -152,9 +152,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         return 140.0;
-    } else if (indexPath.row == 1) {
-        return 202.0;
-    } else {
+    }
+//    else if (indexPath.row == 1) {
+//        return 202.0;
+//    }
+    else {
         return 320.0;
     }
 }
@@ -168,18 +170,20 @@
         cell.backgroundColor = [UIColor clearColor];
         cell.model = model;
         return cell;
-    } else if (indexPath.row == 1) {
-        SHTMineModel *model = self.configDataArray[indexPath.row];
-        SHTOpenMemberAccountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTOpenMemberAccountCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor clearColor];
-        cell.model = model;
-        cell.openMemberAccountTapped = ^{
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            [SHTRouteUtil pushFrom:strongSelf to:[[SHTMemberCenterViewController alloc] init]];
-        };
-        return cell;
-    } else {
+    }
+//    else if (indexPath.row == 1) {
+//        SHTMineModel *model = self.configDataArray[indexPath.row];
+//        SHTOpenMemberAccountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTOpenMemberAccountCell" forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.backgroundColor = [UIColor clearColor];
+//        cell.model = model;
+//        cell.openMemberAccountTapped = ^{
+//            __strong typeof(weakSelf) strongSelf = weakSelf;
+//            [SHTRouteUtil pushFrom:strongSelf to:[[SHTMemberCenterViewController alloc] init]];
+//        };
+//        return cell;
+//    }
+    else {
         NSMutableArray *others = self.configDataArray[indexPath.row];
         SHTOthersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SHTOthersCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -188,10 +192,11 @@
         cell.enterNextTapped = ^(NSString * _Nonnull id) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 __strong typeof(weakSelf) strongSelf = weakSelf;
-                if ([id isEqualToString:@"czjl"]) {
-                    // 充值记录
-                    [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
-                } else if ([id isEqualToString:@"fxapp"]) {
+//                if ([id isEqualToString:@"czjl"]) {
+//                    // 充值记录
+//                    [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
+//                } else
+                if ([id isEqualToString:@"fxapp"]) {
                     // 分享APP
                     [SHTAppRateTool shareAppAction:strongSelf];
                 } else if ([id isEqualToString:@"qwpf"]) {

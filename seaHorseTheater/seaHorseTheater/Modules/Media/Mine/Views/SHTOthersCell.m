@@ -25,7 +25,7 @@
 - (void)addLayoutSubviews {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.contentView).offset(10.0);
-        make.top.equalTo(self.contentView);
+        make.top.equalTo(self.contentView).offset(60.0);
         make.trailing.equalTo(self.contentView).offset(-10.0);
         make.bottom.equalTo(self.contentView).offset(-20.0);
     }];
