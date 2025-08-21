@@ -288,8 +288,10 @@
         _playletTheater = [[DJXPlayletAggregatePageViewController alloc] initWithConfigBuilder:^(DJXPlayletAggregatePageVCConfig * _Nonnull config) {
             DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
             playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-            playletConfig.freeEpisodesCount = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 20 : 5; // 如果已经开通订阅则可以免费观看20集，反之只能免费观看5集
-            playletConfig.unlockEpisodesCountUsingAD = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 10 : 1; // 如果已经开通订阅则观看一次激励视频解锁10集，反之只能解锁1集
+//            playletConfig.freeEpisodesCount = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 20 : 5; // 如果已经开通订阅则可以免费观看20集，反之只能免费观看5集
+            playletConfig.freeEpisodesCount =  5; // 可免费观看5集
+//            playletConfig.unlockEpisodesCountUsingAD = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 10 : 1; // 如果已经开通订阅则观看一次激励视频解锁10集，反之只能解锁1集
+            playletConfig.unlockEpisodesCountUsingAD = 1; // 观看一次激励视频解锁1集
             playletConfig.hideLikeIcon = YES;
             playletConfig.disableDoubleClickLike = YES;
             playletConfig.hideCollectIcon = YES;
@@ -311,8 +313,10 @@
         _playletVC = [[DJXDrawVideoViewController alloc] initWithConfigBuilder:^(DJXDrawVideoVCConfig * _Nonnull config) {
             DJXPlayletConfig *playletConfig = [[DJXPlayletConfig alloc] init];
             playletConfig.playletUnlockADMode = DJXPlayletUnlockADMode_Common;
-            playletConfig.freeEpisodesCount = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 20 : 5; // 如果已经开通订阅则可以免费观看20集，反之只能免费观看5集
-            playletConfig.unlockEpisodesCountUsingAD = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 10 : 1; // 如果已经开通订阅则观看一次激励视频解锁10集，反之只能解锁1集
+//            playletConfig.freeEpisodesCount = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 20 : 5; // 如果已经开通订阅则可以免费观看20集，反之只能免费观看5集
+            playletConfig.freeEpisodesCount = 5; // 可免费观看5集
+//            playletConfig.unlockEpisodesCountUsingAD = [[SHTSubscriptionManager sharedManager] isSubscribed] ? 10 : 1; // 如果已经开通订阅则观看一次激励视频解锁10集，反之只能解锁1集
+            playletConfig.unlockEpisodesCountUsingAD = 1; // 观看一次激励视频解锁1集
             playletConfig.hideLikeIcon = YES;
             playletConfig.disableDoubleClickLike = YES;
             playletConfig.hideCollectIcon = YES;
