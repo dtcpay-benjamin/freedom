@@ -86,11 +86,11 @@
     mineModel4.title = NSLocalizedString(@"rate_now", nil);
     [othersArray addObject:mineModel4];
     
-    SHTMineModel *mineModel5 = [[SHTMineModel alloc] init];
-    mineModel5.uniqueIdentifier = @"yhxy";
-    mineModel5.mineType = SHTMineTypeCommon;
-    mineModel5.title = NSLocalizedString(@"user_agreement", nil);
-    [othersArray addObject:mineModel5];
+//    SHTMineModel *mineModel5 = [[SHTMineModel alloc] init];
+//    mineModel5.uniqueIdentifier = @"yhxy";
+//    mineModel5.mineType = SHTMineTypeCommon;
+//    mineModel5.title = NSLocalizedString(@"user_agreement", nil);
+//    [othersArray addObject:mineModel5];
     
     SHTMineModel *mineModel6 = [[SHTMineModel alloc] init];
     mineModel6.uniqueIdentifier = @"yszc";
