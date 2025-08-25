@@ -15,7 +15,7 @@
 #import "SHTMineModel.h"
 //#import "SHTOpenMemberAccountCell.h"
 #import "SHTOthersCell.h"
-#import "SHTRechargeRecordsViewController.h"
+#import "SHTRecentlyWatchedViewController.h"
 #import "SHTServiceAgreementViewController.h"
 #import "SHTPrivacyPolicyViewController.h"
 #import "SHTAppRateTool.h"
@@ -68,11 +68,11 @@
 //    [self.configDataArray addObject:mineModel1];
     
     NSMutableArray *othersArray = [[NSMutableArray alloc] init];
-//    SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
-//    mineModel2.uniqueIdentifier = @"czjl";
-//    mineModel2.mineType = SHTMineTypeCommon;
-//    mineModel2.title = NSLocalizedString(@"recharge_history", nil);
-//    [othersArray addObject:mineModel2];
+    SHTMineModel *mineModel2 = [[SHTMineModel alloc] init];
+    mineModel2.uniqueIdentifier = @"zjgk";
+    mineModel2.mineType = SHTMineTypeCommon;
+    mineModel2.title = NSLocalizedString(@"recently_watched", nil);
+    [othersArray addObject:mineModel2];
     
     SHTMineModel *mineModel3 = [[SHTMineModel alloc] init];
     mineModel3.uniqueIdentifier = @"fxapp";
@@ -192,11 +192,10 @@
         cell.enterNextTapped = ^(NSString * _Nonnull id) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 __strong typeof(weakSelf) strongSelf = weakSelf;
-//                if ([id isEqualToString:@"czjl"]) {
-//                    // 充值记录
-//                    [SHTRouteUtil pushFrom:strongSelf to:[[SHTRechargeRecordsViewController alloc] init]];
-//                } else
-                if ([id isEqualToString:@"fxapp"]) {
+                if ([id isEqualToString:@"zjgk"]) {
+                    // 充值记录
+                    [SHTRouteUtil pushFrom:strongSelf to:[[SHTRecentlyWatchedViewController alloc] init]];
+                } else if ([id isEqualToString:@"fxapp"]) {
                     // 分享APP
                     [SHTAppRateTool shareAppAction:strongSelf];
                 } else if ([id isEqualToString:@"qwpf"]) {

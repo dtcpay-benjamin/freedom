@@ -1,5 +1,5 @@
 //
-//  SHTRechargeRecordsViewController.h
+//  SHTRecentlyWatchedViewController.h
 //  seaHorseTheater
 //
 //  Created by 褚红彪 on 2025/7/28.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SHTRechargeRecordsViewController : SHTViewController
+@interface SHTRecentlyWatchedViewController : SHTViewController
 
 @end
 

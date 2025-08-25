@@ -58,3 +58,5 @@
 "feature_privilege" = "機能特典";
 "restore_privilege" = "特典を復元";
 "friendly_reminder" = "ご注意";
+"recently_watched" = "最近の視聴";
+"total_episodes" = "全 %ld 話";

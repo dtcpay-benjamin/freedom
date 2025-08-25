@@ -38,6 +38,7 @@
 		184D45922E2F24480059B501 /* SHTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45912E2F24480059B501 /* SHTTableViewCell.m */; };
 		184D45952E2F27690059B501 /* SHTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45942E2F27690059B501 /* SHTCollectionViewCell.m */; };
 		184D45992E30687E0059B501 /* SHTMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D45982E30687E0059B501 /* SHTMineModel.m */; };
+		185B96EC2E5BFB6A000FB47A /* SHTRecentWatchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185B96EB2E5BFB6A000FB47A /* SHTRecentWatchCell.m */; };
 		187041912E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */; };
 		187041942E1233CF006BFAF8 /* SHTBriefIntroductionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187041932E1233CF006BFAF8 /* SHTBriefIntroductionModel.m */; };
 		1897DE092E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897DE082E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m */; };
@@ -45,7 +46,7 @@
 		18A8C02C2DA6485C003BC3B3 /* SHTAlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C02B2DA6485C003BC3B3 /* SHTAlertHelper.m */; };
 		18A8C0322DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */; };
 		18A8C0382DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8C0372DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m */; };
-		18CD2E352E37791200DD22D4 /* SHTRechargeRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E342E37791200DD22D4 /* SHTRechargeRecordsViewController.m */; };
+		18CD2E352E37791200DD22D4 /* SHTRecentlyWatchedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E342E37791200DD22D4 /* SHTRecentlyWatchedViewController.m */; };
 		18CD2E382E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E372E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m */; };
 		18CD2E3B2E385A1100DD22D4 /* SHTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E3A2E385A1100DD22D4 /* SHTWebViewController.m */; };
 		18CD2E402E39AAFA00DD22D4 /* SHTAppRateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CD2E3F2E39AAFA00DD22D4 /* SHTAppRateTool.m */; };
@@ -136,6 +137,8 @@
 		184D45942E2F27690059B501 /* SHTCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTCollectionViewCell.m; sourceTree = "<group>"; };
 		184D45972E30687E0059B501 /* SHTMineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTMineModel.h; sourceTree = "<group>"; };
 		184D45982E30687E0059B501 /* SHTMineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTMineModel.m; sourceTree = "<group>"; };
+		185B96EA2E5BFB6A000FB47A /* SHTRecentWatchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTRecentWatchCell.h; sourceTree = "<group>"; };
+		185B96EB2E5BFB6A000FB47A /* SHTRecentWatchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTRecentWatchCell.m; sourceTree = "<group>"; };
 		1870418F2E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionTableViewCell.h; sourceTree = "<group>"; };
 		187041902E122363006BFAF8 /* SHTBriefIntroductionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTBriefIntroductionTableViewCell.m; sourceTree = "<group>"; };
 		187041922E1233CF006BFAF8 /* SHTBriefIntroductionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTBriefIntroductionModel.h; sourceTree = "<group>"; };
@@ -151,8 +154,8 @@
 		18A8C0312DA6608C003BC3B3 /* SHTEmptyPlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTEmptyPlaceholderView.m; sourceTree = "<group>"; };
 		18A8C0362DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTDrawVideoCollectView.h; sourceTree = "<group>"; };
 		18A8C0372DB0E2BB003BC3B3 /* SHTDrawVideoCollectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTDrawVideoCollectView.m; sourceTree = "<group>"; };
-		18CD2E332E37791200DD22D4 /* SHTRechargeRecordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTRechargeRecordsViewController.h; sourceTree = "<group>"; };
-		18CD2E342E37791200DD22D4 /* SHTRechargeRecordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTRechargeRecordsViewController.m; sourceTree = "<group>"; };
+		18CD2E332E37791200DD22D4 /* SHTRecentlyWatchedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTRecentlyWatchedViewController.h; sourceTree = "<group>"; };
+		18CD2E342E37791200DD22D4 /* SHTRecentlyWatchedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTRecentlyWatchedViewController.m; sourceTree = "<group>"; };
 		18CD2E362E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTPrivacyPolicyViewController.h; sourceTree = "<group>"; };
 		18CD2E372E3857CA00DD22D4 /* SHTPrivacyPolicyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHTPrivacyPolicyViewController.m; sourceTree = "<group>"; };
 		18CD2E392E385A1100DD22D4 /* SHTWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHTWebViewController.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				18E717A92E33087600C98C2D /* SHTOthersCell.m */,
 				18E717AB2E330C3400C98C2D /* SHTOthersCommonCell.h */,
 				18E717AC2E330C3400C98C2D /* SHTOthersCommonCell.m */,
+				185B96EA2E5BFB6A000FB47A /* SHTRecentWatchCell.h */,
+				185B96EB2E5BFB6A000FB47A /* SHTRecentWatchCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -553,8 +558,8 @@
 			children = (
 				72EB882C2D6D40430024DDBD /* SHTMineViewController.h */,
 				72EB882D2D6D40430024DDBD /* SHTMineViewController.m */,
-				18CD2E332E37791200DD22D4 /* SHTRechargeRecordsViewController.h */,
-				18CD2E342E37791200DD22D4 /* SHTRechargeRecordsViewController.m */,
+				18CD2E332E37791200DD22D4 /* SHTRecentlyWatchedViewController.h */,
+				18CD2E342E37791200DD22D4 /* SHTRecentlyWatchedViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -814,7 +819,7 @@
 				184D458F2E2F19C50059B501 /* SHTMineHeaderCell.m in Sources */,
 				72A804BF2E46E28E005EF92E /* UILabel+SHTSizeCalculation.m in Sources */,
 				1843A1FE2DC1C826008116EB /* SHTTopLeftLabel.m in Sources */,
-				18CD2E352E37791200DD22D4 /* SHTRechargeRecordsViewController.m in Sources */,
+				18CD2E352E37791200DD22D4 /* SHTRecentlyWatchedViewController.m in Sources */,
 				728F44362E08134300361C28 /* SHTViewController.m in Sources */,
 				1843A1EF2DBB8D93008116EB /* SHTSearchCollectionViewCell.m in Sources */,
 				723FEA962DFD537E00D05C5E /* SHTMemberCenterViewController.m in Sources */,
@@ -836,6 +841,7 @@
 				184859B72E17CFE300012C2E /* SHTPremiumFeaturesTableViewCell.m in Sources */,
 				1843A1F82DC0C85C008116EB /* SHTLeftAlignedFlowLayout.m in Sources */,
 				1843A1D82DB8C952008116EB /* SHTVerticalButton.m in Sources */,
+				185B96EC2E5BFB6A000FB47A /* SHTRecentWatchCell.m in Sources */,
 				1897DE092E4D6843002EABA0 /* DJXPlayletInfoModel+SHTFavorite.m in Sources */,
 				1843A1E62DBB3348008116EB /* SHTSearchViewController.m in Sources */,
 				18FAC3E12E09452F00B91FE8 /* SHTMemberImmediatelyCell.m in Sources */,

@@ -58,3 +58,5 @@
 "feature_privilege" = "기능 특권";
 "restore_privilege" = "혜택 복원";
 "friendly_reminder" = "안내";
+"recently_watched" = "최근 시청";
+"total_episodes" = "총 %ld화";

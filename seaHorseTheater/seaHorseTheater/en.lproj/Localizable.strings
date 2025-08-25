@@ -60,3 +60,5 @@
 "feature_privilege" = "Features & Privileges";
 "restore_privilege" = "Restore Benefits";
 "friendly_reminder" = "Friendly Reminder";
+"recently_watched" = "Recently Watched";
+"total_episodes" = "Total %ld Episodes";

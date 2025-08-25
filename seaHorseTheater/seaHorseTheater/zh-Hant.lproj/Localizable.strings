@@ -58,3 +58,5 @@
 "feature_privilege" = "功能特權";
 "restore_privilege" = "恢復權益";
 "friendly_reminder" = "溫馨提示";
+"recently_watched" = "最近觀看";
+"total_episodes" = "共 %ld 集";
