@@ -62,4 +62,18 @@
     return _collectionView;
 }
 
+
+#pragma mark - UICollectionView DataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.playletList.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    SHTRecentWatchCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SHTRecentWatchCell" forIndexPath:indexPath];
+    DJXPlayletInfoModel *model = self.playletList[indexPath.item];
+    cell.model = model;
+    return cell;
+}
+
+
 @end
