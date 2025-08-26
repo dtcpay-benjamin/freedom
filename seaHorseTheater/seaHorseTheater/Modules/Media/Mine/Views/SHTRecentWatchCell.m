@@ -51,7 +51,7 @@
         make.height.mas_equalTo(20);
     }];
     
-    self.loadingView.center = self.coverImageView.center;
+    self.loadingView.center = CGPointMake(self.contentView.center.x, self.contentView.center.y - 25.0);
 }
 
 - (void)setModel:(DJXPlayletInfoModel *)model {
@@ -123,7 +123,7 @@
 
 - (UIActivityIndicatorView *)loadingView {
     if (!_loadingView) {
-        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
         _loadingView.hidesWhenStopped = YES;
         [self.contentView addSubview:_loadingView];
     }
