@@ -94,7 +94,7 @@
             if (self.selectActionCallBack) {
                 self.selectActionCallBack(NO, NO);
             }
-            [self downloadCoverImageForPlayletInfo:playletInfo];
+            [SHTToolsManager downloadCoverImageForPlayletInfo:playletInfo];
             playletInfo.isSelected = self.isAllSelect;
             [self.dataSource insertObject:playletInfo atIndex:0];
             if ([[SHTFavoriteManager sharedInstance] isAddToFavorites:playletInfo]) {
@@ -121,7 +121,7 @@
                 [self.dataSource removeAllObjects];
                 [self selectAllAssignment];
             }
-            [self downloadCoverImagesForPlayletList:playletList];
+            [SHTToolsManager downloadCoverImagesForPlayletList:playletList];
             [self.dataSource addObjectsFromArray:playletList];
             for (DJXPlayletInfoModel *model in playletList) {
                 model.isFromFavorite = YES;
@@ -149,53 +149,6 @@
             NSLog(@"获取收藏短剧列表报错error:%@", error);
             [self.collectionView.mj_header endRefreshing];
             [self.collectionView.mj_footer endRefreshing];
-        }];
-    }
-}
-
-- (void)downloadCoverImageForPlayletInfo:(DJXPlayletInfoModel *)playletInfo {
-    NSURL *url = [NSURL URLWithString:playletInfo.cover_image];
-    [[SDWebImageManager sharedManager] loadImageWithURL:url
-                                                options:0
-                                               progress:nil
-                                              completed:^(UIImage * _Nullable image,
-                                                          NSData * _Nullable data,
-                                                          NSError * _Nullable error,
-                                                          SDImageCacheType cacheType,
-                                                          BOOL finished,
-                                                          NSURL * _Nullable imageURL) {
-        if (image) {
-            playletInfo.coverImage = image; // 存到分类属性
-            NSLog(@"封面下载成功: %@", imageURL);
-        } else {
-            NSLog(@"封面下载失败: %@, error: %@", imageURL, error);
-        }
-    }];
-}
-
-- (void)downloadCoverImagesForPlayletList:(NSArray<DJXPlayletInfoModel *> *)playletList {
-    for (DJXPlayletInfoModel *model in playletList) {
-        if (model.cover_image.length == 0) {
-            NSLog(@"model.cover_image 为空，跳过");
-            continue;
-        }
-        
-        NSURL *url = [NSURL URLWithString:model.cover_image];
-        [[SDWebImageManager sharedManager] loadImageWithURL:url
-                                                    options:0
-                                                   progress:nil
-                                                  completed:^(UIImage * _Nullable image,
-                                                              NSData * _Nullable data,
-                                                              NSError * _Nullable error,
-                                                              SDImageCacheType cacheType,
-                                                              BOOL finished,
-                                                              NSURL * _Nullable imageURL) {
-            if (image) {
-                model.coverImage = image; // 存到分类属性
-                NSLog(@"封面下载成功: %@", imageURL);
-            } else {
-                NSLog(@"封面下载失败: %@, error: %@", imageURL, error);
-            }
         }];
     }
 }

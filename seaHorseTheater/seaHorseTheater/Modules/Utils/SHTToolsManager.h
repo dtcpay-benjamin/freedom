@@ -23,6 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIViewController *)getTopViewController;
 
++ (void)downloadCoverImageForPlayletInfo:(DJXPlayletInfoModel *)playletInfo;
+
++ (void)downloadCoverImagesForPlayletList:(NSArray<DJXPlayletInfoModel *> *)playletList;
+
 @end
 
 NS_ASSUME_NONNULL_END

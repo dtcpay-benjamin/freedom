@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) UILabel *titleLabel; // 标题
 
+@property (nonatomic, strong) UIActivityIndicatorView *loadingView;
+
 @end
 
 @implementation SHTRecentWatchCell
@@ -48,32 +50,41 @@
         make.leading.trailing.equalTo(self.contentView);
         make.height.mas_equalTo(20);
     }];
+    
+    self.loadingView.center = self.coverImageView.center;
 }
 
 - (void)setModel:(DJXPlayletInfoModel *)model {
     _model = model;
     self.titleLabel.text = model.title;
     self.episodeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"total_episodes", nil), (long)model.total];
-    NSURL *url = [NSURL URLWithString:model.cover_image];
-    __weak typeof(self) weakSelf = self;
-    [self.coverImageView sd_setImageWithURL:url
-                           placeholderImage:[UIImage imageNamed:@"placeholder"]
-                                    options:SDWebImageAvoidAutoSetImage
-                                  completed:^(UIImage * _Nullable image,
-                                              NSError * _Nullable error,
-                                              SDImageCacheType cacheType,
-                                              NSURL * _Nullable imageURL) {
-        if (image) {
-            weakSelf.coverImageView.alpha = 0.0;
-            weakSelf.coverImageView.image = image;
-            model.coverImage = image; // 存到分类属性
-            [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.coverImageView.alpha = 1.0;
-            }];
-        } else {
-            NSLog(@"封面下载失败: %@", error);
-        }
-    }];
+    if (_model.coverImage) {
+        self.coverImageView.image = _model.coverImage;
+    } else {
+        NSURL *url = [NSURL URLWithString:_model.cover_image];
+        __weak typeof(self) weakSelf = self;
+        // 开始加载时展示 loadingView
+        [self.loadingView startAnimating];
+        self.loadingView.hidden = NO;
+        [self.coverImageView sd_setImageWithURL:url
+                          placeholderImage:nil
+                                   options:SDWebImageAvoidAutoSetImage
+                                 completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            // 下载完成，隐藏 loading
+            [strongSelf.loadingView stopAnimating];
+            strongSelf.loadingView.hidden = YES;
+            if (image) {
+                strongSelf.coverImageView.alpha = 0.0;
+                strongSelf.coverImageView.image = image;
+                [UIView animateWithDuration:0.3 animations:^{
+                    strongSelf.coverImageView.alpha = 1.0;
+                }];
+            } else {
+                NSLog(@"最近观看短剧封面下载失败error:%@", error);
+            }
+        }];
+    }
 }
 
 #pragma mark - 懒加载
@@ -108,6 +119,15 @@
         _titleLabel.numberOfLines = 1;
     }
     return _titleLabel;
+}
+
+- (UIActivityIndicatorView *)loadingView {
+    if (!_loadingView) {
+        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _loadingView.hidesWhenStopped = YES;
+        [self.contentView addSubview:_loadingView];
+    }
+    return _loadingView;
 }
 
 @end
