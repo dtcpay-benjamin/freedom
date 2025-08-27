@@ -167,7 +167,7 @@
 
 - (SHTSearchBarView *)searchBar {
     if (!_searchBar) {
-        _searchBar = [[SHTSearchBarView alloc] initWithFrame:CGRectMake(0, [UIApplication sharedApplication].statusBarFrame.size.height, self.view.bounds.size.width, 60)];
+        _searchBar = [[SHTSearchBarView alloc] initWithFrame:CGRectMake(0, [UIApplication sharedApplication].statusBarFrame.size.height, SHTScreenWidth, 60)];
         __weak typeof(self) weakSelf = self;
         _searchBar.onBackTapped = ^{
             __strong typeof(weakSelf) strongSelf = weakSelf;

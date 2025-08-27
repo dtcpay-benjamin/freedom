@@ -94,7 +94,7 @@
 - (void)buildAd {
     BUAdSlot *slot = [[BUAdSlot alloc]init];
     slot.ID = @"890787307"; // 代码位
-    self.shtSplashAd = [[BUSplashAd alloc] initWithSlot:slot adSize:CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height)];
+    self.shtSplashAd = [[BUSplashAd alloc] initWithSlot:slot adSize:CGSizeMake(SHTScreenWidth, SHTScreenHeight)];
     self.shtSplashAd.delegate = self;
 }
 

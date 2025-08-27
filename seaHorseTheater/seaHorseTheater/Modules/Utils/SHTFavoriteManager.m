@@ -171,7 +171,7 @@
                 NSLog(@"短剧:(%@)收藏成功-id:%ld", playletInfoModel.title, (long)playletInfoModel.shortplay_id);
                 [strongSelf addDrawPlayletInfoToFavorites:playletInfoModel];
                 [strongCollectView setStatus:1];
-                if (!IsDraw) {
+                if (!IsDraw && (self.currentCollectView.playletInfoModel.shortplay_id == playletInfoModel.shortplay_id)) {
                     [self.currentCollectView setStatus:1];
                 }
                 [SHTMBProgressManager showText:nil withText:NSLocalizedString(@"collectionReminderSuccessful", nil) andSubText:nil isBottom:NO];

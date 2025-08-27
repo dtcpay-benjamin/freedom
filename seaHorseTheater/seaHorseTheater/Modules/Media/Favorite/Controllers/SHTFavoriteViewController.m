@@ -385,7 +385,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat totalSpacing = 10 * 4;
-    CGFloat width = (self.view.bounds.size.width - totalSpacing) / 3;
+    CGFloat width = (SHTScreenWidth - totalSpacing) / 3;
     return CGSizeMake(width, width * (16.0 / 9.0) + 45.0);
 }
 

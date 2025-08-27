@@ -94,6 +94,7 @@
         _coverImageView = [[UIImageView alloc] init];
         _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
         _coverImageView.clipsToBounds = YES;
+        _coverImageView.layer.cornerRadius = 6.0;
     }
     return _coverImageView;
 }
