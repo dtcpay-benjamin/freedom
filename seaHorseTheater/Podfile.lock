@@ -2,6 +2,9 @@ PODS:
   - Ads-CN (6.4.1.7):
     - Ads-CN/BUAdSDK (= 6.4.1.7)
   - Ads-CN/BUAdSDK (6.4.1.7)
+  - Google-Mobile-Ads-SDK (12.10.0):
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleUserMessagingPlatform (3.0.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.6.1)
@@ -91,6 +94,7 @@ PODS:
 
 DEPENDENCIES:
   - Ads-CN (= 6.4.1.7)
+  - Google-Mobile-Ads-SDK
   - Masonry
   - MBProgressHUD
   - MJRefresh
@@ -102,6 +106,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Ads-CN
+    - Google-Mobile-Ads-SDK
+    - GoogleUserMessagingPlatform
     - Masonry
     - MBProgressHUD
     - MJRefresh
@@ -117,6 +123,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Ads-CN: 1f2fedc902cd63e4d3c7f79ca99e4dafdd8c10fd
+  Google-Mobile-Ads-SDK: 08194bf203dc13f4422de827a4b254f27cd4a3a5
+  GoogleUserMessagingPlatform: f8d0cdad3ca835406755d0a69aa634f00e76d576
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
@@ -129,6 +137,6 @@ SPEC CHECKSUMS:
   SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
   TTSDKFramework: 3cba00b346c4a9adaa014e26fd081bb8ad9c5314
 
-PODFILE CHECKSUM: 3e4033fb5acedcdf05dc42da15209ed1d02e7c4f
+PODFILE CHECKSUM: ceb0d11c15a07dc5a177af1be42c13638b3e5b23
 
 COCOAPODS: 1.16.2

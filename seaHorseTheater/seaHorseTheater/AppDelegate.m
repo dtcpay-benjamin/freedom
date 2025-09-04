@@ -8,11 +8,13 @@
 #import "AppDelegate.h"
 #import "AppDelegate+DJXDelegate.h"
 #import "AppDelegate+ADSDK.h"
-#import "SHTKaiPingADViewController.h"
+//#import "SHTKaiPingADViewController.h"
+#import "SHTGoogleKaiPingADViewController.h"
 #import "SHTTabBarController.h"
 #import "SHTKeychainHelper.h"
 #import "SHTSubscriptionManager.h"
 #import "SHTAlertHelper.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface AppDelegate()<UIApplicationDelegate, UITabBarControllerDelegate>
 
@@ -24,6 +26,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    // 初始化Google广告
+    [[GADMobileAds sharedInstance] startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
+        NSLog(@"Google广告SDK初始化成功~");
+    }];
     // 短剧SDK初始化
     [self initDJX];
     [self setUpHome];
@@ -46,7 +52,8 @@
         if (success) {
 //            [self setupPangrowthSDK];
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.window.rootViewController = [[SHTKaiPingADViewController alloc] init];
+//                self.window.rootViewController = [[SHTKaiPingADViewController alloc] init];
+                self.window.rootViewController = [[SHTGoogleKaiPingADViewController alloc] init];
                 [self.window makeKeyAndVisible];
             });
         }
